@@ -1,0 +1,21 @@
+<?php $this->css($this->assetModule('css/front.css')); ?>
+<div class="portfolio"> 
+   <div class="project-title">
+   <h3><?php echo $this->escape($project['title']); ?></h3>
+   </div>
+   <div class="project-image">
+		<img class="img-polaroid" src="<?php echo $this->escape($project['mediumurl']); ?>" alt="<?php echo $this->escape($project['title']); ?>" />
+	</div>
+	<div class="project-info">
+		<div class="well">
+		   <?php if($config['show_information']) { ?><div class="project-text"><?php echo $project['information']; ?></div><?php } ?>
+			<ul>
+				<?php if($config['show_type']) { ?><li><strong><?php _e('Type'); ?> : </strong><span><?php echo $this->escape($project['type']); ?></span></li><?php } ?>
+				<?php if($config['show_technology']) { ?><li><strong><?php _e('Technology'); ?> : </strong><span><?php echo $this->escape($project['technology']); ?></span></li><?php } ?>
+				<?php if($config['show_website']) { ?><li><strong><?php _e('Website'); ?> : </strong><span><?php echo $this->escape($project['website']); ?></span></li><?php } ?>
+				<?php if($config['show_delivery']) { ?><li><strong><?php _e('Delivery'); ?> : </strong><span><?php echo $this->escape($project['delivery']); ?></span></li><?php } ?>
+				<?php if($config['show_hits']) { ?><li><strong><?php _e('Hits'); ?> : </strong><span><?php echo $this->escape($project['hits']); ?></span></li><?php } ?>
+			</ul>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,34 @@
+<?php $this->css($this->assetModule('css/admin.css')); ?>
+<div class="portfolio">
+	<div class="btn-group">
+	   <a class="btn" title="<?php _e('Add Project'); ?>" href="<?php echo $this->url('', array('action' => 'update')); ?>"><i class="icon-file"></i> <?php _e('Add Project'); ?></a>
+	</div>
+	<h3><?php _e('List of projects'); ?></h3>
+	<table class="table table-striped table-bordered table-condensed">
+		<tr>
+			<th class="span6"><?php _e('Information'); ?></th>
+			<th class="span3"><?php _e('Image'); ?></th>
+			<th class="span3"><?php _e('Action'); ?></th>
+		</tr>
+		<?php foreach($projects as $project) { ?>
+		<tr>
+			<td>
+				<p><strong><?php _e('ID'); ?> : </strong><?php echo $this->escape($project['id']); ?></p>
+				<p><strong><?php _e('Title'); ?> : </strong><?php echo $this->escape($project['title']); ?></p>
+				<p><strong><?php _e('Website'); ?> : </strong><?php echo $this->escape($project['website']); ?></p>
+				<p><strong><?php _e('Type'); ?> : </strong><?php echo $this->escape($project['type']); ?></p>
+				<p><strong><?php _e('Technology'); ?> : </strong><?php echo $this->escape($project['technology']); ?></p>
+			</td>
+			<td width="200"><img width="200" src="<?php echo $project['thumburl']; ?>" alt="<?php echo $this->escape($project['title']); ?>" /></td>
+			<td>
+				<div class="btn-group">
+					<a class="btn" title="<?php _e('View'); ?>" href="<?php echo $project['url']; ?>"><i class="icon-eye-open"></i> <?php _e('View'); ?></a>
+					<a class="btn" title="<?php _e('Edit'); ?>" href="<?php echo $this->url('', array('action' => 'update', 'id' => $project['id'])); ?>"><i class="icon-edit"></i> <?php _e('Edit'); ?></a>
+					<a class="btn" title="<?php _e('Delete'); ?>" href="<?php echo $this->url('', array('action' => 'delete', 'id' => $project['id'])); ?>"><i class="icon-trash"></i> <?php _e('Delete'); ?></a>
+				</div>
+			</td>
+		</tr>
+		<?php } ?>
+	</table>
+	<div class="paginator"><?php echo $this->paginationControl($projects, 'Sliding', 'paginator'); ?></div>
+</div>
