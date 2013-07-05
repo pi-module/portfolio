@@ -167,6 +167,29 @@ class ProjectForm extends BaseForm
                 ),
             ),
         ));
+        // Comment
+        $this->add(array(
+            'name' => 'comment',
+            'options' => array(
+                'label' => __('Comment'),
+            ),
+            'attributes' => array(
+                'type' => 'textarea',
+                'rows' => '5',
+                'cols' => '40',
+            )
+        ));
+        // comment by
+        $this->add(array(
+            'name' => 'commentby',
+            'options' => array(
+                'label' => __('Comment By'),
+            ),
+            'attributes' => array(
+                'type' => 'text',
+                'description' => '',
+            )
+        ));
         // Save
         $this->add(array(
             'name' => 'submit',

@@ -1,0 +1,39 @@
+<?php 
+	$this->css($this->assetModule('css/block.css', 'portfolio')); 
+	$this->jQuery();
+	$this->js(array(
+	    $this->assetModule('js/jquery.BlackAndWhite.min.js', 'portfolio'),
+	    $this->assetModule('js/jquery.BlackAndWhite.setting.js', 'portfolio'),
+	));
+	$this->bootstrap(array(
+	    'js/bootstrap.min.js',
+	    'css/font-awesome.min.css'
+	));
+	$script = "";
+?>
+<div class="portfolio-block row clearfix"> 
+	<div class="projects">
+			<?php  foreach($block['resources'] as $project) { ?>
+			<div id="pi-portfolio-popover-<?php echo $this->escape($project['id']); ?>"  class="project text-center">
+					<div class="project-image">
+							<img src="<?php echo $project['thumburl']; ?>" alt="<?php echo $this->escape($project['title']); ?>">
+					</div>
+					<div class="project-title">
+						<h4><?php echo $this->escape($project['title']); ?></h4>
+					</div>
+			</div>
+				<?php 
+					// Set content
+					$content = '';
+					$content .= sprintf('<p><strong>%s : </strong><span>%s</span></p>', __('Type'), $this->escape($project['type']));
+					$content .= sprintf('<p><strong>%s : </strong><span>%s</span></p>', __('Technology'), $this->escape($project['technology']));
+					$content .= sprintf('<p><a title="%s" href="%s">%s</a></p>', $this->escape($project['title']), $this->url('portfolio-portfolio', array('action' => 'project', 'project' => $project['alias'])), __('More'));
+					// Set js
+					$js = "$('#pi-portfolio-popover-%s').attr('data-toggle', 'popover').attr('data-content', '%s').attr('data-original-title', '%s').attr('data-html', 'true').attr('data-placement', 'bottom').popover();";
+					// Set main script
+					$script .= sprintf($js, $this->escape($project['id']), $content , $this->escape($project['title']));
+				?>
+			<?php } ?>
+	</div>
+</div>
+<?php $this->footScript()->appendScript($script); ?>

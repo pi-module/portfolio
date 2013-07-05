@@ -1,14 +1,14 @@
 <?php $this->css($this->assetModule('css/front.css')); ?>
-<div class="portfolio"> 
-   <div class="project-title">
-   <h3><?php echo $this->escape($project['title']); ?></h3>
-   </div>
-   <div class="project-image">
+<div class="portfolio clearfix"> 
+	<div class="project-image pull-left">
 		<img class="img-polaroid" src="<?php echo $this->escape($project['mediumurl']); ?>" alt="<?php echo $this->escape($project['title']); ?>" />
 	</div>
-	<div class="project-info">
-		<div class="well">
-		   <?php if($config['show_information']) { ?><div class="project-text"><?php echo $project['information']; ?></div><?php } ?>
+	<div class="project-body pull-right">
+		<div class="project-title">
+			<h2><?php echo $this->escape($project['title']); ?></h2>
+		</div>
+		<div class="project-info">
+			<?php if($config['show_information']) { ?><div class="project-text"><?php echo $project['information']; ?></div><?php } ?>
 			<ul>
 				<?php if($config['show_type']) { ?><li><strong><?php _e('Type'); ?> : </strong><span><?php echo $this->escape($project['type']); ?></span></li><?php } ?>
 				<?php if($config['show_technology']) { ?><li><strong><?php _e('Technology'); ?> : </strong><span><?php echo $this->escape($project['technology']); ?></span></li><?php } ?>

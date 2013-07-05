@@ -91,5 +91,15 @@ class ProjectFilter extends InputFilter
             'name' => 'status',
             'required' => true,
         ));
+        // comment
+        $this->add(array(
+            'name' => 'comment',
+            'required' => false,
+        ));
+        // commentby
+        $this->add(array(
+            'name' => 'commentby',
+            'required' => false,
+        ));
     }
 }

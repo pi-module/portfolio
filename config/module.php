@@ -58,7 +58,9 @@ return array(
             // Module configs
             'config' => 'config.php',
             // ACL specs
-            'acl'           => 'acl.php',
+            'acl' => 'acl.php',
+            // Block definition
+            'block' => 'block.php',
             // Bootstrap, priority
             'bootstrap' => 1,
             // View pages

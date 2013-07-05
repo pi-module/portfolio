@@ -47,6 +47,9 @@ class ProjectController extends ActionController
         $project['mediumurl'] = Pi::url('/upload/' . $this->config('image_path') . '/medium/' . $project['path'] . '/' . $project['image']);
         $project['delivery'] = date('Y/m/d', $project['delivery']);
         // Set view
+        $this->view()->headTitle($project['title']);
+        $this->view()->headDescription($project['keywords'], 'set');
+        $this->view()->headKeywords($project['description'], 'set');
         $this->view()->setTemplate('project_index');
         $this->view()->assign('project', $project);
         $this->view()->assign('config', $config);

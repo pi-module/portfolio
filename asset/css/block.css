@@ -1,0 +1,14 @@
+.portfolio-block .project {
+	float: right;
+}
+
+.portfolio-block .project-title h4 {
+	font-size: .9em;
+}
+
+.portfolio-block .project-image {
+	position: relative;
+	display: block;
+	margin: 2px 5px;
+        border: 1px solid #ccc;
+}

@@ -29,8 +29,8 @@ class ProjectController extends ActionController
 {
     protected $ImagePrefix = 'image_';
     protected $projectColumns = array(
-        'id', 'title', 'alias', 'type', 'technology', 'website', 'information', 'keywords',
-        'description', 'create', 'delivery', 'author', 'hits', 'image', 'path', 'status'
+        'id', 'title', 'alias', 'type', 'technology', 'website', 'information', 'keywords', 'description', 
+        'create', 'delivery', 'author', 'hits', 'image', 'path', 'status', 'commentby', 'comment'
     );
 
     public function indexAction()
@@ -104,9 +104,9 @@ class ProjectController extends ActionController
                         // Get image name
                         $values['image'] = $uploader->getUploaded('image');
                         // Resize
-                        $this->resize($values['image'], $original_path, $large_path, $this->config('image_largew'), $this->config('image_largeh'));
-                        $this->resize($values['image'], $original_path, $medium_path, $this->config('image_mediumw'), $this->config('image_mediumh'));
-                        $this->resize($values['image'], $original_path, $thumb_path, $this->config('image_thumbw'), $this->config('image_thumbh'));
+                        Pi::service('api')->portfolio(array('Resize', 'start'), $values['image'], $original_path, $large_path, $this->config('image_largew'), $this->config('image_largeh'));
+                        Pi::service('api')->portfolio(array('Resize', 'start'), $values['image'], $original_path, $medium_path, $this->config('image_mediumw'), $this->config('image_mediumh'));
+                        Pi::service('api')->portfolio(array('Resize', 'start'), $values['image'], $original_path, $thumb_path, $this->config('image_thumbw'), $this->config('image_thumbh'));
                     } else {
                         $this->jump(array('action' => 'update'), __('Problem in upload image. please try again'));
                     }
@@ -129,13 +129,13 @@ class ProjectController extends ActionController
                 }
                 // Set keywords
                 $keywords = ($values['keywords']) ? $values['keywords'] : $values['title'];
-                $values['keywords'] = $this->meta()->keywords($keywords);
+                $values['keywords'] = Pi::service('api')->portfolio(array('Text', 'keywords'), $keywords);
                 // Set description
                 $description = ($values['description']) ? $values['description'] : $values['title'];
-                $values['description'] = $this->meta()->description($description);
+                $values['description'] = Pi::service('api')->portfolio(array('Text', 'description'), $description);
                 // Set alias
                 $alias = ($values['alias']) ? $values['alias'] : $values['title'];
-                $values['alias'] = $this->alias($alias, $values['id'], $this->getModel('project'));
+                $values['alias'] = Pi::service('api')->portfolio(array('Text', 'alias'), $alias, $values['id'], $this->getModel('project'));
                 // Save values
                 if (!empty($values['id'])) {
                     $row = $this->getModel('project')->find($values['id']);

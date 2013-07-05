@@ -1,17 +1,24 @@
 <?php $this->css($this->assetModule('css/front.css')); ?>
 <div class="portfolio"> 
-   <h3><?php _e('List of projects'); ?></h3>
+	<h3 class="text-center"><?php _e('List of projects'); ?></h3>
 	<div class="projects">
-	<ul class="thumbnails">
-		<?php foreach($projects as $project) { ?>
-		<li class="<?php echo $config['show_columns']; ?>">
-			<a class="thumbnail" title="<?php echo $this->escape($project['title']); ?>" href="<?php echo $project['url']; ?>" >
-				<img src="<?php echo $project['thumburl']; ?>" alt="<?php echo $this->escape($project['title']); ?>">
-			</a>
-			<?php if($config['show_title']) { ?><h5><?php echo $this->escape($project['title']); ?></h5><?php } ?>
-		</li>
-		<?php } ?>
-	</ul>	
+			<?php foreach($projects as $project) { ?>
+			<div class="project clearfix">
+				<div class="span5">
+					<a title="<?php echo $this->escape($project['title']); ?>" href="<?php echo $project['url']; ?>" >
+						<img class="img-polaroid" src="<?php echo $project['thumburl']; ?>" alt="<?php echo $this->escape($project['title']); ?>">
+					</a>
+				</div>
+				<div class="span7">
+					<h4><?php echo $this->escape($project['title']); ?></h4>
+					<ul>
+						<?php if($config['show_type']) { ?><li><strong><?php _e('Type'); ?> : </strong><span><?php echo $this->escape($project['type']); ?></span></li><?php } ?>
+						<?php if($config['show_technology']) { ?><li><strong><?php _e('Technology'); ?> : </strong><span><?php echo $this->escape($project['technology']); ?></span></li><?php } ?>
+						<li><strong><a title="<?php echo $this->escape($project['title']); ?>" href="<?php echo $project['url']; ?>" ><?php _e('More'); ?></a></strong></li>
+					</ul>
+				</div>
+			</div>
+			<?php } ?>
 	</div>
 	<div class="paginator"><?php echo $this->paginationControl($paginator, 'Sliding', 'paginator'); ?></div>
 </div>

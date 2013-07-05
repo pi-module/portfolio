@@ -15,6 +15,8 @@ CREATE TABLE `{project}` (
   `image` varchar(255) NOT NULL,
   `path` varchar(16) NOT NULL,
   `status` tinyint(1) unsigned NOT NULL,
+  `commentby` varchar(255) NOT NULL,
+  `comment` text NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `alias` (`alias`),
   KEY `title` (`title`),
