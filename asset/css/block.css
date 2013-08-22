@@ -1,14 +1,96 @@
-.portfolio-block .project {
-	float: right;
+.portfolio-block-items {
+	padding: 0;
+	margin: 0 auto;
+	list-style: none;
 }
 
-.portfolio-block .project-title h4 {
-	font-size: .9em;
-}
-
-.portfolio-block .project-image {
+.portfolio-block-items li {
+	display: inline-block;
+	margin: 0;
+	padding: 5px;
 	position: relative;
+}
+
+.portfolio-block-items figure {
+	margin: 0;
+	position: relative;
+	overflow: hidden;
+}
+
+.portfolio-block-items figure img {
 	display: block;
-	margin: 2px 5px;
-        border: 1px solid #ccc;
+	position: relative;
+	width: 214px;
+	height: 115px;
+	-webkit-transition: -webkit-transform 0.4s;
+	-moz-transition: -moz-transform 0.4s;
+	transition: transform 0.4s;
+}
+
+.no-touch .portfolio-block-items figure:hover img, .portfolio-block-items figure.cs-hover img {
+	-webkit-transform: translateY(-50px);
+	-moz-transform: translateY(-50px);
+	-ms-transform: translateY(-50px);
+	transform: translateY(-50px);
+}
+
+.portfolio-block-items figcaption {
+	position: absolute;
+	top: 0;
+	left: 0;
+	padding: 0 10px;
+	background: #515151;
+	color: #fff;
+	height: 60px;
+	width: 100%;
+	top: auto;
+	bottom: 0;
+	opacity: 0;
+	-webkit-transform: translateY(100%);
+	-moz-transform: translateY(100%);
+	-ms-transform: translateY(100%);
+	transform: translateY(100%);
+	-webkit-transition: -webkit-transform 0.4s, opacity 0.1s 0.3s;
+	-moz-transition: -moz-transform 0.4s, opacity 0.1s 0.3s;
+	transition: transform 0.4s, opacity 0.1s 0.3s;
+}
+
+.portfolio-block-items figcaption h6 {
+	margin: 0;
+	padding: 0;
+	color: #fff;
+	font-size: .85em;
+	text-align: right;
+}
+
+.portfolio-block-items figcaption span:before {
+	content: 'by ';
+}
+
+.portfolio-block-items figcaption a {
+	text-align: center;
+	padding: 2px 5px;
+	border-radius: 2px;
+	background: #ed4e6e;
+	color: #fff;
+	position: absolute;
+	bottom: 5px;
+	right: 10px;
+}
+
+.no-touch .portfolio-block-items figure:hover figcaption, .portfolio-block-items figure.cs-hover figcaption {
+	opacity: 1;
+	-webkit-transform: translateY(0px);
+	-moz-transform: translateY(0px);
+	-ms-transform: translateY(0px);
+	transform: translateY(0px);
+	-webkit-transition: -webkit-transform 0.4s, opacity 0.1s;
+	-moz-transition: -moz-transform 0.4s, opacity 0.1s;
+	transition: transform 0.4s, opacity 0.1s;
+}
+
+.portfolio-block *, .portfolio-block *:after, .portfolio-block *:before {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
 }

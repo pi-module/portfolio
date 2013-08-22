@@ -29,7 +29,7 @@ class Block
         $block = array();
         $block = array_merge($block, $options);
         // Set info
-        $order = array('id DESC');
+        $order = array(new \Zend\Db\Sql\Predicate\Expression('RAND()'));
         $where = array('status' => 1,);
         $limit = intval($options['number']);
         $project = array();
@@ -39,11 +39,12 @@ class Block
         foreach ($rowset as $row) {
             $project[$row->id] = $row->toArray();
             $project[$row->id]['thumburl'] = Pi::url('/upload/portfolio/thumb/' . $project[$row->id]['path'] . '/' . $project[$row->id]['image']);
+            $project[$row->id]['mediumurl'] = Pi::url('/upload/portfolio/medium/' . $project[$row->id]['path'] . '/' . $project[$row->id]['image']);
         }
         $block['resources'] = $project;
         return $block;
     }
-    
+
     public static function project_comment($options = array(), $module = null)
     {
 

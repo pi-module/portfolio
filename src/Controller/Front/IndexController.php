@@ -41,7 +41,7 @@ class IndexController extends ActionController
         // Make list
         foreach ($rowset as $row) {
             $project[$row->id] = $row->toArray();
-            $project[$row->id]['url'] = $this->url('.portfolio', array('action' => 'project', 'project' => $project[$row->id]['alias']));
+            $project[$row->id]['url'] = $this->url('.portfolio', array('action' => 'project', 'project' => $project[$row->id]['slug']));
             $project[$row->id]['thumburl'] = Pi::url('/upload/' . $this->config('image_path') . '/thumb/' . $project[$row->id]['path'] . '/' . $project[$row->id]['image']);
         }
         // Set paginator

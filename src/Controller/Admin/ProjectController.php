@@ -29,7 +29,7 @@ class ProjectController extends ActionController
 {
     protected $ImagePrefix = 'image_';
     protected $projectColumns = array(
-        'id', 'title', 'alias', 'type', 'technology', 'website', 'information', 'keywords', 'description', 
+        'id', 'title', 'slug', 'type', 'technology', 'website', 'information', 'keywords', 'description',
         'create', 'delivery', 'author', 'hits', 'image', 'path', 'status', 'commentby', 'comment'
     );
 
@@ -44,7 +44,7 @@ class ProjectController extends ActionController
         // Make list
         foreach ($rowset as $row) {
             $project[$row->id] = $row->toArray();
-            $project[$row->id]['url'] = $this->url('.portfolio', array('action' => 'project', 'project' => $project[$row->id]['alias']));
+            $project[$row->id]['url'] = $this->url('.portfolio', array('action' => 'project', 'project' => $project[$row->id]['slug']));
             $project[$row->id]['thumburl'] = Pi::url('/upload/' . $this->config('image_path') . '/thumb/' . $project[$row->id]['path'] . '/' . $project[$row->id]['image']);
         }
         // Go to update page if empty
@@ -83,7 +83,26 @@ class ProjectController extends ActionController
         if ($this->request->isPost()) {
             $data = $this->request->getPost();
             $file = $this->request->getFiles();
-            $form->setInputFilter(new ProjectFilter);
+
+			/*
+			 *  Start Check slug
+			 */
+			// Set option
+			$options = array();
+			if(isset($data['id']) && !empty($data['id'])) {
+				$options['id'] = $data['id'];
+			}
+			// Set slug
+            $slug = ($data['slug']) ? $data['slug'] : $data['title'];
+			$slug = _strip($slug);
+			$slug = strtolower(trim($slug));
+			$slug = array_filter(explode(' ', $slug));
+			$data['slug'] = implode('-', $slug);
+			/*
+			 *  End Check slug
+			 */			
+			
+            $form->setInputFilter(new ProjectFilter($options));
             $form->setData($data);
             if ($form->isValid()) {
                 $values = $form->getData();
@@ -129,13 +148,15 @@ class ProjectController extends ActionController
                 }
                 // Set keywords
                 $keywords = ($values['keywords']) ? $values['keywords'] : $values['title'];
-                $values['keywords'] = Pi::service('api')->portfolio(array('Text', 'keywords'), $keywords);
+				$keywords = _strip($keywords);
+				$keywords = strtolower(trim($keywords));
+                $keywords = array_unique(array_filter(explode(' ', $keywords)));
+                $values['keywords'] = implode(',', $keywords);
                 // Set description
                 $description = ($values['description']) ? $values['description'] : $values['title'];
-                $values['description'] = Pi::service('api')->portfolio(array('Text', 'description'), $description);
-                // Set alias
-                $alias = ($values['alias']) ? $values['alias'] : $values['title'];
-                $values['alias'] = Pi::service('api')->portfolio(array('Text', 'alias'), $alias, $values['id'], $this->getModel('project'));
+				$description = _strip($description);
+				$description = strtolower(trim($description));
+                $values['description'] = preg_replace('/[\s]+/', ' ', $description);
                 // Save values
                 if (!empty($values['id'])) {
                     $row = $this->getModel('project')->find($values['id']);

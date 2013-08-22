@@ -24,8 +24,16 @@ use Zend\InputFilter\InputFilter;
 
 class ProjectFilter extends InputFilter
 {
-    public function __construct()
+    public function __construct($options = array())
     {
+        	
+		$params = array(
+            'table' => 'project',
+        );
+        if (isset($options['id']) and $options['id']) {
+            $params['id'] = $options['id'];
+        }	
+			
         // id
         $this->add(array(
             'name' => 'id',
@@ -41,10 +49,21 @@ class ProjectFilter extends InputFilter
                 ),
             ),
         ));
-        // alias
+        // slug
         $this->add(array(
-            'name' => 'alias',
+            'name' => 'slug',
             'required' => false,
+            'filters' => array(
+                array(
+                    'name' => 'StringTrim',
+                ),
+            ),
+            'validators' => array(
+                array(
+                    'name' => 'Module\Portfolio\Validator\Slug',
+                    'options' => $params,
+                ),
+            ),
         ));
         // type
         $this->add(array(

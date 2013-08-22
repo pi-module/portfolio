@@ -57,11 +57,11 @@ class ProjectForm extends BaseForm
                 'type' => 'text',
             )
         ));
-        // alias
+        // slug
         $this->add(array(
-            'name' => 'alias',
+            'name' => 'slug',
             'options' => array(
-                'label' => __('Alias'),
+                'label' => __('Slug'),
             ),
             'attributes' => array(
                 'type' => 'text',

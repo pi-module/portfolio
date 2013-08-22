@@ -1,7 +1,7 @@
 CREATE TABLE `{project}` ( 
   `id` int(10) unsigned NOT NULL auto_increment,
   `title` varchar(255) NOT NULL,
-  `alias` varchar(255) NOT NULL,
+  `slug` varchar(255) NOT NULL,
   `type` varchar(255) NOT NULL,
   `technology` varchar(255) NOT NULL,
   `website` varchar(64) NOT NULL,
@@ -18,7 +18,7 @@ CREATE TABLE `{project}` (
   `commentby` varchar(255) NOT NULL,
   `comment` text NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `alias` (`alias`),
+  UNIQUE KEY `slug` (`slug`),
   KEY `title` (`title`),
   KEY `create` (`create`),
   KEY `delivery` (`delivery`),

@@ -26,7 +26,7 @@ class ProjectController extends ActionController
 {
     public function indexAction()
     {
-        // Get page ID or alias from url
+        // Get page ID or slug from url
         $params = $this->params()->fromRoute();
         // Get config
         $config = Pi::service('registry')->config->read($params['module']);
@@ -35,7 +35,7 @@ class ProjectController extends ActionController
             $this->jump(array('route' => '.portfolio', 'controller' => 'index'), __('The Project not found.'));
         }
         // Find project
-        $project = $this->getModel('project')->find($params['project'], 'alias');
+        $project = $this->getModel('project')->find($params['project'], 'slug');
         if (empty($project)) {
             $this->jump(array('route' => '.portfolio', 'controller' => 'index'), __('The Project not set.'));
         }
