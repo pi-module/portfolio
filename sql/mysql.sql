@@ -2,7 +2,7 @@ CREATE TABLE `{project}` (
   `id` int(10) unsigned NOT NULL auto_increment,
   `title` varchar(255) NOT NULL,
   `slug` varchar(255) NOT NULL,
-  `type` varchar(255) NOT NULL,
+  `service` varchar(255) NOT NULL,
   `technology` varchar(255) NOT NULL,
   `website` varchar(64) NOT NULL,
   `information` text   NOT NULL,

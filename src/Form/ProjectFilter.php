@@ -65,9 +65,9 @@ class ProjectFilter extends InputFilter
                 ),
             ),
         ));
-        // type
+        // service
         $this->add(array(
-            'name' => 'type',
+            'name' => 'service',
             'required' => false,
         ));
         // technology

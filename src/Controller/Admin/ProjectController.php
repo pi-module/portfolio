@@ -29,7 +29,7 @@ class ProjectController extends ActionController
 {
     protected $ImagePrefix = 'image_';
     protected $projectColumns = array(
-        'id', 'title', 'slug', 'type', 'technology', 'website', 'information', 'keywords', 'description',
+        'id', 'title', 'slug', 'service', 'technology', 'website', 'information', 'keywords', 'description',
         'create', 'delivery', 'author', 'hits', 'image', 'path', 'status', 'commentby', 'comment'
     );
 
@@ -83,10 +83,6 @@ class ProjectController extends ActionController
         if ($this->request->isPost()) {
             $data = $this->request->getPost();
             $file = $this->request->getFiles();
-
-			/*
-			 *  Start Check slug
-			 */
 			// Set option
 			$options = array();
 			if(isset($data['id']) && !empty($data['id'])) {
@@ -98,10 +94,7 @@ class ProjectController extends ActionController
 			$slug = strtolower(trim($slug));
 			$slug = array_filter(explode(' ', $slug));
 			$data['slug'] = implode('-', $slug);
-			/*
-			 *  End Check slug
-			 */			
-			
+            // Set from filter
             $form->setInputFilter(new ProjectFilter($options));
             $form->setData($data);
             if ($form->isValid()) {
@@ -146,6 +139,8 @@ class ProjectController extends ActionController
                 if (empty($values['id'])) {
                     $values['author'] = Pi::registry('user')->id;
                 }
+                // Set delivery
+                $values['delivery'] = strtotime($values['delivery']);
                 // Set keywords
                 $keywords = ($values['keywords']) ? $values['keywords'] : $values['title'];
 				$keywords = _strip($keywords);
@@ -179,6 +174,7 @@ class ProjectController extends ActionController
         } else {
             if ($id) {
                 $values = $this->getModel('project')->find($id)->toArray();
+                $values['delivery'] = date('Y-m-d', $values['delivery']);
                 $form->setData($values);
                 $message = 'You can edit this project';
             } else {

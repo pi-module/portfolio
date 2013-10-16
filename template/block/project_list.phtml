@@ -1,20 +1,18 @@
 <?php 
+	//$this->jQuery(array('extension/modernizr.js'));
 	$this->css($this->assetModule('css/block.css', 'portfolio')); 
-	$this->jQuery();
-	$this->js(array(
-	    $this->assetModule('js/modernizr.js', 'portfolio'),
-	    $this->assetModule('js/toucheffects.js', 'portfolio'),
-	));
+	$this->js($this->assetModule('js/toucheffects.js', 'portfolio'));
+	$this->js($this->assetModule('js/modernizr.js', 'portfolio'));
 ?>
 <div class="portfolio-block row clearfix"> 
 	<ul class="portfolio-block-items">
 		<?php  foreach($block['resources'] as $project) { ?>
-		<li>
+		<li class="span3">
 			<figure>
 				<img src="<?php echo $project['mediumurl']; ?>" alt="<?php echo $this->escape($project['title']); ?>">
 				<figcaption>
 					<h6><?php echo $this->escape($project['title']); ?></h6>
-					<a title="<?php echo $this->escape($project['title']); ?>" href="<?php echo $this->url('portfolio-portfolio', array('action' => 'project', 'project' => $project['slug'])); ?>"><?php _e('More'); ?></a>
+					<a title="<?php echo $this->escape($project['title']); ?>" href="<?php echo Pi::url($this->url('portfolio-portfolio', array('action' => 'project', 'project' => $project['slug']))); ?>"><?php _e('More'); ?></a>
 				</figcaption>
 			</figure>
 		</li>

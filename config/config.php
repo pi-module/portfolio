@@ -31,6 +31,10 @@ return array(
             'title' => __('Show'),
             'name' => 'show'
         ),
+        array(
+            'title' => __('Social'),
+            'name' => 'social'
+        ),
     ),
     'item' => array(
         // Admin
@@ -152,9 +156,9 @@ return array(
             'filter' => 'number_int',
             'value' => 1
         ),
-        'show_type' => array(
+        'show_service' => array(
             'category' => 'show',
-            'title' => __('Show Type'),
+            'title' => __('Show Service'),
             'description' => '',
             'edit' => 'checkbox',
             'filter' => 'number_int',
@@ -195,6 +199,31 @@ return array(
         'show_hits' => array(
             'category' => 'show',
             'title' => __('Show Hits'),
+            'description' => '',
+            'edit' => 'checkbox',
+            'filter' => 'number_int',
+            'value' => 1
+        ),
+        // Social
+        'social_gplus' => array(
+            'category' => 'social',
+            'title' => __('Show Google Plus'),
+            'description' => '',
+            'edit' => 'checkbox',
+            'filter' => 'number_int',
+            'value' => 1
+        ),
+        'social_facebook' => array(
+            'category' => 'social',
+            'title' => __('Show facebook'),
+            'description' => '',
+            'edit' => 'checkbox',
+            'filter' => 'number_int',
+            'value' => 1
+        ),
+        'social_twitter' => array(
+            'category' => 'social',
+            'title' => __('Show Twitter'),
             'description' => '',
             'edit' => 'checkbox',
             'filter' => 'number_int',

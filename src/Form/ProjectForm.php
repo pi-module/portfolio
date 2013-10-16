@@ -55,6 +55,7 @@ class ProjectForm extends BaseForm
             ),
             'attributes' => array(
                 'type' => 'text',
+                'class' => 'span6',
             )
         ));
         // slug
@@ -65,16 +66,18 @@ class ProjectForm extends BaseForm
             ),
             'attributes' => array(
                 'type' => 'text',
+                'class' => 'span6',
             )
         ));
-        // type
+        // service
         $this->add(array(
-            'name' => 'type',
+            'name' => 'service',
             'options' => array(
-                'label' => __('Type'),
+                'label' => __('Service'),
             ),
             'attributes' => array(
                 'type' => 'text',
+                'class' => 'span6',
             )
         ));
         // Technology
@@ -85,6 +88,7 @@ class ProjectForm extends BaseForm
             ),
             'attributes' => array(
                 'type' => 'text',
+                'class' => 'span6',
             )
         ));
         // Website
@@ -95,6 +99,7 @@ class ProjectForm extends BaseForm
             ),
             'attributes' => array(
                 'type' => 'text',
+                'class' => 'span6',
             )
         ));
         // Information
@@ -105,8 +110,9 @@ class ProjectForm extends BaseForm
             ),
             'attributes' => array(
                 'type' => 'textarea',
-                'rows' => '5',
+                'rows' => '10',
                 'cols' => '40',
+                'class' => 'span6',
             )
         ));
         // keywords
@@ -117,7 +123,7 @@ class ProjectForm extends BaseForm
             ),
             'attributes' => array(
                 'type' => 'text',
-                'description' => '',
+                'class' => 'span6',
             )
         ));
         // description
@@ -128,7 +134,7 @@ class ProjectForm extends BaseForm
             ),
             'attributes' => array(
                 'type' => 'text',
-                'description' => '',
+                'class' => 'span6',
             )
         ));
         // Delivery
@@ -139,6 +145,7 @@ class ProjectForm extends BaseForm
             ),
             'attributes' => array(
                 'type' => 'text',
+                'value' => date('Y-m-d', strtotime('-1 month')),
             )
         ));
         // image
@@ -167,6 +174,14 @@ class ProjectForm extends BaseForm
                 ),
             ),
         ));
+        // extra
+        $this->add(array(
+            'name' => 'extra',
+            'type' => 'fieldset',
+            'options' => array(
+                'label' => __('Customer comment'),
+            ),
+        ));
         // Comment
         $this->add(array(
             'name' => 'comment',
@@ -177,6 +192,7 @@ class ProjectForm extends BaseForm
                 'type' => 'textarea',
                 'rows' => '5',
                 'cols' => '40',
+                'class' => 'span6',
             )
         ));
         // comment by
@@ -187,7 +203,7 @@ class ProjectForm extends BaseForm
             ),
             'attributes' => array(
                 'type' => 'text',
-                'description' => '',
+                'class' => 'span6',
             )
         ));
         // Save

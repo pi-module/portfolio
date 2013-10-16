@@ -6,9 +6,10 @@
 
 .portfolio-block-items li {
 	display: inline-block;
-	margin: 0;
+	margin: 0 auto;
 	padding: 5px;
 	position: relative;
+
 }
 
 .portfolio-block-items figure {
@@ -20,14 +21,15 @@
 .portfolio-block-items figure img {
 	display: block;
 	position: relative;
-	width: 214px;
-	height: 115px;
+	/* width: 214px;
+	height: 115px; */
 	-webkit-transition: -webkit-transform 0.4s;
 	-moz-transition: -moz-transform 0.4s;
 	transition: transform 0.4s;
 }
 
-.no-touch .portfolio-block-items figure:hover img, .portfolio-block-items figure.cs-hover img {
+.no-touch .portfolio-block-items figure:hover img,
+.portfolio-block-items figure.cs-hover img {
 	-webkit-transform: translateY(-50px);
 	-moz-transform: translateY(-50px);
 	-ms-transform: translateY(-50px);
@@ -41,7 +43,7 @@
 	padding: 0 10px;
 	background: #515151;
 	color: #fff;
-	height: 60px;
+	height: 100px;
 	width: 100%;
 	top: auto;
 	bottom: 0;
@@ -53,9 +55,10 @@
 	-webkit-transition: -webkit-transform 0.4s, opacity 0.1s 0.3s;
 	-moz-transition: -moz-transform 0.4s, opacity 0.1s 0.3s;
 	transition: transform 0.4s, opacity 0.1s 0.3s;
+	
 }
 
-.portfolio-block-items figcaption h6 {
+.portfolio-block-items figcaption h3 {
 	margin: 0;
 	padding: 0;
 	color: #fff;
@@ -76,9 +79,11 @@
 	position: absolute;
 	bottom: 5px;
 	right: 10px;
+	
 }
 
-.no-touch .portfolio-block-items figure:hover figcaption, .portfolio-block-items figure.cs-hover figcaption {
+.no-touch .portfolio-block-items figure:hover figcaption,
+.portfolio-block-items figure.cs-hover figcaption {
 	opacity: 1;
 	-webkit-transform: translateY(0px);
 	-moz-transform: translateY(0px);
@@ -89,8 +94,7 @@
 	transition: transform 0.4s, opacity 0.1s;
 }
 
-.portfolio-block *, .portfolio-block *:after, .portfolio-block *:before {
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
+.portfolio-block *, .portfolio-block *:after,.portfolio-block *:before { 
+	-webkit-box-sizing: border-box; 
+	-moz-box-sizing: border-box; box-sizing: border-box; 
 }

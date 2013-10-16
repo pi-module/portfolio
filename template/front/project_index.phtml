@@ -1,21 +1,42 @@
 <?php $this->css($this->assetModule('css/front.css')); ?>
 <div class="portfolio clearfix"> 
-	<div class="project-image pull-left">
+	<div class="project-image pull-left span7">
 		<img class="img-polaroid" src="<?php echo $this->escape($project['mediumurl']); ?>" alt="<?php echo $this->escape($project['title']); ?>" />
 	</div>
-	<div class="project-body pull-right">
+	<div class="project-body pull-right span5">
 		<div class="project-title">
-			<h2><?php echo $this->escape($project['title']); ?></h2>
+			<h4><?php echo $this->escape($project['title']); ?></h4>
 		</div>
 		<div class="project-info">
 			<?php if($config['show_information']) { ?><div class="project-text"><?php echo $project['information']; ?></div><?php } ?>
-			<ul>
-				<?php if($config['show_type']) { ?><li><strong><?php _e('Type'); ?> : </strong><span><?php echo $this->escape($project['type']); ?></span></li><?php } ?>
-				<?php if($config['show_technology']) { ?><li><strong><?php _e('Technology'); ?> : </strong><span><?php echo $this->escape($project['technology']); ?></span></li><?php } ?>
-				<?php if($config['show_website']) { ?><li><strong><?php _e('Website'); ?> : </strong><span><?php echo $this->escape($project['website']); ?></span></li><?php } ?>
-				<?php if($config['show_delivery']) { ?><li><strong><?php _e('Delivery'); ?> : </strong><span><?php echo $this->escape($project['delivery']); ?></span></li><?php } ?>
-				<?php if($config['show_hits']) { ?><li><strong><?php _e('Hits'); ?> : </strong><span><?php echo $this->escape($project['hits']); ?></span></li><?php } ?>
+			<ul class="unstyled">
+				<?php if($config['show_service']) { ?>
+				<li><strong><?php _e('Service'); ?> : </strong><span><?php echo $this->escape($project['service']); ?></span></li>
+				<?php } ?>
+				<?php if($config['show_technology']) { ?>
+				<li><strong><?php _e('Technology'); ?> : </strong><span><?php echo $this->escape($project['technology']); ?></span></li>
+				<?php } ?>
+				<?php if($config['show_website']) { ?>
+				<li><strong><?php _e('Website'); ?> : </strong><span><?php echo $this->escape($project['website']); ?></span></li>
+				<?php } ?>
+				<?php if($config['show_delivery']) { ?>
+				<li><strong><?php _e('Delivery'); ?> : </strong><span><?php echo $this->escape($project['delivery']); ?></span></li>
+				<?php } ?>
+				<?php if($config['show_hits']) { ?>
+				<li><strong><?php _e('Hits'); ?> : </strong><span><?php echo $this->escape($project['hits']); ?></span></li>
+				<?php } ?>
 			</ul>
+			<div class="social-links">
+				<?php if($config['social_facebook']) { ?>
+		    	<span class="social-facebook"><?php echo $this->facebook(); ?></span>
+		    	<?php } ?>
+		    	<?php if($config['social_twitter']) { ?>
+		    	<span class="social-twitter"><?php echo $this->twitter(); ?></span>
+		    	<?php } ?>
+		    	<?php if($config['social_gplus']) { ?>
+		    	<span class="social-plusone"><?php echo $this->plusone(); ?></span>
+		    	<?php } ?>
+			</div>
 		</div>
 	</div>
 </div>
