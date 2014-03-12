@@ -1,22 +1,15 @@
 <?php
 /**
- * Project form
+ * Pi Engine (http://pialog.org)
  *
- * You may not change or alter any portion of this comment or credits
- * of supporting developers from this source code or any supporting source code
- * which is considered copyrighted (c) material of the original comment or credit authors.
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *
- * @copyright       Copyright (c) Pi Engine http://www.xoopsengine.org
- * @license         http://www.xoopsengine.org/license New BSD License
- * @author          Hossein Azizabadi <azizabadi@faragostaresh.com>
- * @since           3.0
- * @package         Module\Portfolio
- * @version         $Id$
+ * @link            http://code.pialog.org for the Pi Engine source repository
+ * @copyright       Copyright (c) Pi Engine http://pialog.org
+ * @license         http://pialog.org/license.txt New BSD License
  */
 
+/**
+ * @author Hossein Azizabadi <azizabadi@faragostaresh.com>
+ */
 namespace Module\Portfolio\Form;
 
 use Pi;
@@ -25,8 +18,10 @@ use Pi\Form\Form as BaseForm;
 class ProjectForm extends BaseForm
 {
 
-    public function __construct($name = null)
+    public function __construct($name = null, $options = array())
     {
+        $this->thumbUrl = (isset($options['thumbUrl'])) ? $options['thumbUrl'] : '';
+        $this->removeUrl = empty($options['removeUrl']) ? '' : $options['removeUrl'];
         parent::__construct($name);
     }
 
@@ -55,7 +50,6 @@ class ProjectForm extends BaseForm
             ),
             'attributes' => array(
                 'type' => 'text',
-                'class' => 'span6',
             )
         ));
         // slug
@@ -66,7 +60,6 @@ class ProjectForm extends BaseForm
             ),
             'attributes' => array(
                 'type' => 'text',
-                'class' => 'span6',
             )
         ));
         // service
@@ -77,7 +70,6 @@ class ProjectForm extends BaseForm
             ),
             'attributes' => array(
                 'type' => 'text',
-                'class' => 'span6',
             )
         ));
         // Technology
@@ -88,7 +80,6 @@ class ProjectForm extends BaseForm
             ),
             'attributes' => array(
                 'type' => 'text',
-                'class' => 'span6',
             )
         ));
         // Website
@@ -99,7 +90,17 @@ class ProjectForm extends BaseForm
             ),
             'attributes' => array(
                 'type' => 'text',
-                'class' => 'span6',
+            )
+        ));
+        // website_view
+        $this->add(array(
+            'name'          => 'website_view',
+            'type'          => 'checkbox',
+            'options'       => array(
+                'label' => __('View website link'),
+            ),
+            'attributes'    => array(
+                'value'     => '1',
             )
         ));
         // Information
@@ -109,54 +110,10 @@ class ProjectForm extends BaseForm
                 'label' => __('Information'),
             ),
             'attributes' => array(
+                'description' => __('You can use HTML tag here'),
                 'type' => 'textarea',
                 'rows' => '10',
                 'cols' => '40',
-                'class' => 'span6',
-            )
-        ));
-        // keywords
-        $this->add(array(
-            'name' => 'keywords',
-            'options' => array(
-                'label' => __('Keywords'),
-            ),
-            'attributes' => array(
-                'type' => 'text',
-                'class' => 'span6',
-            )
-        ));
-        // description
-        $this->add(array(
-            'name' => 'description',
-            'options' => array(
-                'label' => __('Description'),
-            ),
-            'attributes' => array(
-                'type' => 'text',
-                'class' => 'span6',
-            )
-        ));
-        // Delivery
-        $this->add(array(
-            'name' => 'delivery',
-            'options' => array(
-                'label' => __('Delivery'),
-            ),
-            'attributes' => array(
-                'type' => 'text',
-                'value' => date('Y-m-d', strtotime('-1 month')),
-            )
-        ));
-        // image
-        $this->add(array(
-            'name' => 'image',
-            'options' => array(
-                'label' => __('Image'),
-            ),
-            'attributes' => array(
-                'type' => 'file',
-                'description' => '',
             )
         ));
         // status
@@ -170,13 +127,53 @@ class ProjectForm extends BaseForm
                     2 => __('Pending review'),
                     3 => __('Draft'),
                     4 => __('Private'),
-                    5 => __('Expired'),
+                    5 => __('Remove'),
                 ),
             ),
         ));
-        // extra
+        // Image
+        if ($this->thumbUrl) {
+            $this->add(array(
+                'name' => 'imageview',
+                'type' => 'Module\Portfolio\Form\Element\Image',
+                'options' => array(
+                    //'label' => __('Image'),
+                ),
+                'attributes' => array(
+                    'src' => $this->thumbUrl,
+                ),
+            ));
+            $this->add(array(
+                'name' => 'remove',
+                'type' => 'Module\Portfolio\Form\Element\Remove',
+                'options' => array(
+                    'label' => __('Remove image'),
+                ),
+                'attributes' => array(
+                    'link' => $this->removeUrl,
+                ),
+            ));
+            $this->add(array(
+                'name' => 'image',
+                'attributes' => array(
+                    'type' => 'hidden',
+                ),
+            ));
+        } else {
+            $this->add(array(
+                'name' => 'image',
+                'options' => array(
+                    'label' => __('Upload image'),
+                ),
+                'attributes' => array(
+                    'type' => 'file',
+                    'description' => '',
+                )
+            ));
+        }
+        // extra_comment
         $this->add(array(
-            'name' => 'extra',
+            'name' => 'extra_comment',
             'type' => 'fieldset',
             'options' => array(
                 'label' => __('Customer comment'),
@@ -192,7 +189,6 @@ class ProjectForm extends BaseForm
                 'type' => 'textarea',
                 'rows' => '5',
                 'cols' => '40',
-                'class' => 'span6',
             )
         ));
         // comment by
@@ -203,7 +199,47 @@ class ProjectForm extends BaseForm
             ),
             'attributes' => array(
                 'type' => 'text',
-                'class' => 'span6',
+            )
+        ));
+        // extra_seo
+        $this->add(array(
+            'name' => 'extra_seo',
+            'type' => 'fieldset',
+            'options' => array(
+                'label' => __('SEO options'),
+            ),
+        ));
+        // seo_title
+        $this->add(array(
+            'name' => 'seo_title',
+            'options' => array(
+                'label' => __('SEO Title'),
+            ),
+            'attributes' => array(
+                'type' => 'text',
+                'description' => '',
+            )
+        ));
+        // seo_keywords
+        $this->add(array(
+            'name' => 'seo_keywords',
+            'options' => array(
+                'label' => __('SEO Keywords'),
+            ),
+            'attributes' => array(
+                'type' => 'text',
+                'description' => '',
+            )
+        ));
+        // seo_description
+        $this->add(array(
+            'name' => 'seo_description',
+            'options' => array(
+                'label' => __('SEO Description'),
+            ),
+            'attributes' => array(
+                'type' => 'text',
+                'description' => '',
             )
         ));
         // Save

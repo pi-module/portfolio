@@ -1,20 +1,14 @@
 <?php
 /**
- * Portfolio module config
+ * Pi Engine (http://pialog.org)
  *
- * You may not change or alter any portion of this comment or credits
- * of supporting developers from this source code or any supporting source code
- * which is considered copyrighted (c) material of the original comment or credit authors.
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *
- * @copyright       Copyright (c) Pi Engine http://www.xoopsengine.org
- * @license         http://www.xoopsengine.org/license New BSD License
- * @author          Hossein Azizabadi <azizabadi@faragostaresh.com>
- * @since           3.0
- * @package         Module\Portfolio
- * @version         $Id$
+ * @link            http://code.pialog.org for the Pi Engine source repository
+ * @copyright       Copyright (c) Pi Engine http://pialog.org
+ * @license         http://pialog.org/license.txt New BSD License
+ */
+
+/**
+ * @author Hossein Azizabadi <azizabadi@faragostaresh.com>
  */
 
 return array(
@@ -34,6 +28,10 @@ return array(
         array(
             'title' => __('Social'),
             'name' => 'social'
+        ),
+        array(
+            'title' => __('Texts'),
+            'name' => 'text'
         ),
     ),
     'item' => array(
@@ -69,7 +67,7 @@ return array(
             'description' => '',
             'edit' => 'text',
             'filter' => 'string',
-            'value' => 'jpg,png,gif'
+            'value' => 'jpg,jpeg,png,gif'
         ),
         'image_largeh' => array(
             'category' => 'image',
@@ -93,7 +91,7 @@ return array(
             'description' => '',
             'edit' => 'text',
             'filter' => 'number_int',
-            'value' => 500
+            'value' => 300
         ),
         'image_mediumw' => array(
             'category' => 'image',
@@ -101,7 +99,7 @@ return array(
             'description' => '',
             'edit' => 'text',
             'filter' => 'number_int',
-            'value' => 500
+            'value' => 300
         ),
         'image_thumbh' => array(
             'category' => 'image',
@@ -109,7 +107,7 @@ return array(
             'description' => '',
             'edit' => 'text',
             'filter' => 'number_int',
-            'value' => 250
+            'value' => 150
         ),
         'image_thumbw' => array(
             'category' => 'image',
@@ -117,7 +115,41 @@ return array(
             'description' => '',
             'edit' => 'text',
             'filter' => 'number_int',
-            'value' => 250
+            'value' => 150
+        ),
+        'image_watermark' => array(
+            'category' => 'image',
+            'title' => __('Add Watermark'),
+            'description' => '',
+            'edit' => 'checkbox',
+            'filter' => 'number_int',
+            'value' => 0
+        ),
+        'image_watermark_source' => array(
+            'category' => 'image',
+            'title' => __('Watermark Image'),
+            'description' => '',
+            'edit' => 'text',
+            'filter' => 'string',
+            'value' => ''
+        ),
+        'image_watermark_position' => array(
+            'title' => __('Watermark Positio'),
+            'description' => '',
+            'edit' => array(
+                'type' => 'select',
+                'options' => array(
+                    'options' => array(
+                        'top-left' => __('Top Left'),
+                        'top-right' => __('Top Right'),
+                        'bottom-left' => __('Bottom Left'),
+                        'bottom-right' => __('Bottom Right'),
+                    ),
+                ),
+            ),
+            'filter' => 'text',
+            'value' => 'bottom-right',
+            'category' => 'image',
         ),
         // Show
         'show_perpage' => array(
@@ -127,34 +159,6 @@ return array(
             'edit' => 'text',
             'filter' => 'number_int',
             'value' => 12
-        ),
-        'show_columns' => array(
-            'category' => 'show',
-            'title' => __('Columns'),
-            'description' => '',
-            'edit' => array(
-                'type' => 'select',
-                'options' => array(
-                    'options' => array(
-                        'span12' => __('1 column'),
-                        'span6' => __('2 columns'),
-                        'span4' => __('3 columns'),
-                        'span3' => __('4 columns'),
-                        'span2' => __('6 columns'),
-                        'span1' => __('12 columns'),
-                    ),
-                ),
-            ),
-            'filter' => 'string',
-            'value' => 'span3',
-        ),
-        'show_title' => array(
-            'category' => 'show',
-            'title' => __('Show Title'),
-            'description' => __('Show Title jst work on project list'),
-            'edit' => 'checkbox',
-            'filter' => 'number_int',
-            'value' => 1
         ),
         'show_service' => array(
             'category' => 'show',
@@ -183,14 +187,6 @@ return array(
         'show_information' => array(
             'category' => 'show',
             'title' => __('Show Information'),
-            'description' => '',
-            'edit' => 'checkbox',
-            'filter' => 'number_int',
-            'value' => 1
-        ),
-        'show_delivery' => array(
-            'category' => 'show',
-            'title' => __('Show Delivery Date'),
             'description' => '',
             'edit' => 'checkbox',
             'filter' => 'number_int',
@@ -228,6 +224,31 @@ return array(
             'edit' => 'checkbox',
             'filter' => 'number_int',
             'value' => 1
+        ),
+        // Texts
+        'text_title' => array(
+            'category' => 'text',
+            'title' => __('Module main title'),
+            'description' => __('Title for main page and all non-title pages'),
+            'edit' => 'text',
+            'filter' => 'string',
+            'value' => 'List of all our projects'
+        ),
+        'text_description' => array(
+            'category' => 'text',
+            'title' => __('Module main description'),
+            'description' => '',
+            'edit' => 'text',
+            'filter' => 'string',
+            'value' => 'List of all our projects'
+        ),
+        'text_keywords' => array(
+            'category' => 'text',
+            'title' => __('Module main keywords'),
+            'description' => '',
+            'edit' => 'text',
+            'filter' => 'string',
+            'value' => 'projects,project,website,art,design,development'
         ),
     ),
 );

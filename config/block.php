@@ -1,52 +1,44 @@
 <?php
 /**
- * Portfolio module block
+ * Pi Engine (http://pialog.org)
  *
- * You may not change or alter any portion of this comment or credits
- * of supporting developers from this source code or any supporting source code
- * which is considered copyrighted (c) material of the original comment or credit authors.
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *
- * @copyright       Copyright (c) Pi Engine http://www.xoopsengine.org
- * @license         http://www.xoopsengine.org/license New BSD License
- * @author          Hossein Azizabadi <azizabadi@faragostaresh.com>
- * @since           3.0
- * @package         Module\Portfolio
- * @version         $Id$
+ * @link            http://code.pialog.org for the Pi Engine source repository
+ * @copyright       Copyright (c) Pi Engine http://pialog.org
+ * @license         http://pialog.org/license.txt New BSD License
  */
 
+/**
+ * @author Hossein Azizabadi <azizabadi@faragostaresh.com>
+ */
 return array(
-    // Item block
     'project-list' => array(
-        'title' => __('Project list'),
-        'description' => '',
-        'render' => array('block', 'project_list'),
-        'template' => 'project_list',
-        'config' => array(
+        'name'          => 'project-list',
+        'title'         => _b('Project list'),
+        'description'   => '',
+        'render'        => array('block', 'projectList'),
+        'template'      => 'project_list',
+        'config'        => array(
             'number' => array(
-                'title' => __('Number'),
+                'title' => _b('Number'),
                 'description' => '',
                 'edit' => 'text',
                 'filter' => 'number_int',
-                'value' => 4,
+                'value' => 10,
+            ),
+            'effect' => array(
+                'title' => _b('Use effect ?'),
+                'description' => '',
+                'edit' => 'checkbox',
+                'filter' => 'number_int',
+                'value' => 0,
             ),
         ),
-        'access' => array(
-            'guest' => 1,
-            'member' => 1,
-        ),
     ),
-    // Item block
     'project-comment' => array(
-        'title' => __('Project Comment'),
-        'description' => '',
-        'render' => array('block', 'project_comment'),
-        'template' => 'project_comment',
-        'access' => array(
-            'guest' => 1,
-            'member' => 1,
-        ),
+        'name'          => 'project-comment',
+        'title'         => _b('Project Comment'),
+        'description'   => '',
+        'render'        => array('block', 'projectComment'),
+        'template'      => 'project_comment',
     ),
 );

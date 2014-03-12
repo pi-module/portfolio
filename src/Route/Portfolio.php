@@ -1,85 +1,65 @@
 <?php
 /**
- * Portfolio route implementation
+ * Pi Engine (http://pialog.org)
  *
- * You may not change or alter any portion of this comment or credits
- * of supporting developers from this source code or any supporting source code
- * which is considered copyrighted (c) material of the original comment or credit authors.
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *
- * @copyright       Copyright (c) Pi Engine http://www.xoopsengine.org
- * @license         http://www.xoopsengine.org/license New BSD License
- * @author          Taiwen Jiang <taiwenjiang@tsinghua.org.cn>
- * @author          Hossein Azizabadi <azizabadi@faragostaresh.com>
- * @since           3.0
- * @package         Module\Portfolio
- * @subpackage      Route
- * @version         $Id$
+ * @link            http://code.pialog.org for the Pi Engine source repository
+ * @copyright       Copyright (c) Pi Engine http://pialog.org
+ * @license         http://pialog.org/license.txt New BSD License
  */
 
+/**
+ * @author Hossein Azizabadi <azizabadi@faragostaresh.com>
+ */
 namespace Module\Portfolio\Route;
 
 use Pi\Mvc\Router\Http\Standard;
-use Zend\Mvc\Router\Http\RouteMatch;
-use Zend\Stdlib\RequestInterface as Request;
 
 class Portfolio extends Standard
 {
 
-    protected $prefix = '/portfolio';
-
     /**
      * Default values.
-     *
      * @var array
      */
     protected $defaults = array(
-        'module' => 'portfolio',
-        'controller' => 'index',
-        'action' => 'index'
+        'module'        => 'portfolio',
+        'controller'    => 'index',
+        'action'        => 'index'
     );
 
+
     /**
-     * match(): defined by Route interface.
-     *
-     * @see    Route::match()
-     * @param  Request $request
-     * @return RouteMatch
+     * {@inheritDoc}
      */
-    public function match(Request $request, $pathOffset = null)
+    protected $structureDelimiter = '/';
+
+    /**
+     * {@inheritDoc}
+     */
+    protected function parse($path)
     {
-        $result = $this->canonizePath($request, $pathOffset);
-        if (null === $result) {
-            return null;
+        $matches = array();
+        $matches = array_merge($this->defaults, $matches);
+        $parts = array_filter(explode($this->structureDelimiter, $path));
+
+        if (isset($parts[0]) && !empty($parts[0])) {
+            switch ($parts[0]) {
+                case 'page':
+                    $matches['controller'] = 'index';
+                    $matches['action'] = 'index';
+                    $matches['page'] = $parts[1] ? urldecode($parts[1]) : null;
+                    break;
+
+                case 'slug':
+                case 'project':
+                    $matches['controller'] = 'project';
+                    $matches['action'] = 'index';
+                    $matches['slug'] = $parts[1] ? urldecode($parts[1]) : null;
+                    break;
+            }
         }
 
-        list($path, $pathLength) = $result;
-        if (empty($path)) {
-            return null;
-        }
-
-        list($path, $item) = explode($this->paramDelimiter, $path, 2);
-
-        switch ($path) {
-            case 'page':
-                $matches = array(
-                    'action' => 'index',
-                    'page' => $item ? intval($item) : null,
-                );
-                break;
-
-            case 'project':
-                $matches = array(
-                    'controller' => 'project',
-                    'action' => 'index',
-                    'project' => $item ? urldecode($item) : null,
-                );
-                break;
-        }
-
-        return new RouteMatch(array_merge($this->defaults, $matches), $pathLength);
+        return $matches;
     }
 
     /**
@@ -88,28 +68,40 @@ class Portfolio extends Standard
      * @see    Route::assemble()
      * @param  array $params
      * @param  array $options
-     * @return mixed
+     * @return string
      */
-    public function assemble(array $params = array(), array $options = array())
-    {
+    public function assemble(
+        array $params = array(),
+        array $options = array()
+    ) {
         $mergedParams = array_merge($this->defaults, $params);
         if (!$mergedParams) {
             return $this->prefix;
         }
-
-        if (!empty($mergedParams['project'])) {
-            $url['project'] = 'project' . $this->paramDelimiter . $mergedParams['project'];
+        
+        // Set module
+        if (!empty($mergedParams['module'])) {
+            $url['module'] = $mergedParams['module'];
         }
-
+        if (!empty($mergedParams['controller']) && $mergedParams['controller'] != 'index') {
+            $url['controller'] = $mergedParams['controller'];
+        }
+        if (!empty($mergedParams['action']) && $mergedParams['action'] != 'index') {
+            $url['action'] = $mergedParams['action'];
+        }
+        if (!empty($mergedParams['slug'])) {
+            $url['slug'] = $mergedParams['slug'];
+        }
         if (!empty($mergedParams['page'])) {
             $url['page'] = 'page' . $this->paramDelimiter . $mergedParams['page'];
         }
 
+        // Make url
         $url = implode($this->paramDelimiter, $url);
 
         if (empty($url)) {
             return $this->prefix;
         }
-        return $this->prefix . $this->paramDelimiter . $url;
+        return $this->paramDelimiter . $url;
     }
 }

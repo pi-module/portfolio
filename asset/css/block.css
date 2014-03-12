@@ -21,8 +21,6 @@
 .portfolio-block-items figure img {
 	display: block;
 	position: relative;
-	/* width: 214px;
-	height: 115px; */
 	-webkit-transition: -webkit-transform 0.4s;
 	-moz-transition: -moz-transform 0.4s;
 	transition: transform 0.4s;

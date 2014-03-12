@@ -1,26 +1,20 @@
 <?php
 /**
- * Portfolio admin Project controller
+ * Pi Engine (http://pialog.org)
  *
- * You may not change or alter any portion of this comment or credits
- * of supporting developers from this source code or any supporting source code
- * which is considered copyrighted (c) material of the original comment or credit authors.
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *
- * @copyright       Copyright (c) Pi Engine http://www.xoopsengine.org
- * @license         http://www.xoopsengine.org/license New BSD License
- * @author          Hossein Azizabadi <azizabadi@faragostaresh.com>
- * @since           3.0
- * @package         Module\Portfolio
- * @version         $Id$
+ * @link            http://code.pialog.org for the Pi Engine source repository
+ * @copyright       Copyright (c) Pi Engine http://pialog.org
+ * @license         http://pialog.org/license.txt New BSD License
  */
 
+/**
+ * @author Hossein Azizabadi <azizabadi@faragostaresh.com>
+ */
 namespace Module\Portfolio\Controller\Admin;
 
 use Pi;
 use Pi\Mvc\Controller\ActionController;
+use Pi\Paginator\Paginator;
 use Pi\File\Transfer\Upload;
 use Module\Portfolio\Form\ProjectForm;
 use Module\Portfolio\Form\ProjectFilter;
@@ -28,48 +22,58 @@ use Module\Portfolio\Form\ProjectFilter;
 class ProjectController extends ActionController
 {
     protected $ImagePrefix = 'image_';
+
     protected $projectColumns = array(
-        'id', 'title', 'slug', 'service', 'technology', 'website', 'information', 'keywords', 'description',
-        'create', 'delivery', 'author', 'hits', 'image', 'path', 'status', 'commentby', 'comment'
+        'id', 'title', 'slug', 'service', 'technology', 'website', 'website_view', 
+        'information', 'seo_title', 'seo_keywords', 'seo_description', 'time_create', 
+        'time_update', 'uid', 'hits', 'image', 'path', 'status', 'point', 'count', 
+        'favourite', 'commentby', 'comment'
     );
 
     public function indexAction()
     {
         // Get page
-        $page = $this->params('p', 1);
+        $page = $this->params('page', 1);
         $module = $this->params('module');
         // Get info
-        $select = $this->getModel('project')->select()->order(array('id DESC', 'create DESC'));
+        $select = $this->getModel('project')->select()->order(array('id DESC', 'time_create DESC'));
         $rowset = $this->getModel('project')->selectWith($select);
         // Make list
         foreach ($rowset as $row) {
             $project[$row->id] = $row->toArray();
-            $project[$row->id]['url'] = $this->url('.portfolio', array('action' => 'project', 'project' => $project[$row->id]['slug']));
-            $project[$row->id]['thumburl'] = Pi::url('/upload/' . $this->config('image_path') . '/thumb/' . $project[$row->id]['path'] . '/' . $project[$row->id]['image']);
-        }
-        // Go to update page if empty
-        if (empty($project)) {
-            return $this->redirect()->toRoute('', array('action' => 'update'));
+            $project[$row->id]['url'] = $this->url('portfolio', array(
+                'module'        => $module,
+                'controller'    => 'project',
+                'action'        => 'index',
+                'slug'          => $project[$row->id]['slug'])
+            );
+            $project[$row->id]['thumburl'] = Pi::url(
+                sprintf('upload/%s/thumb/%s/%s', 
+                    $this->config('image_path'), 
+                    $project[$row->id]['path'], 
+                    $project[$row->id]['image']
+                ));
         }
         // Set paginator
-        $paginator = \Pi\Paginator\Paginator::factory($project);
+        $columns = array('count' => new \Zend\Db\Sql\Predicate\Expression('count(*)'));
+        $select = $this->getModel('project')->select()->where($whereLink)->columns($columns);
+        $count = $this->getModel('project')->selectWith($select)->current()->count;
+        $paginator = Paginator::factory(intval($count));
         $paginator->setItemCountPerPage($this->config('admin_perpage'));
         $paginator->setCurrentPageNumber($page);
         $paginator->setUrlOptions(array(
-            // Use router to build URL for each page
-            'pageParam' => 'p',
-            'totalParam' => 't',
-            'router' => $this->getEvent()->getRouter(),
-            'route' => $this->getEvent()->getRouteMatch()->getMatchedRouteName(),
-            'params' => array(
-                'module' => $this->getModule(),
-                'controller' => 'project',
-                'action' => 'index',
-            ),
+            'router'    => $this->getEvent()->getRouter(),
+            'route'     => $this->getEvent()->getRouteMatch()->getMatchedRouteName(),
+            'params'    => array_filter(array(
+                'module'        => $this->getModule(),
+                'controller'    => 'index',
+                'action'        => 'index',
+            )),
         ));
         // Set view
         $this->view()->setTemplate('project_index');
-        $this->view()->assign('projects', $paginator);
+        $this->view()->assign('projects', $project);
+        $this->view()->assign('paginator', $paginator);
     }
 
     public function updateAction()
@@ -77,81 +81,74 @@ class ProjectController extends ActionController
         // Get id
         $id = $this->params('id');
         $module = $this->params('module');
+        $option = array();
+        // Find Product
+        if ($id) {
+            $project = $this->getModel('project')->find($id)->toArray();
+            if ($project['image']) {
+                $thumbUrl = sprintf('upload/%s/thumb/%s/%s', $this->config('image_path'), $project['path'], $project['image']);
+                $option['thumbUrl'] = Pi::url($thumbUrl);
+                $option['removeUrl'] = $this->url('', array('action' => 'remove', 'id' => $project['id']));
+            }
+        }
         // Set form
-        $form = new ProjectForm('project');
+        $form = new ProjectForm('project', $option);
         $form->setAttribute('enctype', 'multipart/form-data');
         if ($this->request->isPost()) {
             $data = $this->request->getPost();
             $file = $this->request->getFiles();
-			// Set option
-			$options = array();
-			if(isset($data['id']) && !empty($data['id'])) {
-				$options['id'] = $data['id'];
-			}
-			// Set slug
+            // Set slug
             $slug = ($data['slug']) ? $data['slug'] : $data['title'];
-			$slug = _strip($slug);
-			$slug = strtolower(trim($slug));
-			$slug = array_filter(explode(' ', $slug));
-			$data['slug'] = implode('-', $slug);
-            // Set from filter
-            $form->setInputFilter(new ProjectFilter($options));
+            $data['slug'] = Pi::api('text', 'portfolio')->slug($slug);
+            // Form filter
+            $form->setInputFilter(new ProjectFilter);
             $form->setData($data);
             if ($form->isValid()) {
                 $values = $form->getData();
                 // upload image
                 if (!empty($file['image']['name'])) {
-                    // Set path
-                    $values['path'] = date('Y') . '/' . date('m');
-                    $original_path = $this->config('image_path') . '/original/' . $values['path'];
-                    $large_path = $this->config('image_path') . '/large/' . $values['path'];
-                    $medium_path = $this->config('image_path') . '/medium/' . $values['path'];
-                    $thumb_path = $this->config('image_path') . '/thumb/' . $values['path'];
-                    // Do upload
-                    $uploader = new Upload(array('destination' => $original_path, 'rename' => $this->ImagePrefix . '%random%'));
+                    // Set upload path
+                    $values['path'] = sprintf('%s/%s', date('Y'), date('m'));
+                    $originalPath = Pi::path(sprintf('upload/%s/original/%s', $this->config('image_path'), $values['path']));
+                    // Upload
+                    $uploader = new Upload;
+                    $uploader->setDestination($originalPath);
+                    $uploader->setRename($this->ImagePrefix . '%random%');
                     $uploader->setExtension($this->config('image_extension'));
                     $uploader->setSize($this->config('image_size'));
                     if ($uploader->isValid()) {
                         $uploader->receive();
                         // Get image name
                         $values['image'] = $uploader->getUploaded('image');
-                        // Resize
-                        Pi::service('api')->portfolio(array('Resize', 'start'), $values['image'], $original_path, $large_path, $this->config('image_largew'), $this->config('image_largeh'));
-                        Pi::service('api')->portfolio(array('Resize', 'start'), $values['image'], $original_path, $medium_path, $this->config('image_mediumw'), $this->config('image_mediumh'));
-                        Pi::service('api')->portfolio(array('Resize', 'start'), $values['image'], $original_path, $thumb_path, $this->config('image_thumbw'), $this->config('image_thumbh'));
+                        // process image
+                        Pi::api('image', 'portfolio')->process($values['image'], $values['path']);
                     } else {
                         $this->jump(array('action' => 'update'), __('Problem in upload image. please try again'));
                     }
-                } else {
-                    $values['image'] = '';
+                } elseif (!isset($values['image'])) {
+                    $values['image'] = '';  
                 }
-                // Set just story fields
+                // Set just project fields
                 foreach (array_keys($values) as $key) {
                     if (!in_array($key, $this->projectColumns)) {
                         unset($values[$key]);
                     }
                 }
+                // Set seo_title
+                $title = ($values['seo_title']) ? $values['seo_title'] : $values['title'];
+                $values['seo_title'] = Pi::api('text', 'portfolio')->title($title);
+                // Set seo_keywords
+                $keywords = ($values['seo_keywords']) ? $values['seo_keywords'] : $values['title'];
+                $values['seo_keywords'] = Pi::api('text', 'portfolio')->keywords($keywords);
+                // Set seo_description
+                $description = ($values['seo_description']) ? $values['seo_description'] : $values['title'];
+                $values['seo_description'] = Pi::api('text', 'portfolio')->description($description);
                 // Set time
                 if (empty($values['id'])) {
-                    $values['create'] = time();
+                    $values['time_create'] = time();
+                    $values['uid'] = Pi::user()->getId();
                 }
-                // Set user
-                if (empty($values['id'])) {
-                    $values['author'] = Pi::registry('user')->id;
-                }
-                // Set delivery
-                $values['delivery'] = strtotime($values['delivery']);
-                // Set keywords
-                $keywords = ($values['keywords']) ? $values['keywords'] : $values['title'];
-				$keywords = _strip($keywords);
-				$keywords = strtolower(trim($keywords));
-                $keywords = array_unique(array_filter(explode(' ', $keywords)));
-                $values['keywords'] = implode(',', $keywords);
-                // Set description
-                $description = ($values['description']) ? $values['description'] : $values['title'];
-				$description = _strip($description);
-				$description = strtolower(trim($description));
-                $values['description'] = preg_replace('/[\s]+/', ' ', $description);
+                $values['time_update'] = time();
                 // Save values
                 if (!empty($values['id'])) {
                     $row = $this->getModel('project')->find($values['id']);
@@ -160,30 +157,96 @@ class ProjectController extends ActionController
                 }
                 $row->assign($values);
                 $row->save();
+                // Add / Edit sitemap
+                if (Pi::service('module')->isActive('sitemap')) {
+                    $loc = Pi::url($this->url('portfolio', array(
+                        'module'      => $module, 
+                        'controller'  => 'project', 
+                        'action'      => 'index', 
+                        'slug'        => $values['slug']
+                    )));
+                    if (empty($values['id'])) {
+                        Pi::api('sitemap', 'sitemap')->add('portfolio', 'project', $row->id, $loc);
+                    } else {
+                        Pi::api('sitemap', 'sitemap')->update('portfolio', 'project', $row->id, $loc);
+                    }              
+                }
                 // Check it save or not
                 if ($row->id) {
                     $message = __('Project data saved successfully.');
                     $url = array('action' => 'index');
                     $this->jump($url, $message);
-                } else {
-                    $message = __('Project data not saved.');
                 }
-            } else {
-                $message = __('Invalid data, please check and re-submit.');
             }
         } else {
             if ($id) {
                 $values = $this->getModel('project')->find($id)->toArray();
-                $values['delivery'] = date('Y-m-d', $values['delivery']);
                 $form->setData($values);
-                $message = 'You can edit this project';
-            } else {
-                $message = 'You can add new project';
             }
         }
         $this->view()->setTemplate('project_update');
         $this->view()->assign('form', $form);
         $this->view()->assign('title', __('Add a Project'));
-        $this->view()->assign('message', $message);
+    }
+
+    public function removeAction()
+    {
+        // Get id and status
+        $id = $this->params('id');
+        // set project
+        $project = $this->getModel('project')->find($id);
+        // Check
+        if ($project && !empty($id)) {
+            // remove file
+            /* $files = array(
+                Pi::path('upload/' . $this->config('image_path') . '/original/' . $project->path . '/' . $project->image),
+                Pi::path('upload/' . $this->config('image_path') . '/large/' . $project->path . '/' . $project->image),
+                Pi::path('upload/' . $this->config('image_path') . '/medium/' . $project->path . '/' . $project->image),
+                Pi::path('upload/' . $this->config('image_path') . '/thumb/' . $project->path . '/' . $project->image),
+            );
+            Pi::service('file')->remove($files); */
+            // clear DB
+            $project->image = '';
+            $project->path = '';
+            // Save
+            if ($project->save()) {
+                $message = sprintf(__('Image of %s removed'), $project->title);
+                $status = 1;
+            } else {
+                $message = __('Image not remove');
+                $status = 0;
+            }
+        } else {
+            $message = __('Please select project');
+            $status = 0;
+        }
+        return array(
+            'status' => $status,
+            'message' => $message,
+        );
+    }
+
+    public function deleteAction()
+    {
+        // Get information
+        $this->view()->setTemplate(false);
+        $id = $this->params('id');
+        $row = $this->getModel('project')->find($id);
+        if ($row) {
+            // Remove sitemap
+            if (Pi::service('module')->isActive('sitemap')) {
+                $loc = Pi::url($this->url('portfolio', array(
+                        'module'      => $module, 
+                        'controller'  => 'project',
+                        'action'      => 'index',
+                        'slug'        => $row->slug
+                    )));
+                Pi::api('sitemap', 'sitemap')->remove($loc);
+            } 
+            // Remove page
+            $row->delete();
+            $this->jump(array('action' => 'index'), __('This project deleted'));
+        }
+        $this->jump(array('action' => 'index'), __('Please select project'));
     }
 }

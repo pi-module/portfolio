@@ -1,28 +1,24 @@
 <?php $this->css($this->assetModule('css/front.css')); ?>
 <div class="portfolio"> 
-	<h3 class="text-center"><?php _e('List of projects'); ?></h3>
-	<div class="projects">
-		<?php foreach($projects as $project) { ?>
-		<div class="project clearfix">
-			<div class="span4">
-				<a title="<?php echo $this->escape($project['title']); ?>" href="<?php echo $project['url']; ?>" >
-					<img class="img-polaroid" src="<?php echo $project['thumburl']; ?>" alt="<?php echo $this->escape($project['title']); ?>">
-				</a>
-			</div>
-			<div class="span8">
-				<h4><?php echo $this->escape($project['title']); ?></h4>
-				<ul class="unstyled">
+	<?php foreach($projects as $project) { ?>
+	<div class="col-sm-6 col-md-4">
+		<div class="thumbnail">
+			<a title="<?php echo $this->escape($project['title']); ?>" href="<?php echo $project['projectUrl']; ?>" >
+				<img class="img-polaroid" src="<?php echo $project['thumbUrl']; ?>" alt="<?php echo $this->escape($project['title']); ?>">
+			</a>
+			<div class="caption">
+				<h3><?php echo $this->escape($project['title']); ?></h3>
+				<ul class="list-unstyled">
 					<?php if($config['show_service']) { ?>
 					<li><strong><?php _e('Service'); ?> : </strong><span><?php echo $this->escape($project['service']); ?></span></li>
 					<?php } ?>
 					<?php if($config['show_technology']) { ?>
 					<li><strong><?php _e('Technology'); ?> : </strong><span><?php echo $this->escape($project['technology']); ?></span></li>
 					<?php } ?>
-					<li><strong><a title="<?php echo $this->escape($project['title']); ?>" href="<?php echo $project['url']; ?>" ><?php _e('More'); ?></a></strong></li>
 				</ul>
 			</div>
 		</div>
-		<?php } ?>
 	</div>
-	<div class="paginator"><?php echo $this->paginationControl($paginator, 'Sliding', 'paginator'); ?></div>
+	<?php } ?>
+	<div class="paginator"><?php echo $this->paginationControl($paginator, 'Sliding', 'paginator.phtml'); ?></div>
 </div>
