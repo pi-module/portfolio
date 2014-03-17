@@ -200,6 +200,14 @@ return array(
             'filter' => 'number_int',
             'value' => 1
         ),
+        'show_tag' => array(
+            'category' => 'show',
+            'title' => __('Show Tags'),
+            'description' => '',
+            'edit' => 'checkbox',
+            'filter' => 'number_int',
+            'value' => 1
+        ),
         // Social
         'social_gplus' => array(
             'category' => 'social',

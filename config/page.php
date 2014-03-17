@@ -24,6 +24,10 @@ return array(
             'block'         => 1,
         ),
         array(
+            'controller'    => 'tag',
+            'block'         => 1,
+        ),
+        array(
             'controller'    => 'project',
             'block'         => 1,
         ),

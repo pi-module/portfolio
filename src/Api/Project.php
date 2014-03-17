@@ -16,12 +16,34 @@ use Pi;
 use Pi\Application\Api\AbstractApi;
 
 /*
- * Pi::api('project', 'portfolio')->canonizeProject($keywords);
+ * Pi::api('project', 'portfolio')->getProject($parameter, $type);
+ * Pi::api('project', 'portfolio')->getListFromId($id);
+ * Pi::api('project', 'portfolio')->canonizeProject($project);
  */
 
 class Project extends AbstractApi
 {         
-	public function canonizeProject($project = '') 
+    public function getProject($parameter, $type = 'id')
+    {
+        // Get project
+        $project = Pi::model('project', $this->getModule())->find($parameter, $type);
+        $project = $this->canonizeProject($project);
+        return $project;
+    }
+
+    public function getListFromId($id)
+    {
+        $list = array();
+        $where = array('id' => $id, 'status' => 1);
+        $select = Pi::model('project', $this->getModule())->select()->where($where);
+        $rowset = Pi::model('project', $this->getModule())->selectWith($select);
+        foreach ($rowset as $row) {
+            $list[$row->id] = $this->canonizeProject($row);
+        }
+        return $list;
+    }
+
+    public function canonizeProject($project = '') 
 	{
         // Check
         if (empty($project)) {

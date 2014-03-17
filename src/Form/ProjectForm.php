@@ -242,6 +242,20 @@ class ProjectForm extends BaseForm
                 'description' => '',
             )
         ));
+        // tag
+        if (Pi::service('module')->isActive('tag')) {
+            $this->add(array(
+                'name' => 'tag',
+                'type' => 'tag',
+                'options' => array(
+                    'label' => __('Tags'),
+                ),
+                'attributes' => array(
+                    'id'          => 'tag',
+                    'description' => __('Use `|` as delimiter to separate tag terms'),
+                )
+            ));
+        }
         // Save
         $this->add(array(
             'name' => 'submit',

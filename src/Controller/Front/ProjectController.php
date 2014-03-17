@@ -25,14 +25,18 @@ class ProjectController extends ActionController
         // Get Module Config
         $config = Pi::service('registry')->config->read($module);
         // Find project
-        $project = $this->getModel('project')->find($slug, 'slug');
-        $project = Pi::api('project', 'portfolio')->canonizeProject($project);
+        $project = Pi::api('project', 'portfolio')->getProject($slug, 'slug');
         // Check status
         if (!$project || $project['status'] != 1) {
             $this->jump(array('', 'module' => $module, 'controller' => 'index'), __('The project not found.'));
         }
         // Update Hits
         $this->getModel('project')->update(array('hits' => $project['hits'] + 1), array('id' => $project['id']));
+        // Set tag
+        if ($config['show_tag'] && Pi::service('module')->isActive('tag')) {
+            $tag = Pi::service('tag')->get($module, $project['id'], '');
+            $this->view()->assign('tag', $tag);  
+        }
         // Set view
         $this->view()->headTitle($project['seo_title']);
         $this->view()->headdescription($project['seo_description'], 'set');

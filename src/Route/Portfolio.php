@@ -33,32 +33,41 @@ class Portfolio extends Standard
      */
     protected $structureDelimiter = '/';
 
+    protected $controllerList = array(
+        'index', 'project', 'tag'
+    );
+
     /**
      * {@inheritDoc}
      */
     protected function parse($path)
     {
         $matches = array();
-        $matches = array_merge($this->defaults, $matches);
         $parts = array_filter(explode($this->structureDelimiter, $path));
 
-        if (isset($parts[0]) && !empty($parts[0])) {
-            switch ($parts[0]) {
-                case 'page':
-                    $matches['controller'] = 'index';
-                    $matches['action'] = 'index';
-                    $matches['page'] = $parts[1] ? urldecode($parts[1]) : null;
-                    break;
-
-                case 'slug':
-                case 'project':
-                    $matches['controller'] = 'project';
-                    $matches['action'] = 'index';
-                    $matches['slug'] = $parts[1] ? urldecode($parts[1]) : null;
-                    break;
-            }
+        // Set controller
+        $matches = array_merge($this->defaults, $matches);
+        if (isset($parts[0]) && in_array($parts[0], $this->controllerList)) {
+            $matches['controller'] = $this->decode($parts[0]);
         }
 
+        // Make Match
+        if (isset($matches['controller'])) {
+            switch ($matches['controller']) {
+                case 'index':
+
+                    break;
+
+                case 'tag':
+                    $matches['slug'] = $parts[1] ? urldecode($parts[1]) : null;
+                    break;
+
+                case 'project':
+                    $matches['slug'] = $parts[1] ? urldecode($parts[1]) : null;
+                    break;
+            }    
+        }
+        
         return $matches;
     }
 

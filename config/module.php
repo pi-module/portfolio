@@ -14,8 +14,8 @@ return array(
     // Module meta
     'meta'         => array(
         'title'         => __('Portfolio'),
-        'description'   => __('List of your works'),
-        'version'       => '0.9.2',
+        'description'   => __('List of your works and simple gallery'),
+        'version'       => '1.0.0',
         'license'       => 'New BSD',
         'logo'          => 'image/logo.png',
         'readme'        => 'docs/readme.txt',
@@ -37,5 +37,6 @@ return array(
         'navigation'    => 'navigation.php',
         'block'         => 'block.php',
         'route'         => 'route.php',
+        'comment'       => 'comment.php',
     ),
 );

@@ -105,6 +105,10 @@ class ProjectController extends ActionController
             $form->setData($data);
             if ($form->isValid()) {
                 $values = $form->getData();
+                // Tag
+                if (!empty($values['tag'])) {
+                    $tag = explode('|', $values['tag']);
+                }
                 // upload image
                 if (!empty($file['image']['name'])) {
                     // Set upload path
@@ -157,6 +161,14 @@ class ProjectController extends ActionController
                 }
                 $row->assign($values);
                 $row->save();
+                // Tag
+                if (isset($tag) && is_array($tag) && Pi::service('module')->isActive('tag')) {
+                    if (empty($values['id'])) {
+                        Pi::service('tag')->add($module, $row->id, '', $tag);
+                    } else {
+                        Pi::service('tag')->update($module, $row->id, '', $tag);
+                    }
+                }
                 // Add / Edit sitemap
                 if (Pi::service('module')->isActive('sitemap')) {
                     $loc = Pi::url($this->url('portfolio', array(
@@ -181,6 +193,14 @@ class ProjectController extends ActionController
         } else {
             if ($id) {
                 $values = $this->getModel('project')->find($id)->toArray();
+                // Get tag list
+                if (Pi::service('module')->isActive('tag')) {
+                    $tag = Pi::service('tag')->get($module, $values['id'], '');
+                    if (is_array($tag)) {
+                        $values['tag'] = implode('|', $tag);
+                    }
+                }
+                // Set data
                 $form->setData($values);
             }
         }

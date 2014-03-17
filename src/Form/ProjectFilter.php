@@ -110,5 +110,12 @@ class ProjectFilter extends InputFilter
             'name' => 'seo_description',
             'required' => false,
         ));
+        // tag
+        if (Pi::service('module')->isActive('tag')) {
+            $this->add(array(
+                'name' => 'tag',
+                'required' => false,
+            ));
+        }
     }
 }

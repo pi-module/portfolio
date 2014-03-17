@@ -6,7 +6,7 @@
   		</div>
 		<div class="panel-body">
 			<div class="col-sm-12 col-md-6">
-				<img class="img-thumbnail" src="<?php echo $this->escape($project['mediumUrl']); ?>" alt="<?php echo $this->escape($project['title']); ?>" />
+				<img class="img-thumbnail" src="<?php echo $this->escape($project['largeUrl']); ?>" alt="<?php echo $this->escape($project['title']); ?>" />
 			</div>
 			<div class="col-sm-12 col-md-6">
 				<?php if($config['show_information'] && $project['information']) { ?>
@@ -26,6 +26,15 @@
 					<li><strong><?php _e('Hits'); ?> : </strong><?php echo $this->escape($project['hits']); ?></li>
 					<?php } ?>
 				</ul>
+				<?php if (isset($tag) && !empty($tag)) { ?>
+				<div class="clearfix tagList">
+				<?php foreach($tag as $term) { ?>
+					<span class="tagItem">
+						<a title="<?php echo $this->escape($term); ?>" href="<?php echo $this->url('', array('controller' => 'tag', 'action' => 'index', 'slug' => urlencode($term))); ?>"><i class="fa fa-tag"></i> <?php echo $this->escape($term); ?></a>
+					</span>
+				<?php } ?>
+				</div>
+				<?php } ?>
 			</div>
 		</div>
 		<div class="panel-footer">
