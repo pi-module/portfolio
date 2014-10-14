@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Pi portfolio module\n"
-"POT-Creation-Date: 2014-03-17 15:10+0330\n"
+"POT-Creation-Date: 2014-10-14 09:27+0330\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: Pi\n"
@@ -13,359 +13,378 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e\n"
 "X-Poedit-Basepath: .\n"
-"X-Poedit-SearchPath-0: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/"
+"X-Poedit-SearchPath-0: /var/www/html/local/pi/pi-release-2.4.0/usr/module/"
 "portfolio\n"
 
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/src/Form/ProjectForm.php:49
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/template/admin/project_index.phtml:14
+#: /var/www/html/local/pi/pi-release-2.4.0/usr/module/portfolio/src/Form/ProjectForm.php:49
+#: /var/www/html/local/pi/pi-release-2.4.0/usr/module/portfolio/template/admin/project_index.phtml:14
 msgid "Title"
 msgstr "عنوان"
 
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/src/Form/ProjectForm.php:59
+#: /var/www/html/local/pi/pi-release-2.4.0/usr/module/portfolio/src/Form/ProjectForm.php:59
 msgid "Slug"
 msgstr "اسلاگ"
 
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/src/Form/ProjectForm.php:69
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/template/admin/project_index.phtml:16
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/template/front/project_index.phtml:17
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/template/front/index_index.phtml:14
+#: /var/www/html/local/pi/pi-release-2.4.0/usr/module/portfolio/src/Form/ProjectForm.php:69
+#: /var/www/html/local/pi/pi-release-2.4.0/usr/module/portfolio/template/front/project_index.phtml:17
+#: /var/www/html/local/pi/pi-release-2.4.0/usr/module/portfolio/template/front/index_index.phtml:14
+#: /var/www/html/local/pi/pi-release-2.4.0/usr/module/portfolio/template/admin/project_index.phtml:16
 msgid "Service"
 msgstr "خدمات"
 
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/src/Form/ProjectForm.php:79
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/template/admin/project_index.phtml:17
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/template/front/project_index.phtml:20
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/template/front/index_index.phtml:17
+#: /var/www/html/local/pi/pi-release-2.4.0/usr/module/portfolio/src/Form/ProjectForm.php:79
+#: /var/www/html/local/pi/pi-release-2.4.0/usr/module/portfolio/template/front/project_index.phtml:20
+#: /var/www/html/local/pi/pi-release-2.4.0/usr/module/portfolio/template/front/index_index.phtml:17
+#: /var/www/html/local/pi/pi-release-2.4.0/usr/module/portfolio/template/admin/project_index.phtml:17
 msgid "Technology"
 msgstr "فن آوری"
 
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/src/Form/ProjectForm.php:89
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/template/admin/project_index.phtml:15
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/template/front/project_index.phtml:23
+#: /var/www/html/local/pi/pi-release-2.4.0/usr/module/portfolio/src/Form/ProjectForm.php:89
+#: /var/www/html/local/pi/pi-release-2.4.0/usr/module/portfolio/template/front/project_index.phtml:23
+#: /var/www/html/local/pi/pi-release-2.4.0/usr/module/portfolio/template/admin/project_index.phtml:15
 msgid "Website"
 msgstr "وب سایت"
 
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/src/Form/ProjectForm.php:100
+#: /var/www/html/local/pi/pi-release-2.4.0/usr/module/portfolio/src/Form/ProjectForm.php:100
 msgid "View website link"
 msgstr "نمایش لینک وب سایت"
 
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/src/Form/ProjectForm.php:110
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/template/admin/project_index.phtml:7
+#: /var/www/html/local/pi/pi-release-2.4.0/usr/module/portfolio/src/Form/ProjectForm.php:110
+#: /var/www/html/local/pi/pi-release-2.4.0/usr/module/portfolio/template/admin/project_index.phtml:7
 msgid "Information"
 msgstr "اطلاعات"
 
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/src/Form/ProjectForm.php:113
+#: /var/www/html/local/pi/pi-release-2.4.0/usr/module/portfolio/src/Form/ProjectForm.php:113
 msgid "You can use HTML tag here"
 msgstr "شما می توانید از کد های HTML استفاده کنید"
 
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/src/Form/ProjectForm.php:124
+#: /var/www/html/local/pi/pi-release-2.4.0/usr/module/portfolio/src/Form/ProjectForm.php:123
+msgid "Version"
+msgstr "نسخه"
+
+#: /var/www/html/local/pi/pi-release-2.4.0/usr/module/portfolio/src/Form/ProjectForm.php:133
+msgid "Size"
+msgstr "حجم"
+
+#: /var/www/html/local/pi/pi-release-2.4.0/usr/module/portfolio/src/Form/ProjectForm.php:144
 msgid "Status"
 msgstr "وضعیت"
 
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/src/Form/ProjectForm.php:126
+#: /var/www/html/local/pi/pi-release-2.4.0/usr/module/portfolio/src/Form/ProjectForm.php:146
 msgid "Published"
 msgstr "منتشر شده"
 
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/src/Form/ProjectForm.php:127
+#: /var/www/html/local/pi/pi-release-2.4.0/usr/module/portfolio/src/Form/ProjectForm.php:147
 msgid "Pending review"
 msgstr "در انتظار تایید"
 
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/src/Form/ProjectForm.php:128
+#: /var/www/html/local/pi/pi-release-2.4.0/usr/module/portfolio/src/Form/ProjectForm.php:148
 msgid "Draft"
 msgstr "پیشنویس"
 
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/src/Form/ProjectForm.php:129
+#: /var/www/html/local/pi/pi-release-2.4.0/usr/module/portfolio/src/Form/ProjectForm.php:149
 msgid "Private"
 msgstr "خصوصی"
 
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/src/Form/ProjectForm.php:130
+#: /var/www/html/local/pi/pi-release-2.4.0/usr/module/portfolio/src/Form/ProjectForm.php:150
 msgid "Remove"
 msgstr "حذف"
 
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/src/Form/ProjectForm.php:150
+#: /var/www/html/local/pi/pi-release-2.4.0/usr/module/portfolio/src/Form/ProjectForm.php:170
 msgid "Remove image"
 msgstr "حذف تصویر"
 
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/src/Form/ProjectForm.php:166
+#: /var/www/html/local/pi/pi-release-2.4.0/usr/module/portfolio/src/Form/ProjectForm.php:186
 msgid "Upload image"
 msgstr "بارگذاری تصویر"
 
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/src/Form/ProjectForm.php:179
+#: /var/www/html/local/pi/pi-release-2.4.0/usr/module/portfolio/src/Form/ProjectForm.php:199
 msgid "Customer comment"
 msgstr "نظر مشتری"
 
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/src/Form/ProjectForm.php:186
+#: /var/www/html/local/pi/pi-release-2.4.0/usr/module/portfolio/src/Form/ProjectForm.php:206
+msgid "Customer"
+msgstr "مشتری"
+
+#: /var/www/html/local/pi/pi-release-2.4.0/usr/module/portfolio/src/Form/ProjectForm.php:218
 msgid "Comment"
 msgstr "نظر"
 
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/src/Form/ProjectForm.php:198
+#: /var/www/html/local/pi/pi-release-2.4.0/usr/module/portfolio/src/Form/ProjectForm.php:230
 msgid "Comment By"
 msgstr "نظر توسط"
 
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/src/Form/ProjectForm.php:209
+#: /var/www/html/local/pi/pi-release-2.4.0/usr/module/portfolio/src/Form/ProjectForm.php:241
 msgid "SEO options"
 msgstr "گزینه های سئو"
 
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/src/Form/ProjectForm.php:216
+#: /var/www/html/local/pi/pi-release-2.4.0/usr/module/portfolio/src/Form/ProjectForm.php:248
 msgid "SEO Title"
 msgstr "عنوان سئو"
 
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/src/Form/ProjectForm.php:227
+#: /var/www/html/local/pi/pi-release-2.4.0/usr/module/portfolio/src/Form/ProjectForm.php:259
 msgid "SEO Keywords"
 msgstr "کلمات کلیدی سئو"
 
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/src/Form/ProjectForm.php:238
+#: /var/www/html/local/pi/pi-release-2.4.0/usr/module/portfolio/src/Form/ProjectForm.php:270
 msgid "SEO Description"
 msgstr "توضیح سئو"
 
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/src/Form/ProjectForm.php:251
+#: /var/www/html/local/pi/pi-release-2.4.0/usr/module/portfolio/src/Form/ProjectForm.php:283
 msgid "Tags"
 msgstr "برچسب ها"
 
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/src/Form/ProjectForm.php:255
+#: /var/www/html/local/pi/pi-release-2.4.0/usr/module/portfolio/src/Form/ProjectForm.php:287
 msgid "Use `|` as delimiter to separate tag terms"
 msgstr "با استفاده از `|` کلمات را از هم جدا کنید"
 
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/src/Form/ProjectForm.php:264
+#: /var/www/html/local/pi/pi-release-2.4.0/usr/module/portfolio/src/Form/ProjectForm.php:296
+msgid "Extra links"
+msgstr "لینک های اضافی"
+
+#: /var/www/html/local/pi/pi-release-2.4.0/usr/module/portfolio/src/Form/ProjectForm.php:303
+msgid "Link 1"
+msgstr "لینک ۱"
+
+#: /var/www/html/local/pi/pi-release-2.4.0/usr/module/portfolio/src/Form/ProjectForm.php:313
+msgid "Link 2"
+msgstr "لینک ۲"
+
+#: /var/www/html/local/pi/pi-release-2.4.0/usr/module/portfolio/src/Form/ProjectForm.php:323
+msgid "Link 3"
+msgstr "لینک ۳"
+
+#: /var/www/html/local/pi/pi-release-2.4.0/usr/module/portfolio/src/Form/ProjectForm.php:333
+msgid "Link 4"
+msgstr "لینک ۴"
+
+#: /var/www/html/local/pi/pi-release-2.4.0/usr/module/portfolio/src/Form/ProjectForm.php:343
+msgid "Link 5"
+msgstr "لینک ۵"
+
+#: /var/www/html/local/pi/pi-release-2.4.0/usr/module/portfolio/src/Form/ProjectForm.php:354
+msgid "Extra images"
+msgstr "تصاویر اضافی"
+
+#: /var/www/html/local/pi/pi-release-2.4.0/usr/module/portfolio/src/Form/ProjectForm.php:361
+msgid "Image 1"
+msgstr "تصویر ۱"
+
+#: /var/www/html/local/pi/pi-release-2.4.0/usr/module/portfolio/src/Form/ProjectForm.php:371
+msgid "Image 2"
+msgstr "تصویر ۲"
+
+#: /var/www/html/local/pi/pi-release-2.4.0/usr/module/portfolio/src/Form/ProjectForm.php:381
+msgid "Image 3"
+msgstr "تصویر ۳"
+
+#: /var/www/html/local/pi/pi-release-2.4.0/usr/module/portfolio/src/Form/ProjectForm.php:391
+msgid "Image 4"
+msgstr "تصویر ۴"
+
+#: /var/www/html/local/pi/pi-release-2.4.0/usr/module/portfolio/src/Form/ProjectForm.php:401
+msgid "Image 5"
+msgstr "تصویر ۵"
+
+#: /var/www/html/local/pi/pi-release-2.4.0/usr/module/portfolio/src/Form/ProjectForm.php:412
 msgid "Submit"
 msgstr "ارسال"
 
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/src/Controller/Admin/ProjectController.php:130
-msgid "Problem in upload image. please try again"
-msgstr "خطا در بارگذاری تصویر، لطفا دوباره امتحان کنید"
-
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/src/Controller/Admin/ProjectController.php:188
-msgid "Project data saved successfully."
-msgstr "اطلاعات پروژه با موفقیت به روز شد"
-
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/src/Controller/Admin/ProjectController.php:209
-msgid "Add a Project"
-msgstr "پروژه جدید"
-
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/src/Controller/Admin/ProjectController.php:233
-#, php-format
-msgid "Image of %s removed"
-msgstr "تصویر %s حذف شد"
-
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/src/Controller/Admin/ProjectController.php:236
-msgid "Image not remove"
-msgstr "تصویر حذف نشد"
-
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/src/Controller/Admin/ProjectController.php:240
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/src/Controller/Admin/ProjectController.php:270
-msgid "Please select project"
-msgstr "لطفا یک پروژه انتخاب کنید"
-
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/src/Controller/Admin/ProjectController.php:268
-msgid "This project deleted"
-msgstr "این پروژه حذف شد"
-
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/src/Controller/Front/TagController.php:33
+#: /var/www/html/local/pi/pi-release-2.4.0/usr/module/portfolio/src/Controller/Front/TagController.php:33
 msgid "The tag not set."
 msgstr "برچسب تنظیم نشده است"
 
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/src/Controller/Front/TagController.php:44
+#: /var/www/html/local/pi/pi-release-2.4.0/usr/module/portfolio/src/Controller/Front/TagController.php:44
 msgid "The tag not found."
 msgstr "برچسب یافت نشد"
 
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/src/Controller/Front/TagController.php:77
+#: /var/www/html/local/pi/pi-release-2.4.0/usr/module/portfolio/src/Controller/Front/TagController.php:77
 #, php-format
 msgid "All projects by %s tag"
 msgstr "همه پروژه ها با برچسب %s"
 
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/src/Controller/Front/ProjectController.php:31
+#: /var/www/html/local/pi/pi-release-2.4.0/usr/module/portfolio/src/Controller/Front/ProjectController.php:31
 msgid "The project not found."
 msgstr "پروژه یافت نشد"
 
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/config/navigation.php:16
-msgid "Projects"
-msgstr "پروژه ها"
+#: /var/www/html/local/pi/pi-release-2.4.0/usr/module/portfolio/src/Controller/Admin/ProjectController.php:132
+msgid "Problem in upload image. please try again"
+msgstr "خطا در بارگذاری تصویر، لطفا دوباره امتحان کنید"
 
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/config/navigation.php:23
-msgid "Add Projects"
+#: /var/www/html/local/pi/pi-release-2.4.0/usr/module/portfolio/src/Controller/Admin/ProjectController.php:190
+msgid "Project data saved successfully."
+msgstr "اطلاعات پروژه با موفقیت به روز شد"
+
+#: /var/www/html/local/pi/pi-release-2.4.0/usr/module/portfolio/src/Controller/Admin/ProjectController.php:211
+msgid "Add a Project"
 msgstr "پروژه جدید"
 
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/config/module.php:16
-msgid "Portfolio"
-msgstr "نمونه کار ها"
+#: /var/www/html/local/pi/pi-release-2.4.0/usr/module/portfolio/src/Controller/Admin/ProjectController.php:235
+#, php-format
+msgid "Image of %s removed"
+msgstr "تصویر %s حذف شد"
 
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/config/module.php:17
-msgid "List of your works and simple gallery"
-msgstr "فهرست نمونه کار ها و یک گالری ساده"
+#: /var/www/html/local/pi/pi-release-2.4.0/usr/module/portfolio/src/Controller/Admin/ProjectController.php:238
+msgid "Image not remove"
+msgstr "تصویر حذف نشد"
 
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/config/config.php:17
-msgid "Admin"
-msgstr "مدیریت"
+#: /var/www/html/local/pi/pi-release-2.4.0/usr/module/portfolio/src/Controller/Admin/ProjectController.php:242
+#: /var/www/html/local/pi/pi-release-2.4.0/usr/module/portfolio/src/Controller/Admin/ProjectController.php:272
+msgid "Please select project"
+msgstr "لطفا یک پروژه انتخاب کنید"
 
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/config/config.php:21
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/template/admin/project_index.phtml:8
-msgid "Image"
-msgstr "تصویر"
+#: /var/www/html/local/pi/pi-release-2.4.0/usr/module/portfolio/src/Controller/Admin/ProjectController.php:270
+msgid "This project deleted"
+msgstr "این پروژه حذف شد"
 
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/config/config.php:25
-msgid "Show"
-msgstr "نمایش"
+#: /var/www/html/local/pi/pi-release-2.4.0/usr/module/portfolio/template/front/project_index.phtml:26
+msgid "Hits"
+msgstr "بازدید"
 
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/config/config.php:29
-msgid "Social"
-msgstr "شبکه های اجتماعی"
-
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/config/config.php:33
-msgid "Texts"
-msgstr "متن ها"
-
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/config/config.php:41
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/config/config.php:157
-msgid "Perpage"
-msgstr "تعداد در صفحه"
-
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/config/config.php:50
-msgid "Image Size"
-msgstr "حجم تصویر"
-
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/config/config.php:58
-msgid "Image path"
-msgstr "مسیر ذخیره تصویر"
-
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/config/config.php:66
-msgid "Image Extension"
-msgstr "پسوند های مجار برای تصویر"
-
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/config/config.php:74
-msgid "Large Image height"
-msgstr "ارتفاع تصویر بزرگ"
-
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/config/config.php:82
-msgid "Large Image width"
-msgstr "عرض تصویر بزرگ"
-
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/config/config.php:90
-msgid "Medium Image height"
-msgstr "ارتفاع تصویر متوسط"
-
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/config/config.php:98
-msgid "Medium Image width"
-msgstr "عرض تصویر متوسط"
-
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/config/config.php:106
-msgid "Thumb Image height"
-msgstr "ارتفاع تصویر بندانگشتی"
-
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/config/config.php:114
-msgid "Thumb Image width"
-msgstr "عرض تصویر بندانگشتی"
-
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/config/config.php:122
-msgid "Add Watermark"
-msgstr "اضافه کردن واترمارک به تصویر"
-
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/config/config.php:130
-msgid "Watermark Image"
-msgstr "تصویر واترمارک"
-
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/config/config.php:137
-msgid "Watermark Positio"
-msgstr "موقعیت واترمارک"
-
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/config/config.php:143
-msgid "Top Left"
-msgstr "بالا چپ"
-
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/config/config.php:144
-msgid "Top Right"
-msgstr "بالا راست"
-
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/config/config.php:145
-msgid "Bottom Left"
-msgstr "پایین چپ"
-
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/config/config.php:146
-msgid "Bottom Right"
-msgstr "پایین راست"
-
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/config/config.php:165
-msgid "Show Service"
-msgstr "نمایش خدمات"
-
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/config/config.php:173
-msgid "Show Technology"
-msgstr "نمایش فن آوری"
-
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/config/config.php:181
-msgid "Show Website"
-msgstr "نمایش وب سایت"
-
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/config/config.php:189
-msgid "Show Information"
-msgstr "نمایش اطلاعات"
-
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/config/config.php:197
-msgid "Show Hits"
-msgstr "نمایش بازدید"
-
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/config/config.php:205
-msgid "Show Tags"
-msgstr "نمایش برچسب ها"
-
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/config/config.php:214
-msgid "Show Google Plus"
-msgstr "نمایش گوگل پلاس"
-
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/config/config.php:222
-msgid "Show facebook"
-msgstr "نمایش فیسبوک"
-
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/config/config.php:230
-msgid "Show Twitter"
-msgstr "نمایش تویتر"
-
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/config/config.php:239
-msgid "Module main title"
-msgstr "عنوان اصلی ماژول"
-
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/config/config.php:240
-msgid "Title for main page and all non-title pages"
-msgstr "عنوان برای صفحه اصلی و تمام صفحات بدون عنوان"
-
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/config/config.php:247
-msgid "Module main description"
-msgstr "توضیحات صفحه اصلی ماژول"
-
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/config/config.php:255
-msgid "Module main keywords"
-msgstr "کلمات کلیدی صفحه اصلی ماژول"
-
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/config/comment.php:15
-msgid "Portfolio comments"
-msgstr "نظرات در نمونه کار ها"
-
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/template/admin/project_update.phtml:18
+#: /var/www/html/local/pi/pi-release-2.4.0/usr/module/portfolio/template/admin/project_update.phtml:18
 msgid "Remove image project in process"
 msgstr "حذف تصویر پروژه در حال انجام است"
 
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/template/admin/project_index.phtml:3
+#: /var/www/html/local/pi/pi-release-2.4.0/usr/module/portfolio/template/admin/project_index.phtml:3
 msgid "List of projects"
 msgstr "فهرست پروژه ها"
 
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/template/admin/project_index.phtml:13
+#: /var/www/html/local/pi/pi-release-2.4.0/usr/module/portfolio/template/admin/project_index.phtml:8
+msgid "Image"
+msgstr "تصویر"
+
+#: /var/www/html/local/pi/pi-release-2.4.0/usr/module/portfolio/template/admin/project_index.phtml:13
 msgid "ID"
 msgstr "شناسه"
 
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/template/admin/project_index.phtml:19
+#: /var/www/html/local/pi/pi-release-2.4.0/usr/module/portfolio/template/admin/project_index.phtml:19
 msgid "View"
 msgstr "نمایش"
 
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/template/admin/project_index.phtml:20
+#: /var/www/html/local/pi/pi-release-2.4.0/usr/module/portfolio/template/admin/project_index.phtml:20
 msgid "Edit"
 msgstr "ویرایش"
 
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/template/admin/project_index.phtml:21
+#: /var/www/html/local/pi/pi-release-2.4.0/usr/module/portfolio/template/admin/project_index.phtml:21
 msgid "Delete"
 msgstr "حذف"
 
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/template/front/project_index.phtml:26
-msgid "Hits"
-msgstr "بازدید"
+#~ msgid "Projects"
+#~ msgstr "پروژه ها"
+
+#~ msgid "Add Projects"
+#~ msgstr "پروژه جدید"
+
+#~ msgid "Portfolio"
+#~ msgstr "نمونه کار ها"
+
+#~ msgid "List of your works and simple gallery"
+#~ msgstr "فهرست نمونه کار ها و یک گالری ساده"
+
+#~ msgid "Admin"
+#~ msgstr "مدیریت"
+
+#~ msgid "Show"
+#~ msgstr "نمایش"
+
+#~ msgid "Social"
+#~ msgstr "شبکه های اجتماعی"
+
+#~ msgid "Texts"
+#~ msgstr "متن ها"
+
+#~ msgid "Perpage"
+#~ msgstr "تعداد در صفحه"
+
+#~ msgid "Image Size"
+#~ msgstr "حجم تصویر"
+
+#~ msgid "Image path"
+#~ msgstr "مسیر ذخیره تصویر"
+
+#~ msgid "Image Extension"
+#~ msgstr "پسوند های مجار برای تصویر"
+
+#~ msgid "Large Image height"
+#~ msgstr "ارتفاع تصویر بزرگ"
+
+#~ msgid "Large Image width"
+#~ msgstr "عرض تصویر بزرگ"
+
+#~ msgid "Medium Image height"
+#~ msgstr "ارتفاع تصویر متوسط"
+
+#~ msgid "Medium Image width"
+#~ msgstr "عرض تصویر متوسط"
+
+#~ msgid "Thumb Image height"
+#~ msgstr "ارتفاع تصویر بندانگشتی"
+
+#~ msgid "Thumb Image width"
+#~ msgstr "عرض تصویر بندانگشتی"
+
+#~ msgid "Add Watermark"
+#~ msgstr "اضافه کردن واترمارک به تصویر"
+
+#~ msgid "Watermark Image"
+#~ msgstr "تصویر واترمارک"
+
+#~ msgid "Watermark Positio"
+#~ msgstr "موقعیت واترمارک"
+
+#~ msgid "Top Left"
+#~ msgstr "بالا چپ"
+
+#~ msgid "Top Right"
+#~ msgstr "بالا راست"
+
+#~ msgid "Bottom Left"
+#~ msgstr "پایین چپ"
+
+#~ msgid "Bottom Right"
+#~ msgstr "پایین راست"
+
+#~ msgid "Show Service"
+#~ msgstr "نمایش خدمات"
+
+#~ msgid "Show Technology"
+#~ msgstr "نمایش فن آوری"
+
+#~ msgid "Show Website"
+#~ msgstr "نمایش وب سایت"
+
+#~ msgid "Show Information"
+#~ msgstr "نمایش اطلاعات"
+
+#~ msgid "Show Hits"
+#~ msgstr "نمایش بازدید"
+
+#~ msgid "Show Tags"
+#~ msgstr "نمایش برچسب ها"
+
+#~ msgid "Show Google Plus"
+#~ msgstr "نمایش گوگل پلاس"
+
+#~ msgid "Show facebook"
+#~ msgstr "نمایش فیسبوک"
+
+#~ msgid "Show Twitter"
+#~ msgstr "نمایش تویتر"
+
+#~ msgid "Module main title"
+#~ msgstr "عنوان اصلی ماژول"
+
+#~ msgid "Title for main page and all non-title pages"
+#~ msgstr "عنوان برای صفحه اصلی و تمام صفحات بدون عنوان"
+
+#~ msgid "Module main description"
+#~ msgstr "توضیحات صفحه اصلی ماژول"
+
+#~ msgid "Module main keywords"
+#~ msgstr "کلمات کلیدی صفحه اصلی ماژول"
+
+#~ msgid "Portfolio comments"
+#~ msgstr "نظرات در نمونه کار ها"
 
 #~ msgid "Use effect ?"
 #~ msgstr "استفاده از افکت؟"

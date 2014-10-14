@@ -12,7 +12,7 @@
  */
 return array(
     'portfolio' => array(
-        'title'    => __('Portfolio comments'),
+        'title'    => _a('Portfolio comments'),
         'icon'     => 'icon-post',
         'callback' => 'Module\Portfolio\Api\Comment',
         'locator'  => 'Module\Portfolio\Api\Comment',

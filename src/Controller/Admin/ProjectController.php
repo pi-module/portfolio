@@ -27,7 +27,9 @@ class ProjectController extends ActionController
         'id', 'title', 'slug', 'service', 'technology', 'website', 'website_view', 
         'information', 'seo_title', 'seo_keywords', 'seo_description', 'time_create', 
         'time_update', 'uid', 'hits', 'image', 'path', 'status', 'point', 'count', 
-        'favourite', 'commentby', 'comment'
+        'favourite', 'commentby', 'comment', 'customer', 'version', 'size', 
+        'link_1', 'link_2', 'link_3', 'link_4', 'link_5',
+        'image_1', 'image_2', 'image_3', 'image_4', 'image_5'
     );
 
     public function indexAction()

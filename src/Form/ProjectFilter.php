@@ -85,6 +85,21 @@ class ProjectFilter extends InputFilter
             'name' => 'status',
             'required' => true,
         ));
+        // customer
+        $this->add(array(
+            'name' => 'customer',
+            'required' => false,
+        ));
+        // version
+        $this->add(array(
+            'name' => 'version',
+            'required' => false,
+        ));
+        // size
+        $this->add(array(
+            'name' => 'size',
+            'required' => false,
+        ));
         // comment
         $this->add(array(
             'name' => 'comment',
@@ -117,5 +132,55 @@ class ProjectFilter extends InputFilter
                 'required' => false,
             ));
         }
+        // link_1
+        $this->add(array(
+            'name' => 'link_1',
+            'required' => false,
+        ));
+        // link_2
+        $this->add(array(
+            'name' => 'link_2',
+            'required' => false,
+        ));
+        // link_3
+        $this->add(array(
+            'name' => 'link_3',
+            'required' => false,
+        ));
+        // link_4
+        $this->add(array(
+            'name' => 'link_4',
+            'required' => false,
+        ));
+        // link_5
+        $this->add(array(
+            'name' => 'link_5',
+            'required' => false,
+        ));
+        // image_1
+        $this->add(array(
+            'name' => 'image_1',
+            'required' => false,
+        ));
+        // image_2
+        $this->add(array(
+            'name' => 'image_2',
+            'required' => false,
+        ));
+        // image_3
+        $this->add(array(
+            'name' => 'image_3',
+            'required' => false,
+        ));
+        // image_4
+        $this->add(array(
+            'name' => 'image_4',
+            'required' => false,
+        ));
+        // image_5
+        $this->add(array(
+            'name' => 'image_5',
+            'required' => false,
+        ));
     }
 }

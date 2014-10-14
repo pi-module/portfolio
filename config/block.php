@@ -13,20 +13,20 @@
 return array(
     'project-list' => array(
         'name'          => 'project-list',
-        'title'         => _b('Project list'),
+        'title'         => _a('Project list'),
         'description'   => '',
         'render'        => array('block', 'projectList'),
         'template'      => 'project_list',
         'config'        => array(
             'number' => array(
-                'title' => _b('Number'),
+                'title' => _a('Number'),
                 'description' => '',
                 'edit' => 'text',
                 'filter' => 'number_int',
                 'value' => 10,
             ),
             'effect' => array(
-                'title' => _b('Use effect ?'),
+                'title' => _a('Use effect ?'),
                 'description' => '',
                 'edit' => 'checkbox',
                 'filter' => 'number_int',
@@ -36,7 +36,7 @@ return array(
     ),
     'project-comment' => array(
         'name'          => 'project-comment',
-        'title'         => _b('Project Comment'),
+        'title'         => _a('Project Comment'),
         'description'   => '',
         'render'        => array('block', 'projectComment'),
         'template'      => 'project_comment',

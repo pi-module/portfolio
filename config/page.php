@@ -14,20 +14,24 @@ return array(
     // Admin section
     'admin' => array(
         array(
+            'title'         => _a('Projects'),
             'controller'    => 'project',
         ),
     ),
     // Front section
     'front' => array(
         array(
+            'title'         => _a('Index'),
             'controller'    => 'index',
             'block'         => 1,
         ),
         array(
+            'title'         => _a('Tag'),
             'controller'    => 'tag',
             'block'         => 1,
         ),
         array(
+            'title'         => _a('Project'),
             'controller'    => 'project',
             'block'         => 1,
         ),

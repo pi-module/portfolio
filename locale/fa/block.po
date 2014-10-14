@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Pi portfolio module\n"
-"POT-Creation-Date: 2014-03-17 15:10+0330\n"
+"POT-Creation-Date: 2014-10-14 09:29+0330\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: Pi\n"
@@ -13,25 +13,21 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: _b\n"
 "X-Poedit-Basepath: .\n"
-"X-Poedit-SearchPath-0: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/"
+"X-Poedit-SearchPath-0: /var/www/html/local/pi/pi-release-2.4.0/usr/module/"
 "portfolio\n"
 
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/config/block.php:16
-msgid "Project list"
-msgstr "فهرست پروژه ها"
-
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/config/block.php:22
-msgid "Number"
-msgstr "تعداد"
-
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/config/block.php:29
-msgid "Use effect ?"
-msgstr "استفاده از افکت؟"
-
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/config/block.php:39
-msgid "Project Comment"
-msgstr "نظرات"
-
-#: /var/www/html/local/pi/pi-release-2.4.0-rc/usr/module/portfolio/template/block/project_list.phtml:15
+#: /var/www/html/local/pi/pi-release-2.4.0/usr/module/portfolio/template/block/project_list.phtml:15
 msgid "More information"
 msgstr "اطلاعات بیشتر"
+
+#~ msgid "Project list"
+#~ msgstr "فهرست پروژه ها"
+
+#~ msgid "Number"
+#~ msgstr "تعداد"
+
+#~ msgid "Use effect ?"
+#~ msgstr "استفاده از افکت؟"
+
+#~ msgid "Project Comment"
+#~ msgstr "نظرات"

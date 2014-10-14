@@ -13,14 +13,14 @@
 return array(
     'admin' => array(
         'list' => array(
-            'label'         => __('Projects'),
+            'label'         => _a('Projects'),
             'route'         => 'admin',
             'module'        => 'portfolio',
             'controller'    => 'project',
             'action'        => 'index',
         ),
         'add' => array(
-            'label'         => __('Add Projects'),
+            'label'         => _a('Add Projects'),
             'route'         => 'admin',
             'module'        => 'portfolio',
             'controller'    => 'project',

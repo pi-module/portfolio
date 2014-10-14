@@ -116,6 +116,26 @@ class ProjectForm extends BaseForm
                 'cols' => '40',
             )
         ));
+        // Version
+        $this->add(array(
+            'name' => 'version',
+            'options' => array(
+                'label' => __('Version'),
+            ),
+            'attributes' => array(
+                'type' => 'text',
+            )
+        ));
+        // Size
+        $this->add(array(
+            'name' => 'size',
+            'options' => array(
+                'label' => __('Size'),
+            ),
+            'attributes' => array(
+                'type' => 'text',
+            )
+        ));
         // status
         $this->add(array(
             'name' => 'status',
@@ -178,6 +198,16 @@ class ProjectForm extends BaseForm
             'options' => array(
                 'label' => __('Customer comment'),
             ),
+        ));
+        // Customer
+        $this->add(array(
+            'name' => 'customer',
+            'options' => array(
+                'label' => __('Customer'),
+            ),
+            'attributes' => array(
+                'type' => 'text',
+            )
         ));
         // Comment
         $this->add(array(
@@ -256,6 +286,122 @@ class ProjectForm extends BaseForm
                 )
             ));
         }
+        // extra_link
+        $this->add(array(
+            'name' => 'extra_link',
+            'type' => 'fieldset',
+            'options' => array(
+                'label' => __('Extra links'),
+            ),
+        ));
+        // link_1
+        $this->add(array(
+            'name' => 'link_1',
+            'options' => array(
+                'label' => __('Link 1'),
+            ),
+            'attributes' => array(
+                'type' => 'text',
+            )
+        ));
+        // link_2
+        $this->add(array(
+            'name' => 'link_2',
+            'options' => array(
+                'label' => __('Link 2'),
+            ),
+            'attributes' => array(
+                'type' => 'text',
+            )
+        ));
+        // link_3
+        $this->add(array(
+            'name' => 'link_3',
+            'options' => array(
+                'label' => __('Link 3'),
+            ),
+            'attributes' => array(
+                'type' => 'text',
+            )
+        ));
+        // link_4
+        $this->add(array(
+            'name' => 'link_4',
+            'options' => array(
+                'label' => __('Link 4'),
+            ),
+            'attributes' => array(
+                'type' => 'text',
+            )
+        ));
+        // link_5
+        $this->add(array(
+            'name' => 'link_5',
+            'options' => array(
+                'label' => __('Link 5'),
+            ),
+            'attributes' => array(
+                'type' => 'text',
+            )
+        ));
+        // extra_image
+        $this->add(array(
+            'name' => 'extra_image',
+            'type' => 'fieldset',
+            'options' => array(
+                'label' => __('Extra images'),
+            ),
+        ));
+        // image_1
+        $this->add(array(
+            'name' => 'image_1',
+            'options' => array(
+                'label' => __('Image 1'),
+            ),
+            'attributes' => array(
+                'type' => 'text',
+            )
+        ));
+        // image_2
+        $this->add(array(
+            'name' => 'image_2',
+            'options' => array(
+                'label' => __('Image 2'),
+            ),
+            'attributes' => array(
+                'type' => 'text',
+            )
+        ));
+        // image_3
+        $this->add(array(
+            'name' => 'image_3',
+            'options' => array(
+                'label' => __('Image 3'),
+            ),
+            'attributes' => array(
+                'type' => 'text',
+            )
+        ));
+        // image_4
+        $this->add(array(
+            'name' => 'image_4',
+            'options' => array(
+                'label' => __('Image 4'),
+            ),
+            'attributes' => array(
+                'type' => 'text',
+            )
+        ));
+        // image_5
+        $this->add(array(
+            'name' => 'image_5',
+            'options' => array(
+                'label' => __('Image 5'),
+            ),
+            'attributes' => array(
+                'type' => 'text',
+            )
+        ));
         // Save
         $this->add(array(
             'name' => 'submit',
