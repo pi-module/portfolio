@@ -13,6 +13,7 @@
 namespace Module\Portfolio\Controller\Admin;
 
 use Pi;
+use Pi\Filter;
 use Pi\Mvc\Controller\ActionController;
 use Pi\Paginator\Paginator;
 use Pi\File\Transfer\Upload;
@@ -38,27 +39,19 @@ class ProjectController extends ActionController
         $page = $this->params('page', 1);
         $module = $this->params('module');
         // Get info
-        $select = $this->getModel('project')->select()->order(array('id DESC', 'time_create DESC'));
+        $list = array();
+        $order = array('id DESC', 'time_create DESC');
+        $offset = (int)($page - 1) * $this->config('admin_perpage');
+        $limit = intval($this->config('admin_perpage'));
+        $select = $this->getModel('project')->select()->order($order)->offset($offset)->limit($limit);
         $rowset = $this->getModel('project')->selectWith($select);
         // Make list
         foreach ($rowset as $row) {
-            $project[$row->id] = $row->toArray();
-            $project[$row->id]['url'] = $this->url('portfolio', array(
-                'module'        => $module,
-                'controller'    => 'project',
-                'action'        => 'index',
-                'slug'          => $project[$row->id]['slug'])
-            );
-            $project[$row->id]['thumburl'] = Pi::url(
-                sprintf('upload/%s/thumb/%s/%s', 
-                    $this->config('image_path'), 
-                    $project[$row->id]['path'], 
-                    $project[$row->id]['image']
-                ));
+            $list[$row->id] = Pi::api('project', 'portfolio')->canonizeProject($row);
         }
         // Set paginator
         $columns = array('count' => new \Zend\Db\Sql\Predicate\Expression('count(*)'));
-        $select = $this->getModel('project')->select()->where($whereLink)->columns($columns);
+        $select = $this->getModel('project')->select()->columns($columns);
         $count = $this->getModel('project')->selectWith($select)->current()->count;
         $paginator = Paginator::factory(intval($count));
         $paginator->setItemCountPerPage($this->config('admin_perpage'));
@@ -74,7 +67,7 @@ class ProjectController extends ActionController
         ));
         // Set view
         $this->view()->setTemplate('project_index');
-        $this->view()->assign('projects', $project);
+        $this->view()->assign('projects', $list);
         $this->view()->assign('paginator', $paginator);
     }
 
@@ -248,7 +241,7 @@ class ProjectController extends ActionController
         );
     }
 
-    public function deleteAction()
+    /* public function deleteAction()
     {
         // Get information
         $this->view()->setTemplate(false);
@@ -270,5 +263,5 @@ class ProjectController extends ActionController
             $this->jump(array('action' => 'index'), __('This project deleted'));
         }
         $this->jump(array('action' => 'index'), __('Please select project'));
-    }
+    } */
 }
