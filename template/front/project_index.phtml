@@ -1,56 +1,89 @@
-<?php $this->css($this->assetModule('css/front.css')); ?>
-<div class="portfolio"> 
-	<div class="panel panel-default">
-  		<div class="panel-heading">
-  			<h3 class="panel-title"><?php echo $this->escape($project['title']); ?></h3>
-  		</div>
-		<div class="panel-body">
-			<div class="col-sm-12 col-md-6">
-				<img class="img-thumbnail" src="<?php echo $this->escape($project['largeUrl']); ?>" alt="<?php echo $this->escape($project['title']); ?>" />
-			</div>
-			<div class="col-sm-12 col-md-6">
-				<?php if($config['show_information'] && $project['information']) { ?>
-				<div class="project-text"><?php echo $project['information']; ?></div>
-				<?php } ?>
-				<ul class="list-unstyled well">
-					<?php if($config['show_service'] && $project['service']) { ?>
-					<li><strong><?php _e('Service'); ?> : </strong><?php echo $this->escape($project['service']); ?></li>
-					<?php } ?>
-					<?php if($config['show_technology'] && $project['technology']) { ?>
-					<li><strong><?php _e('Technology'); ?> : </strong><?php echo $this->escape($project['technology']); ?></li>
-					<?php } ?>
-					<?php if($config['show_website'] && $project['website'] && $project['website_view']) { ?>
-					<li><strong><?php _e('Website'); ?> : </strong><?php echo $this->escape($project['website']); ?></li>
-					<?php } ?>
-					<?php if($config['show_hits']) { ?>
-					<li><strong><?php _e('Hits'); ?> : </strong><?php echo $this->escape($project['hits']); ?></li>
-					<?php } ?>
-				</ul>
-				<?php if (isset($tag) && !empty($tag)) { ?>
-				<div class="clearfix tagList">
-				<?php foreach($tag as $term) { ?>
-					<span class="tagItem">
-						<a title="<?php echo $this->escape($term); ?>" href="<?php echo $this->url('', array('controller' => 'tag', 'action' => 'index', 'slug' => urlencode($term))); ?>"><i class="fa fa-tag"></i> <?php echo $this->escape($term); ?></a>
-					</span>
-				<?php } ?>
-				</div>
-				<?php } ?>
-			</div>
+<?php 
+	// Load front.css
+	$this->css($this->assetModule('css/front.css'));
+	// Image lightbox
+    $script =<<<'EOT'
+$('.gallery').each(function() {
+	$(this).magnificPopup({
+   		delegate: 'a',
+   		type: 'image',
+   		gallery: {
+   			enabled:true
+   		}
+	});
+});
+EOT;
+	$this->jQuery(array(
+		'extension/jquery.magnific-popup.min.js',
+		'extension/magnific-popup.css',
+	));
+	$this->footScript()->appendScript($script);
+    // Set Open Graph tags for meta
+    $this->doctype('HTML5');
+    $this->headMeta($this->escape($project['title']), 'og:title', 'property');
+    $this->headMeta($this->escape($project['projectUrl']), 'og:url', 'property');
+    if (isset($project['information']) && !empty($project['information'])) {
+	    $this->headMeta(_strip($project['information']), 'og:description', 'property');
+    }
+    if (!empty($project['largeUrl'])) {
+	    $this->headMeta($this->escape($project['largeUrl']), 'og:image', 'property');
+    }
+    // Set twitter for meta
+    $this->headMeta($this->escape($project['title']), 'twitter:title');
+    if (isset($project['information']) && !empty($project['information'])) {
+	    $this->headMeta(_strip($project['information']), 'twitter:description');
+    }
+    if (!empty($project['largeUrl'])) {
+	    $this->headMeta($this->escape($project['largeUrl']), 'twitter:image');
+    }
+?>
+<div class="clearfix"> 
+	<h1><?php echo $this->escape($project['title']); ?></h1>
+	<div class="col-sm-12 col-md-5">
+		<div class="gallery text-center clearfix u-photo thumbnail">
+			<a href="<?php echo $this->escape($project['largeUrl']); ?>" title="<?php echo $this->escape($project['title']); ?>">
+				<img class="img-responsive" src="<?php echo $this->escape($project['mediumUrl']); ?>" alt="<?php echo $this->escape($project['title']); ?>" />
+			</a>
 		</div>
-		<div class="panel-footer">
-			<div class="social-list text-left">
-				<ul class="list-inline">
-					<?php if($config['social_facebook']) { ?>
-					<li class="social-facebook"><?php echo $this->facebook(); ?></li>
-					<?php } ?>
-					<?php if($config['social_twitter']) { ?>
-					<li class="social-twitter"><?php echo $this->twitter(); ?></li>
-					<?php } ?>
-					<?php if($config['social_gplus']) { ?>
-					<li class="social-gplus"><?php echo $this->plusone(); ?></li>
-					<?php } ?>
-				</ul>
-	    	</div>
+	</div>
+	<div class="col-sm-12 col-md-7">
+		<?php if($config['show_information'] && $project['information']) { ?>
+		<div class="project-text"><?php echo $project['information']; ?></div>
+		<?php } ?>
+		<div class="well">
+			<ul class="list-unstyled">
+				<?php if($config['show_service'] && $project['service']) { ?>
+				<li><strong><?php _e('Service'); ?> : </strong><?php echo $this->escape($project['service']); ?></li>
+				<?php } ?>
+				<?php if($config['show_technology'] && $project['technology']) { ?>
+				<li><strong><?php _e('Technology'); ?> : </strong><?php echo $this->escape($project['technology']); ?></li>
+				<?php } ?>
+				<?php if($config['show_website'] && $project['website'] && $project['website_view']) { ?>
+				<li><strong><?php _e('Website'); ?> : </strong><?php echo $this->escape($project['website']); ?></li>
+				<?php } ?>
+				<?php if($config['show_hits']) { ?>
+				<li><strong><?php _e('Hits'); ?> : </strong><?php echo $this->escape($project['hits']); ?></li>
+				<?php } ?>
+			</ul>
 		</div>
-	</div>	
+		<?php if (isset($tag) && !empty($tag)) { ?>
+		<div class="clearfix tagList">
+		<?php foreach($tag as $term) { ?>
+			<span class="tagItem">
+				<a title="<?php echo $this->escape($term); ?>" href="<?php echo $this->url('', array('controller' => 'tag', 'action' => 'index', 'slug' => urlencode($term))); ?>"><i class="fa fa-tag"></i> <?php echo $this->escape($term); ?></a>
+			</span>
+		<?php } ?>
+		</div>
+		<?php } ?>
+      	<?php if ($config['social_sharing']) { ?>
+        <div class="socialSharing">
+           	<?php echo $this->socialSharing(
+           		$config['social_sharing'], 
+            	$this->escape($project['title']),
+               	$this->escape($project['projectUrl']),
+               	$this->escape($project['largeUrl'])
+            ); ?>
+        </div>
+      	<?php } ?>
+	</div>
 </div>

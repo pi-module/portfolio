@@ -22,7 +22,7 @@ use Module\Portfolio\Form\ProjectFilter;
 
 class ProjectController extends ActionController
 {
-    protected $ImagePrefix = 'image_';
+    protected $ImagePrefix = 'project_';
 
     protected $projectColumns = array(
         'id', 'title', 'slug', 'service', 'technology', 'website', 'website_view', 
@@ -94,7 +94,8 @@ class ProjectController extends ActionController
             $file = $this->request->getFiles();
             // Set slug
             $slug = ($data['slug']) ? $data['slug'] : $data['title'];
-            $data['slug'] = Pi::api('text', 'portfolio')->slug($slug);
+            $filter = new Filter\Slug;
+            $data['slug'] = $filter($slug);
             // Form filter
             $form->setInputFilter(new ProjectFilter);
             $form->setData($data);
@@ -109,10 +110,12 @@ class ProjectController extends ActionController
                     // Set upload path
                     $values['path'] = sprintf('%s/%s', date('Y'), date('m'));
                     $originalPath = Pi::path(sprintf('upload/%s/original/%s', $this->config('image_path'), $values['path']));
+                    // Image name
+                    $imageName = Pi::api('image', 'portfolio')->rename($file['image']['name'], $this->ImageCategoryPrefix, $values['path']);
                     // Upload
                     $uploader = new Upload;
                     $uploader->setDestination($originalPath);
-                    $uploader->setRename($this->ImagePrefix . '%random%');
+                    $uploader->setRename($imageName);
                     $uploader->setExtension($this->config('image_extension'));
                     $uploader->setSize($this->config('image_size'));
                     if ($uploader->isValid()) {
@@ -135,13 +138,19 @@ class ProjectController extends ActionController
                 }
                 // Set seo_title
                 $title = ($values['seo_title']) ? $values['seo_title'] : $values['title'];
-                $values['seo_title'] = Pi::api('text', 'portfolio')->title($title);
+                $filter = new Filter\HeadTitle;
+                $values['seo_title'] = $filter($title);
                 // Set seo_keywords
                 $keywords = ($values['seo_keywords']) ? $values['seo_keywords'] : $values['title'];
-                $values['seo_keywords'] = Pi::api('text', 'portfolio')->keywords($keywords);
+                $filter = new Filter\HeadKeywords;
+                $filter->setOptions(array(
+                    'force_replace_space' => (bool) $this->config('force_replace_space'),
+                ));
+                $values['seo_keywords'] = $filter($keywords);
                 // Set seo_description
                 $description = ($values['seo_description']) ? $values['seo_description'] : $values['title'];
-                $values['seo_description'] = Pi::api('text', 'portfolio')->description($description);
+                $filter = new Filter\HeadDescription;
+                $values['seo_description'] = $filter($description);
                 // Set time
                 if (empty($values['id'])) {
                     $values['time_create'] = time();
@@ -166,24 +175,19 @@ class ProjectController extends ActionController
                 }
                 // Add / Edit sitemap
                 if (Pi::service('module')->isActive('sitemap')) {
-                    $loc = Pi::url($this->url('portfolio', array(
+                    // Set loc
+                    $loc = Pi::url($this->url('guide', array(
                         'module'      => $module, 
-                        'controller'  => 'project', 
-                        'action'      => 'index', 
+                        'controller'  => 'category', 
                         'slug'        => $values['slug']
                     )));
-                    if (empty($values['id'])) {
-                        Pi::api('sitemap', 'sitemap')->add('portfolio', 'project', $row->id, $loc);
-                    } else {
-                        Pi::api('sitemap', 'sitemap')->update('portfolio', 'project', $row->id, $loc);
-                    }              
+                    // Update sitemap
+                    Pi::api('sitemap', 'sitemap')->singleLink($loc, $row->status, $module, 'category', $row->id);            
                 }
-                // Check it save or not
-                if ($row->id) {
-                    $message = __('Project data saved successfully.');
-                    $url = array('action' => 'index');
-                    $this->jump($url, $message);
-                }
+                // Jump
+                $message = __('Project data saved successfully.');
+                $url = array('action' => 'index');
+                $this->jump($url, $message);
             }
         } else {
             if ($id) {

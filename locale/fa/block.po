@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Pi portfolio module\n"
-"POT-Creation-Date: 2014-10-14 09:29+0330\n"
+"POT-Creation-Date: 2015-03-26 14:57+0330\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: Pi\n"
@@ -9,14 +9,13 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 1.7.5\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: _b\n"
 "X-Poedit-Basepath: .\n"
-"X-Poedit-SearchPath-0: /var/www/html/local/pi/pi-release-2.4.0/usr/module/"
-"portfolio\n"
+"X-Poedit-SearchPath-0: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio\n"
 
-#: /var/www/html/local/pi/pi-release-2.4.0/usr/module/portfolio/template/block/project_list.phtml:15
+#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/template/block/project_list.phtml:15
 msgid "More information"
 msgstr "اطلاعات بیشتر"
 

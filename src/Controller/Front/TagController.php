@@ -13,6 +13,7 @@
 namespace Module\Portfolio\Controller\Front;
 
 use Pi;
+use Pi\Filter;
 use Pi\Mvc\Controller\ActionController;
 use Pi\Paginator\Paginator;
 use Zend\Db\Sql\Predicate\Expression;
@@ -75,16 +76,20 @@ public function indexAction()
         ));
         // Set header and title
         $title = sprintf(__('All projects by %s tag'), $slug);
-        $seoTitle = Pi::api('text', 'portfolio')->title($title);
-        $seoDescription = Pi::api('text', 'portfolio')->description($title);
-        $seoKeywords = Pi::api('text', 'portfolio')->keywords($title);
+        // Set seo_keywords
+        $filter = new Filter\HeadKeywords;
+        $filter->setOptions(array(
+            'force_replace_space' => true
+        ));
+        $seoKeywords = $filter($title);
         // Set view
-        $this->view()->setTemplate('index_index');
-        $this->view()->headTitle($seoTitle);
-        $this->view()->headDescription($seoDescription, 'set');
+        $this->view()->headTitle($title);
+        $this->view()->headDescription($title, 'set');
         $this->view()->headKeywords($seoKeywords, 'set');
+        $this->view()->setTemplate('index_index');
         $this->view()->assign('projects', $project);
         $this->view()->assign('paginator', $paginator);
         $this->view()->assign('config', $config);
+        $this->view()->assign('title', $title);
     }
 }	

@@ -31,7 +31,7 @@ class ProjectController extends ActionController
             $this->jump(array('', 'module' => $module, 'controller' => 'index'), __('The project not found.'));
         }
         // Update Hits
-        $this->getModel('project')->update(array('hits' => $project['hits'] + 1), array('id' => $project['id']));
+        $this->getModel('project')->increment('hits', array('id' => $project['id']));
         // Set tag
         if ($config['show_tag'] && Pi::service('module')->isActive('tag')) {
             $tag = Pi::service('tag')->get($module, $project['id'], '');

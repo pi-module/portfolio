@@ -57,11 +57,9 @@ class IndexController extends ActionController
         ));
         // Set view
         $this->view()->setTemplate('index_index');
-        $this->view()->headTitle($config['text_title']);
-        $this->view()->headdescription($config['text_description'], 'set');
-        $this->view()->headkeywords($config['text_keywords'], 'set');
         $this->view()->assign('projects', $project);
         $this->view()->assign('paginator', $paginator);
         $this->view()->assign('config', $config);
+        $this->view()->assign('title', __('List of our projects'));
     }
 }	
