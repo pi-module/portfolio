@@ -61,7 +61,7 @@ class ProjectController extends ActionController
             'route'     => $this->getEvent()->getRouteMatch()->getMatchedRouteName(),
             'params'    => array_filter(array(
                 'module'        => $this->getModule(),
-                'controller'    => 'index',
+                'controller'    => 'project',
                 'action'        => 'index',
             )),
         ));
@@ -176,9 +176,9 @@ class ProjectController extends ActionController
                 // Add / Edit sitemap
                 if (Pi::service('module')->isActive('sitemap')) {
                     // Set loc
-                    $loc = Pi::url($this->url('guide', array(
+                    $loc = Pi::url($this->url('portfolio', array(
                         'module'      => $module, 
-                        'controller'  => 'category', 
+                        'controller'  => 'project', 
                         'slug'        => $values['slug']
                     )));
                     // Update sitemap
