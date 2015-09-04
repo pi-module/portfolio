@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Pi portfolio module\n"
-"POT-Creation-Date: 2015-03-26 14:57+0330\n"
+"POT-Creation-Date: 2015-09-04 15:16+0430\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: Pi\n"
@@ -9,179 +9,177 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.7.5\n"
+"X-Generator: Poedit 1.8.4\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: _a;_t\n"
-"X-Poedit-Basepath: .\n"
-"X-Poedit-SearchPath-0: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio\n"
+"X-Poedit-Basepath: ../..\n"
+"X-Poedit-SearchPath-0: .\n"
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/block.php:16
+#: config/block.php:16
 msgid "Project list"
 msgstr "فهرست پروژه ها"
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/block.php:22
+#: config/block.php:22
 msgid "Number"
 msgstr "تعداد"
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/block.php:29
+#: config/block.php:29
 msgid "Use effect ?"
 msgstr "استفاده از افکت؟"
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/block.php:39
+#: config/block.php:39
 msgid "Project Comment"
 msgstr "نظر در نمونه کار ها"
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/comment.php:15
+#: config/comment.php:15
 msgid "Portfolio comments"
 msgstr "نظرات در نمونه کار ها"
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/config.php:16
+#: config/config.php:16
 msgid "Admin"
 msgstr "مدیریت"
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/config.php:20
+#: config/config.php:20
 msgid "Image"
 msgstr "تصویر"
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/config.php:24
+#: config/config.php:24
 msgid "Show"
 msgstr "نمایش"
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/config.php:28
+#: config/config.php:28
 msgid "Social"
 msgstr "شبکه های اجتماعی"
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/config.php:36
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/config.php:160
+#: config/config.php:36 config/config.php:160
 msgid "Perpage"
 msgstr "تعداد در صفحه"
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/config.php:45
+#: config/config.php:45
 msgid "Image Size"
 msgstr "حجم تصویر"
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/config.php:53
+#: config/config.php:53
 msgid "Image quality"
 msgstr "کیفیت تصویر"
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/config.php:54
+#: config/config.php:54
 msgid "Between 0 to 100 and support both of JPG and PNG, default is 75"
 msgstr "بین ۰ تا ۱۰۰ تنظیم شود و برای هر دو فرمت PNG و JPG ، مقدار پیش فرض ۷۵"
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/config.php:61
+#: config/config.php:61
 msgid "Image path"
 msgstr "مسیر ذخیره تصویر"
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/config.php:69
+#: config/config.php:69
 msgid "Image Extension"
 msgstr "پسوند های مجار برای تصویر"
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/config.php:77
+#: config/config.php:77
 msgid "Large Image width"
 msgstr "عرض تصویر بزرگ"
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/config.php:85
+#: config/config.php:85
 msgid "Large Image height"
 msgstr "ارتفاع تصویر بزرگ"
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/config.php:93
+#: config/config.php:93
 msgid "Medium Image width"
 msgstr "عرض تصویر متوسط"
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/config.php:101
+#: config/config.php:101
 msgid "Medium Image height"
 msgstr "ارتفاع تصویر متوسط"
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/config.php:109
+#: config/config.php:109
 msgid "Thumb Image width"
 msgstr "عرض تصویر بندانگشتی"
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/config.php:117
+#: config/config.php:117
 msgid "Thumb Image height"
 msgstr "ارتفاع تصویر بندانگشتی"
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/config.php:125
+#: config/config.php:125
 msgid "Add Watermark"
 msgstr "اضافه کردن واترمارک به تصویر"
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/config.php:133
+#: config/config.php:133
 msgid "Watermark Image"
 msgstr "تصویر واترمارک"
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/config.php:140
+#: config/config.php:140
 msgid "Watermark Positio"
 msgstr "موقعیت واترمارک"
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/config.php:146
+#: config/config.php:146
 msgid "Top Left"
 msgstr "بالا چپ"
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/config.php:147
+#: config/config.php:147
 msgid "Top Right"
 msgstr "بالا راست"
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/config.php:148
+#: config/config.php:148
 msgid "Bottom Left"
 msgstr "پایین چپ"
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/config.php:149
+#: config/config.php:149
 msgid "Bottom Right"
 msgstr "پایین راست"
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/config.php:168
+#: config/config.php:168
 msgid "Show Service"
 msgstr "نمایش خدمات"
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/config.php:176
+#: config/config.php:176
 msgid "Show Technology"
 msgstr "نمایش فن آوری"
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/config.php:184
+#: config/config.php:184
 msgid "Show Website"
 msgstr "نمایش وب سایت"
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/config.php:192
+#: config/config.php:192
 msgid "Show Information"
 msgstr "نمایش اطلاعات"
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/config.php:200
+#: config/config.php:200
 msgid "Show Hits"
 msgstr "نمایش بازدید"
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/config.php:208
+#: config/config.php:208
 msgid "Show Tags"
 msgstr "نمایش برچسب ها"
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/config.php:216
+#: config/config.php:216
 msgid "Social sharing items"
 msgstr "اشتراک گذاری در شبکه های اجتماعی "
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/module.php:16
+#: config/module.php:16
 msgid "Portfolio"
 msgstr "نمونه کار ها"
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/module.php:17
+#: config/module.php:17
 msgid "List of your works and simple gallery"
 msgstr "فهرست نمونه کار ها و یک گالری ساده"
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/navigation.php:16
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/page.php:17
+#: config/navigation.php:16 config/page.php:17
 msgid "Projects"
 msgstr "پروژه ها"
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/navigation.php:23
+#: config/navigation.php:23
 msgid "Add Projects"
 msgstr "پروژه جدید"
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/page.php:24
+#: config/page.php:24
 msgid "Index"
 msgstr "صفحه اصلی"
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/page.php:29
+#: config/page.php:29
 msgid "Tag"
 msgstr "برچسب"
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/page.php:34
+#: config/page.php:34
 msgid "Project"
 msgstr "پروژه"
 

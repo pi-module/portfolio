@@ -37,16 +37,16 @@ EOT;
 	    $this->headMeta($this->escape($project['largeUrl']), 'twitter:image');
     }
 ?>
-<div class="clearfix"> 
+<div class="clearfix projectSingle">
 	<h1><?php echo $this->escape($project['title']); ?></h1>
-	<div class="col-sm-12 col-md-5">
-		<div class="gallery text-center clearfix u-photo thumbnail">
+	<div class="col-sm-12 col-md-12">
+		<div class="gallery text-center clearfix u-photo">
 			<a href="<?php echo $this->escape($project['largeUrl']); ?>" title="<?php echo $this->escape($project['title']); ?>">
-				<img class="img-responsive" src="<?php echo $this->escape($project['mediumUrl']); ?>" alt="<?php echo $this->escape($project['title']); ?>" />
+				<img class="img-responsive img-thumbnail" src="<?php echo $this->escape($project['mediumUrl']); ?>" alt="<?php echo $this->escape($project['title']); ?>" />
 			</a>
 		</div>
 	</div>
-	<div class="col-sm-12 col-md-7">
+	<div class="col-sm-12 col-md-12">
 		<?php if($config['show_information'] && $project['information']) { ?>
 		<div class="project-text"><?php echo $project['information']; ?></div>
 		<?php } ?>
@@ -86,4 +86,36 @@ EOT;
         </div>
       	<?php } ?>
 	</div>
+	<?php if (isset($projectRelated) && !empty($projectRelated)) { ?>
+		<div class="col-sm-12 col-md-12">
+			<?php
+			$this->css($this->assetModule('css/owl.carousel.css'));
+			$this->js(array(
+				$this->assetModule('js/owl.carousel.min.js'),
+				$this->assetModule('js/owl.carousel.config.js')
+			));
+			?>
+			<h3><?php _e('Related projects'); ?></h3>
+			<div class="owl-carousel clearfix">
+				<?php foreach ($projectRelated as $projectItem) { ?>
+					<div class="item text-center">
+						<div class="thumbnail p-item h-card">
+							<a itemprop="url" class="u-url" title="<?php echo $this->escape($projectItem['title']); ?>"
+							   href="<?php echo $this->escape($projectItem['projectUrl']); ?>">
+								<img itemprop="image" class="img-responsive u-photo"
+									 src="<?php echo $this->escape($projectItem['thumbUrl']); ?>"
+									 alt="<?php echo $this->escape($projectItem['title']); ?>"/>
+							</a>
+							<h4 itemprop="name" class="p-name">
+								<a itemprop="url" class="u-url" title="<?php echo $this->escape($projectItem['title']); ?>"
+								   href="<?php echo $this->escape($projectItem['projectUrl']); ?>">
+									<?php echo $this->escape($projectItem['title']); ?>
+								</a>
+							</h4>
+						</div>
+					</div>
+				<?php } ?>
+			</div>
+		</div>
+	<?php } ?>
 </div>

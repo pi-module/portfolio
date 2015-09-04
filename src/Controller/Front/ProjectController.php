@@ -34,8 +34,27 @@ class ProjectController extends ActionController
         $this->getModel('project')->increment('hits', array('id' => $project['id']));
         // Set tag
         if ($config['show_tag'] && Pi::service('module')->isActive('tag')) {
+            // Get tag list
             $tag = Pi::service('tag')->get($module, $project['id'], '');
-            $this->view()->assign('tag', $tag);  
+            $this->view()->assign('tag', $tag);
+            // Get tag related
+            $tagId = array();
+            $projectRelated = array();
+            $tags = Pi::service('tag')->getList($tag[0], $module);
+            foreach ($tags as $tag) {
+                $tagId[] = $tag['item'];
+            }
+            // Set info
+            $where = array('status' => 1, 'id' => $tagId);
+            $order = array('id DESC', 'time_create DESC');
+            // Get info
+            $select = $this->getModel('project')->select()->where($where)->order($order)->limit(50);
+            $rowset = $this->getModel('project')->selectWith($select);
+            // Make list
+            foreach ($rowset as $row) {
+                $projectRelated[$row->id] = Pi::api('project', 'portfolio')->canonizeProject($row);
+            }
+            $this->view()->assign('projectRelated', $projectRelated);
         }
         // Set view
         $this->view()->headTitle($project['seo_title']);

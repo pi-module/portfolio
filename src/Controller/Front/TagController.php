@@ -90,6 +90,6 @@ public function indexAction()
         $this->view()->assign('projects', $project);
         $this->view()->assign('paginator', $paginator);
         $this->view()->assign('config', $config);
-        $this->view()->assign('title', $title);
+        $this->view()->assign('title', $slug);
     }
 }	
