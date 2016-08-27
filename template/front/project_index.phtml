@@ -37,12 +37,13 @@ EOT;
 	    $this->headMeta($this->escape($project['largeUrl']), 'twitter:image');
     }
 ?>
-<div class="clearfix projectSingle">
-	<h1><?php echo $this->escape($project['title']); ?></h1>
+<div class="clearfix projectSingle" itemscope itemtype="http://schema.org/CreativeWork">
+	<h1 itemprop="name"><?php echo $this->escape($project['title']); ?></h1>
+	<meta itemprop="url" content="<?php echo $project['projectUrl']; ?>" />
 	<div class="col-sm-12 col-md-12">
 		<div class="gallery text-center clearfix u-photo">
 			<a href="<?php echo $this->escape($project['largeUrl']); ?>" title="<?php echo $this->escape($project['title']); ?>">
-				<img class="img-responsive img-thumbnail" src="<?php echo $this->escape($project['mediumUrl']); ?>" alt="<?php echo $this->escape($project['title']); ?>" />
+				<img itemprop="image" class="img-responsive img-thumbnail" src="<?php echo $this->escape($project['mediumUrl']); ?>" alt="<?php echo $this->escape($project['title']); ?>" />
 			</a>
 		</div>
 	</div>

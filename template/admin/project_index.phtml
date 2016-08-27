@@ -6,22 +6,20 @@
 		<tr>
 			<th><?php _e('Image'); ?></th>
 			<th><?php _e('Information'); ?></th>
+			<th><?php _e('Action'); ?></th>
 		</tr>
 		<?php foreach($projects as $project) { ?>
 		<tr>
 			<td width="200">
-				<img width="200" src="<?php echo $project['thumbUrl']; ?>" alt="<?php echo $this->escape($project['title']); ?>" />
+				<img width="200" class="img-responsive" src="<?php echo $project['thumbUrl']; ?>" alt="<?php echo $this->escape($project['title']); ?>" />
 			</td>
 			<td>
 				<p><strong><?php _e('ID'); ?> : </strong><?php echo $this->escape($project['id']); ?></p>
 				<p><strong><?php _e('Title'); ?> : </strong><?php echo $this->escape($project['title']); ?></p>
-				<p><strong><?php _e('Website'); ?> : </strong><?php echo $this->escape($project['website']); ?></p>
-				<p><strong><?php _e('Service'); ?> : </strong><?php echo $this->escape($project['service']); ?></p>
-				<p><strong><?php _e('Technology'); ?> : </strong><?php echo $this->escape($project['technology']); ?></p>
-				<p>
-					<a class="btn btn-primary" title="<?php _e('View'); ?>" href="<?php echo $project['projectUrl']; ?>"><i class="fa fa-eye"></i> <?php _e('View'); ?></a>
-					<a class="btn btn-primary" title="<?php _e('Edit'); ?>" href="<?php echo $this->url('', array('action' => 'update', 'id' => $project['id'])); ?>"><i class="fa fa-edit"></i> <?php _e('Edit'); ?></a>
-				</p>
+			</td>
+			<td>
+				<a class="btn btn-success" title="<?php _e('View'); ?>" href="<?php echo $project['projectUrl']; ?>" target="_blank"><i class="fa fa-eye"></i> <?php _e('View'); ?></a>
+				<a class="btn btn-primary" title="<?php _e('Edit'); ?>" href="<?php echo $this->url('', array('action' => 'update', 'id' => $project['id'])); ?>"><i class="fa fa-edit"></i> <?php _e('Edit'); ?></a>
 			</td>
 		</tr>
 		<?php } ?>
