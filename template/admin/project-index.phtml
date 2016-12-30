@@ -11,8 +11,15 @@ $this->js($this->assetModule('script/system-msg.js', 'system'));
     <?php if (!empty($projects)) { ?>
         <div class="row clearfix">
             <?php foreach($projects as $project) { ?>
+                <?php if ($project['status'] == 5) {
+                    $class = 'bg-danger';
+                } elseif ($project['status'] == 1) {
+                    $class = '';
+                } else {
+                    $class = 'bg-warning';
+                } ?>
                 <div class="col-md-3">
-                    <div class="thumbnail">
+                    <div class="thumbnail <?php echo $class; ?>">
                         <img class="img-responsive" src="<?php echo $project['thumbUrl']; ?>" alt="<?php echo $this->escape($project['title']); ?>" />
                         <div class="caption">
                             <h4 class="project-ajax">
