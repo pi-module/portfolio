@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Pi portfolio module\n"
-"POT-Creation-Date: 2015-03-26 14:57+0330\n"
+"POT-Creation-Date: 2016-12-30 12:02+0330\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: Pi\n"
@@ -9,178 +9,224 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.7.5\n"
+"X-Generator: Poedit 1.8.11\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: _a;_t\n"
-"X-Poedit-Basepath: .\n"
-"X-Poedit-SearchPath-0: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio\n"
+"X-Poedit-Basepath: ../..\n"
+"X-Poedit-SearchPath-0: .\n"
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/block.php:16
+#: config/block.php:16
 msgid "Project list"
 msgstr ""
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/block.php:22
+#: config/block.php:22 config/navigation.php:48 config/navigation.php:58
+msgid "Project type"
+msgstr ""
+
+#: config/block.php:29
 msgid "Number"
 msgstr ""
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/block.php:29
-msgid "Use effect ?"
+#: config/block.php:36
+msgid "Show just recommended"
 msgstr ""
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/block.php:39
+#: config/block.php:43
+msgid "Project order"
+msgstr ""
+
+#: config/block.php:44
+msgid "Project list order options"
+msgstr ""
+
+#: config/block.php:49
+msgid "Create time DESC"
+msgstr ""
+
+#: config/block.php:50
+msgid "Create time ASC"
+msgstr ""
+
+#: config/block.php:51
+msgid "Update time DESC"
+msgstr ""
+
+#: config/block.php:52
+msgid "Update time ASC"
+msgstr ""
+
+#: config/block.php:53
+msgid "Random"
+msgstr ""
+
+#: config/block.php:61
+msgid "Use block effects"
+msgstr ""
+
+#: config/block.php:62
+msgid "Use block effects or set custom effect on theme"
+msgstr ""
+
+#: config/block.php:71
 msgid "Project Comment"
 msgstr ""
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/comment.php:15
+#: config/comment.php:15
 msgid "Portfolio comments"
 msgstr ""
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/config.php:16
+#: config/config.php:16
 msgid "Admin"
 msgstr ""
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/config.php:20
-msgid "Image"
-msgstr ""
-
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/config.php:24
+#: config/config.php:20
 msgid "Show"
 msgstr ""
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/config.php:28
+#: config/config.php:24
+msgid "Image"
+msgstr ""
+
+#: config/config.php:28
 msgid "Social"
 msgstr ""
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/config.php:36
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/config.php:160
+#: config/config.php:37 config/config.php:46
 msgid "Perpage"
 msgstr ""
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/config.php:45
-msgid "Image Size"
-msgstr ""
-
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/config.php:53
-msgid "Image quality"
-msgstr ""
-
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/config.php:54
-msgid "Between 0 to 100 and support both of JPG and PNG, default is 75"
-msgstr ""
-
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/config.php:61
-msgid "Image path"
-msgstr ""
-
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/config.php:69
-msgid "Image Extension"
-msgstr ""
-
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/config.php:77
-msgid "Large Image width"
-msgstr ""
-
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/config.php:85
-msgid "Large Image height"
-msgstr ""
-
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/config.php:93
-msgid "Medium Image width"
-msgstr ""
-
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/config.php:101
-msgid "Medium Image height"
-msgstr ""
-
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/config.php:109
-msgid "Thumb Image width"
-msgstr ""
-
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/config.php:117
-msgid "Thumb Image height"
-msgstr ""
-
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/config.php:125
-msgid "Add Watermark"
-msgstr ""
-
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/config.php:133
-msgid "Watermark Image"
-msgstr ""
-
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/config.php:140
-msgid "Watermark Positio"
-msgstr ""
-
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/config.php:146
-msgid "Top Left"
-msgstr ""
-
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/config.php:147
-msgid "Top Right"
-msgstr ""
-
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/config.php:148
-msgid "Bottom Left"
-msgstr ""
-
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/config.php:149
-msgid "Bottom Right"
-msgstr ""
-
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/config.php:168
+#: config/config.php:54
 msgid "Show Service"
 msgstr ""
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/config.php:176
+#: config/config.php:62
 msgid "Show Technology"
 msgstr ""
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/config.php:184
+#: config/config.php:70
 msgid "Show Website"
 msgstr ""
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/config.php:192
+#: config/config.php:78
 msgid "Show Information"
 msgstr ""
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/config.php:200
+#: config/config.php:86
 msgid "Show Hits"
 msgstr ""
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/config.php:208
+#: config/config.php:94
 msgid "Show Tags"
 msgstr ""
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/config.php:216
+#: config/config.php:103
+msgid "Image Size"
+msgstr ""
+
+#: config/config.php:111
+msgid "Image quality"
+msgstr ""
+
+#: config/config.php:112
+msgid "Between 0 to 100 and support both of JPG and PNG, default is 75"
+msgstr ""
+
+#: config/config.php:119
+msgid "Image path"
+msgstr ""
+
+#: config/config.php:127
+msgid "Image Extension"
+msgstr ""
+
+#: config/config.php:135
+msgid "Large Image width"
+msgstr ""
+
+#: config/config.php:143
+msgid "Large Image height"
+msgstr ""
+
+#: config/config.php:151
+msgid "Medium Image width"
+msgstr ""
+
+#: config/config.php:159
+msgid "Medium Image height"
+msgstr ""
+
+#: config/config.php:167
+msgid "Thumb Image width"
+msgstr ""
+
+#: config/config.php:175
+msgid "Thumb Image height"
+msgstr ""
+
+#: config/config.php:183
+msgid "Add Watermark"
+msgstr ""
+
+#: config/config.php:191
+msgid "Watermark Image"
+msgstr ""
+
+#: config/config.php:198
+msgid "Watermark Positio"
+msgstr ""
+
+#: config/config.php:204
+msgid "Top Left"
+msgstr ""
+
+#: config/config.php:205
+msgid "Top Right"
+msgstr ""
+
+#: config/config.php:206
+msgid "Bottom Left"
+msgstr ""
+
+#: config/config.php:207
+msgid "Bottom Right"
+msgstr ""
+
+#: config/config.php:217
 msgid "Social sharing items"
 msgstr ""
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/module.php:16
+#: config/module.php:16
 msgid "Portfolio"
 msgstr ""
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/module.php:17
+#: config/module.php:17
 msgid "List of your works and simple gallery"
 msgstr ""
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/navigation.php:16
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/page.php:17
+#: config/navigation.php:16 config/navigation.php:26 config/page.php:17
 msgid "Projects"
 msgstr ""
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/navigation.php:23
-msgid "Add Projects"
+#: config/navigation.php:36
+msgid "Manage projects"
 msgstr ""
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/page.php:24
+#: config/navigation.php:69
+msgid "Manage project type"
+msgstr ""
+
+#: config/page.php:22 config/permission.php:21
+msgid "Type"
+msgstr ""
+
+#: config/page.php:30
 msgid "Index"
 msgstr ""
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/page.php:29
+#: config/page.php:35
 msgid "Tag"
 msgstr ""
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/config/page.php:34
+#: config/page.php:40 config/permission.php:17
 msgid "Project"
 msgstr ""

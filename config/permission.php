@@ -18,7 +18,7 @@ return array(
             'access' => array(),
         ),
         'type' => array(
-            'title' => _a('Type'),
+            'title' => _a('Project type'),
             'access' => array(),
         ),
     ),

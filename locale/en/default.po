@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Pi portfolio module\n"
-"POT-Creation-Date: 2015-03-26 14:57+0330\n"
+"POT-Creation-Date: 2016-12-30 12:03+0330\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: Pi\n"
@@ -9,254 +9,308 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.7.5\n"
+"X-Generator: Poedit 1.8.11\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e\n"
-"X-Poedit-Basepath: .\n"
-"X-Poedit-SearchPath-0: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio\n"
+"X-Poedit-Basepath: ../..\n"
+"X-Poedit-SearchPath-0: .\n"
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/src/Controller/Admin/ProjectController.php:128
+#: src/Api/Project.php:100
+msgid "Recommended"
+msgstr ""
+
+#: src/Controller/Admin/ProjectController.php:120
 msgid "Problem in upload image. please try again"
 msgstr ""
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/src/Controller/Admin/ProjectController.php:188
+#: src/Controller/Admin/ProjectController.php:174
 msgid "Project data saved successfully."
 msgstr ""
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/src/Controller/Admin/ProjectController.php:208
-msgid "Add a Project"
+#: src/Controller/Admin/ProjectController.php:194
+msgid "Manage Project"
 msgstr ""
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/src/Controller/Admin/ProjectController.php:232
+#: src/Controller/Admin/ProjectController.php:218
 #, php-format
 msgid "Image of %s removed"
 msgstr ""
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/src/Controller/Admin/ProjectController.php:235
+#: src/Controller/Admin/ProjectController.php:221
 msgid "Image not remove"
 msgstr ""
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/src/Controller/Admin/ProjectController.php:239
+#: src/Controller/Admin/ProjectController.php:225
+#: src/Controller/Admin/ProjectController.php:260
 msgid "Please select project"
 msgstr ""
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/src/Controller/Front/IndexController.php:63
+#: src/Controller/Admin/ProjectController.php:249
+#, php-format
+msgid "%s set recommended successfully"
+msgstr ""
+
+#: src/Controller/Admin/ProjectController.php:254
+#, php-format
+msgid "Error in set recommended for %s project"
+msgstr ""
+
+#: src/Controller/Admin/ProjectController.php:288
+msgid "This project deleted"
+msgstr ""
+
+#: src/Controller/Admin/ProjectController.php:290
+msgid "Please select iproject"
+msgstr ""
+
+#: src/Controller/Admin/TypeController.php:70
+msgid "Project type data saved successfully."
+msgstr ""
+
+#: src/Controller/Admin/TypeController.php:82
+msgid "Manage type"
+msgstr ""
+
+#: src/Controller/Front/IndexController.php:63
 msgid "List of our projects"
 msgstr ""
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/src/Controller/Front/ProjectController.php:31
+#: src/Controller/Front/ProjectController.php:31
 msgid "The project not found."
 msgstr ""
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/src/Controller/Front/TagController.php:34
+#: src/Controller/Front/TagController.php:34
 msgid "The tag not set."
 msgstr ""
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/src/Controller/Front/TagController.php:45
+#: src/Controller/Front/TagController.php:45
 msgid "The tag not found."
 msgstr ""
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/src/Controller/Front/TagController.php:78
+#: src/Controller/Front/TagController.php:78
 #, php-format
 msgid "All projects by %s tag"
 msgstr ""
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/src/Form/ProjectForm.php:49
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/template/admin/project_index.phtml:17
+#: src/Form/ProjectForm.php:50 src/Form/TypeForm.php:47
+#: template/admin/type-index.phtml:12
 msgid "Title"
 msgstr ""
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/src/Form/ProjectForm.php:59
+#: src/Form/ProjectForm.php:61 src/Form/TypeForm.php:57
 msgid "Slug"
 msgstr ""
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/src/Form/ProjectForm.php:69
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/template/admin/project_index.phtml:19
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/template/front/project_index.phtml:56
+#: src/Form/ProjectForm.php:72
+msgid "Project type"
+msgstr ""
+
+#: src/Form/ProjectForm.php:83 template/front/project-single.phtml:64
 msgid "Service"
 msgstr ""
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/src/Form/ProjectForm.php:79
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/template/admin/project_index.phtml:20
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/template/front/project_index.phtml:59
+#: src/Form/ProjectForm.php:93 template/front/project-single.phtml:67
 msgid "Technology"
 msgstr ""
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/src/Form/ProjectForm.php:89
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/template/admin/project_index.phtml:18
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/template/front/project_index.phtml:62
+#: src/Form/ProjectForm.php:103 template/front/project-single.phtml:70
 msgid "Website"
 msgstr ""
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/src/Form/ProjectForm.php:100
+#: src/Form/ProjectForm.php:114
 msgid "View website link"
 msgstr ""
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/src/Form/ProjectForm.php:110
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/template/admin/project_index.phtml:8
+#: src/Form/ProjectForm.php:124
 msgid "Information"
 msgstr ""
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/src/Form/ProjectForm.php:113
+#: src/Form/ProjectForm.php:127
 msgid "You can use HTML tag here"
 msgstr ""
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/src/Form/ProjectForm.php:123
+#: src/Form/ProjectForm.php:137
 msgid "Version"
 msgstr ""
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/src/Form/ProjectForm.php:133
+#: src/Form/ProjectForm.php:147
 msgid "Size"
 msgstr ""
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/src/Form/ProjectForm.php:144
+#: src/Form/ProjectForm.php:158 src/Form/TypeForm.php:68
 msgid "Status"
 msgstr ""
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/src/Form/ProjectForm.php:146
+#: src/Form/ProjectForm.php:160 src/Form/TypeForm.php:70
 msgid "Published"
 msgstr ""
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/src/Form/ProjectForm.php:147
+#: src/Form/ProjectForm.php:161 src/Form/TypeForm.php:71
 msgid "Pending review"
 msgstr ""
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/src/Form/ProjectForm.php:148
+#: src/Form/ProjectForm.php:162 src/Form/TypeForm.php:72
 msgid "Draft"
 msgstr ""
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/src/Form/ProjectForm.php:149
+#: src/Form/ProjectForm.php:163 src/Form/TypeForm.php:73
 msgid "Private"
 msgstr ""
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/src/Form/ProjectForm.php:150
+#: src/Form/ProjectForm.php:164
 msgid "Remove"
 msgstr ""
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/src/Form/ProjectForm.php:170
+#: src/Form/ProjectForm.php:184
 msgid "Remove image"
 msgstr ""
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/src/Form/ProjectForm.php:186
+#: src/Form/ProjectForm.php:200
 msgid "Upload image"
 msgstr ""
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/src/Form/ProjectForm.php:199
+#: src/Form/ProjectForm.php:213
 msgid "Customer comment"
 msgstr ""
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/src/Form/ProjectForm.php:206
+#: src/Form/ProjectForm.php:220
 msgid "Customer"
 msgstr ""
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/src/Form/ProjectForm.php:216
+#: src/Form/ProjectForm.php:230
 msgid "Comment"
 msgstr ""
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/src/Form/ProjectForm.php:228
+#: src/Form/ProjectForm.php:242
 msgid "Comment By"
 msgstr ""
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/src/Form/ProjectForm.php:239
+#: src/Form/ProjectForm.php:253
 msgid "SEO options"
 msgstr ""
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/src/Form/ProjectForm.php:246
+#: src/Form/ProjectForm.php:260
 msgid "SEO Title"
 msgstr ""
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/src/Form/ProjectForm.php:257
+#: src/Form/ProjectForm.php:273
 msgid "SEO Keywords"
 msgstr ""
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/src/Form/ProjectForm.php:268
+#: src/Form/ProjectForm.php:286
 msgid "SEO Description"
 msgstr ""
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/src/Form/ProjectForm.php:281
+#: src/Form/ProjectForm.php:301
 msgid "Tags"
 msgstr ""
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/src/Form/ProjectForm.php:285
+#: src/Form/ProjectForm.php:305
 msgid "Use `|` as delimiter to separate tag terms"
 msgstr ""
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/src/Form/ProjectForm.php:294
+#: src/Form/ProjectForm.php:314
 msgid "Extra links"
 msgstr ""
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/src/Form/ProjectForm.php:301
+#: src/Form/ProjectForm.php:321
 msgid "Link 1"
 msgstr ""
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/src/Form/ProjectForm.php:311
+#: src/Form/ProjectForm.php:331
 msgid "Link 2"
 msgstr ""
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/src/Form/ProjectForm.php:321
+#: src/Form/ProjectForm.php:341
 msgid "Link 3"
 msgstr ""
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/src/Form/ProjectForm.php:331
+#: src/Form/ProjectForm.php:351
 msgid "Link 4"
 msgstr ""
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/src/Form/ProjectForm.php:341
+#: src/Form/ProjectForm.php:361
 msgid "Link 5"
 msgstr ""
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/src/Form/ProjectForm.php:352
+#: src/Form/ProjectForm.php:372
 msgid "Extra images"
 msgstr ""
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/src/Form/ProjectForm.php:359
+#: src/Form/ProjectForm.php:379
 msgid "Image 1"
 msgstr ""
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/src/Form/ProjectForm.php:369
+#: src/Form/ProjectForm.php:389
 msgid "Image 2"
 msgstr ""
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/src/Form/ProjectForm.php:379
+#: src/Form/ProjectForm.php:399
 msgid "Image 3"
 msgstr ""
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/src/Form/ProjectForm.php:389
+#: src/Form/ProjectForm.php:409
 msgid "Image 4"
 msgstr ""
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/src/Form/ProjectForm.php:399
+#: src/Form/ProjectForm.php:419
 msgid "Image 5"
 msgstr ""
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/src/Form/ProjectForm.php:410
+#: src/Form/ProjectForm.php:430 src/Form/TypeForm.php:83
 msgid "Submit"
 msgstr ""
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/template/admin/project_index.phtml:3
+#: src/Form/TypeForm.php:74 template/admin/project-index.phtml:45
+#: template/admin/project-index.phtml:46
+msgid "Delete"
+msgstr ""
+
+#: template/admin/project-index.phtml:10
 msgid "List of projects"
 msgstr ""
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/template/admin/project_index.phtml:7
-msgid "Image"
-msgstr ""
-
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/template/admin/project_index.phtml:16
-msgid "ID"
-msgstr ""
-
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/template/admin/project_index.phtml:22
-msgid "View"
-msgstr ""
-
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/template/admin/project_index.phtml:23
+#: template/admin/project-index.phtml:40 template/admin/type-index.phtml:29
+#: template/admin/type-index.phtml:31
 msgid "Edit"
 msgstr ""
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/template/admin/project_update.phtml:18
+#: template/admin/project-index.phtml:42
+msgid "View"
+msgstr ""
+
+#: template/admin/project-index.phtml:45
+msgid "Are you sure to delete this project?"
+msgstr ""
+
+#: template/admin/project-index.phtml:65
+msgid "Recommended in process"
+msgstr ""
+
+#: template/admin/project-update.phtml:18
 msgid "Remove image project in process"
 msgstr ""
 
-#: /var/www/html/local/pi/pi-2.5.0/usr/module/portfolio/template/front/project_index.phtml:65
+#: template/admin/type-index.phtml:4 template/admin/type-index.phtml:6
+msgid "Add type"
+msgstr ""
+
+#: template/admin/type-index.phtml:8
+msgid "List of project types"
+msgstr ""
+
+#: template/admin/type-index.phtml:11
+msgid "ID"
+msgstr ""
+
+#: template/admin/type-index.phtml:13
+msgid "Action"
+msgstr ""
+
+#: template/front/project-single.phtml:73
 msgid "Hits"
+msgstr ""
+
+#: template/front/project-single.phtml:106
+msgid "Related projects"
 msgstr ""

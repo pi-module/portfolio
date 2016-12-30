@@ -41,7 +41,7 @@ return array(
             ),
             'order' => array(
                 'title' => _a('Project order'),
-                'description' => _a('Project list order options'),
+                'description' => '',
                 'edit' => array(
                     'type' => 'select',
                     'options' => array(

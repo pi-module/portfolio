@@ -287,6 +287,6 @@ class ProjectController extends ActionController
             // Remove page
             $this->jump(array('action' => 'index'), __('This project deleted'));
         }
-        $this->jump(array('action' => 'index'), __('Please select iproject'));
+        $this->jump(array('action' => 'index'), __('Please select project'));
     }
 }

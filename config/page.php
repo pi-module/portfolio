@@ -19,7 +19,7 @@ return array(
             'permission' => 'project',
         ),
         array(
-            'title' => _a('Type'),
+            'title' => _a('Project type'),
             'controller' => 'type',
             'permission' => 'type',
         ),
