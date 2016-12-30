@@ -33,7 +33,7 @@ class ProjectController extends ActionController
         // Update Hits
         $this->getModel('project')->increment('hits', array('id' => $project['id']));
         // Set tag
-        if ($config['show_tag'] && Pi::service('module')->isActive('tag')) {
+        /* if ($config['show_tag'] && Pi::service('module')->isActive('tag')) {
             // Get tag list
             $tag = Pi::service('tag')->get($module, $project['id'], '');
             $this->view()->assign('tag', $tag);
@@ -55,7 +55,7 @@ class ProjectController extends ActionController
                 $projectRelated[$row->id] = Pi::api('project', 'portfolio')->canonizeProject($row);
             }
             $this->view()->assign('projectRelated', $projectRelated);
-        }
+        } */
         // Set view
         $this->view()->headTitle($project['seo_title']);
         $this->view()->headdescription($project['seo_description'], 'set');

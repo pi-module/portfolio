@@ -1,8 +1,8 @@
-<?php 
-	// Load front.css
-	$this->css($this->assetModule('css/front.css'));
-	// Image lightbox
-    $script =<<<'EOT'
+<?php
+// Load front.css
+$this->css($this->assetModule('css/front.css'));
+// Image lightbox
+$script =<<<'EOT'
 $('.gallery').each(function() {
 	$(this).magnificPopup({
    		delegate: 'a',
@@ -13,29 +13,29 @@ $('.gallery').each(function() {
 	});
 });
 EOT;
-	$this->jQuery(array(
-		'extension/jquery.magnific-popup.min.js',
-		'extension/magnific-popup.css',
-	));
-	$this->footScript()->appendScript($script);
-    // Set Open Graph tags for meta
-    $this->doctype('HTML5');
-    $this->headMeta($this->escape($project['title']), 'og:title', 'property');
-    $this->headMeta($this->escape($project['projectUrl']), 'og:url', 'property');
-    if (isset($project['information']) && !empty($project['information'])) {
-	    $this->headMeta(_strip($project['information']), 'og:description', 'property');
-    }
-    if (!empty($project['largeUrl'])) {
-	    $this->headMeta($this->escape($project['largeUrl']), 'og:image', 'property');
-    }
-    // Set twitter for meta
-    $this->headMeta($this->escape($project['title']), 'twitter:title');
-    if (isset($project['information']) && !empty($project['information'])) {
-	    $this->headMeta(_strip($project['information']), 'twitter:description');
-    }
-    if (!empty($project['largeUrl'])) {
-	    $this->headMeta($this->escape($project['largeUrl']), 'twitter:image');
-    }
+$this->jQuery(array(
+    'extension/jquery.magnific-popup.min.js',
+    'extension/magnific-popup.css',
+));
+$this->footScript()->appendScript($script);
+// Set Open Graph tags for meta
+$this->doctype('HTML5');
+$this->headMeta($this->escape($project['title']), 'og:title', 'property');
+$this->headMeta($this->escape($project['projectUrl']), 'og:url', 'property');
+if (isset($project['information']) && !empty($project['information'])) {
+    $this->headMeta(_strip($project['information']), 'og:description', 'property');
+}
+if (!empty($project['largeUrl'])) {
+    $this->headMeta($this->escape($project['largeUrl']), 'og:image', 'property');
+}
+// Set twitter for meta
+$this->headMeta($this->escape($project['title']), 'twitter:title');
+if (isset($project['information']) && !empty($project['information'])) {
+    $this->headMeta(_strip($project['information']), 'twitter:description');
+}
+if (!empty($project['largeUrl'])) {
+    $this->headMeta($this->escape($project['largeUrl']), 'twitter:image');
+}
 ?>
 <div class="clearfix portfolio-single" itemscope itemtype="http://schema.org/CreativeWork">
     <div class="page-header">
@@ -43,87 +43,89 @@ EOT;
             <?php echo $this->escape($project['title']); ?>
         </h1>
     </div>
-	<meta itemprop="url" content="<?php echo $project['projectUrl']; ?>" />
-	<div class="col-md-6 col-md-offset-3">
-		<div class="gallery text-center clearfix u-photo">
-			<a <?php if ($project['ribbon']) { ?>class="portfolio-ribbon"<?php } ?> href="<?php echo $this->escape($project['largeUrl']); ?>" title="<?php echo $this->escape($project['title']); ?>">
-				<img itemprop="image" class="img-responsive img-thumbnail" src="<?php echo $this->escape($project['largeUrl']); ?>" alt="<?php echo $this->escape($project['title']); ?>" />
+    <meta itemprop="url" content="<?php echo $project['projectUrl']; ?>" />
+    <div class="col-md-6 col-md-offset-3">
+        <div class="gallery text-center clearfix u-photo">
+            <a <?php if ($project['ribbon']) { ?>class="portfolio-ribbon"<?php } ?> href="<?php echo $this->escape($project['largeUrl']); ?>" title="<?php echo $this->escape($project['title']); ?>">
+                <img itemprop="image" class="img-responsive img-thumbnail" src="<?php echo $this->escape($project['largeUrl']); ?>" alt="<?php echo $this->escape($project['title']); ?>" />
                 <?php if ($project['ribbon']) { ?>
                     <p><span><?php echo $this->escape($project['ribbon']); ?></span></p>
                 <?php } ?>
             </a>
-		</div>
-	</div>
-	<div class="col-md-12">
-		<?php if($config['show_information'] && $project['information']) { ?>
-		<div class="portfolio-text"><?php echo $project['information']; ?></div>
-		<?php } ?>
-		<div class="well">
-			<ul class="list-unstyled">
-				<?php if($config['show_service'] && $project['service']) { ?>
-				<li><strong><?php _e('Service'); ?> : </strong><?php echo $this->escape($project['service']); ?></li>
-				<?php } ?>
-				<?php if($config['show_technology'] && $project['technology']) { ?>
-				<li><strong><?php _e('Technology'); ?> : </strong><?php echo $this->escape($project['technology']); ?></li>
-				<?php } ?>
-				<?php if($config['show_website'] && $project['website'] && $project['website_view']) { ?>
-				<li><strong><?php _e('Website'); ?> : </strong><?php echo $this->escape($project['website']); ?></li>
-				<?php } ?>
-				<?php if($config['show_hits']) { ?>
-				<li><strong><?php _e('Hits'); ?> : </strong><?php echo $this->escape($project['hits']); ?></li>
-				<?php } ?>
-			</ul>
-		</div>
-		<?php if (isset($tag) && !empty($tag)) { ?>
-		<div class="clearfix portfolio-tag-list">
-		<?php foreach($tag as $term) { ?>
-			<span class="portfolio-tag-item">
+        </div>
+    </div>
+    <div class="col-md-12">
+        <?php if($config['show_information'] && $project['information']) { ?>
+            <div class="portfolio-text"><?php echo $project['information']; ?></div>
+        <?php } ?>
+        <div class="well">
+            <ul class="list-unstyled">
+                <?php if($config['show_service'] && $project['service']) { ?>
+                    <li><strong><?php _e('Service'); ?> : </strong><?php echo $this->escape($project['service']); ?></li>
+                <?php } ?>
+                <?php if($config['show_technology'] && $project['technology']) { ?>
+                    <li><strong><?php _e('Technology'); ?> : </strong><?php echo $this->escape($project['technology']); ?></li>
+                <?php } ?>
+                <?php if($config['show_website'] && $project['website'] && $project['website_view']) { ?>
+                    <li><strong><?php _e('Website'); ?> : </strong><?php echo $this->escape($project['website']); ?></li>
+                <?php } ?>
+                <?php if($config['show_hits']) { ?>
+                    <li><strong><?php _e('Hits'); ?> : </strong><?php echo $this->escape($project['hits']); ?></li>
+                <?php } ?>
+            </ul>
+        </div>
+        <?php if (isset($tag) && !empty($tag)) { ?>
+            <div class="clearfix portfolio-tag-list">
+                <?php foreach($tag as $term) { ?>
+                    <span class="portfolio-tag-item">
 				<a title="<?php echo $this->escape($term); ?>" href="<?php echo $this->url('', array('controller' => 'tag', 'action' => 'index', 'slug' => urlencode($term))); ?>"><i class="fa fa-tag"></i> <?php echo $this->escape($term); ?></a>
 			</span>
-		<?php } ?>
-		</div>
-		<?php } ?>
-      	<?php if ($config['social_sharing']) { ?>
-        <div class="portfolio-social-sharing">
-           	<?php echo $this->socialSharing(
-           		$config['social_sharing'], 
-            	$this->escape($project['title']),
-               	$this->escape($project['projectUrl']),
-               	$this->escape($project['largeUrl'])
-            ); ?>
-        </div>
-      	<?php } ?>
-	</div>
-	<?php if (isset($projectRelated) && !empty($projectRelated)) { ?>
-		<div class="portfolio-related col-md-12">
-			<?php
+                <?php } ?>
+            </div>
+        <?php } ?>
+        <?php if ($config['social_sharing']) { ?>
+            <div class="col-md-4 col-md-offset-4">
+                <div class="portfolio-social-sharing">
+                    <?php echo $this->socialSharing(
+                        $config['social_sharing'],
+                        $this->escape($project['title']),
+                        $this->escape($project['projectUrl']),
+                        $this->escape($project['largeUrl'])
+                    ); ?>
+                </div>
+            </div>
+        <?php } ?>
+    </div>
+    <?php if (isset($projectRelated) && !empty($projectRelated)) { ?>
+        <div class="portfolio-related col-md-12">
+            <?php
             $this->jQuery(array(
                 'extension/owl.carousel.min.js',
                 'extension/owl.carousel.css',
             ));
             $this->js($this->assetModule('js/owl.carousel.config.js'));
-			?>
-			<h3><?php _e('Related projects'); ?></h3>
-			<div class="owl-carousel clearfix">
-				<?php foreach ($projectRelated as $projectItem) { ?>
-					<div class="item text-center">
-						<div class="thumbnail p-item h-card">
-							<a itemprop="url" class="u-url" title="<?php echo $this->escape($projectItem['title']); ?>"
-							   href="<?php echo $this->escape($projectItem['projectUrl']); ?>">
-								<img itemprop="image" class="img-responsive u-photo"
-									 src="<?php echo $this->escape($projectItem['thumbUrl']); ?>"
-									 alt="<?php echo $this->escape($projectItem['title']); ?>"/>
-							</a>
-							<h4 itemprop="name" class="p-name">
-								<a itemprop="url" class="u-url" title="<?php echo $this->escape($projectItem['title']); ?>"
-								   href="<?php echo $this->escape($projectItem['projectUrl']); ?>">
-									<?php echo $this->escape($projectItem['title']); ?>
-								</a>
-							</h4>
-						</div>
-					</div>
-				<?php } ?>
-			</div>
-		</div>
-	<?php } ?>
+            ?>
+            <h3><?php _e('Related projects'); ?></h3>
+            <div class="owl-carousel clearfix">
+                <?php foreach ($projectRelated as $projectItem) { ?>
+                    <div class="item text-center">
+                        <div class="thumbnail p-item h-card">
+                            <a itemprop="url" class="u-url" title="<?php echo $this->escape($projectItem['title']); ?>"
+                               href="<?php echo $this->escape($projectItem['projectUrl']); ?>">
+                                <img itemprop="image" class="img-responsive u-photo"
+                                     src="<?php echo $this->escape($projectItem['thumbUrl']); ?>"
+                                     alt="<?php echo $this->escape($projectItem['title']); ?>"/>
+                            </a>
+                            <h4 itemprop="name" class="p-name">
+                                <a itemprop="url" class="u-url" title="<?php echo $this->escape($projectItem['title']); ?>"
+                                   href="<?php echo $this->escape($projectItem['projectUrl']); ?>">
+                                    <?php echo $this->escape($projectItem['title']); ?>
+                                </a>
+                            </h4>
+                        </div>
+                    </div>
+                <?php } ?>
+            </div>
+        </div>
+    <?php } ?>
 </div>
