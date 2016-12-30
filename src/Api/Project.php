@@ -94,6 +94,11 @@ class Project extends AbstractApi
                     $project['image']
                 ));
         }
+        // Set ribbon
+        $project['ribbon'] = '';
+        if ($project['recommended']) {
+            $project['ribbon'] = __('Recommended');
+        }
         // return project
         return $project; 
 	}     

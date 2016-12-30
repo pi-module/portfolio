@@ -17,7 +17,7 @@ use Zend\InputFilter\InputFilter;
 
 class ProjectFilter extends InputFilter
 {
-    public function __construct()
+    public function __construct($option = array())
     {
         // id
         $this->add(array(
@@ -49,6 +49,11 @@ class ProjectFilter extends InputFilter
                     'table'             => 'project',
                 )),
             ),
+        ));
+        // type
+        $this->add(array(
+            'name' => 'type',
+            'required' => true,
         ));
         // service
         $this->add(array(

@@ -13,6 +13,7 @@
 namespace Module\Portfolio\Block;
 
 use Pi;
+use Zend\Db\Sql\Predicate\Expression;
 
 class Block
 {
@@ -22,10 +23,40 @@ class Block
         $block = array();
         $block = array_merge($block, $options);
         // Set info
-        $order = array(new \Zend\Db\Sql\Predicate\Expression('RAND()'));
         $where = array('status' => 1,);
         $limit = intval($options['number']);
         $project = array();
+        // Set order
+        switch ($block['order']) {
+            case 'random':
+                $order = array(new Expression('RAND()'));
+                break;
+
+            case 'updateASC':
+                $order = array('time_update ASC', 'id ASC');;
+                break;
+
+            case 'updateDESC':
+                $order = array('time_update DESC', 'id DESC');;
+                break;
+
+            case 'createASC':
+                $order = array('time_create ASC', 'id ASC');;
+                break;
+
+            case 'createDESC':
+            default:
+                $order = array('time_create DESC', 'id DESC');;
+                break;
+        }
+        // Check recommended
+        if ($block['recommended']) {
+            $where['recommended'] = 1;
+        }
+        // Check
+        if ($block['type'] > 0) {
+            $where['type'] = $block['type'];
+        }
         // Get list of project
         $select = Pi::model('project', $module)->select()->where($where)->order($order)->limit($limit);
         $rowset = Pi::model('project', $module)->selectWith($select);
@@ -38,6 +69,10 @@ class Block
 
     public static function projectComment($options = array(), $module = null)
     {
+        // Set options
+        $block = array();
+        $block = array_merge($block, $options);
 
+        return $block;
     }
 }

@@ -1,3 +1,63 @@
-.project-text {
+.portfolio .project-text {
 	margin-bottom: 10px;
+}
+
+/* project list */
+.portfolio .thumbnail {
+	text-align: center;
+}
+
+.portfolio .thumbnail .caption {
+	font-size: 1em;
+	height: 60px;
+	background: rgba(0, 0, 0, 0.5);
+	color: #fff;
+	position: relative;
+	margin-top: -60px;
+}
+
+.portfolio .thumbnail .caption a {
+	color: #fff;
+}
+
+.portfolio .thumbnail img {
+	height: 200px;
+	width: 100%;
+}
+
+/* ribbon */
+.portfolio-ribbon {
+	position: relative;
+	color: #434443;
+	display: inline-block;
+	padding: 0;
+	overflow: hidden;
+	font-weight: 700;
+	font-size: 13px;
+	display: block;
+}
+
+a.portfolio-ribbon:hover {
+	color: #434443;
+}
+
+.portfolio-ribbon p {
+	display: inline;
+}
+
+.portfolio-ribbon p span {
+	position: absolute;
+	display: inline-block;
+	right: -50px;
+	text-align: center;
+	text-transform: none;
+	top: 35px;
+	background: #FFC107;
+	width: 200px;
+	padding: 5px 10px;
+	-webkit-transform: rotate(45deg);
+	-moz-transform: rotate(45deg);
+	-o-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	z-index:1;
 }

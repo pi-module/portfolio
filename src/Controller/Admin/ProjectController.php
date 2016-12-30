@@ -17,6 +17,7 @@ use Pi\Filter;
 use Pi\Mvc\Controller\ActionController;
 use Pi\Paginator\Paginator;
 use Pi\File\Transfer\Upload;
+use Zend\Db\Sql\Predicate\Expression;
 use Module\Portfolio\Form\ProjectForm;
 use Module\Portfolio\Form\ProjectFilter;
 
@@ -28,20 +29,20 @@ class ProjectController extends ActionController
     {
         // Get page
         $page = $this->params('page', 1);
-        $module = $this->params('module');
         // Get info
         $list = array();
         $order = array('id DESC', 'time_create DESC');
         $offset = (int)($page - 1) * $this->config('admin_perpage');
         $limit = intval($this->config('admin_perpage'));
-        $select = $this->getModel('project')->select()->order($order)->offset($offset)->limit($limit);
+        $where = array('status' => array(1, 2, 3, 4));
+        $select = $this->getModel('project')->select()->where($where)->order($order)->offset($offset)->limit($limit);
         $rowset = $this->getModel('project')->selectWith($select);
         // Make list
         foreach ($rowset as $row) {
             $list[$row->id] = Pi::api('project', 'portfolio')->canonizeProject($row);
         }
         // Set paginator
-        $columns = array('count' => new \Zend\Db\Sql\Predicate\Expression('count(*)'));
+        $columns = array('count' => new Expression('count(*)'));
         $select = $this->getModel('project')->select()->columns($columns);
         $count = $this->getModel('project')->selectWith($select)->current()->count;
         $paginator = Paginator::factory(intval($count));
@@ -57,7 +58,7 @@ class ProjectController extends ActionController
             )),
         ));
         // Set view
-        $this->view()->setTemplate('project_index');
+        $this->view()->setTemplate('project-index');
         $this->view()->assign('projects', $list);
         $this->view()->assign('paginator', $paginator);
     }
@@ -88,7 +89,7 @@ class ProjectController extends ActionController
             $filter = new Filter\Slug;
             $data['slug'] = $filter($slug);
             // Form filter
-            $form->setInputFilter(new ProjectFilter);
+            $form->setInputFilter(new ProjectFilter($option));
             $form->setData($data);
             if ($form->isValid()) {
                 $values = $form->getData();
@@ -188,9 +189,9 @@ class ProjectController extends ActionController
                 $form->setData($values);
             }
         }
-        $this->view()->setTemplate('project_update');
+        $this->view()->setTemplate('project-update');
         $this->view()->assign('form', $form);
-        $this->view()->assign('title', __('Add a Project'));
+        $this->view()->assign('title', __('Manage Project'));
     }
 
     public function removeAction()
@@ -230,27 +231,62 @@ class ProjectController extends ActionController
         );
     }
 
-    /* public function deleteAction()
+    public function recommendAction()
+    {
+        // Get id and recommended
+        $id = $this->params('id');
+        $recommended = $this->params('recommended');
+        $return = array();
+        // set project
+        $project = $this->getModel('project')->find($id);
+        // Check
+        if ($project && in_array($recommended, array(0, 1))) {
+            // Accept
+            $project->recommended = $recommended;
+            $project->time_update = time();
+            // Save
+            if ($project->save()) {
+                $return['message'] = sprintf(__('%s set recommended successfully'), $project->title);
+                $return['ajaxstatus'] = 1;
+                $return['id'] = $project->id;
+                $return['recommended'] = $project->recommended;
+            } else {
+                $return['message'] = sprintf(__('Error in set recommended for %s project'), $project->title);
+                $return['ajaxstatus'] = 0;
+                $return['id'] = 0;
+                $return['recommended'] = $project->recommended;
+            }
+        } else {
+            $return['message'] = __('Please select project');
+            $return['ajaxstatus'] = 0;
+            $return['id'] = 0;
+            $return['recommended'] = 0;
+        }
+        return $return;
+    }
+
+    public function deleteAction()
     {
         // Get information
         $this->view()->setTemplate(false);
+        $module = $this->params('module');
         $id = $this->params('id');
         $row = $this->getModel('project')->find($id);
         if ($row) {
+            $row->status = 5;
+            $row->save();
             // Remove sitemap
             if (Pi::service('module')->isActive('sitemap')) {
                 $loc = Pi::url($this->url('portfolio', array(
-                        'module'      => $module, 
-                        'controller'  => 'project',
-                        'action'      => 'index',
-                        'slug'        => $row->slug
-                    )));
+                    'module'      => $module,
+                    'controller'  => 'project',
+                    'slug'        => $row->slug
+                )));
                 Pi::api('sitemap', 'sitemap')->remove($loc);
-            } 
+            }
             // Remove page
-            $row->delete();
             $this->jump(array('action' => 'index'), __('This project deleted'));
         }
-        $this->jump(array('action' => 'index'), __('Please select project'));
-    } */
+        $this->jump(array('action' => 'index'), __('Please select iproject'));
+    }
 }

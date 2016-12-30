@@ -18,8 +18,9 @@ use Pi\Form\Form as BaseForm;
 class ProjectForm extends BaseForm
 {
 
-    public function __construct($name = null, $options = array())
+    public function __construct($name = null, $option = array())
     {
+        $this->option = $option;
         $this->thumbUrl = (isset($options['thumbUrl'])) ? $options['thumbUrl'] : '';
         $this->removeUrl = empty($options['removeUrl']) ? '' : $options['removeUrl'];
         parent::__construct($name);
@@ -28,7 +29,7 @@ class ProjectForm extends BaseForm
     public function getInputFilter()
     {
         if (!$this->filter) {
-            $this->filter = new ProjectFilter;
+            $this->filter = new ProjectFilter($this->option);
         }
         return $this->filter;
     }
@@ -50,6 +51,7 @@ class ProjectForm extends BaseForm
             ),
             'attributes' => array(
                 'type' => 'text',
+                'required' => true,
             )
         ));
         // slug
@@ -60,6 +62,18 @@ class ProjectForm extends BaseForm
             ),
             'attributes' => array(
                 'type' => 'text',
+            )
+        ));
+        // type
+        $this->add(array(
+            'name' => 'type',
+            'type' => 'Module\Portfolio\Form\Element\Type',
+            'options' => array(
+                'label' => __('Project type'),
+                'category' => '',
+            ),
+            'attributes' => array(
+                'required' => true,
             )
         ));
         // service
@@ -246,7 +260,9 @@ class ProjectForm extends BaseForm
                 'label' => __('SEO Title'),
             ),
             'attributes' => array(
-                'type' => 'text',
+                'type' => 'textarea',
+                'rows' => '2',
+                'cols' => '40',
                 'description' => '',
             )
         ));
@@ -257,7 +273,9 @@ class ProjectForm extends BaseForm
                 'label' => __('SEO Keywords'),
             ),
             'attributes' => array(
-                'type' => 'text',
+                'type' => 'textarea',
+                'rows' => '2',
+                'cols' => '40',
                 'description' => '',
             )
         ));
@@ -268,7 +286,9 @@ class ProjectForm extends BaseForm
                 'label' => __('SEO Description'),
             ),
             'attributes' => array(
-                'type' => 'text',
+                'type' => 'textarea',
+                'rows' => '3',
+                'cols' => '40',
                 'description' => '',
             )
         ));
@@ -281,7 +301,7 @@ class ProjectForm extends BaseForm
                     'label' => __('Tags'),
                 ),
                 'attributes' => array(
-                    'id'          => 'tag',
+                    'id' => 'tag',
                     'description' => __('Use `|` as delimiter to separate tag terms'),
                 )
             ));

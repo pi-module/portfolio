@@ -60,8 +60,8 @@ class ProjectController extends ActionController
         $this->view()->headTitle($project['seo_title']);
         $this->view()->headdescription($project['seo_description'], 'set');
         $this->view()->headkeywords($project['seo_keywords'], 'set');
-        $this->view()->setTemplate('project_index');
+        $this->view()->setTemplate('project-single');
         $this->view()->assign('project', $project);
         $this->view()->assign('config', $config);
     }
-}	
+}

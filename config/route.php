@@ -12,15 +12,15 @@
  */
 return array(
     // route name
-    'portfolio'  => array(
-        'name'      => 'portfolio',
-        'type'      => 'Module\Portfolio\Route\Portfolio',
-        'options'   => array(
-            'route'     => '/portfolio',
-            'defaults'  => array(
-                'module'        => 'portfolio',
-                'controller'    => 'index',
-                'action'        => 'index'
+    'portfolio' => array(
+        'name' => 'portfolio',
+        'type' => 'Module\Portfolio\Route\Portfolio',
+        'options' => array(
+            'route' => '/portfolio',
+            'defaults' => array(
+                'module' => 'portfolio',
+                'controller' => 'index',
+                'action' => 'index'
             )
         ),
     )

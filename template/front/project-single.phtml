@@ -37,19 +37,26 @@ EOT;
 	    $this->headMeta($this->escape($project['largeUrl']), 'twitter:image');
     }
 ?>
-<div class="clearfix projectSingle" itemscope itemtype="http://schema.org/CreativeWork">
-	<h1 itemprop="name"><?php echo $this->escape($project['title']); ?></h1>
+<div class="clearfix portfolio-single" itemscope itemtype="http://schema.org/CreativeWork">
+    <div class="page-header">
+        <h1 itemprop="name">
+            <?php echo $this->escape($project['title']); ?>
+        </h1>
+    </div>
 	<meta itemprop="url" content="<?php echo $project['projectUrl']; ?>" />
-	<div class="col-sm-12 col-md-12">
+	<div class="col-md-6 col-md-offset-3">
 		<div class="gallery text-center clearfix u-photo">
-			<a href="<?php echo $this->escape($project['largeUrl']); ?>" title="<?php echo $this->escape($project['title']); ?>">
-				<img itemprop="image" class="img-responsive img-thumbnail" src="<?php echo $this->escape($project['mediumUrl']); ?>" alt="<?php echo $this->escape($project['title']); ?>" />
-			</a>
+			<a <?php if ($project['ribbon']) { ?>class="portfolio-ribbon"<?php } ?> href="<?php echo $this->escape($project['largeUrl']); ?>" title="<?php echo $this->escape($project['title']); ?>">
+				<img itemprop="image" class="img-responsive img-thumbnail" src="<?php echo $this->escape($project['largeUrl']); ?>" alt="<?php echo $this->escape($project['title']); ?>" />
+                <?php if ($project['ribbon']) { ?>
+                    <p><span><?php echo $this->escape($project['ribbon']); ?></span></p>
+                <?php } ?>
+            </a>
 		</div>
 	</div>
-	<div class="col-sm-12 col-md-12">
+	<div class="col-md-12">
 		<?php if($config['show_information'] && $project['information']) { ?>
-		<div class="project-text"><?php echo $project['information']; ?></div>
+		<div class="portfolio-text"><?php echo $project['information']; ?></div>
 		<?php } ?>
 		<div class="well">
 			<ul class="list-unstyled">
@@ -68,16 +75,16 @@ EOT;
 			</ul>
 		</div>
 		<?php if (isset($tag) && !empty($tag)) { ?>
-		<div class="clearfix tagList">
+		<div class="clearfix portfolio-tag-list">
 		<?php foreach($tag as $term) { ?>
-			<span class="tagItem">
+			<span class="portfolio-tag-item">
 				<a title="<?php echo $this->escape($term); ?>" href="<?php echo $this->url('', array('controller' => 'tag', 'action' => 'index', 'slug' => urlencode($term))); ?>"><i class="fa fa-tag"></i> <?php echo $this->escape($term); ?></a>
 			</span>
 		<?php } ?>
 		</div>
 		<?php } ?>
       	<?php if ($config['social_sharing']) { ?>
-        <div class="socialSharing">
+        <div class="portfolio-social-sharing">
            	<?php echo $this->socialSharing(
            		$config['social_sharing'], 
             	$this->escape($project['title']),
@@ -88,13 +95,13 @@ EOT;
       	<?php } ?>
 	</div>
 	<?php if (isset($projectRelated) && !empty($projectRelated)) { ?>
-		<div class="col-sm-12 col-md-12">
+		<div class="portfolio-related col-md-12">
 			<?php
-			$this->css($this->assetModule('css/owl.carousel.css'));
-			$this->js(array(
-				$this->assetModule('js/owl.carousel.min.js'),
-				$this->assetModule('js/owl.carousel.config.js')
-			));
+            $this->jQuery(array(
+                'extension/owl.carousel.min.js',
+                'extension/owl.carousel.css',
+            ));
+            $this->js($this->assetModule('js/owl.carousel.config.js'));
 			?>
 			<h3><?php _e('Related projects'); ?></h3>
 			<div class="owl-carousel clearfix">

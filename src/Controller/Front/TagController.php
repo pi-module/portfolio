@@ -86,10 +86,10 @@ public function indexAction()
         $this->view()->headTitle($title);
         $this->view()->headDescription($title, 'set');
         $this->view()->headKeywords($seoKeywords, 'set');
-        $this->view()->setTemplate('index_index');
+        $this->view()->setTemplate('project-list');
         $this->view()->assign('projects', $project);
         $this->view()->assign('paginator', $paginator);
         $this->view()->assign('config', $config);
         $this->view()->assign('title', $slug);
     }
-}	
+}

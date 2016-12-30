@@ -10,11 +10,19 @@
 /**
  * @author Hossein Azizabadi <azizabadi@faragostaresh.com>
  */
-return array(
-    'portfolio' => array(
-        'title' => _a('Portfolio comments'),
-        'icon' => 'icon-post',
-        'callback' => 'Module\Portfolio\Api\Comment',
-        'locator' => 'Module\Portfolio\Api\Comment',
-    ),
-);
+namespace Module\Portfolio\Model;
+
+use Pi\Application\Model\Model;
+
+class Type extends Model
+{
+    /**
+     * {@inheritDoc}
+     */
+    protected $columns = array(
+        'id',
+        'title',
+        'slug',
+        'status',
+    );
+}

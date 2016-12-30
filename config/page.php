@@ -14,26 +14,32 @@ return array(
     // Admin section
     'admin' => array(
         array(
-            'title'         => _a('Projects'),
-            'controller'    => 'project',
+            'title' => _a('Projects'),
+            'controller' => 'project',
+            'permission' => 'project',
+        ),
+        array(
+            'title' => _a('Type'),
+            'controller' => 'type',
+            'permission' => 'type',
         ),
     ),
     // Front section
     'front' => array(
         array(
-            'title'         => _a('Index'),
-            'controller'    => 'index',
-            'block'         => 1,
+            'title' => _a('Index'),
+            'controller' => 'index',
+            'block' => 1,
         ),
         array(
-            'title'         => _a('Tag'),
-            'controller'    => 'tag',
-            'block'         => 1,
+            'title' => _a('Tag'),
+            'controller' => 'tag',
+            'block' => 1,
         ),
         array(
-            'title'         => _a('Project'),
-            'controller'    => 'project',
-            'block'         => 1,
+            'title' => _a('Project'),
+            'controller' => 'project',
+            'block' => 1,
         ),
     ),
 );

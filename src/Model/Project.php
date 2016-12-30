@@ -22,7 +22,10 @@ class Project extends Model
     protected $columns = array(
         'id',
         'title',
-        'slug', 'service',
+        'slug',
+        'type',
+        'recommended',
+        'service',
         'technology',
         'website',
         'website_view',

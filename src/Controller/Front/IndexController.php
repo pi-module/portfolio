@@ -56,10 +56,10 @@ class IndexController extends ActionController
             )),
         ));
         // Set view
-        $this->view()->setTemplate('index_index');
+        $this->view()->setTemplate('project-list');
         $this->view()->assign('projects', $project);
         $this->view()->assign('paginator', $paginator);
         $this->view()->assign('config', $config);
         $this->view()->assign('title', __('List of our projects'));
     }
-}	
+}

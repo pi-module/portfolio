@@ -12,19 +12,70 @@
  */
 return array(
     'admin' => array(
-        'list' => array(
-            'label'         => _a('Projects'),
-            'route'         => 'admin',
-            'module'        => 'portfolio',
-            'controller'    => 'project',
-            'action'        => 'index',
+        'projects' => array(
+            'label' => _a('Projects'),
+            'permission' => array(
+                'resource' => 'projects',
+            ),
+            'route' => 'admin',
+            'module' => 'portfolio',
+            'controller' => 'project',
+            'action' => 'index',
+            'pages' => array(
+                'projects' => array(
+                    'label' => _a('Projects'),
+                    'permission' => array(
+                        'resource' => 'project',
+                    ),
+                    'route' => 'admin',
+                    'module' => 'portfolio',
+                    'controller' => 'project',
+                    'action' => 'index',
+                ),
+                'update' => array(
+                    'label' => _a('Manage projects'),
+                    'permission' => array(
+                        'resource' => 'project',
+                    ),
+                    'route' => 'admin',
+                    'module' => 'portfolio',
+                    'controller' => 'project',
+                    'action' => 'update',
+                ),
+            ),
         ),
-        'add' => array(
-            'label'         => _a('Add Projects'),
-            'route'         => 'admin',
-            'module'        => 'portfolio',
-            'controller'    => 'project',
-            'action'        => 'update',
+        'type' => array(
+            'label' => _a('Project type'),
+            'permission' => array(
+                'resource' => 'type',
+            ),
+            'route' => 'admin',
+            'module' => 'portfolio',
+            'controller' => 'type',
+            'action' => 'index',
+            'pages' => array(
+                'type' => array(
+                    'label' => _a('Project type'),
+                    'permission' => array(
+                        'resource' => 'type',
+                    ),
+                    'route' => 'admin',
+                    'module' => 'portfolio',
+                    'controller' => 'type',
+                    'action' => 'index',
+                ),
+
+                'update' => array(
+                    'label' => _a('Manage project type'),
+                    'permission' => array(
+                        'resource' => 'type',
+                    ),
+                    'route' => 'admin',
+                    'module' => 'portfolio',
+                    'controller' => 'type',
+                    'action' => 'update',
+                ),
+            ),
         ),
     ),
 );

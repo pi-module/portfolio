@@ -11,10 +11,15 @@
  * @author Hossein Azizabadi <azizabadi@faragostaresh.com>
  */
 return array(
-    'portfolio' => array(
-        'title' => _a('Portfolio comments'),
-        'icon' => 'icon-post',
-        'callback' => 'Module\Portfolio\Api\Comment',
-        'locator' => 'Module\Portfolio\Api\Comment',
+    // Admin section
+    'admin' => array(
+        'project' => array(
+            'title' => _a('Project'),
+            'access' => array(),
+        ),
+        'type' => array(
+            'title' => _a('Type'),
+            'access' => array(),
+        ),
     ),
 );
