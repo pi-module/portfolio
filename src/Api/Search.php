@@ -52,7 +52,7 @@ class Search extends AbstractSearch
     /**
      * {@inheritDoc}
      */
-    protected function buildUrl(array $item)
+    protected function buildUrl(array $item, $table = '')
     {
         $link = Pi::service('url')->assemble('portfolio', array(
             'module'        => $this->getModule(),
@@ -61,5 +61,26 @@ class Search extends AbstractSearch
         ));
 
         return $link;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    protected function buildImage(array $item, $table = '')
+    {
+        // Get config
+        $config = Pi::service('registry')->config->read($this->getModule());
+
+        $image = '';
+        if (isset($item['image']) && !empty($item['image'])) {
+            $image = Pi::url(
+                sprintf('upload/%s/thumb/%s/%s',
+                    $config['image_path'],
+                    $item['path'],
+                    $item['image']
+                ));
+        }
+
+        return $image;
     }
 }
