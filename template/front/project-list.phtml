@@ -1,14 +1,56 @@
-<?php $this->css($this->assetModule('css/front.css')); ?>
+<?php 
+$this->css($this->assetModule('css/front.css'));
+// Set box site
+switch ($config['view_column']) {
+    case 1:
+        $ProjectBoxSize = 'col-xs-12';
+        $image = 'large';
+        break;
+
+    case 2:
+        $ProjectBoxSize = 'col-xs-6';
+        $image = 'medium';
+        break;
+
+    case 3:
+        $ProjectBoxSize = 'col-xs-4';
+        $image = 'thumb';
+        break;
+
+    case 4:
+        $ProjectBoxSize = 'col-xs-3';
+        $image = 'thumb';
+        break;
+
+    case 6:
+        $ProjectBoxSize = 'col-xs-2';
+        $image = 'thumb';
+        break;
+}
+?>
 <div class="clearfix portfolio-list">
     <div class="page-header">
         <h1><?php echo $this->escape($title); ?></h1>
     </div>
     <div class="clearfix row">
         <?php foreach($projects as $project) { ?>
-            <div class="col-md-3 portfolio-list-single" itemscope itemtype="http://schema.org/CreativeWork">
+            <div class="<?php echo $ProjectBoxSize; ?> portfolio-list-single" itemscope itemtype="http://schema.org/CreativeWork">
                 <div class="thumbnail">
+                    <?php switch ($image) {
+                        case 'large':
+                            $imageUrl = $project['largeUrl'];
+                            break;
+
+                        case 'medium':
+                            $imageUrl = $project['mediumUrl'];
+                            break;
+
+                        case 'thumb':
+                            $imageUrl = $project['thumbUrl'];
+                            break;
+                    } ?>
                     <a <?php if ($project['ribbon']) { ?>class="portfolio-ribbon"<?php } ?> itemprop="url" title="<?php echo $this->escape($project['title']); ?>" href="<?php echo $project['projectUrl']; ?>" >
-                        <img itemprop="image" class="img-responsive" src="<?php echo $project['thumbUrl']; ?>" alt="<?php echo $this->escape($project['title']); ?>">
+                        <img itemprop="image" class="img-responsive" src="<?php echo $imageUrl; ?>" alt="<?php echo $this->escape($project['title']); ?>">
                         <?php if ($project['ribbon']) { ?>
                             <p><span><?php echo $this->escape($project['ribbon']); ?></span></p>
                         <?php } ?>

@@ -29,8 +29,8 @@ class IndexController extends ActionController
         // Set info
         $where = array('status' => 1);
         $order = array('id DESC', 'time_create DESC');
-        $offset = (int)($page - 1) * $this->config('show_perpage');
-        $limit = intval($this->config('show_perpage'));
+        $offset = (int)($page - 1) * $this->config('view_perpage');
+        $limit = intval($this->config('view_perpage'));
         // Get info
         $select = $this->getModel('project')->select()->where($where)->order($order)->offset($offset)->limit($limit);
         $rowset = $this->getModel('project')->selectWith($select);
@@ -55,11 +55,13 @@ class IndexController extends ActionController
                 'action'        => 'index',
             )),
         ));
+        // Set title
+        $title = !empty($config['homepage_title']) ? $config['homepage_title'] : __('List of our projects');
         // Set view
         $this->view()->setTemplate('project-list');
         $this->view()->assign('projects', $project);
         $this->view()->assign('paginator', $paginator);
         $this->view()->assign('config', $config);
-        $this->view()->assign('title', __('List of our projects'));
+        $this->view()->assign('title', $title);
     }
 }

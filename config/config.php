@@ -41,13 +41,39 @@ return array(
             'value' => 10
         ),
         // Show
-        'show_perpage' => array(
+        'homepage_title' => array(
+            'category' => 'view',
+            'title' => _a('Homepage title'),
+            'description' => '',
+            'edit' => 'text',
+            'filter' => 'string',
+        ),
+        'view_perpage' => array(
             'category' => 'show',
             'title' => _a('Perpage'),
             'description' => '',
             'edit' => 'text',
             'filter' => 'number_int',
             'value' => 12
+        ),
+        'view_column' => array(
+            'title' => _a('Columns'),
+            'description' => '',
+            'edit' => array(
+                'type' => 'select',
+                'options' => array(
+                    'options' => array(
+                        1 => _a('One columns'),
+                        2 => _a('Two columns'),
+                        3 => _a('Three columns'),
+                        4 => _a('Four columns'),
+                        6 => _a('Six columns'),
+                    ),
+                ),
+            ),
+            'filter' => 'text',
+            'value' => 3,
+            'category' => 'view',
         ),
         'show_service' => array(
             'category' => 'show',
@@ -120,7 +146,7 @@ return array(
             'description' => '',
             'edit' => 'text',
             'filter' => 'string',
-            'value' => 'guide/image'
+            'value' => 'portfolio/image'
         ),
         'image_extension' => array(
             'category' => 'image',

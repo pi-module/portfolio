@@ -47,8 +47,8 @@ public function indexAction()
         // Set info
         $where = array('status' => 1, 'id' => $tagId);
         $order = array('id DESC', 'time_create DESC');
-        $offset = (int)($page - 1) * $this->config('show_perpage');
-        $limit = intval($this->config('show_perpage'));
+        $offset = (int)($page - 1) * $this->config('view_perpage');
+        $limit = intval($this->config('view_perpage'));
         // Get info
         $select = $this->getModel('project')->select()->where($where)->order($order)->offset($offset)->limit($limit);
         $rowset = $this->getModel('project')->selectWith($select);

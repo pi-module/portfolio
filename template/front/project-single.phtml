@@ -53,21 +53,29 @@ if (!empty($project['largeUrl'])) {
                 <?php } ?>
             </a>
         </div>
+        <br />
     </div>
     <div class="col-md-12">
         <?php if($config['show_information'] && $project['information']) { ?>
-            <div class="portfolio-text"><?php echo $project['information']; ?></div>
+            <div class="portfolio-text">
+                <?php echo $project['information']; ?>
+            </div>
+            <br />
         <?php } ?>
-        <div class="well">
+        <div class="clearfix text-center">
+            <?php if($config['show_website'] && $project['website'] && $project['website_view']) { ?>
+                <a target="_blank" class="btn btn-primary btn-lg" href="<?php echo $this->escape($project['website']); ?>" role="button">
+                    <?php _e('Open website'); ?>
+                </a>
+            <?php } ?>
+        </div>
+        <div class="clearfix">
             <ul class="list-unstyled">
                 <?php if($config['show_service'] && $project['service']) { ?>
                     <li><strong><?php _e('Service'); ?> : </strong><?php echo $this->escape($project['service']); ?></li>
                 <?php } ?>
                 <?php if($config['show_technology'] && $project['technology']) { ?>
                     <li><strong><?php _e('Technology'); ?> : </strong><?php echo $this->escape($project['technology']); ?></li>
-                <?php } ?>
-                <?php if($config['show_website'] && $project['website'] && $project['website_view']) { ?>
-                    <li><strong><?php _e('Website'); ?> : </strong><?php echo $this->escape($project['website']); ?></li>
                 <?php } ?>
                 <?php if($config['show_hits']) { ?>
                     <li><strong><?php _e('Hits'); ?> : </strong><?php echo $this->escape($project['hits']); ?></li>

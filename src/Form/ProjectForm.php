@@ -21,8 +21,8 @@ class ProjectForm extends BaseForm
     public function __construct($name = null, $option = array())
     {
         $this->option = $option;
-        $this->thumbUrl = (isset($options['thumbUrl'])) ? $options['thumbUrl'] : '';
-        $this->removeUrl = empty($options['removeUrl']) ? '' : $options['removeUrl'];
+        $this->thumbUrl = (isset($option['thumbUrl'])) ? $option['thumbUrl'] : '';
+        $this->removeUrl = (isset($option['removeUrl'])) ? $option['removeUrl'] : '';
         parent::__construct($name);
     }
 
