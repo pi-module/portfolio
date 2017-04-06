@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Pi portfolio module\n"
-"POT-Creation-Date: 2016-12-30 12:05+0330\n"
+"POT-Creation-Date: 2017-04-06 13:53+0430\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: Pi\n"
@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: Poedit 1.8.12\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: _a;_t\n"
 "X-Poedit-Basepath: ../..\n"
@@ -88,107 +88,135 @@ msgstr "تصویر"
 msgid "Social"
 msgstr "شبکه های اجتماعی"
 
-#: config/config.php:37 config/config.php:46
+#: config/config.php:37 config/config.php:53
 msgid "Perpage"
 msgstr "تعداد در صفحه"
 
-#: config/config.php:54
+#: config/config.php:46
+msgid "Homepage title"
+msgstr "عنوان صفحه اول"
+
+#: config/config.php:60
+msgid "Columns"
+msgstr "ستون"
+
+#: config/config.php:66
+msgid "One columns"
+msgstr "یک ستون"
+
+#: config/config.php:67
+msgid "Two columns"
+msgstr "دو ستون"
+
+#: config/config.php:68
+msgid "Three columns"
+msgstr "سه ستون"
+
+#: config/config.php:69
+msgid "Four columns"
+msgstr "چهار ستون"
+
+#: config/config.php:70
+msgid "Six columns"
+msgstr "شش ستون"
+
+#: config/config.php:80
 msgid "Show Service"
 msgstr "نمایش خدمات"
 
-#: config/config.php:62
+#: config/config.php:88
 msgid "Show Technology"
 msgstr "نمایش فن آوری"
 
-#: config/config.php:70
+#: config/config.php:96
 msgid "Show Website"
 msgstr "نمایش وب سایت"
 
-#: config/config.php:78
+#: config/config.php:104
 msgid "Show Information"
 msgstr "نمایش اطلاعات"
 
-#: config/config.php:86
+#: config/config.php:112
 msgid "Show Hits"
 msgstr "نمایش بازدید"
 
-#: config/config.php:94
+#: config/config.php:120
 msgid "Show Tags"
 msgstr "نمایش برچسب ها"
 
-#: config/config.php:103
+#: config/config.php:129
 msgid "Image Size"
 msgstr "حجم تصویر"
 
-#: config/config.php:111
+#: config/config.php:137
 msgid "Image quality"
 msgstr "کیفیت تصویر"
 
-#: config/config.php:112
+#: config/config.php:138
 msgid "Between 0 to 100 and support both of JPG and PNG, default is 75"
 msgstr "بین ۰ تا ۱۰۰ تنظیم شود و برای هر دو فرمت PNG و JPG ، مقدار پیش فرض ۷۵"
 
-#: config/config.php:119
+#: config/config.php:145
 msgid "Image path"
 msgstr "مسیر ذخیره تصویر"
 
-#: config/config.php:127
+#: config/config.php:153
 msgid "Image Extension"
 msgstr "پسوند های مجار برای تصویر"
 
-#: config/config.php:135
+#: config/config.php:161
 msgid "Large Image width"
 msgstr "عرض تصویر بزرگ"
 
-#: config/config.php:143
+#: config/config.php:169
 msgid "Large Image height"
 msgstr "ارتفاع تصویر بزرگ"
 
-#: config/config.php:151
+#: config/config.php:177
 msgid "Medium Image width"
 msgstr "عرض تصویر متوسط"
 
-#: config/config.php:159
+#: config/config.php:185
 msgid "Medium Image height"
 msgstr "ارتفاع تصویر متوسط"
 
-#: config/config.php:167
+#: config/config.php:193
 msgid "Thumb Image width"
 msgstr "عرض تصویر بندانگشتی"
 
-#: config/config.php:175
+#: config/config.php:201
 msgid "Thumb Image height"
 msgstr "ارتفاع تصویر بندانگشتی"
 
-#: config/config.php:183
+#: config/config.php:209
 msgid "Add Watermark"
 msgstr "اضافه کردن واترمارک به تصویر"
 
-#: config/config.php:191
+#: config/config.php:217
 msgid "Watermark Image"
 msgstr "تصویر واترمارک"
 
-#: config/config.php:198
+#: config/config.php:224
 msgid "Watermark Positio"
 msgstr "موقعیت واترمارک"
 
-#: config/config.php:204
+#: config/config.php:230
 msgid "Top Left"
 msgstr "بالا چپ"
 
-#: config/config.php:205
+#: config/config.php:231
 msgid "Top Right"
 msgstr "بالا راست"
 
-#: config/config.php:206
+#: config/config.php:232
 msgid "Bottom Left"
 msgstr "پایین چپ"
 
-#: config/config.php:207
+#: config/config.php:233
 msgid "Bottom Right"
 msgstr "پایین راست"
 
-#: config/config.php:217
+#: config/config.php:243
 msgid "Social sharing items"
 msgstr "اشتراک گذاری در شبکه های اجتماعی "
 
@@ -382,6 +410,3 @@ msgstr "پروژه"
 
 #~ msgid "Use lightbox"
 #~ msgstr "استفاده از افکت"
-
-#~ msgid "Columns"
-#~ msgstr "ستون"

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Pi portfolio module\n"
-"POT-Creation-Date: 2016-12-30 12:10+0330\n"
+"POT-Creation-Date: 2017-04-06 13:53+0430\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: Pi\n"
@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: Poedit 1.8.12\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e\n"
 "X-Poedit-Basepath: ../..\n"
@@ -68,7 +68,7 @@ msgstr "نوع پروژه با موفقیت ذخیره شد"
 msgid "Manage type"
 msgstr "مدیریت نوع پروژه"
 
-#: src/Controller/Front/IndexController.php:63
+#: src/Controller/Front/IndexController.php:59
 msgid "List of our projects"
 msgstr "فهرست پروژه ها"
 
@@ -102,15 +102,15 @@ msgstr "اسلاگ"
 msgid "Project type"
 msgstr "نوع پروژه"
 
-#: src/Form/ProjectForm.php:83 template/front/project-single.phtml:64
+#: src/Form/ProjectForm.php:83 template/front/project-single.phtml:75
 msgid "Service"
 msgstr "خدمات"
 
-#: src/Form/ProjectForm.php:93 template/front/project-single.phtml:67
+#: src/Form/ProjectForm.php:93 template/front/project-single.phtml:78
 msgid "Technology"
 msgstr "فن آوری"
 
-#: src/Form/ProjectForm.php:103 template/front/project-single.phtml:70
+#: src/Form/ProjectForm.php:103
 msgid "Website"
 msgstr "وب سایت"
 
@@ -304,11 +304,15 @@ msgstr "شناسه"
 msgid "Action"
 msgstr "عملکرد"
 
-#: template/front/project-single.phtml:73
+#: template/front/project-single.phtml:68
+msgid "Open website"
+msgstr "ورود به وب سایت"
+
+#: template/front/project-single.phtml:81
 msgid "Hits"
 msgstr "بازدید"
 
-#: template/front/project-single.phtml:106
+#: template/front/project-single.phtml:116
 msgid "Related projects"
 msgstr "پروژه های مشابه"
 
