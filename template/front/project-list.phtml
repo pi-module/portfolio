@@ -1,4 +1,4 @@
-<?php 
+<?php
 $this->css($this->assetModule('css/front.css'));
 // Set box site
 switch ($config['view_column']) {
@@ -49,16 +49,28 @@ switch ($config['view_column']) {
                             $imageUrl = $project['thumbUrl'];
                             break;
                     } ?>
-                    <a <?php if ($project['ribbon']) { ?>class="portfolio-ribbon"<?php } ?> itemprop="url" title="<?php echo $this->escape($project['title']); ?>" href="<?php echo $project['projectUrl']; ?>" >
+                    <a <?php if ($project['ribbon']) { ?>class="portfolio-ribbon"<?php } ?> itemprop="url" title="<?php echo $this->escape($project['title']); ?>" href="<?php echo $this->escape($project['projectUrl']); ?>" >
                         <img itemprop="image" class="img-responsive" src="<?php echo $imageUrl; ?>" alt="<?php echo $this->escape($project['title']); ?>">
                         <?php if ($project['ribbon']) { ?>
                             <p><span><?php echo $this->escape($project['ribbon']); ?></span></p>
                         <?php } ?>
                     </a>
                     <div class="caption">
-                        <a title="<?php echo $this->escape($project['title']); ?>" href="<?php echo $project['projectUrl']; ?>" >
+                        <a title="<?php echo $this->escape($project['title']); ?>" href="<?php echo $this->escape($project['projectUrl']); ?>" >
                             <h2 itemprop="name" class="small"><?php echo $this->escape($project['title']); ?></h2>
                         </a>
+                        <?php if ($config['show_technology'] && !empty($project['technology'])) { ?>
+                            <div class="portfolio-technology">
+                                <?php echo $this->escape($project['technology']); ?>
+                            </div>
+                        <?php } ?>
+                        <?php if ($config['show_website'] && !empty($project['website'])) { ?>
+                            <div class="portfolio-website">
+                                <a target="_blank" title="<?php echo $this->escape($project['title']); ?>" href="<?php echo $this->escape($project['website']); ?>" >
+                                    <?php _e('View website'); ?>
+                                </a>
+                            </div>
+                        <?php } ?>
                     </div>
                 </div>
             </div>
