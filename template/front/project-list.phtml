@@ -41,7 +41,7 @@ $this->headMeta($this->escape($title), 'twitter:description');
     <div class="page-header">
         <h1><?php echo $this->escape($title); ?></h1>
     </div>
-    <?php if (!empty($config['text_description_index']) && isset($page) && $page == 1) { ?>
+    <?php if (!empty($config['text_description_index'])) { ?>
         <div class="portfolio-description clearfix">
             <?php echo $config['text_description_index']; ?>
         </div>
