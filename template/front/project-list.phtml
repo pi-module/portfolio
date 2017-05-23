@@ -38,9 +38,6 @@ $this->headMeta($this->escape($title), 'twitter:title');
 $this->headMeta($this->escape($title), 'twitter:description');
 ?>
 <div class="clearfix portfolio-list">
-    <div class="page-header">
-        <h1><?php echo $this->escape($title); ?></h1>
-    </div>
     <?php if (!empty($config['text_description_index'])) { ?>
         <div class="portfolio-description clearfix">
             <?php echo $config['text_description_index']; ?>
@@ -59,6 +56,9 @@ $this->headMeta($this->escape($title), 'twitter:description');
             </ul>
         </div>
     <?php } ?>
+    <div class="page-header">
+        <h1><?php echo $this->escape($title); ?></h1>
+    </div>
     <div class="clearfix row">
         <?php foreach($projects as $project) { ?>
             <div class="<?php echo $ProjectBoxSize; ?> portfolio-list-single" itemscope itemtype="http://schema.org/CreativeWork">
