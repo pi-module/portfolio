@@ -47,6 +47,19 @@ class Breadcrumbs extends AbstractBreadcrumbs
                 );
                 break;
 
+            case 'type':
+                $type = Pi::model('type', 'portfolio')->find($params['slug'], 'slug')->toArray();
+                $result[] = array(
+                    'label' => $moduleData['title'],
+                    'href'  => Pi::service('url')->assemble('portfolio', array(
+                        'module' => $this->getModule(),
+                    )),
+                );
+                $result[] = array(
+                    'label' => $type['title'],
+                );
+                break;
+
             case 'project':
                 $project = Pi::api('project', 'portfolio')->getProject($params['slug'], 'slug');
                 $result[] = array(

@@ -29,6 +29,8 @@ class Project extends Model
         'technology',
         'website',
         'website_view',
+        'phone',
+        'phone_view',
         'information',
         'seo_title',
         'seo_keywords',

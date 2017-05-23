@@ -117,6 +117,27 @@ class ProjectForm extends BaseForm
                 'value'     => '1',
             )
         ));
+        // phone
+        $this->add(array(
+            'name' => 'phone',
+            'options' => array(
+                'label' => __('Phone'),
+            ),
+            'attributes' => array(
+                'type' => 'text',
+            )
+        ));
+        // phone_view
+        $this->add(array(
+            'name'          => 'phone_view',
+            'type'          => 'checkbox',
+            'options'       => array(
+                'label' => __('View phone'),
+            ),
+            'attributes'    => array(
+                'value'     => '1',
+            )
+        ));
         // Information
         $this->add(array(
             'name' => 'information',

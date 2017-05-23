@@ -34,7 +34,7 @@ class Portfolio extends Standard
     protected $structureDelimiter = '/';
 
     protected $controllerList = array(
-        'index', 'project', 'tag'
+        'index', 'project', 'tag', 'type'
     );
 
     /**
@@ -59,11 +59,15 @@ class Portfolio extends Standard
                     break;
 
                 case 'tag':
-                    $matches['slug'] = $parts[1] ? urldecode($parts[1]) : null;
+                    $matches['slug'] = $parts[1] ? $this->decode($parts[1]) : null;
+                    break;
+
+                case 'type':
+                    $matches['slug'] = $parts[1] ? $this->decode($parts[1]) : null;
                     break;
 
                 case 'project':
-                    $matches['slug'] = $parts[1] ? urldecode($parts[1]) : null;
+                    $matches['slug'] = $parts[1] ? $this->decode($parts[1]) : null;
                     break;
             }    
         }

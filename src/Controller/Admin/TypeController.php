@@ -66,6 +66,8 @@ class TypeController extends ActionController
                 }
                 $row->assign($values);
                 $row->save();
+                // Clear registry
+                Pi::registry('typeRoute', 'portfolio')->clear();
                 // Jump
                 $message = __('Project type data saved successfully.');
                 $this->jump(array('action' => 'index'), $message);

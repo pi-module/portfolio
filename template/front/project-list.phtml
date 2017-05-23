@@ -27,11 +27,38 @@ switch ($config['view_column']) {
         $image = 'thumb';
         break;
 }
+
+// Set Open Graph tags for meta
+$this->doctype('HTML5');
+$this->headMeta($this->escape($title), 'og:title', 'property');
+$this->headMeta($this->escape($title), 'og:description', 'property');
+
+// Set twitter for meta
+$this->headMeta($this->escape($title), 'twitter:title');
+$this->headMeta($this->escape($title), 'twitter:description');
 ?>
 <div class="clearfix portfolio-list">
     <div class="page-header">
         <h1><?php echo $this->escape($title); ?></h1>
     </div>
+    <?php if (!empty($config['text_description_index']) && isset($page) && $page == 1) { ?>
+        <div class="portfolio-description clearfix">
+            <?php echo $config['text_description_index']; ?>
+        </div>
+    <?php } ?>
+    <?php if ($config['show_type'] && isset($typeList) && !empty($typeList)) { ?>
+        <div class="portfolio-type clearfix">
+            <ul>
+                <?php foreach ($typeList as $typeSingle) { ?>
+                    <li>
+                        <a href="<?php echo $this->escape($typeSingle['typeUrl']); ?>" title="<?php echo $this->escape($typeSingle['title']); ?>">
+                            <?php echo $this->escape($typeSingle['title']); ?>
+                        </a>
+                    </li>
+                <?php } ?>
+            </ul>
+        </div>
+    <?php } ?>
     <div class="clearfix row">
         <?php foreach($projects as $project) { ?>
             <div class="<?php echo $ProjectBoxSize; ?> portfolio-list-single" itemscope itemtype="http://schema.org/CreativeWork">
@@ -59,12 +86,12 @@ switch ($config['view_column']) {
                         <a title="<?php echo $this->escape($project['title']); ?>" href="<?php echo $this->escape($project['projectUrl']); ?>" >
                             <h2 itemprop="name" class="small"><?php echo $this->escape($project['title']); ?></h2>
                         </a>
-                        <?php if ($config['show_technology'] && !empty($project['technology'])) { ?>
+                        <?php if ($config['show_phone'] && $project['phone_view'] && !empty($project['phone'])) { ?>
                             <div class="portfolio-technology">
                                 <?php echo $this->escape($project['technology']); ?>
                             </div>
                         <?php } ?>
-                        <?php if ($config['show_website'] && !empty($project['website'])) { ?>
+                        <?php if ($config['show_website'] && $project['website_view'] && !empty($project['website'])) { ?>
                             <div class="portfolio-website">
                                 <a target="_blank" title="<?php echo $this->escape($project['title']); ?>" href="<?php echo $this->escape($project['website']); ?>" >
                                     <?php _e('View website'); ?>

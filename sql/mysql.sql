@@ -8,6 +8,8 @@ CREATE TABLE `{project}` (
   `technology`      VARCHAR(255)        NOT NULL  DEFAULT '',
   `website`         VARCHAR(64)         NOT NULL  DEFAULT '',
   `website_view`    TINYINT(1) UNSIGNED NOT NULL  DEFAULT '0',
+  `phone`           VARCHAR(16)         NOT NULL  DEFAULT '',
+  `phone_view`      TINYINT(1) UNSIGNED NOT NULL  DEFAULT '0',
   `information`     TEXT,
   `seo_title`       VARCHAR(255)        NOT NULL  DEFAULT '',
   `seo_keywords`    VARCHAR(255)        NOT NULL  DEFAULT '',

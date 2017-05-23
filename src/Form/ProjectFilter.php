@@ -75,6 +75,16 @@ class ProjectFilter extends InputFilter
             'name' => 'website_view',
             'required' => false,
         ));
+        // phone
+        $this->add(array(
+            'name' => 'phone',
+            'required' => false,
+        ));
+        // phone_view
+        $this->add(array(
+            'name' => 'phone_view',
+            'required' => false,
+        ));
         // information
         $this->add(array(
             'name' => 'information',

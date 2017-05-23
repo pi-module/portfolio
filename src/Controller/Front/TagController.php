@@ -10,6 +10,7 @@
 /**
  * @author Hossein Azizabadi <azizabadi@faragostaresh.com>
  */
+
 namespace Module\Portfolio\Controller\Front;
 
 use Pi;
@@ -20,7 +21,7 @@ use Zend\Db\Sql\Predicate\Expression;
 
 class TagController extends ActionController
 {
-public function indexAction()
+    public function indexAction()
     {
         // Get info from url
         $module = $this->params('module');
@@ -65,15 +66,32 @@ public function indexAction()
         $paginator->setItemCountPerPage(intval($limit));
         $paginator->setCurrentPageNumber(intval($page));
         $paginator->setUrlOptions(array(
-            'router'    => $this->getEvent()->getRouter(),
-            'route'     => $this->getEvent()->getRouteMatch()->getMatchedRouteName(),
-            'params'    => array_filter(array(
-                'module'        => $this->getModule(),
-                'controller'    => 'index',
-                'action'        => 'tag',
-                'slug'          => $slug,
+            'router' => $this->getEvent()->getRouter(),
+            'route' => $this->getEvent()->getRouteMatch()->getMatchedRouteName(),
+            'params' => array_filter(array(
+                'module' => $this->getModule(),
+                'controller' => 'index',
+                'action' => 'tag',
+                'slug' => $slug,
             )),
         ));
+        // Get type list
+        $typeList = array();
+        $where = array('status' => 1);
+        $order = array('id DESC');
+        // Get info
+        $select = $this->getModel('type')->select()->where($where)->order($order);
+        $rowset = $this->getModel('type')->selectWith($select);
+        // Make list
+        foreach ($rowset as $row) {
+            $typeList[$row->id] = $row->toArray();
+            $typeList[$row->id]['typeUrl'] = Pi::url($this->url('', array(
+                'module'        => $this->getModule(),
+                'controller'    => 'type',
+                'action'        => 'index',
+                'slug'          => $row->slug,
+            )));
+        }
         // Set header and title
         $title = sprintf(__('All projects by %s tag'), $slug);
         // Set seo_keywords
@@ -91,5 +109,6 @@ public function indexAction()
         $this->view()->assign('paginator', $paginator);
         $this->view()->assign('config', $config);
         $this->view()->assign('title', $slug);
+        $this->view()->assign('typeList', $typeList);
     }
 }

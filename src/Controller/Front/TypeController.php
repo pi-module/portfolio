@@ -13,21 +13,34 @@
 namespace Module\Portfolio\Controller\Front;
 
 use Pi;
+use Pi\Filter;
 use Pi\Mvc\Controller\ActionController;
 use Pi\Paginator\Paginator;
 use Zend\Db\Sql\Predicate\Expression;
 
-class IndexController extends ActionController
+class TypeController extends ActionController
 {
     public function indexAction()
     {
         // Get info from url
         $module = $this->params('module');
         $page = $this->params('page', 1);
+        $slug = $this->params('slug');
         // Get config
         $config = Pi::service('registry')->config->read($module);
+        // Check slug
+        if (!isset($slug) || empty($slug)) {
+            $url = array('', 'module' => $module, 'controller' => 'index', 'action' => 'index');
+            $this->jump($url, __('The type not set.'), 'error');
+        }
+        // Find project
+        $type = $this->getModel('type')->find($slug, 'slug')->toArray();
+        // Check status
+        if (!$type || $type['status'] != 1) {
+            $this->jump(array('', 'module' => $module, 'controller' => 'index'), __('The type not found.'));
+        }
         // Set info
-        $where = array('status' => 1);
+        $where = array('status' => 1, 'type' => $type['id']);
         $order = array('id DESC', 'time_create DESC');
         $offset = (int)($page - 1) * $this->config('view_perpage');
         $limit = intval($this->config('view_perpage'));
@@ -51,8 +64,9 @@ class IndexController extends ActionController
             'route'     => $this->getEvent()->getRouteMatch()->getMatchedRouteName(),
             'params'    => array_filter(array(
                 'module'        => $this->getModule(),
-                'controller'    => 'index',
+                'controller'    => 'type',
                 'action'        => 'index',
+                'slug'          => $type['slug'],
             )),
         ));
         // Get type list
@@ -72,9 +86,18 @@ class IndexController extends ActionController
                 'slug'          => $row->slug,
             )));
         }
-        // Set title
-        $title = !empty($config['homepage_title']) ? $config['homepage_title'] : __('List of our projects');
+        // Set header and title
+        $title = sprintf(__('All projects by %s type'), $type['title']);
+        // Set seo_keywords
+        $filter = new Filter\HeadKeywords;
+        $filter->setOptions(array(
+            'force_replace_space' => true
+        ));
+        $seoKeywords = $filter($title);
         // Set view
+        $this->view()->headTitle($title);
+        $this->view()->headDescription($title, 'set');
+        $this->view()->headKeywords($seoKeywords, 'set');
         $this->view()->setTemplate('project-list');
         $this->view()->assign('projects', $project);
         $this->view()->assign('paginator', $paginator);

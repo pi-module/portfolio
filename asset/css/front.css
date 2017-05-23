@@ -61,3 +61,14 @@ a.portfolio-ribbon:hover {
 	-ms-transform: rotate(45deg);
 	z-index:1;
 }
+
+/* type list */
+.portfolio-type {
+	text-align: center;
+}
+
+.portfolio-type ul li {
+	padding: 5px 10px;
+	list-style: inline;
+	display: inline;
+}

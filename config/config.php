@@ -75,6 +75,15 @@ return array(
             'value' => 3,
             'category' => 'view',
         ),
+        'show_type' => array(
+            'category' => 'show',
+            'title' => _a('Show type list'),
+            'description' => '',
+            'edit' => 'checkbox',
+            'filter' => 'number_int',
+            'value' => 1
+        ),
+
         'show_service' => array(
             'category' => 'show',
             'title' => _a('Show Service'),
@@ -94,6 +103,14 @@ return array(
         'show_website' => array(
             'category' => 'show',
             'title' => _a('Show Website'),
+            'description' => '',
+            'edit' => 'checkbox',
+            'filter' => 'number_int',
+            'value' => 1
+        ),
+        'show_phone' => array(
+            'category' => 'show',
+            'title' => _a('Show phone'),
             'description' => '',
             'edit' => 'checkbox',
             'filter' => 'number_int',
@@ -250,6 +267,15 @@ return array(
             ),
             'filter' => 'array',
             'category' => 'social',
+        ),
+        // Texts
+        'text_description_index' => array(
+            'category' => 'head_meta',
+            'title' => _a('Description for index page'),
+            'description' => '',
+            'edit' => 'textarea',
+            'filter' => 'string',
+            'value' => ''
         ),
     ),
 );

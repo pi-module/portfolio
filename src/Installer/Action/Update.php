@@ -59,7 +59,7 @@ class Update extends BasicUpdate
                 return false;
             }
 
-            // Alter table : ADD display_order
+            // Alter table : ADD recommended
             $sql = sprintf("ALTER TABLE %s ADD `recommended` TINYINT(1) UNSIGNED NOT NULL DEFAULT '0', ADD INDEX (`recommended`) ", $projectTable);
             try {
                 $projectAdapter->query($sql, 'execute');
@@ -112,7 +112,36 @@ EOD;
             }
             
         }
-        
+
+        // Update to version 1.2.3
+        if (version_compare($moduleVersion, '1.2.3', '<')) {
+            // Alter table : ADD phone
+            $sql = sprintf("ALTER TABLE %s ADD `phone` VARCHAR(16) NOT NULL  DEFAULT ''", $projectTable);
+            try {
+                $projectAdapter->query($sql, 'execute');
+            } catch (\Exception $exception) {
+                $this->setResult('db', array(
+                    'status' => false,
+                    'message' => 'Table alter query failed: '
+                        . $exception->getMessage(),
+                ));
+                return false;
+            }
+
+            // Alter table : ADD phone_view
+            $sql = sprintf("ALTER TABLE %s ADD `phone_view` TINYINT(1) UNSIGNED NOT NULL  DEFAULT '0'", $projectTable);
+            try {
+                $projectAdapter->query($sql, 'execute');
+            } catch (\Exception $exception) {
+                $this->setResult('db', array(
+                    'status' => false,
+                    'message' => 'Table alter query failed: '
+                        . $exception->getMessage(),
+                ));
+                return false;
+            }
+        }
+
         return true;
     }
 }
