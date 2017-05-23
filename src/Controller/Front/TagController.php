@@ -85,6 +85,7 @@ class TagController extends ActionController
         // Make list
         foreach ($rowset as $row) {
             $typeList[$row->id] = $row->toArray();
+            $typeList[$row->id]['active'] = 0;
             $typeList[$row->id]['typeUrl'] = Pi::url($this->url('', array(
                 'module'        => $this->getModule(),
                 'controller'    => 'type',
