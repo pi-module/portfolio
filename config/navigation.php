@@ -33,7 +33,7 @@ return array(
                     'action' => 'index',
                 ),
                 'update' => array(
-                    'label' => _a('Manage projects'),
+                    'label' => _a('Add projects'),
                     'permission' => array(
                         'resource' => 'project',
                     ),
@@ -66,7 +66,7 @@ return array(
                 ),
 
                 'update' => array(
-                    'label' => _a('Manage project type'),
+                    'label' => _a('Add project type'),
                     'permission' => array(
                         'resource' => 'type',
                     ),

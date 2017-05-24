@@ -88,22 +88,22 @@ class TypeController extends ActionController
             )));
         }
         // Set header and title
-        $title = sprintf(__('All projects by %s type'), $type['title']);
+        // $title = sprintf(__('All projects by %s type'), $type['title']);
         // Set seo_keywords
         $filter = new Filter\HeadKeywords;
         $filter->setOptions(array(
             'force_replace_space' => true
         ));
-        $seoKeywords = $filter($title);
+        $seoKeywords = $filter($type['title']);
         // Set view
-        $this->view()->headTitle($title);
-        $this->view()->headDescription($title, 'set');
+        $this->view()->headTitle($type['title']);
+        $this->view()->headDescription($type['title'], 'set');
         $this->view()->headKeywords($seoKeywords, 'set');
         $this->view()->setTemplate('project-list');
         $this->view()->assign('projects', $project);
         $this->view()->assign('paginator', $paginator);
         $this->view()->assign('config', $config);
-        $this->view()->assign('title', $title);
+        $this->view()->assign('title', $type['title']);
         $this->view()->assign('typeList', $typeList);
     }
 }
