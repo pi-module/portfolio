@@ -162,7 +162,7 @@ msgstr "Afficher le téléphone"
 
 #: config/config.php:137
 msgid "Show Information"
-msgstr "Afficher les informations"
+msgstr "Afficher la Description"
 
 #: config/config.php:145
 msgid "Show Hits"

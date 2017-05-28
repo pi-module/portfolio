@@ -25,7 +25,7 @@ msgstr "Problème lors de l'upload de l'image, merci d'essayer de nouveau"
 
 #: src/Controller/Admin/ProjectController.php:174
 msgid "Project data saved successfully."
-msgstr "Les données du projet ont été enregistrées avec succès"
+msgstr "Les données du projet ont été enregistrées avec succès."
 
 #: src/Controller/Admin/ProjectController.php:194
 msgid "Manage Project"
@@ -62,7 +62,7 @@ msgstr "Ce projet a été supprimé"
 
 #: src/Controller/Admin/TypeController.php:72
 msgid "Project type data saved successfully."
-msgstr "La donnée de Type de Projet a été enregistrée avec succès"
+msgstr "La donnée de Type de Projet a été enregistrée avec succès."
 
 #: src/Controller/Admin/TypeController.php:84
 msgid "Manage type"
@@ -82,7 +82,7 @@ msgstr "Le tag n'a pas été défini."
 
 #: src/Controller/Front/TagController.php:46
 msgid "The tag not found."
-msgstr "Le tag n'a pas été trouvé"
+msgstr "Le tag n'a pas été trouvé."
 
 #: src/Controller/Front/TagController.php:97
 #, php-format
@@ -104,7 +104,7 @@ msgstr "Titre"
 
 #: src/Form/ProjectForm.php:61 src/Form/TypeForm.php:57
 msgid "Slug"
-msgstr "Sluf"
+msgstr "Slug"
 
 #: src/Form/ProjectForm.php:72
 msgid "Project type"
@@ -188,7 +188,7 @@ msgstr "Commentaire Client"
 
 #: src/Form/ProjectForm.php:241
 msgid "Customer"
-msgstr "lient"
+msgstr "Client"
 
 #: src/Form/ProjectForm.php:251
 msgid "Comment"
