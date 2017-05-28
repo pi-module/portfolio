@@ -26,35 +26,58 @@ class IndexController extends ActionController
         $page = $this->params('page', 1);
         // Get config
         $config = Pi::service('registry')->config->read($module);
-        // Set info
-        $where = array('status' => 1);
-        $order = array('id DESC', 'time_create DESC');
-        $offset = (int)($page - 1) * $this->config('view_perpage');
-        $limit = intval($this->config('view_perpage'));
-        // Get info
-        $select = $this->getModel('project')->select()->where($where)->order($order)->offset($offset)->limit($limit);
-        $rowset = $this->getModel('project')->selectWith($select);
-        // Make list
-        foreach ($rowset as $row) {
-            $project[$row->id] = Pi::api('project', 'portfolio')->canonizeProject($row);
+        // Set template
+        switch ($config['view_type']) {
+            case 'normal':
+            case 'angular':
+                $where = array('status' => 1);
+                $order = array('id DESC', 'time_create DESC');
+                $offset = (int)($page - 1) * $this->config('view_perpage');
+                $limit = intval($this->config('view_perpage'));
+                // Get info
+                $select = $this->getModel('project')->select()->where($where)->order($order)->offset($offset)->limit($limit);
+                $rowset = $this->getModel('project')->selectWith($select);
+                // Make list
+                foreach ($rowset as $row) {
+                    $project[$row->id] = Pi::api('project', 'portfolio')->canonizeProject($row);
+                }
+                // get count
+                $columns = array('count' => new Expression('count(*)'));
+                $select = $this->getModel('project')->select()->where($where)->columns($columns);
+                $count = $this->getModel('project')->selectWith($select)->current()->count;
+                // paginator
+                $paginator = Paginator::factory(intval($count));
+                $paginator->setItemCountPerPage(intval($limit));
+                $paginator->setCurrentPageNumber(intval($page));
+                $paginator->setUrlOptions(array(
+                    'router'    => $this->getEvent()->getRouter(),
+                    'route'     => $this->getEvent()->getRouteMatch()->getMatchedRouteName(),
+                    'params'    => array_filter(array(
+                        'module'        => $this->getModule(),
+                        'controller'    => 'index',
+                        'action'        => 'index',
+                    )),
+                ));
+                // Set view
+                $this->view()->setTemplate('project-list');
+                $this->view()->assign('paginator', $paginator);
+
+                break;
+
+            case 'single':
+                $where = array('status' => 1);
+                $order = array('id DESC', 'time_create DESC');
+                // Get info
+                $select = $this->getModel('project')->select()->where($where)->order($order);
+                $rowset = $this->getModel('project')->selectWith($select);
+                // Make list
+                foreach ($rowset as $row) {
+                    $project[$row->id] = Pi::api('project', 'portfolio')->canonizeProject($row);
+                }
+                // Set view
+                $this->view()->setTemplate('project-gallery');
+                break;
         }
-        // get count     
-        $columns = array('count' => new Expression('count(*)'));
-        $select = $this->getModel('project')->select()->where($where)->columns($columns);
-        $count = $this->getModel('project')->selectWith($select)->current()->count;
-        // paginator
-        $paginator = Paginator::factory(intval($count));
-        $paginator->setItemCountPerPage(intval($limit));
-        $paginator->setCurrentPageNumber(intval($page));
-        $paginator->setUrlOptions(array(
-            'router'    => $this->getEvent()->getRouter(),
-            'route'     => $this->getEvent()->getRouteMatch()->getMatchedRouteName(),
-            'params'    => array_filter(array(
-                'module'        => $this->getModule(),
-                'controller'    => 'index',
-                'action'        => 'index',
-            )),
-        ));
         // Get type list
         $typeList = array();
         $where = array('status' => 1);
@@ -76,9 +99,7 @@ class IndexController extends ActionController
         // Set title
         $title = !empty($config['homepage_title']) ? $config['homepage_title'] : __('List of our projects');
         // Set view
-        $this->view()->setTemplate('project-list');
         $this->view()->assign('projects', $project);
-        $this->view()->assign('paginator', $paginator);
         $this->view()->assign('config', $config);
         $this->view()->assign('title', $title);
         $this->view()->assign('typeList', $typeList);

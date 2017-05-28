@@ -1,0 +1,147 @@
+<?php
+$this->jQuery();
+$this->css($this->assetModule('css/front.css'));
+$this->js($this->assetModule('js/jquery.sdFilterMe.js'));
+// Set box site
+switch ($config['view_column']) {
+    case 1:
+        $ProjectBoxSize = 'col-xs-12';
+        $image = 'large';
+        break;
+
+    case 2:
+        $ProjectBoxSize = 'col-xs-6';
+        $image = 'medium';
+        break;
+
+    case 3:
+        $ProjectBoxSize = 'col-xs-4';
+        $image = 'thumb';
+        break;
+
+    case 4:
+        $ProjectBoxSize = 'col-xs-3';
+        $image = 'thumb';
+        break;
+
+    case 6:
+        $ProjectBoxSize = 'col-xs-2';
+        $image = 'thumb';
+        break;
+}
+
+// Set Open Graph tags for meta
+$this->doctype('HTML5');
+$this->headMeta($this->escape($title), 'og:title', 'property');
+$this->headMeta($this->escape($title), 'og:description', 'property');
+
+// Set twitter for meta
+$this->headMeta($this->escape($title), 'twitter:title');
+$this->headMeta($this->escape($title), 'twitter:description');
+?>
+<div class="clearfix portfolio-list">
+    <?php if (!empty($config['text_description_index'])) { ?>
+        <div class="portfolio-description clearfix">
+            <?php echo $config['text_description_index']; ?>
+        </div>
+    <?php } ?>
+    <?php if ($config['show_type'] && isset($typeList) && !empty($typeList)) { ?>
+        <div class="portfolio-type clearfix">
+            <ul>
+                <?php foreach ($typeList as $typeSingle) { ?>
+                    <li<?php if ($typeSingle['active']) { echo ' class="active"';} ?>>
+                        <a class="sorter" data-filter="sort-<?php echo $this->escape($typeSingle['id']); ?>"><?php echo $this->escape($typeSingle['title']); ?></a>
+                    </li>
+                <?php } ?>
+                <li>
+                    <a class="sorter" data-filter="*"><?php _e('All'); ?></a>
+                </li>
+            </ul>
+        </div>
+    <?php } ?>
+    <div class="page-header">
+        <h1><?php echo $this->escape($title); ?></h1>
+    </div>
+    <ul class="portfolio-sort clearfix row">
+        <?php foreach($projects as $project) { ?>
+            <li class="<?php echo $ProjectBoxSize; ?> portfolio-list-single sort-<?php echo $this->escape($project['type']); ?>" itemscope itemtype="http://schema.org/CreativeWork">
+                <div class="thumbnail">
+                    <?php switch ($image) {
+                        case 'large':
+                            $imageUrl = $project['largeUrl'];
+                            break;
+
+                        case 'medium':
+                            $imageUrl = $project['mediumUrl'];
+                            break;
+
+                        case 'thumb':
+                            $imageUrl = $project['thumbUrl'];
+                            break;
+                    } ?>
+                    <a <?php if ($project['ribbon']) { ?>class="portfolio-ribbon"<?php } ?> itemprop="url" title="<?php echo $this->escape($project['title']); ?>" href="<?php echo $this->escape($project['projectUrl']); ?>" >
+                        <img itemprop="image" class="img-responsive" src="<?php echo $imageUrl; ?>" alt="<?php echo $this->escape($project['title']); ?>">
+                        <?php if ($project['ribbon']) { ?>
+                            <p><span><?php echo $this->escape($project['ribbon']); ?></span></p>
+                        <?php } ?>
+                    </a>
+                    <div class="caption">
+                        <a title="<?php echo $this->escape($project['title']); ?>" href="<?php echo $this->escape($project['projectUrl']); ?>" >
+                            <h2 itemprop="name" class="small"><?php echo $this->escape($project['title']); ?></h2>
+                        </a>
+                        <?php if ($config['show_phone'] && $project['phone_view'] && !empty($project['phone'])) { ?>
+                            <div class="portfolio-phone">
+                                <i class="fa fa-phone" aria-hidden="true"></i> <?php echo $this->escape($project['phone']); ?>
+                            </div>
+                        <?php } ?>
+                        <?php if ($config['show_website'] && $project['website_view'] && !empty($project['website'])) { ?>
+                            <div class="portfolio-website">
+                                <a target="_blank" title="<?php echo $this->escape($project['title']); ?>" href="<?php echo $this->escape($project['website']); ?>" >
+                                    <?php _e('View website'); ?>
+                                </a>
+                            </div>
+                        <?php } ?>
+                    </div>
+                </div>
+            </li>
+        <?php } ?>
+    </ul>
+</div>
+<script>
+    jQuery(function($) {
+        $('.portfolio-sort').sdFilterMe({
+            filterSelector: '.sorter', // string: selector
+            orderSelector: '.orderer', // string: selector
+            duration: 1000, // integer: in ms
+            animation: 'ease', // string: ease | ease-in | ease-out | linear | ease-in-out
+            hoverEffect: true, // boolean
+            sortedOut: 'disappear', // string: disappear | opacity
+            css: { // object
+                overlay: { // object
+                    background: { // object
+                        r: 0, // integer: as in CSS
+                        v: 0, // integer: as in CSS
+                        b: 0 // integer: as in CSS
+                    },
+                    duration: 250, // integer: in ms
+                    border: '1px solid white', // string: as in CSS
+                    color: 'white', // string: color
+                    opacity: 0.5 // float: as in CSS
+                },
+                border: { // object
+                    width: 1, // integer: in px
+                    color: '#ccc' // string: color
+                },
+                margin: 0, // integer: in px
+                pointer: true // boolean
+            },
+            nothingToShow: {
+                text: 'Nothing to show', // string: text
+                color: '#ccc' // string: color
+            }
+        }).on('fm.boxClicked', function(e, position, order) {
+            console.log('Box position is ' + position);
+            console.log('Box sort order is ' + order);
+        });
+    });
+</script>

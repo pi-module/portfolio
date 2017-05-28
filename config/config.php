@@ -75,6 +75,23 @@ return array(
             'value' => 3,
             'category' => 'view',
         ),
+        'view_type' => array(
+            'title' => _a('View type'),
+            'description' => _a('Item list view type'),
+            'edit' => array(
+                'type' => 'select',
+                'options' => array(
+                    'options' => array(
+                        'normal' => _a('Normal'),
+                        'single' => _a('Single page by gallery effect'),
+                        'angular' => _a('Angular ( Not finish )'),
+                    ),
+                ),
+            ),
+            'filter' => 'text',
+            'value' => 'ajax',
+            'category' => 'view',
+        ),
         'show_type' => array(
             'category' => 'show',
             'title' => _a('Show type list'),
@@ -83,7 +100,6 @@ return array(
             'filter' => 'number_int',
             'value' => 1
         ),
-
         'show_service' => array(
             'category' => 'show',
             'title' => _a('Show Service'),
