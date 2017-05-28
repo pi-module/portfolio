@@ -266,7 +266,7 @@ msgstr "Projets"
 
 #: config/navigation.php:36
 msgid "Add projects"
-msgstr "Ajouter des projets"
+msgstr "Ajouter un projet"
 
 #: config/navigation.php:69
 msgid "Add project type"
