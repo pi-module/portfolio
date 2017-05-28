@@ -62,50 +62,52 @@ $this->headMeta($this->escape($title), 'twitter:description');
     <div class="page-header">
         <h1><?php echo $this->escape($title); ?></h1>
     </div>
-    <ul class="portfolio-sort clearfix row">
-        <?php foreach($projects as $project) { ?>
-            <li class="<?php echo $ProjectBoxSize; ?> portfolio-list-single sort-<?php echo $this->escape($project['type']); ?>" itemscope itemtype="http://schema.org/CreativeWork">
-                <div class="thumbnail">
-                    <?php switch ($image) {
-                        case 'large':
-                            $imageUrl = $project['largeUrl'];
-                            break;
+    <div class="clearfix row">
+        <ul class="portfolio-sort list-unstyled">
+            <?php foreach($projects as $project) { ?>
+                <li class="<?php echo $ProjectBoxSize; ?> portfolio-list-single sort-<?php echo $this->escape($project['type']); ?>" itemscope itemtype="http://schema.org/CreativeWork">
+                    <div class="thumbnail">
+                        <?php switch ($image) {
+                            case 'large':
+                                $imageUrl = $project['largeUrl'];
+                                break;
 
-                        case 'medium':
-                            $imageUrl = $project['mediumUrl'];
-                            break;
+                            case 'medium':
+                                $imageUrl = $project['mediumUrl'];
+                                break;
 
-                        case 'thumb':
-                            $imageUrl = $project['thumbUrl'];
-                            break;
-                    } ?>
-                    <a <?php if ($project['ribbon']) { ?>class="portfolio-ribbon"<?php } ?> itemprop="url" title="<?php echo $this->escape($project['title']); ?>" href="<?php echo $this->escape($project['projectUrl']); ?>" >
-                        <img itemprop="image" class="img-responsive" src="<?php echo $imageUrl; ?>" alt="<?php echo $this->escape($project['title']); ?>">
-                        <?php if ($project['ribbon']) { ?>
-                            <p><span><?php echo $this->escape($project['ribbon']); ?></span></p>
-                        <?php } ?>
-                    </a>
-                    <div class="caption">
-                        <a title="<?php echo $this->escape($project['title']); ?>" href="<?php echo $this->escape($project['projectUrl']); ?>" >
-                            <h2 itemprop="name" class="small"><?php echo $this->escape($project['title']); ?></h2>
+                            case 'thumb':
+                                $imageUrl = $project['thumbUrl'];
+                                break;
+                        } ?>
+                        <a <?php if ($project['ribbon']) { ?>class="portfolio-ribbon"<?php } ?> itemprop="url" title="<?php echo $this->escape($project['title']); ?>" href="<?php echo $this->escape($project['projectUrl']); ?>" >
+                            <img itemprop="image" class="img-responsive" src="<?php echo $imageUrl; ?>" alt="<?php echo $this->escape($project['title']); ?>">
+                            <?php if ($project['ribbon']) { ?>
+                                <p><span><?php echo $this->escape($project['ribbon']); ?></span></p>
+                            <?php } ?>
                         </a>
-                        <?php if ($config['show_phone'] && $project['phone_view'] && !empty($project['phone'])) { ?>
-                            <div class="portfolio-phone">
-                                <i class="fa fa-phone" aria-hidden="true"></i> <?php echo $this->escape($project['phone']); ?>
-                            </div>
-                        <?php } ?>
-                        <?php if ($config['show_website'] && $project['website_view'] && !empty($project['website'])) { ?>
-                            <div class="portfolio-website">
-                                <a target="_blank" title="<?php echo $this->escape($project['title']); ?>" href="<?php echo $this->escape($project['website']); ?>" >
-                                    <?php _e('View website'); ?>
-                                </a>
-                            </div>
-                        <?php } ?>
+                        <div class="caption">
+                            <a title="<?php echo $this->escape($project['title']); ?>" href="<?php echo $this->escape($project['projectUrl']); ?>" >
+                                <h2 itemprop="name" class="small"><?php echo $this->escape($project['title']); ?></h2>
+                            </a>
+                            <?php if ($config['show_phone'] && $project['phone_view'] && !empty($project['phone'])) { ?>
+                                <div class="portfolio-phone">
+                                    <i class="fa fa-phone" aria-hidden="true"></i> <?php echo $this->escape($project['phone']); ?>
+                                </div>
+                            <?php } ?>
+                            <?php if ($config['show_website'] && $project['website_view'] && !empty($project['website'])) { ?>
+                                <div class="portfolio-website">
+                                    <a target="_blank" title="<?php echo $this->escape($project['title']); ?>" href="<?php echo $this->escape($project['website']); ?>" >
+                                        <?php _e('View website'); ?>
+                                    </a>
+                                </div>
+                            <?php } ?>
+                        </div>
                     </div>
-                </div>
-            </li>
-        <?php } ?>
-    </ul>
+                </li>
+            <?php } ?>
+        </ul>
+    </div>
 </div>
 <script>
     jQuery(function($) {
@@ -129,19 +131,16 @@ $this->headMeta($this->escape($title), 'twitter:description');
                     opacity: 0.5 // float: as in CSS
                 },
                 border: { // object
-                    width: 1, // integer: in px
+                    width: 0, // integer: in px
                     color: '#ccc' // string: color
                 },
                 margin: 0, // integer: in px
                 pointer: true // boolean
             },
             nothingToShow: {
-                text: 'Nothing to show', // string: text
+                text: '<?php _e('Nothing to show'); ?>', // string: text
                 color: '#ccc' // string: color
             }
-        }).on('fm.boxClicked', function(e, position, order) {
-            console.log('Box position is ' + position);
-            console.log('Box sort order is ' + order);
         });
     });
 </script>
