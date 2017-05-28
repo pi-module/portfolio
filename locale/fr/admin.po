@@ -78,7 +78,7 @@ msgstr "Admin"
 
 #: config/config.php:20
 msgid "Show"
-msgstr "Afficher"
+msgstr "Affichage"
 
 #: config/config.php:24
 msgid "Image"
@@ -194,7 +194,7 @@ msgstr "Extension Image"
 
 #: config/config.php:194
 msgid "Large Image width"
-msgstr "Largeur Image Large "
+msgstr "Largeur Image Large"
 
 #: config/config.php:202
 msgid "Large Image height"
