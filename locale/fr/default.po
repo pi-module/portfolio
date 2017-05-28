@@ -1,0 +1,346 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Pi portfolio module\n"
+"POT-Creation-Date: 2017-05-28 22:25+0200\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: Pi\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.2\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: ../..\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: src/Api/Project.php:100
+msgid "Recommended"
+msgstr "Recommandé"
+
+#: src/Controller/Admin/ProjectController.php:120
+msgid "Problem in upload image. please try again"
+msgstr "Problème lors de l'upload de l'image, merci d'essayer de nouveau"
+
+#: src/Controller/Admin/ProjectController.php:174
+msgid "Project data saved successfully."
+msgstr "Les données du projet ont été enregistrées avec succès"
+
+#: src/Controller/Admin/ProjectController.php:194
+msgid "Manage Project"
+msgstr "Gérer le projet"
+
+#: src/Controller/Admin/ProjectController.php:218
+#, php-format
+msgid "Image of %s removed"
+msgstr "L'image de %s a été supprimée"
+
+#: src/Controller/Admin/ProjectController.php:221
+msgid "Image not remove"
+msgstr "Image non supprimée"
+
+#: src/Controller/Admin/ProjectController.php:225
+#: src/Controller/Admin/ProjectController.php:260
+#: src/Controller/Admin/ProjectController.php:290
+msgid "Please select project"
+msgstr "Merci de sélectionner le projet"
+
+#: src/Controller/Admin/ProjectController.php:249
+#, php-format
+msgid "%s set recommended successfully"
+msgstr "Le projet %s a été correctement défini comme favoris "
+
+#: src/Controller/Admin/ProjectController.php:254
+#, php-format
+msgid "Error in set recommended for %s project"
+msgstr "Erreur lors de la définition du projet %s comme Recommandé"
+
+#: src/Controller/Admin/ProjectController.php:288
+msgid "This project deleted"
+msgstr "Ce projet a été supprimé"
+
+#: src/Controller/Admin/TypeController.php:72
+msgid "Project type data saved successfully."
+msgstr "La donnée de Type de Projet a été enregistrée avec succès"
+
+#: src/Controller/Admin/TypeController.php:84
+msgid "Manage type"
+msgstr "Gérer les types"
+
+#: src/Controller/Front/IndexController.php:100
+msgid "List of our projects"
+msgstr "Liste de vos projets"
+
+#: src/Controller/Front/ProjectController.php:31
+msgid "The project not found."
+msgstr "Le projet n'a pas été trouvé."
+
+#: src/Controller/Front/TagController.php:35
+msgid "The tag not set."
+msgstr "Le tag n'a pas été défini."
+
+#: src/Controller/Front/TagController.php:46
+msgid "The tag not found."
+msgstr "Le tag n'a pas été trouvé"
+
+#: src/Controller/Front/TagController.php:97
+#, php-format
+msgid "All projects by %s tag"
+msgstr "Tous les projets du tag %s"
+
+#: src/Controller/Front/TypeController.php:34
+msgid "The type not set."
+msgstr "Le type n'a pas été défini."
+
+#: src/Controller/Front/TypeController.php:40
+msgid "The type not found."
+msgstr "Le type n'a pas été trouvé."
+
+#: src/Form/ProjectForm.php:50 src/Form/TypeForm.php:47
+#: template/admin/type-index.phtml:12
+msgid "Title"
+msgstr "Titre"
+
+#: src/Form/ProjectForm.php:61 src/Form/TypeForm.php:57
+msgid "Slug"
+msgstr "Sluf"
+
+#: src/Form/ProjectForm.php:72
+msgid "Project type"
+msgstr "Type de projet"
+
+#: src/Form/ProjectForm.php:83 template/front/project-single.phtml:75
+msgid "Service"
+msgstr "Service"
+
+#: src/Form/ProjectForm.php:93 template/front/project-single.phtml:78
+msgid "Technology"
+msgstr "Technologie"
+
+#: src/Form/ProjectForm.php:103
+msgid "Website"
+msgstr "Site web"
+
+#: src/Form/ProjectForm.php:114
+msgid "View website link"
+msgstr "Afficher le lien site web"
+
+#: src/Form/ProjectForm.php:124
+msgid "Phone"
+msgstr "Téléphone"
+
+#: src/Form/ProjectForm.php:135
+msgid "View phone"
+msgstr "Afficher le numéro de téléphone"
+
+#: src/Form/ProjectForm.php:145
+msgid "Information"
+msgstr "Description"
+
+#: src/Form/ProjectForm.php:148
+msgid "You can use HTML tag here"
+msgstr "Vous pouvez utiliser les tags html ici"
+
+#: src/Form/ProjectForm.php:158
+msgid "Version"
+msgstr "Version"
+
+#: src/Form/ProjectForm.php:168
+msgid "Size"
+msgstr "Taille"
+
+#: src/Form/ProjectForm.php:179 src/Form/TypeForm.php:68
+msgid "Status"
+msgstr "Statut"
+
+#: src/Form/ProjectForm.php:181 src/Form/TypeForm.php:70
+msgid "Published"
+msgstr "Publié"
+
+#: src/Form/ProjectForm.php:182 src/Form/TypeForm.php:71
+msgid "Pending review"
+msgstr "En cours de validation"
+
+#: src/Form/ProjectForm.php:183 src/Form/TypeForm.php:72
+msgid "Draft"
+msgstr "Brouillon"
+
+#: src/Form/ProjectForm.php:184 src/Form/TypeForm.php:73
+msgid "Private"
+msgstr "Privé"
+
+#: src/Form/ProjectForm.php:185
+msgid "Remove"
+msgstr "Supprimé"
+
+#: src/Form/ProjectForm.php:205
+msgid "Remove image"
+msgstr "Supprimé l'image"
+
+#: src/Form/ProjectForm.php:221
+msgid "Upload image"
+msgstr "Uploader l'image"
+
+#: src/Form/ProjectForm.php:234
+msgid "Customer comment"
+msgstr "Commentaire Client"
+
+#: src/Form/ProjectForm.php:241
+msgid "Customer"
+msgstr "lient"
+
+#: src/Form/ProjectForm.php:251
+msgid "Comment"
+msgstr "Commentaire"
+
+#: src/Form/ProjectForm.php:263
+msgid "Comment By"
+msgstr "Commenté par"
+
+#: src/Form/ProjectForm.php:274
+msgid "SEO options"
+msgstr "Options SEO"
+
+#: src/Form/ProjectForm.php:281
+msgid "SEO Title"
+msgstr "SEO Title"
+
+#: src/Form/ProjectForm.php:294
+msgid "SEO Keywords"
+msgstr "SEO Keywords"
+
+#: src/Form/ProjectForm.php:307
+msgid "SEO Description"
+msgstr "SEO Description"
+
+#: src/Form/ProjectForm.php:322
+msgid "Tags"
+msgstr "Tags"
+
+#: src/Form/ProjectForm.php:326
+msgid "Use `|` as delimiter to separate tag terms"
+msgstr "Utiliser `|` comme délimiteur pour séparer les termes"
+
+#: src/Form/ProjectForm.php:335
+msgid "Extra links"
+msgstr "Liens extra"
+
+#: src/Form/ProjectForm.php:342
+msgid "Link 1"
+msgstr "Lien 1"
+
+#: src/Form/ProjectForm.php:352
+msgid "Link 2"
+msgstr "Lien 2"
+
+#: src/Form/ProjectForm.php:362
+msgid "Link 3"
+msgstr "Lien 3"
+
+#: src/Form/ProjectForm.php:372
+msgid "Link 4"
+msgstr "Lien 4"
+
+#: src/Form/ProjectForm.php:382
+msgid "Link 5"
+msgstr "Lien 5"
+
+#: src/Form/ProjectForm.php:393
+msgid "Extra images"
+msgstr "Image additionnelles"
+
+#: src/Form/ProjectForm.php:400
+msgid "Image 1"
+msgstr "Image 1"
+
+#: src/Form/ProjectForm.php:410
+msgid "Image 2"
+msgstr "Image 2"
+
+#: src/Form/ProjectForm.php:420
+msgid "Image 3"
+msgstr "Image 3"
+
+#: src/Form/ProjectForm.php:430
+msgid "Image 4"
+msgstr "Image 4"
+
+#: src/Form/ProjectForm.php:440
+msgid "Image 5"
+msgstr "Image 5"
+
+#: src/Form/ProjectForm.php:451 src/Form/TypeForm.php:83
+msgid "Submit"
+msgstr "Soumettre"
+
+#: src/Form/TypeForm.php:74 template/admin/project-index.phtml:45
+#: template/admin/project-index.phtml:46
+msgid "Delete"
+msgstr "Supprimer"
+
+#: template/admin/project-index.phtml:10
+msgid "List of projects"
+msgstr "Liste des projets"
+
+#: template/admin/project-index.phtml:40 template/admin/type-index.phtml:29
+#: template/admin/type-index.phtml:31
+msgid "Edit"
+msgstr "Editer"
+
+#: template/admin/project-index.phtml:42
+msgid "View"
+msgstr "Voir"
+
+#: template/admin/project-index.phtml:45
+msgid "Are you sure to delete this project?"
+msgstr "Etes-vous sûr de vouloir supprimer ce projet?"
+
+#: template/admin/project-index.phtml:65
+msgid "Recommended in process"
+msgstr "Définition du projet comme Recommandé en cours"
+
+#: template/admin/project-update.phtml:18
+msgid "Remove image project in process"
+msgstr "Suppression de l'image du projet en cours"
+
+#: template/admin/type-index.phtml:4 template/admin/type-index.phtml:6
+msgid "Add type"
+msgstr "Ajouter un type"
+
+#: template/admin/type-index.phtml:8
+msgid "List of project types"
+msgstr "Liste des types de projets"
+
+#: template/admin/type-index.phtml:11
+msgid "ID"
+msgstr "ID"
+
+#: template/admin/type-index.phtml:13
+msgid "Action"
+msgstr "Action"
+
+#: template/front/project-gallery.phtml:57
+msgid "All"
+msgstr "Tous"
+
+#: template/front/project-gallery.phtml:103
+#: template/front/project-list.phtml:97
+msgid "View website"
+msgstr "Voir site Internet"
+
+#: template/front/project-gallery.phtml:143
+msgid "Nothing to show"
+msgstr "Il n'y pas encore de projet à afficher"
+
+#: template/front/project-single.phtml:68
+msgid "Open website"
+msgstr "Ouvrir le site web"
+
+#: template/front/project-single.phtml:81
+msgid "Hits"
+msgstr "Hits"
+
+#: template/front/project-single.phtml:116
+msgid "Related projects"
+msgstr "Projets relatifs"
