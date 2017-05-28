@@ -1,7 +1,7 @@
 /*!
  jQuery.sdFilterMe v0.1
  (c) 2015 Steve David <http://www.steve-david.com>
-
+ https://github.com/stevedavid/jquery-sdfilterme
  MIT-style license.
  */
 

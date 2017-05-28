@@ -40,6 +40,11 @@ $this->headMeta($this->escape($title), 'twitter:title');
 $this->headMeta($this->escape($title), 'twitter:description');
 ?>
 <div class="clearfix portfolio-list">
+    <?php if (!empty($config['homepage_title'])) { ?>
+        <div class="page-header">
+            <h1><?php echo $this->escape($config['homepage_title']); ?></h1>
+        </div>
+    <?php } ?>
     <?php if (!empty($config['text_description_index'])) { ?>
         <div class="portfolio-description clearfix">
             <?php echo $config['text_description_index']; ?>
@@ -48,20 +53,17 @@ $this->headMeta($this->escape($title), 'twitter:description');
     <?php if ($config['show_type'] && isset($typeList) && !empty($typeList)) { ?>
         <div class="portfolio-type clearfix">
             <ul>
+                <li>
+                    <a class="sorter" data-filter="*"><?php _e('All'); ?></a>
+                </li>
                 <?php foreach ($typeList as $typeSingle) { ?>
                     <li<?php if ($typeSingle['active']) { echo ' class="active"';} ?>>
                         <a class="sorter" data-filter="sort-<?php echo $this->escape($typeSingle['id']); ?>"><?php echo $this->escape($typeSingle['title']); ?></a>
                     </li>
                 <?php } ?>
-                <li>
-                    <a class="sorter" data-filter="*"><?php _e('All'); ?></a>
-                </li>
             </ul>
         </div>
     <?php } ?>
-    <div class="page-header">
-        <h1><?php echo $this->escape($title); ?></h1>
-    </div>
     <div class="clearfix row">
         <ul class="portfolio-sort list-unstyled">
             <?php foreach($projects as $project) { ?>
@@ -126,7 +128,7 @@ $this->headMeta($this->escape($title), 'twitter:description');
                         b: 0 // integer: as in CSS
                     },
                     duration: 250, // integer: in ms
-                    border: '1px solid white', // string: as in CSS
+                    border: '0px solid white', // string: as in CSS
                     color: 'white', // string: color
                     opacity: 0.5 // float: as in CSS
                 },
