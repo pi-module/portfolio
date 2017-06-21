@@ -89,14 +89,16 @@ $this->headMeta($this->escape($title), 'twitter:description');
                             <?php } ?>
                         </a>
                         <div class="caption">
-                            <a title="<?php echo $this->escape($project['title']); ?>" href="<?php echo $this->escape($project['projectUrl']); ?>" >
-                                <h2 itemprop="name" class="small"><?php echo $this->escape($project['title']); ?></h2>
-                            </a>
-                            <?php if ($config['show_phone'] && $project['phone_view'] && !empty($project['phone'])) { ?>
-                                <div class="portfolio-phone">
-                                    <i class="fa fa-phone" aria-hidden="true"></i> <?php echo $this->escape($project['phone']); ?>
-                                </div>
-                            <?php } ?>
+                            <div class="infos">
+                                <a title="<?php echo $this->escape($project['title']); ?>" href="<?php echo $this->escape($project['projectUrl']); ?>" >
+                                    <h2 itemprop="name" class="small"><?php echo $this->escape($project['title']); ?></h2>
+                                </a>
+                                <?php if ($config['show_phone'] && $project['phone_view'] && !empty($project['phone'])) { ?>
+                                    <div class="portfolio-phone">
+                                        <i class="fa fa-phone" aria-hidden="true"></i> <?php echo $this->escape($project['phone']); ?>
+                                    </div>
+                                <?php } ?>
+                            </div>
                             <?php if ($config['show_website'] && $project['website_view'] && !empty($project['website'])) { ?>
                                 <div class="portfolio-website">
                                     <a target="_blank" title="<?php echo $this->escape($project['title']); ?>" href="<?php echo $this->escape($project['website']); ?>" >
