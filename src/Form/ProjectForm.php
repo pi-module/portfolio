@@ -143,12 +143,11 @@ class ProjectForm extends BaseForm
             'name' => 'information',
             'options' => array(
                 'label' => __('Information'),
+                'editor' => 'html',
             ),
             'attributes' => array(
-                'description' => __('You can use HTML tag here'),
-                'type' => 'textarea',
-                'rows' => '10',
-                'cols' => '40',
+                'type' => 'editor',
+                'description' => '',
             )
         ));
         // Version

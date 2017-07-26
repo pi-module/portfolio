@@ -63,6 +63,9 @@ class Project extends AbstractApi
             'action'        => 'index',
             'slug'          => $project['slug'],
         )));
+
+        $project['information'] = Pi::service('markup')->render($project['information'], 'html', 'html');
+
         // Set image url
         if ($project['image']) {
             // Set image original url
