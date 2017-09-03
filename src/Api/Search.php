@@ -27,19 +27,19 @@ class Search extends AbstractSearch
      */
     protected $searchIn = array(
         'title',
-        'information',
+        'text_description',
     );
 
     /**
      * {@inheritDoc}
      */
     protected $meta = array(
-        'id'            => 'id',
-        'title'         => 'title',
-        'information'   => 'content',
-        'time_create'   => 'time',
-        'uid'           => 'uid',
-        'slug'          => 'slug',
+        'id'               => 'id',
+        'title'            => 'title',
+        'text_description' => 'content',
+        'time_create'      => 'time',
+        'uid'              => 'uid',
+        'slug'             => 'slug',
     );
 
     /**

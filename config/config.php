@@ -132,9 +132,9 @@ return array(
             'filter' => 'number_int',
             'value' => 1
         ),
-        'show_information' => array(
+        'show_description' => array(
             'category' => 'show',
-            'title' => _a('Show Information'),
+            'title' => _a('Show description'),
             'description' => '',
             'edit' => 'checkbox',
             'filter' => 'number_int',
@@ -189,29 +189,37 @@ return array(
             'filter' => 'string',
             'value' => 'jpg,jpeg,png,gif'
         ),
-        'image_largew' => array(
-            'category' => 'image',
-            'title' => _a('Large Image width'),
-            'description' => '',
-            'edit' => 'text',
-            'filter' => 'number_int',
-            'value' => 900
-        ),
         'image_largeh' => array(
             'category' => 'image',
             'title' => _a('Large Image height'),
             'description' => '',
             'edit' => 'text',
             'filter' => 'number_int',
-            'value' => 900
+            'value' => 1200
         ),
-        'image_mediumw' => array(
+        'image_largew' => array(
             'category' => 'image',
-            'title' => _a('Medium Image width'),
+            'title' => _a('Large Image width'),
             'description' => '',
             'edit' => 'text',
             'filter' => 'number_int',
-            'value' => 450
+            'value' => 1200
+        ),
+        'image_itemw' => array(
+            'category' => 'image',
+            'title' => _a('Item Image width'),
+            'description' => '',
+            'edit' => 'text',
+            'filter' => 'number_int',
+            'value' => 800
+        ),
+        'image_itemh' => array(
+            'category' => 'image',
+            'title' => _a('Item Image height'),
+            'description' => '',
+            'edit' => 'text',
+            'filter' => 'number_int',
+            'value' => 800
         ),
         'image_mediumh' => array(
             'category' => 'image',
@@ -219,19 +227,27 @@ return array(
             'description' => '',
             'edit' => 'text',
             'filter' => 'number_int',
-            'value' => 450
+            'value' => 500
         ),
-        'image_thumbw' => array(
+        'image_mediumw' => array(
             'category' => 'image',
-            'title' => _a('Thumb Image width'),
+            'title' => _a('Medium Image width'),
+            'description' => '',
+            'edit' => 'text',
+            'filter' => 'number_int',
+            'value' => 500
+        ),
+        'image_thumbh' => array(
+            'category' => 'image',
+            'title' => _a('Thumb Image height'),
             'description' => '',
             'edit' => 'text',
             'filter' => 'number_int',
             'value' => 250
         ),
-        'image_thumbh' => array(
+        'image_thumbw' => array(
             'category' => 'image',
-            'title' => _a('Thumb Image height'),
+            'title' => _a('Thumb Image width'),
             'description' => '',
             'edit' => 'text',
             'filter' => 'number_int',

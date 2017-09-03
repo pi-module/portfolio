@@ -55,6 +55,26 @@ class ProjectFilter extends InputFilter
             'name' => 'type',
             'required' => true,
         ));
+        // Main image
+        $this->add(array(
+            'name' => 'main_image',
+            'required' => true,
+        ));
+        // Aadditional images
+        $this->add(array(
+            'name' => 'additional_images',
+            'required' => false,
+        ));
+        // text_description
+        $this->add(array(
+            'name' => 'text_description',
+            'required' => false,
+        ));
+        // status
+        $this->add(array(
+            'name' => 'status',
+            'required' => true,
+        ));
         // service
         $this->add(array(
             'name' => 'service',
@@ -85,20 +105,32 @@ class ProjectFilter extends InputFilter
             'name' => 'phone_view',
             'required' => false,
         ));
-        // information
+        // seo_title
         $this->add(array(
-            'name' => 'information',
+            'name' => 'seo_title',
             'required' => false,
         ));
-        // image
+        // seo_keywords
+        $this->add(array(
+            'name' => 'seo_keywords',
+            'required' => false,
+        ));
+        // seo_description
+        $this->add(array(
+            'name' => 'seo_description',
+            'required' => false,
+        ));
+        // tag
+        if (Pi::service('module')->isActive('tag')) {
+            $this->add(array(
+                'name' => 'tag',
+                'required' => false,
+            ));
+        }
+        /* // image
         $this->add(array(
             'name' => 'image',
             'required' => false,
-        ));
-        // status
-        $this->add(array(
-            'name' => 'status',
-            'required' => true,
         ));
         // customer
         $this->add(array(
@@ -125,28 +157,6 @@ class ProjectFilter extends InputFilter
             'name' => 'commentby',
             'required' => false,
         ));
-        // seo_title
-        $this->add(array(
-            'name' => 'seo_title',
-            'required' => false,
-        ));
-        // seo_keywords
-        $this->add(array(
-            'name' => 'seo_keywords',
-            'required' => false,
-        ));
-        // seo_description
-        $this->add(array(
-            'name' => 'seo_description',
-            'required' => false,
-        ));
-        // tag
-        if (Pi::service('module')->isActive('tag')) {
-            $this->add(array(
-                'name' => 'tag',
-                'required' => false,
-            ));
-        }
         // link_1
         $this->add(array(
             'name' => 'link_1',
@@ -196,6 +206,6 @@ class ProjectFilter extends InputFilter
         $this->add(array(
             'name' => 'image_5',
             'required' => false,
-        ));
+        )); */
     }
 }

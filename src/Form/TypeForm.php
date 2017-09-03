@@ -60,6 +60,18 @@ class TypeForm extends BaseForm
                 'type' => 'text',
             )
         ));
+        // text_description
+        $this->add(array(
+            'name' => 'text_description',
+            'options' => array(
+                'label' => __('Description'),
+                'editor' => 'html',
+            ),
+            'attributes' => array(
+                'type' => 'editor',
+                'description' => '',
+            )
+        ));
         // status
         $this->add(array(
             'name' => 'status',

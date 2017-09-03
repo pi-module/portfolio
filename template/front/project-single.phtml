@@ -22,16 +22,16 @@ $this->footScript()->appendScript($script);
 $this->doctype('HTML5');
 $this->headMeta($this->escape($project['title']), 'og:title', 'property');
 $this->headMeta($this->escape($project['projectUrl']), 'og:url', 'property');
-if (isset($project['information']) && !empty($project['information'])) {
-    $this->headMeta(_strip($project['information']), 'og:description', 'property');
+if (isset($project['text_description']) && !empty($project['text_description'])) {
+    $this->headMeta(_strip($project['text_description']), 'og:description', 'property');
 }
 if (!empty($project['largeUrl'])) {
     $this->headMeta($this->escape($project['largeUrl']), 'og:image', 'property');
 }
 // Set twitter for meta
 $this->headMeta($this->escape($project['title']), 'twitter:title');
-if (isset($project['information']) && !empty($project['information'])) {
-    $this->headMeta(_strip($project['information']), 'twitter:description');
+if (isset($project['text_description']) && !empty($project['text_description'])) {
+    $this->headMeta(_strip($project['text_description']), 'twitter:description');
 }
 if (!empty($project['largeUrl'])) {
     $this->headMeta($this->escape($project['largeUrl']), 'twitter:image');
@@ -44,21 +44,41 @@ if (!empty($project['largeUrl'])) {
         </h1>
     </div>
     <meta itemprop="url" content="<?php echo $project['projectUrl']; ?>" />
-    <div class="col-md-6 col-md-offset-3">
-        <div class="gallery text-center clearfix u-photo">
-            <a <?php if ($project['ribbon']) { ?>class="portfolio-ribbon"<?php } ?> href="<?php echo $this->escape($project['largeUrl']); ?>" title="<?php echo $this->escape($project['title']); ?>">
-                <img itemprop="image" class="img-responsive img-thumbnail" src="<?php echo $this->escape($project['largeUrl']); ?>" alt="<?php echo $this->escape($project['title']); ?>" />
-                <?php if ($project['ribbon']) { ?>
-                    <p><span><?php echo $this->escape($project['ribbon']); ?></span></p>
-                <?php } ?>
-            </a>
+    <div class="clearfix gallery">
+        <div class="text-center clearfix u-photo">
+            <div class="col-md-6 col-md-offset-3">
+                <a <?php if ($project['ribbon']) { ?>class="portfolio-ribbon"<?php } ?> href="<?php echo $this->escape($project['largeUrl']); ?>" title="<?php echo $this->escape($project['title']); ?>">
+                    <img itemprop="image" class="img-responsive img-thumbnail" src="<?php echo $this->escape($project['largeUrl']); ?>" alt="<?php echo $this->escape($project['title']); ?>" />
+                    <?php if ($project['ribbon']) { ?>
+                        <p><span><?php echo $this->escape($project['ribbon']); ?></span></p>
+                    <?php } ?>
+                </a>
+            </div>
         </div>
         <br />
+        <?php if (!empty($project['additional_images'])) { ?>
+            <div class="gallery-list text-center clearfix u-photo">
+                <?php $galleryImages = Pi::api('doc','media')->getGalleryLinkData($project['additional_images'], 320, 200); ?>
+                <?php $galleryImagesBig = Pi::api('doc','media')->getGalleryLinkData($project['additional_images'], 900, 600); ?>
+                <?php if ($galleryImages) { ?>
+                    <?php foreach ($galleryImages as $key => $galleryImage) { ?>
+                        <div class="u-photo col-lg-2 col-md-3 col-xs-6 thumb">
+                            <a class="thumbnail" href="<?php echo $galleryImagesBig[$key]['resized_url']; ?>"
+                               title="<?php echo $this->escape($galleryImage['title']); ?><?php if($galleryImage['copyright']) echo ' - ' . $galleryImage['copyright'] ?>">
+                                <img itemprop="image" class="img-responsive"
+                                     src="<?php echo $galleryImage['resized_url']; ?>"
+                                     alt="<?php echo $this->escape($galleryImage['title']); ?>"/>
+                            </a>
+                        </div>
+                    <?php } ?>
+                <?php } ?>
+            </div>
+        <?php } ?>
     </div>
     <div class="col-md-12">
-        <?php if($config['show_information'] && $project['information']) { ?>
+        <?php if($config['show_description'] && !empty($project['text_description'])) { ?>
             <div class="portfolio-text">
-                <?php echo $project['information']; ?>
+                <?php echo $project['text_description']; ?>
             </div>
             <br />
         <?php } ?>
@@ -84,11 +104,13 @@ if (!empty($project['largeUrl'])) {
         </div>
         <?php if (isset($tag) && !empty($tag)) { ?>
             <div class="clearfix portfolio-tag-list">
-                <?php foreach($tag as $term) { ?>
-                    <span class="portfolio-tag-item">
-				<a title="<?php echo $this->escape($term); ?>" href="<?php echo $this->url('', array('controller' => 'tag', 'action' => 'index', 'slug' => urlencode($term))); ?>"><i class="fa fa-tag"></i> <?php echo $this->escape($term); ?></a>
-			</span>
-                <?php } ?>
+                <ul class="list-inline">
+                    <?php foreach($tag as $term) { ?>
+                        <li class="portfolio-tag-item">
+                            <a title="<?php echo $this->escape($term); ?>" href="<?php echo $this->url('', array('controller' => 'tag', 'action' => 'index', 'slug' => urlencode($term))); ?>"><i class="fa fa-tag"></i> <?php echo $this->escape($term); ?></a>
+                        </li>
+                    <?php } ?>
+                </ul>
             </div>
         <?php } ?>
         <?php if ($config['social_sharing']) { ?>
@@ -113,7 +135,9 @@ if (!empty($project['largeUrl'])) {
             ));
             $this->js($this->assetModule('js/owl.carousel.config.js'));
             ?>
-            <h3><?php _e('Related projects'); ?></h3>
+            <div class="page-header">
+                <h3><?php _e('Related projects'); ?></h3>
+            </div>
             <div class="owl-carousel clearfix">
                 <?php foreach ($projectRelated as $projectItem) { ?>
                     <div class="item text-center">

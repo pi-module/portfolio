@@ -14,7 +14,7 @@ switch ($config['view_column']) {
 
     case 3:
         $ProjectBoxSize = 'col-xs-4';
-        $image = 'thumb';
+        $image = 'medium';
         break;
 
     case 4:
@@ -76,12 +76,14 @@ $this->headMeta($this->escape($title), 'twitter:description');
                             $imageUrl = $project['thumbUrl'];
                             break;
                     } ?>
-                    <a <?php if ($project['ribbon']) { ?>class="portfolio-ribbon"<?php } ?> itemprop="url" title="<?php echo $this->escape($project['title']); ?>" href="<?php echo $this->escape($project['projectUrl']); ?>" >
-                        <img itemprop="image" class="img-responsive" src="<?php echo $imageUrl; ?>" alt="<?php echo $this->escape($project['title']); ?>">
-                        <?php if ($project['ribbon']) { ?>
-                            <p><span><?php echo $this->escape($project['ribbon']); ?></span></p>
-                        <?php } ?>
-                    </a>
+                    <div class="thumbnail-image">
+                        <a <?php if ($project['ribbon']) { ?>class="portfolio-ribbon"<?php } ?> itemprop="url" title="<?php echo $this->escape($project['title']); ?>" href="<?php echo $this->escape($project['projectUrl']); ?>" >
+                            <img itemprop="image" class="img-responsive" src="<?php echo $imageUrl; ?>" alt="<?php echo $this->escape($project['title']); ?>">
+                            <?php if ($project['ribbon']) { ?>
+                                <p><span><?php echo $this->escape($project['ribbon']); ?></span></p>
+                            <?php } ?>
+                        </a>
+                    </div>
                     <div class="caption">
                         <a title="<?php echo $this->escape($project['title']); ?>" href="<?php echo $this->escape($project['projectUrl']); ?>" >
                             <h2 itemprop="name" class="small"><?php echo $this->escape($project['title']); ?></h2>

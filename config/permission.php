@@ -21,5 +21,9 @@ return array(
             'title' => _a('Project type'),
             'access' => array(),
         ),
+        'tools' => array(
+            'title' => _a('Tools'),
+            'access' => array(),
+        ),
     ),
 );

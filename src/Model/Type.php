@@ -24,5 +24,6 @@ class Type extends Model
         'title',
         'slug',
         'status',
+        'text_description',
     );
 }

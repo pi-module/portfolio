@@ -31,7 +31,7 @@ class IndexController extends ActionController
             case 'normal':
             case 'angular':
                 $where = array('status' => 1);
-                $order = array('id DESC', 'time_create DESC');
+                $order = array('time_create DESC', 'id DESC');
                 $offset = (int)($page - 1) * $this->config('view_perpage');
                 $limit = intval($this->config('view_perpage'));
                 // Get info
@@ -61,12 +61,11 @@ class IndexController extends ActionController
                 // Set view
                 $this->view()->setTemplate('project-list');
                 $this->view()->assign('paginator', $paginator);
-
                 break;
 
             case 'single':
                 $where = array('status' => 1);
-                $order = array('id DESC', 'time_create DESC');
+                $order = array('time_create DESC', 'id DESC');
                 // Get info
                 $select = $this->getModel('project')->select()->where($where)->order($order);
                 $rowset = $this->getModel('project')->selectWith($select);

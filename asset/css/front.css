@@ -20,9 +20,8 @@
 	color: #fff;
 }
 
-.portfolio .thumbnail img {
-	/* height: 200px;
-	width: 100%; */
+.portfolio .thumbnail .thumbnail-image {
+	height: auto;
 }
 
 /* ribbon */
@@ -72,3 +71,4 @@ a.portfolio-ribbon:hover {
 	list-style: inline;
 	display: inline;
 }
+

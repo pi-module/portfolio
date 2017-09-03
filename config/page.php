@@ -23,6 +23,11 @@ return array(
             'controller' => 'type',
             'permission' => 'type',
         ),
+        array(
+            'title' => _a('Tools'),
+            'controller' => 'tools',
+            'permission' => 'tools',
+        ),
     ),
     // Front section
     'front' => array(

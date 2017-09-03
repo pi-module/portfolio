@@ -77,5 +77,15 @@ return array(
                 ),
             ),
         ),
+        'tools' => array(
+            'label' => _a('Tools'),
+            'permission' => array(
+                'resource' => 'type',
+            ),
+            'route' => 'admin',
+            'module' => 'portfolio',
+            'controller' => 'tools',
+            'action' => 'index',
+        ),
     ),
 );

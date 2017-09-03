@@ -50,6 +50,11 @@ class TypeFilter extends InputFilter
                 )),
             ),
         ));
+        // text_description
+        $this->add(array(
+            'name' => 'text_description',
+            'required' => false,
+        ));
         // status
         $this->add(array(
             'name' => 'status',

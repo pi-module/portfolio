@@ -21,8 +21,8 @@ class ProjectForm extends BaseForm
     public function __construct($name = null, $option = array())
     {
         $this->option = $option;
-        $this->thumbUrl = (isset($option['thumbUrl'])) ? $option['thumbUrl'] : '';
-        $this->removeUrl = (isset($option['removeUrl'])) ? $option['removeUrl'] : '';
+        //$this->thumbUrl = (isset($option['thumbUrl'])) ? $option['thumbUrl'] : '';
+        //$this->removeUrl = (isset($option['removeUrl'])) ? $option['removeUrl'] : '';
         parent::__construct($name);
     }
 
@@ -75,6 +75,51 @@ class ProjectForm extends BaseForm
             'attributes' => array(
                 'required' => true,
             )
+        ));
+        // Main image
+        $this->add(array(
+            'name' => 'main_image',
+            'type' => 'Module\Media\Form\Element\Media',
+            'options' => array(
+                'label' => __('Main image'),
+                'required' => true,
+            ),
+        ));
+        // Additional images'
+        $this->add(array(
+            'name' => 'additional_images',
+            'type' => 'Module\Media\Form\Element\Media',
+            'options' => array(
+                'label' => __('Additional images'),
+                'media_gallery' => true,
+            ),
+        ));
+        // text_description
+        $this->add(array(
+            'name' => 'text_description',
+            'options' => array(
+                'label' => __('Description'),
+                'editor' => 'html',
+            ),
+            'attributes' => array(
+                'type' => 'editor',
+                'description' => '',
+            )
+        ));
+        // status
+        $this->add(array(
+            'name' => 'status',
+            'type' => 'select',
+            'options' => array(
+                'label' => __('Status'),
+                'value_options' => array(
+                    1 => __('Published'),
+                    2 => __('Pending review'),
+                    3 => __('Draft'),
+                    4 => __('Private'),
+                    5 => __('Remove'),
+                ),
+            ),
         ));
         // service
         $this->add(array(
@@ -138,133 +183,6 @@ class ProjectForm extends BaseForm
                 'value'     => '1',
             )
         ));
-        // Information
-        $this->add(array(
-            'name' => 'information',
-            'options' => array(
-                'label' => __('Information'),
-                'editor' => 'html',
-            ),
-            'attributes' => array(
-                'type' => 'editor',
-                'description' => '',
-            )
-        ));
-        // Version
-        $this->add(array(
-            'name' => 'version',
-            'options' => array(
-                'label' => __('Version'),
-            ),
-            'attributes' => array(
-                'type' => 'text',
-            )
-        ));
-        // Size
-        $this->add(array(
-            'name' => 'size',
-            'options' => array(
-                'label' => __('Size'),
-            ),
-            'attributes' => array(
-                'type' => 'text',
-            )
-        ));
-        // status
-        $this->add(array(
-            'name' => 'status',
-            'type' => 'select',
-            'options' => array(
-                'label' => __('Status'),
-                'value_options' => array(
-                    1 => __('Published'),
-                    2 => __('Pending review'),
-                    3 => __('Draft'),
-                    4 => __('Private'),
-                    5 => __('Remove'),
-                ),
-            ),
-        ));
-        // Image
-        if ($this->thumbUrl) {
-            $this->add(array(
-                'name' => 'imageview',
-                'type' => 'Module\Portfolio\Form\Element\Image',
-                'options' => array(
-                    //'label' => __('Image'),
-                ),
-                'attributes' => array(
-                    'src' => $this->thumbUrl,
-                ),
-            ));
-            $this->add(array(
-                'name' => 'remove',
-                'type' => 'Module\Portfolio\Form\Element\Remove',
-                'options' => array(
-                    'label' => __('Remove image'),
-                ),
-                'attributes' => array(
-                    'link' => $this->removeUrl,
-                ),
-            ));
-            $this->add(array(
-                'name' => 'image',
-                'attributes' => array(
-                    'type' => 'hidden',
-                ),
-            ));
-        } else {
-            $this->add(array(
-                'name' => 'image',
-                'options' => array(
-                    'label' => __('Upload image'),
-                ),
-                'attributes' => array(
-                    'type' => 'file',
-                    'description' => '',
-                )
-            ));
-        }
-        // extra_comment
-        $this->add(array(
-            'name' => 'extra_comment',
-            'type' => 'fieldset',
-            'options' => array(
-                'label' => __('Customer comment'),
-            ),
-        ));
-        // Customer
-        $this->add(array(
-            'name' => 'customer',
-            'options' => array(
-                'label' => __('Customer'),
-            ),
-            'attributes' => array(
-                'type' => 'text',
-            )
-        ));
-        // Comment
-        $this->add(array(
-            'name' => 'comment',
-            'options' => array(
-                'label' => __('Comment'),
-            ),
-            'attributes' => array(
-                'type' => 'textarea',
-                'rows' => '5',
-                'cols' => '40',
-            )
-        ));
-        // comment by
-        $this->add(array(
-            'name' => 'commentby',
-            'options' => array(
-                'label' => __('Comment By'),
-            ),
-            'attributes' => array(
-                'type' => 'text',
-            )
-        ));
         // extra_seo
         $this->add(array(
             'name' => 'extra_seo',
@@ -326,6 +244,106 @@ class ProjectForm extends BaseForm
                 )
             ));
         }
+        /* // Version
+        $this->add(array(
+            'name' => 'version',
+            'options' => array(
+                'label' => __('Version'),
+            ),
+            'attributes' => array(
+                'type' => 'text',
+            )
+        ));
+        // Size
+        $this->add(array(
+            'name' => 'size',
+            'options' => array(
+                'label' => __('Size'),
+            ),
+            'attributes' => array(
+                'type' => 'text',
+            )
+        ));
+        // Image
+        if ($this->thumbUrl) {
+            $this->add(array(
+                'name' => 'imageview',
+                'type' => 'Module\Portfolio\Form\Element\Image',
+                'options' => array(
+                    //'label' => __('Image'),
+                ),
+                'attributes' => array(
+                    'src' => $this->thumbUrl,
+                ),
+            ));
+            $this->add(array(
+                'name' => 'remove',
+                'type' => 'Module\Portfolio\Form\Element\Remove',
+                'options' => array(
+                    'label' => __('Remove image'),
+                ),
+                'attributes' => array(
+                    'link' => $this->removeUrl,
+                ),
+            ));
+            $this->add(array(
+                'name' => 'image',
+                'attributes' => array(
+                    'type' => 'hidden',
+                ),
+            ));
+        } else {
+            $this->add(array(
+                'name' => 'image',
+                'options' => array(
+                    'label' => __('Upload image'),
+                ),
+                'attributes' => array(
+                    'type' => 'file',
+                    'description' => '',
+                )
+            ));
+        } */
+        /* // extra_comment
+        $this->add(array(
+            'name' => 'extra_comment',
+            'type' => 'fieldset',
+            'options' => array(
+                'label' => __('Customer comment'),
+            ),
+        ));
+        // Customer
+        $this->add(array(
+            'name' => 'customer',
+            'options' => array(
+                'label' => __('Customer'),
+            ),
+            'attributes' => array(
+                'type' => 'text',
+            )
+        ));
+        // Comment
+        $this->add(array(
+            'name' => 'comment',
+            'options' => array(
+                'label' => __('Comment'),
+            ),
+            'attributes' => array(
+                'type' => 'textarea',
+                'rows' => '5',
+                'cols' => '40',
+            )
+        ));
+        // comment by
+        $this->add(array(
+            'name' => 'commentby',
+            'options' => array(
+                'label' => __('Comment By'),
+            ),
+            'attributes' => array(
+                'type' => 'text',
+            )
+        ));
         // extra_link
         $this->add(array(
             'name' => 'extra_link',
@@ -441,7 +459,7 @@ class ProjectForm extends BaseForm
             'attributes' => array(
                 'type' => 'text',
             )
-        ));
+        )); */
         // Save
         $this->add(array(
             'name' => 'submit',

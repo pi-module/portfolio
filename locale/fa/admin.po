@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Pi portfolio module\n"
-"POT-Creation-Date: 2017-04-06 13:53+0430\n"
+"POT-Creation-Date: 2017-09-03 12:38+0430\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: Pi\n"
@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.12\n"
+"X-Generator: Poedit 2.0.3\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: _a;_t\n"
 "X-Poedit-Basepath: ../..\n"
@@ -120,105 +120,145 @@ msgstr "چهار ستون"
 msgid "Six columns"
 msgstr "شش ستون"
 
+#: config/config.php:79
+msgid "View type"
+msgstr "نوع نمایش"
+
 #: config/config.php:80
+msgid "Item list view type"
+msgstr "نوع نمایش فهرست پروژه ها"
+
+#: config/config.php:85
+msgid "Normal"
+msgstr "معمولی"
+
+#: config/config.php:86
+msgid "Single page by gallery effect"
+msgstr "تک صفحه ای با افکت گالری"
+
+#: config/config.php:87
+msgid "Angular ( Not finish )"
+msgstr "انگولار ( تکمیل نشده )"
+
+#: config/config.php:97
+msgid "Show type list"
+msgstr "نمایش فهرست نوع پروژه ها"
+
+#: config/config.php:105
 msgid "Show Service"
 msgstr "نمایش خدمات"
 
-#: config/config.php:88
+#: config/config.php:113
 msgid "Show Technology"
 msgstr "نمایش فن آوری"
 
-#: config/config.php:96
+#: config/config.php:121
 msgid "Show Website"
 msgstr "نمایش وب سایت"
 
-#: config/config.php:104
-msgid "Show Information"
-msgstr "نمایش اطلاعات"
+#: config/config.php:129
+msgid "Show phone"
+msgstr "نمایش تلفن"
 
-#: config/config.php:112
+#: config/config.php:137
+msgid "Show description"
+msgstr "نمایش توضیحات"
+
+#: config/config.php:145
 msgid "Show Hits"
 msgstr "نمایش بازدید"
 
-#: config/config.php:120
+#: config/config.php:153
 msgid "Show Tags"
 msgstr "نمایش برچسب ها"
 
-#: config/config.php:129
+#: config/config.php:162
 msgid "Image Size"
 msgstr "حجم تصویر"
 
-#: config/config.php:137
+#: config/config.php:170
 msgid "Image quality"
 msgstr "کیفیت تصویر"
 
-#: config/config.php:138
+#: config/config.php:171
 msgid "Between 0 to 100 and support both of JPG and PNG, default is 75"
 msgstr "بین ۰ تا ۱۰۰ تنظیم شود و برای هر دو فرمت PNG و JPG ، مقدار پیش فرض ۷۵"
 
-#: config/config.php:145
+#: config/config.php:178
 msgid "Image path"
 msgstr "مسیر ذخیره تصویر"
 
-#: config/config.php:153
+#: config/config.php:186
 msgid "Image Extension"
 msgstr "پسوند های مجار برای تصویر"
 
-#: config/config.php:161
-msgid "Large Image width"
-msgstr "عرض تصویر بزرگ"
-
-#: config/config.php:169
+#: config/config.php:194
 msgid "Large Image height"
 msgstr "ارتفاع تصویر بزرگ"
 
-#: config/config.php:177
-msgid "Medium Image width"
-msgstr "عرض تصویر متوسط"
+#: config/config.php:202
+msgid "Large Image width"
+msgstr "عرض تصویر بزرگ"
 
-#: config/config.php:185
+#: config/config.php:210
+msgid "Item Image width"
+msgstr "عرض تصویر آیتم"
+
+#: config/config.php:218
+msgid "Item Image height"
+msgstr "ارتفاع تصویر آیتم"
+
+#: config/config.php:226
 msgid "Medium Image height"
 msgstr "ارتفاع تصویر متوسط"
 
-#: config/config.php:193
-msgid "Thumb Image width"
-msgstr "عرض تصویر بندانگشتی"
+#: config/config.php:234
+msgid "Medium Image width"
+msgstr "عرض تصویر متوسط"
 
-#: config/config.php:201
+#: config/config.php:242
 msgid "Thumb Image height"
 msgstr "ارتفاع تصویر بندانگشتی"
 
-#: config/config.php:209
+#: config/config.php:250
+msgid "Thumb Image width"
+msgstr "عرض تصویر بندانگشتی"
+
+#: config/config.php:258
 msgid "Add Watermark"
 msgstr "اضافه کردن واترمارک به تصویر"
 
-#: config/config.php:217
+#: config/config.php:266
 msgid "Watermark Image"
 msgstr "تصویر واترمارک"
 
-#: config/config.php:224
+#: config/config.php:273
 msgid "Watermark Positio"
 msgstr "موقعیت واترمارک"
 
-#: config/config.php:230
+#: config/config.php:279
 msgid "Top Left"
 msgstr "بالا چپ"
 
-#: config/config.php:231
+#: config/config.php:280
 msgid "Top Right"
 msgstr "بالا راست"
 
-#: config/config.php:232
+#: config/config.php:281
 msgid "Bottom Left"
 msgstr "پایین چپ"
 
-#: config/config.php:233
+#: config/config.php:282
 msgid "Bottom Right"
 msgstr "پایین راست"
 
-#: config/config.php:243
+#: config/config.php:292
 msgid "Social sharing items"
 msgstr "اشتراک گذاری در شبکه های اجتماعی "
+
+#: config/config.php:306
+msgid "Description for index page"
+msgstr "توضیحات صفحه اول"
 
 #: config/module.php:16
 msgid "Portfolio"
@@ -233,24 +273,51 @@ msgid "Projects"
 msgstr "پروژه ها"
 
 #: config/navigation.php:36
-msgid "Manage projects"
-msgstr "مدیریت پروژه"
+msgid "Add projects"
+msgstr "پروژه جدید"
 
 #: config/navigation.php:69
-msgid "Manage project type"
-msgstr "مدیریت نوع پروژه"
+msgid "Add project type"
+msgstr "نوع پروژه جدید"
 
-#: config/page.php:30
+#: config/navigation.php:81 config/page.php:27 config/permission.php:25
+msgid "Tools"
+msgstr "ابزار ها"
+
+#: config/page.php:35
 msgid "Index"
 msgstr "صفحه اصلی"
 
-#: config/page.php:35
+#: config/page.php:40
 msgid "Tag"
 msgstr "برچسب"
 
-#: config/page.php:40 config/permission.php:17
+#: config/page.php:45 config/permission.php:17
 msgid "Project"
 msgstr "پروژه"
+
+#: template/admin/tools-index.phtml:3
+msgid ""
+"That migrates old media data (files, images) for portfolio (main image) to "
+"new media module. You can relaunch the script as many times as needed : the "
+"script bypasses correct already moved images."
+msgstr ""
+"این ابزار تصاویر قدیمی را به ماژول مدیا منتقل میکند. شما هر چند بار که لازم "
+"باشد می توانید از این ابزار استفاده کنید. این ابزار تصاویر منتقل شده را "
+"نادیده می گیرد"
+
+#: template/admin/tools-index.phtml:4
+msgid "Launch migration tool"
+msgstr "مهاجرت تصاویر به ماژول مدیا"
+
+#~ msgid "Show Information"
+#~ msgstr "نمایش اطلاعات"
+
+#~ msgid "Manage projects"
+#~ msgstr "مدیریت پروژه"
+
+#~ msgid "Manage project type"
+#~ msgstr "مدیریت نوع پروژه"
 
 #~ msgid "Use effect ?"
 #~ msgstr "استفاده از افکت؟"
