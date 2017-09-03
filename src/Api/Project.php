@@ -67,38 +67,6 @@ class Project extends AbstractApi
         // Set text
         $project['text_description'] = Pi::service('markup')->render($project['text_description'], 'html', 'html');
 
-        // Set image url
-        /* if ($project['image']) {
-            // Set image original url
-            $project['originalUrl'] = Pi::url(
-                sprintf('upload/%s/original/%s/%s', 
-                    $config['image_path'], 
-                    $project['path'], 
-                    $project['image']
-                ));
-            // Set image large url
-            $project['largeUrl'] = Pi::url(
-                sprintf('upload/%s/large/%s/%s', 
-                    $config['image_path'], 
-                    $project['path'], 
-                    $project['image']
-                ));
-            // Set image medium url
-            $project['mediumUrl'] = Pi::url(
-                sprintf('upload/%s/medium/%s/%s', 
-                    $config['image_path'], 
-                    $project['path'], 
-                    $project['image']
-                ));
-            // Set image thumb url
-            $project['thumbUrl'] = Pi::url(
-                sprintf('upload/%s/thumb/%s/%s', 
-                    $config['image_path'], 
-                    $project['path'], 
-                    $project['image']
-                ));
-        } */
-
         // Set image
         if ($project['main_image']) {
             $project['largeUrl'] = Pi::url((string)Pi::api('doc', 'media')->getSingleLinkUrl($project['main_image'])->setConfigModule('portfolio')->thumb('large'));
