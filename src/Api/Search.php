@@ -38,7 +38,7 @@ class Search extends AbstractSearch
         'title'            => 'title',
         'text_description' => 'content',
         'time_create'      => 'time',
-        'uid'              => 'uid',
+        'main_image'       => 'main_image',
         'slug'             => 'slug',
     );
 
