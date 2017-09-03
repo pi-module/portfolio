@@ -97,31 +97,6 @@ class ProjectController extends ActionController
                 if (!empty($values['tag'])) {
                     $tag = explode('|', $values['tag']);
                 }
-                // upload image
-                if (!empty($file['image']['name'])) {
-                    // Set upload path
-                    $values['path'] = sprintf('%s/%s', date('Y'), date('m'));
-                    $originalPath = Pi::path(sprintf('upload/%s/original/%s', $this->config('image_path'), $values['path']));
-                    // Image name
-                    $imageName = Pi::api('image', 'portfolio')->rename($file['image']['name'], $this->ImageCategoryPrefix, $values['path']);
-                    // Upload
-                    $uploader = new Upload;
-                    $uploader->setDestination($originalPath);
-                    $uploader->setRename($imageName);
-                    $uploader->setExtension($this->config('image_extension'));
-                    $uploader->setSize($this->config('image_size'));
-                    if ($uploader->isValid()) {
-                        $uploader->receive();
-                        // Get image name
-                        $values['image'] = $uploader->getUploaded('image');
-                        // process image
-                        Pi::api('image', 'portfolio')->process($values['image'], $values['path']);
-                    } else {
-                        $this->jump(array('action' => 'update'), __('Problem in upload image. please try again'));
-                    }
-                } elseif (!isset($values['image'])) {
-                    $values['image'] = '';  
-                }
                 // Set seo_title
                 $title = ($values['seo_title']) ? $values['seo_title'] : $values['title'];
                 $filter = new Filter\HeadTitle;
@@ -192,43 +167,6 @@ class ProjectController extends ActionController
         $this->view()->setTemplate('project-update');
         $this->view()->assign('form', $form);
         $this->view()->assign('title', __('Manage Project'));
-    }
-
-    public function removeAction()
-    {
-        // Get id and status
-        $id = $this->params('id');
-        // set project
-        $project = $this->getModel('project')->find($id);
-        // Check
-        if ($project && !empty($id)) {
-            // remove file
-            /* $files = array(
-                Pi::path('upload/' . $this->config('image_path') . '/original/' . $project->path . '/' . $project->image),
-                Pi::path('upload/' . $this->config('image_path') . '/large/' . $project->path . '/' . $project->image),
-                Pi::path('upload/' . $this->config('image_path') . '/medium/' . $project->path . '/' . $project->image),
-                Pi::path('upload/' . $this->config('image_path') . '/thumb/' . $project->path . '/' . $project->image),
-            );
-            Pi::service('file')->remove($files); */
-            // clear DB
-            $project->image = '';
-            $project->path = '';
-            // Save
-            if ($project->save()) {
-                $message = sprintf(__('Image of %s removed'), $project->title);
-                $status = 1;
-            } else {
-                $message = __('Image not remove');
-                $status = 0;
-            }
-        } else {
-            $message = __('Please select project');
-            $status = 0;
-        }
-        return array(
-            'status' => $status,
-            'message' => $message,
-        );
     }
 
     public function recommendAction()

@@ -68,19 +68,6 @@ class Search extends AbstractSearch
      */
     protected function buildImage(array $item, $table = '')
     {
-        // Get config
-        $config = Pi::service('registry')->config->read($this->getModule());
-
-        $image = '';
-        if (isset($item['image']) && !empty($item['image'])) {
-            $image = Pi::url(
-                sprintf('upload/%s/thumb/%s/%s',
-                    $config['image_path'],
-                    $item['path'],
-                    $item['image']
-                ));
-        }
-
-        return $image;
+        return Pi::url((string)Pi::api('doc', 'media')->getSingleLinkUrl($item['main_image'])->setConfigModule('portfolio')->thumb('thumbnail'));
     }
 }

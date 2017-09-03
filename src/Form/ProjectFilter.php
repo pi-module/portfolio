@@ -128,10 +128,6 @@ class ProjectFilter extends InputFilter
             ));
         }
         /* // image
-        $this->add(array(
-            'name' => 'image',
-            'required' => false,
-        ));
         // customer
         $this->add(array(
             'name' => 'customer',

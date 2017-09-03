@@ -1,28 +1,5 @@
-<?php
-    $this->css(array(
-        $this->assetModule('css/admin.css'),
-        $this->assetModule('script/system-ui.css', 'system'),
-    ));
-    $this->jQuery();
-    $this->js($this->assetModule('script/system-msg.js', 'system'));
-?>
-<div class="portfolio">
-	<h3><?php echo $this->escape($title); ?></h3>
-    <div id="project-form">
-        <?php include $this->templateComponent('forms'); ?>
-    </div>
+<?php $this->css($this->assetModule('css/admin.css')); ?>
+<div class="clearfix">
+    <h3><?php echo $this->escape($title); ?></h3>
+    <?php echo $this->form($form); ?>
 </div>
-<script type="text/javascript">
-(function($){
-    $("#project-form").on("click","button",function(){
-        systemMessage.wait("<?php _e('Remove image project in process'); ?>");
-        $.getJSON($(this).attr("data-link")).done(function(result){
-            if(result.status==1){
-                systemMessage.succ(result.message);
-            }else{
-                systemMessage.fail(result.message);
-            }
-        });
-    });
-})(jQuery)
-</script>

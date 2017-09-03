@@ -264,47 +264,7 @@ class ProjectForm extends BaseForm
                 'type' => 'text',
             )
         ));
-        // Image
-        if ($this->thumbUrl) {
-            $this->add(array(
-                'name' => 'imageview',
-                'type' => 'Module\Portfolio\Form\Element\Image',
-                'options' => array(
-                    //'label' => __('Image'),
-                ),
-                'attributes' => array(
-                    'src' => $this->thumbUrl,
-                ),
-            ));
-            $this->add(array(
-                'name' => 'remove',
-                'type' => 'Module\Portfolio\Form\Element\Remove',
-                'options' => array(
-                    'label' => __('Remove image'),
-                ),
-                'attributes' => array(
-                    'link' => $this->removeUrl,
-                ),
-            ));
-            $this->add(array(
-                'name' => 'image',
-                'attributes' => array(
-                    'type' => 'hidden',
-                ),
-            ));
-        } else {
-            $this->add(array(
-                'name' => 'image',
-                'options' => array(
-                    'label' => __('Upload image'),
-                ),
-                'attributes' => array(
-                    'type' => 'file',
-                    'description' => '',
-                )
-            ));
-        } */
-        /* // extra_comment
+        // extra_comment
         $this->add(array(
             'name' => 'extra_comment',
             'type' => 'fieldset',
