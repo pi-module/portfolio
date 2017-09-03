@@ -3,32 +3,32 @@ $this->css($this->assetModule('css/front.css'));
 // Set box site
 switch ($config['view_column']) {
     case 1:
-        $projectBoxSize = 'col-xs-12 col-xs-12';
+        $projectBoxSize = 'col-md-12 col-xs-12';
         $image = 'large';
         break;
 
     case 2:
-        $projectBoxSize = 'col-xs-6 col-xs-12';
+        $projectBoxSize = 'col-md-6 col-xs-12';
         $image = 'medium';
         break;
 
     case 3:
-        $projectBoxSize = 'col-xs-4 col-xs-12';
+        $projectBoxSize = 'col-md-4 col-xs-12';
         $image = 'medium';
         break;
 
     case 4:
-        $projectBoxSize = 'col-xs-3 col-xs-12';
+        $projectBoxSize = 'col-md-3 col-xs-12';
         $image = 'thumb';
         break;
 
     case 6:
-        $projectBoxSize = 'col-xs-2 col-xs-12';
+        $projectBoxSize = 'col-md-2 col-xs-12';
         $image = 'thumb';
         break;
 }
 
-// Set d
+// Set description
 if (isset($type) && !empty($type['text_description'])) {
     $description = _strip($type['text_description']);
 } elseif (!empty($config['text_description_index'])) {
@@ -46,9 +46,23 @@ $this->headMeta($this->escape($title), 'twitter:title');
 $this->headMeta($this->escape($description), 'twitter:description');
 ?>
 <div class="clearfix portfolio-list">
-    <?php if (!empty($config['text_description_index'])) { ?>
-        <div class="portfolio-description clearfix">
-            <?php echo $config['text_description_index']; ?>
+    <?php if (isset($type) && !empty($type['text_description'])) { ?>
+        <div class="portfolio-description">
+            <h1><?php echo $this->escape($title); ?></h1>
+            <div class="clearfix">
+                <?php echo $type['text_description']; ?>
+            </div>
+        </div>
+    <?php } elseif (!empty($config['text_description_index'])) { ?>
+        <div class="portfolio-description">
+            <h1><?php echo $this->escape($title); ?></h1>
+            <div class="clearfix">
+                <?php echo $config['text_description_index']; ?>
+            </div>
+        </div>
+    <?php } else { ?>
+        <div class="page-header">
+            <h1><?php echo $this->escape($title); ?></h1>
         </div>
     <?php } ?>
     <?php if ($config['show_type'] && isset($typeList) && !empty($typeList)) { ?>
@@ -64,9 +78,6 @@ $this->headMeta($this->escape($description), 'twitter:description');
             </ul>
         </div>
     <?php } ?>
-    <div class="page-header">
-        <h1><?php echo $this->escape($title); ?></h1>
-    </div>
     <div class="clearfix row">
         <?php foreach($projects as $project) { ?>
             <div class="<?php echo $projectBoxSize; ?> portfolio-list-single" itemscope itemtype="http://schema.org/CreativeWork">

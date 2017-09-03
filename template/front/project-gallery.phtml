@@ -5,41 +5,49 @@ $this->js($this->assetModule('js/jquery.sdFilterMe.js'));
 // Set box site
 switch ($config['view_column']) {
     case 1:
-        $ProjectBoxSize = 'col-xs-12';
+        $projectBoxSize = 'col-md-12 col-xs-12';
         $image = 'large';
         break;
 
     case 2:
-        $ProjectBoxSize = 'col-xs-6';
+        $projectBoxSize = 'col-md-6 col-xs-12';
         $image = 'medium';
         break;
 
     case 3:
-        $ProjectBoxSize = 'col-xs-4';
-        $image = 'thumb';
+        $projectBoxSize = 'col-md-4 col-xs-12';
+        $image = 'medium';
         break;
 
     case 4:
-        $ProjectBoxSize = 'col-xs-3';
+        $projectBoxSize = 'col-md-3 col-xs-12';
         $image = 'thumb';
         break;
 
     case 6:
-        $ProjectBoxSize = 'col-xs-2';
+        $projectBoxSize = 'col-md-2 col-xs-12';
         $image = 'thumb';
         break;
 }
 
+// Set description
+if (isset($type) && !empty($type['text_description'])) {
+    $description = _strip($type['text_description']);
+} elseif (!empty($config['text_description_index'])) {
+    $description = _strip($config['text_description_index']);
+} else {
+    $description = _strip($title);
+}
 // Set Open Graph tags for meta
 $this->doctype('HTML5');
 $this->headMeta($this->escape($title), 'og:title', 'property');
-$this->headMeta($this->escape($title), 'og:description', 'property');
+$this->headMeta($this->escape($description), 'og:description', 'property');
 
 // Set twitter for meta
 $this->headMeta($this->escape($title), 'twitter:title');
-$this->headMeta($this->escape($title), 'twitter:description');
+$this->headMeta($this->escape($description), 'twitter:description');
 ?>
-<div class="clearfix portfolio-list">
+<div class="clearfix portfolio-gallery">
     <?php if (!empty($config['homepage_title'])) { ?>
         <div class="page-header">
             <h1><?php echo $this->escape($config['homepage_title']); ?></h1>
@@ -53,7 +61,7 @@ $this->headMeta($this->escape($title), 'twitter:description');
     <?php if ($config['show_type'] && isset($typeList) && !empty($typeList)) { ?>
         <div class="portfolio-type clearfix">
             <ul>
-                <li>
+                <li class="active">
                     <a class="sorter" data-filter="*"><?php _e('All'); ?></a>
                 </li>
                 <?php foreach ($typeList as $typeSingle) { ?>
@@ -67,7 +75,7 @@ $this->headMeta($this->escape($title), 'twitter:description');
     <div class="clearfix row">
         <ul class="portfolio-sort list-unstyled">
             <?php foreach($projects as $project) { ?>
-                <li class="<?php echo $ProjectBoxSize; ?> portfolio-list-single sort-<?php echo $this->escape($project['type']); ?>" itemscope itemtype="http://schema.org/CreativeWork">
+                <li class="<?php echo $projectBoxSize; ?> portfolio-list-single sort-<?php echo $this->escape($project['type']); ?>" itemscope itemtype="http://schema.org/CreativeWork">
                     <div class="thumbnail">
                         <?php switch ($image) {
                             case 'large':
@@ -82,12 +90,14 @@ $this->headMeta($this->escape($title), 'twitter:description');
                                 $imageUrl = $project['thumbUrl'];
                                 break;
                         } ?>
-                        <a <?php if ($project['ribbon']) { ?>class="portfolio-ribbon"<?php } ?> itemprop="url" title="<?php echo $this->escape($project['title']); ?>" href="<?php echo $this->escape($project['projectUrl']); ?>" >
-                            <img itemprop="image" class="img-responsive" src="<?php echo $imageUrl; ?>" alt="<?php echo $this->escape($project['title']); ?>">
-                            <?php if ($project['ribbon']) { ?>
-                                <p><span><?php echo $this->escape($project['ribbon']); ?></span></p>
-                            <?php } ?>
-                        </a>
+                        <div class="thumbnail-image">
+                            <a <?php if ($project['ribbon']) { ?>class="portfolio-ribbon"<?php } ?> itemprop="url" title="<?php echo $this->escape($project['title']); ?>" href="<?php echo $this->escape($project['projectUrl']); ?>" >
+                                <img itemprop="image" class="img-responsive" src="<?php echo $imageUrl; ?>" alt="<?php echo $this->escape($project['title']); ?>">
+                                <?php if ($project['ribbon']) { ?>
+                                    <p><span><?php echo $this->escape($project['ribbon']); ?></span></p>
+                                <?php } ?>
+                            </a>
+                        </div>
                         <div class="caption">
                             <div class="infos">
                                 <a title="<?php echo $this->escape($project['title']); ?>" href="<?php echo $this->escape($project['projectUrl']); ?>" >
@@ -115,6 +125,10 @@ $this->headMeta($this->escape($title), 'twitter:description');
 </div>
 <script>
     jQuery(function($) {
+        $('.portfolio-type li').click(function () {
+            $('.portfolio-type li').removeClass("active");
+            $(this).addClass("active");
+        });
         $('.portfolio-sort').sdFilterMe({
             filterSelector: '.sorter', // string: selector
             orderSelector: '.orderer', // string: selector

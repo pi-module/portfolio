@@ -1,74 +1,183 @@
 .portfolio .project-text {
-	margin-bottom: 10px;
+    margin-bottom: 10px;
 }
 
 /* project list */
 .portfolio .thumbnail {
-	text-align: center;
+    text-align: center;
 }
 
 .portfolio .thumbnail .caption {
-	font-size: 1em;
-	height: 60px;
-	background: rgba(0, 0, 0, 0.5);
-	color: #fff;
-	position: relative;
-	margin-top: -60px;
+    font-size: 1em;
+    height: 60px;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    position: relative;
+    margin-top: -60px;
 }
 
 .portfolio .thumbnail .caption a {
-	color: #fff;
+    color: #fff;
 }
 
 .portfolio .thumbnail .thumbnail-image {
-	height: auto;
+    height: auto;
 }
 
 /* ribbon */
 .portfolio-ribbon {
-	position: relative;
-	color: #434443;
-	display: inline-block;
-	padding: 0;
-	overflow: hidden;
-	font-weight: 700;
-	font-size: 13px;
-	display: block;
+    position: relative;
+    color: #434443;
+    display: inline-block;
+    padding: 0;
+    overflow: hidden;
+    font-weight: 700;
+    font-size: 13px;
+    display: block;
 }
 
 a.portfolio-ribbon:hover {
-	color: #434443;
+    color: #434443;
 }
 
 .portfolio-ribbon p {
-	display: inline;
+    display: inline;
 }
 
 .portfolio-ribbon p span {
-	position: absolute;
-	display: inline-block;
-	right: -50px;
-	text-align: center;
-	text-transform: none;
-	top: 35px;
-	background: #FFC107;
-	width: 200px;
-	padding: 5px 10px;
-	-webkit-transform: rotate(45deg);
-	-moz-transform: rotate(45deg);
-	-o-transform: rotate(45deg);
-	-ms-transform: rotate(45deg);
-	z-index:1;
+    position: absolute;
+    display: inline-block;
+    right: -50px;
+    text-align: center;
+    text-transform: none;
+    top: 35px;
+    background: #FFC107;
+    width: 200px;
+    padding: 5px 10px;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    z-index: 1;
 }
 
 /* type list */
 .portfolio-type {
-	text-align: center;
+    text-align: center;
 }
 
 .portfolio-type ul li {
-	padding: 5px 10px;
-	list-style: inline;
-	display: inline;
+    padding: 5px 10px;
+    list-style: inline;
+    display: inline;
 }
 
+.portfolio .portfolio-gallery .thumbnail .caption {
+    font-size: 1em;
+    background: none !important;
+    color: #262626 !important;
+    margin-top: 1px !important;
+}
+
+.portfolio .portfolio-gallery .thumbnail .caption a {
+    color: #262626 !important;
+}
+
+.portfolio .portfolio-gallery .thumbnail .caption h2 {
+    font-size: 1.3em !important;
+}
+
+.portfolio .portfolio-gallery .thumbnail .caption .portfolio-phone {
+    margin: 15px auto;
+    font-weight: bold;
+}
+
+.portfolio .portfolio-gallery .thumbnail .caption .portfolio-phone i {
+    color: #47C2EB;
+}
+
+.portfolio .portfolio-gallery .thumbnail .caption .portfolio-website {
+    border: 1px solid #FAB800;
+    padding: 10px 15px;
+    color: #FAB800 !important;
+    border-radius: 4px;
+    width: 150px;
+    margin: 15px auto;
+}
+
+.portfolio .portfolio-gallery .thumbnail .caption .portfolio-website a {
+    color: #FAB800 !important;
+}
+
+.portfolio .portfolio-gallery .portfolio-description {
+    margin: 50px auto;
+    max-width: 750px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.portfolio .portfolio-gallery .portfolio-description hr {
+    margin-top: 50px;
+}
+
+.portfolio .portfolio-gallery .portfolio-list .page-header {
+    border-bottom: none;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.portfolio .portfolio-type {
+    margin-bottom: 50px;
+}
+
+.portfolio .portfolio-type ul li {
+    border: 1px solid #333;
+    padding: 10px 15px;
+    color: #333 !important;
+    border-radius: 4px;
+    margin: 5px 15px;
+}
+
+.portfolio .portfolio-type ul li a {
+    color: #333 !important;
+}
+
+.portfolio .portfolio-type ul li:hover {
+    border: 1px solid #FAB800;
+    background: #FAB800;
+}
+
+.portfolio .portfolio-type ul li:hover a,
+.portfolio .portfolio-type ul li a:hover {
+    color: #fff !important;
+}
+
+.portfolio .portfolio-type ul li.active {
+    border: 1px solid #FAB800;
+    padding: 10px 15px;
+    background: #FAB800;
+    color: #fff !important;
+    border-radius: 4px;
+}
+
+.portfolio .portfolio-type ul li a {
+    color: #fff;
+}
+
+@media (max-width: 767px) {
+    .portfolio {
+        text-align: center !important;
+    }
+
+    .portfolio .portfolio-type ul {
+        margin: 10px 0;
+        width: 100%;
+        padding: 0;
+    }
+
+    .portfolio .portfolio-type ul li {
+        margin: 10px 0;
+        width: 100%;
+        display: inline-block;
+    }
+}

@@ -78,7 +78,17 @@ class IndexController extends ActionController
                 break;
         }
         // Get type list
-        $typeList = array();
+        $typeList = array(
+            0 => array(
+                'title' => __('All'),
+                'active' => 1,
+                'typeUrl' => Pi::url($this->url('', array(
+                    'module'        => $this->getModule(),
+                    'controller'    => 'index',
+                    'action'        => 'index',
+                ))),
+            ),
+        );
         $where = array('status' => 1);
         $order = array('id DESC');
         // Get info
