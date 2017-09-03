@@ -33,7 +33,14 @@ class ProjectController extends ActionController
         // Update Hits
         $this->getModel('project')->increment('hits', array('id' => $project['id']));
         // Get related
-        $projectRelated = Pi::api('project', 'portfolio')->related($project['id'], $project['type']);
+        if ($config['show_related']) {
+            $projectRelated = Pi::api('project', 'portfolio')->related($project['id'], $project['type']);
+        }
+        // Tag
+        if ($config['show_tag'] && Pi::service('module')->isActive('tag')) {
+            $tag = Pi::service('tag')->get($module, $project['id'], '');
+            $this->view()->assign('tag', $tag);
+        }
         // Set view
         $this->view()->headTitle($project['seo_title']);
         $this->view()->headdescription($project['seo_description'], 'set');

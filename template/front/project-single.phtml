@@ -107,7 +107,9 @@ if (!empty($project['largeUrl'])) {
                 <ul class="list-inline">
                     <?php foreach($tag as $term) { ?>
                         <li class="portfolio-tag-item">
-                            <a title="<?php echo $this->escape($term); ?>" href="<?php echo $this->url('', array('controller' => 'tag', 'action' => 'index', 'slug' => urlencode($term))); ?>"><i class="fa fa-tag"></i> <?php echo $this->escape($term); ?></a>
+                            <a title="<?php echo $this->escape($term); ?>" href="<?php echo $this->url('', array('controller' => 'tag', 'action' => 'index', 'slug' => $term)); ?>">
+                                <i class="fa fa-tag"></i> <?php echo $this->escape($term); ?>
+                            </a>
                         </li>
                     <?php } ?>
                 </ul>
@@ -126,7 +128,7 @@ if (!empty($project['largeUrl'])) {
             </div>
         <?php } ?>
     </div>
-    <?php if (isset($projectRelated) && !empty($projectRelated)) { ?>
+    <?php if ($config['show_related'] &&isset($projectRelated) && !empty($projectRelated)) { ?>
         <div class="portfolio-related col-md-12">
             <?php
             $this->jQuery(array(

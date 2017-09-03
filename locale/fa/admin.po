@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Pi portfolio module\n"
-"POT-Creation-Date: 2017-09-03 12:38+0430\n"
+"POT-Creation-Date: 2017-09-03 15:31+0430\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: Pi\n"
@@ -19,52 +19,96 @@ msgstr ""
 msgid "Project list"
 msgstr "فهرست پروژه ها"
 
-#: config/block.php:22 config/navigation.php:48 config/navigation.php:58
+#: config/block.php:22
+msgid "Project list type"
+msgstr "نوع نمایش فهرست"
+
+#: config/block.php:28
+msgid "Horizontal"
+msgstr "افقی"
+
+#: config/block.php:29
+msgid "Slide"
+msgstr "اسلاید"
+
+#: config/block.php:30
+msgid "Gallery"
+msgstr "گالری"
+
+#: config/block.php:38 config/config.php:60
+msgid "Columns"
+msgstr "ستون"
+
+#: config/block.php:44 config/config.php:66
+msgid "One columns"
+msgstr "یک ستون"
+
+#: config/block.php:45 config/config.php:67
+msgid "Two columns"
+msgstr "دو ستون"
+
+#: config/block.php:46 config/config.php:68
+msgid "Three columns"
+msgstr "سه ستون"
+
+#: config/block.php:47 config/config.php:69
+msgid "Four columns"
+msgstr "چهار ستون"
+
+#: config/block.php:48 config/config.php:70
+msgid "Six columns"
+msgstr "شش ستون"
+
+#: config/block.php:56 config/navigation.php:48 config/navigation.php:58
 #: config/page.php:22 config/permission.php:21
 msgid "Project type"
 msgstr "نوع پروژه"
 
-#: config/block.php:29
+#: config/block.php:63
 msgid "Number"
 msgstr "تعداد"
 
-#: config/block.php:36
+#: config/block.php:70
 msgid "Show just recommended"
 msgstr "نمایش فقط ویژه ها"
 
-#: config/block.php:43
+#: config/block.php:77
+msgid "Show title"
+msgstr "نمایش عنوان"
+
+#: config/block.php:84
 msgid "Project order"
 msgstr "ترتیب نمایش پروژه ها"
 
-#: config/block.php:49
+#: config/block.php:90
 msgid "Create time DESC"
 msgstr "تاریخ انتشار - صعودی"
 
-#: config/block.php:50
+#: config/block.php:91
 msgid "Create time ASC"
 msgstr "تاریخ انتشار - نزولی"
 
-#: config/block.php:51
+#: config/block.php:92
 msgid "Update time DESC"
 msgstr "تاریخ  به روز رسانی - صعودی"
 
-#: config/block.php:52
+#: config/block.php:93
 msgid "Update time ASC"
 msgstr "تاریخ  به روز رسانی - نزولی"
 
-#: config/block.php:53
+#: config/block.php:94
 msgid "Random"
 msgstr "تصادفی"
 
-#: config/block.php:61
+#: config/block.php:102
 msgid "Use block effects"
 msgstr "استفاده از افکت های بلاک"
 
-#: config/block.php:62
+#: config/block.php:103
 msgid "Use block effects or set custom effect on theme"
 msgstr "استفاده از افکت های جاوا اسکریپت بلاک یا شخصی سازی آن در قالب"
 
-#: config/block.php:71
+#: config/block.php:112
 msgid "Project Comment"
 msgstr "نظر در نمونه کار ها"
 
@@ -95,30 +139,6 @@ msgstr "تعداد در صفحه"
 #: config/config.php:46
 msgid "Homepage title"
 msgstr "عنوان صفحه اول"
-
-#: config/config.php:60
-msgid "Columns"
-msgstr "ستون"
-
-#: config/config.php:66
-msgid "One columns"
-msgstr "یک ستون"
-
-#: config/config.php:67
-msgid "Two columns"
-msgstr "دو ستون"
-
-#: config/config.php:68
-msgid "Three columns"
-msgstr "سه ستون"
-
-#: config/config.php:69
-msgid "Four columns"
-msgstr "چهار ستون"
-
-#: config/config.php:70
-msgid "Six columns"
-msgstr "شش ستون"
 
 #: config/config.php:79
 msgid "View type"
@@ -172,91 +192,95 @@ msgstr "نمایش بازدید"
 msgid "Show Tags"
 msgstr "نمایش برچسب ها"
 
-#: config/config.php:162
+#: config/config.php:161
+msgid "Show relateds"
+msgstr "نمایش موارد مشابه"
+
+#: config/config.php:170
 msgid "Image Size"
 msgstr "حجم تصویر"
 
-#: config/config.php:170
+#: config/config.php:178
 msgid "Image quality"
 msgstr "کیفیت تصویر"
 
-#: config/config.php:171
+#: config/config.php:179
 msgid "Between 0 to 100 and support both of JPG and PNG, default is 75"
 msgstr "بین ۰ تا ۱۰۰ تنظیم شود و برای هر دو فرمت PNG و JPG ، مقدار پیش فرض ۷۵"
 
-#: config/config.php:178
+#: config/config.php:186
 msgid "Image path"
 msgstr "مسیر ذخیره تصویر"
 
-#: config/config.php:186
+#: config/config.php:194
 msgid "Image Extension"
 msgstr "پسوند های مجار برای تصویر"
 
-#: config/config.php:194
+#: config/config.php:202
 msgid "Large Image height"
 msgstr "ارتفاع تصویر بزرگ"
 
-#: config/config.php:202
+#: config/config.php:210
 msgid "Large Image width"
 msgstr "عرض تصویر بزرگ"
 
-#: config/config.php:210
+#: config/config.php:218
 msgid "Item Image width"
 msgstr "عرض تصویر آیتم"
 
-#: config/config.php:218
+#: config/config.php:226
 msgid "Item Image height"
 msgstr "ارتفاع تصویر آیتم"
 
-#: config/config.php:226
+#: config/config.php:234
 msgid "Medium Image height"
 msgstr "ارتفاع تصویر متوسط"
 
-#: config/config.php:234
+#: config/config.php:242
 msgid "Medium Image width"
 msgstr "عرض تصویر متوسط"
 
-#: config/config.php:242
+#: config/config.php:250
 msgid "Thumb Image height"
 msgstr "ارتفاع تصویر بندانگشتی"
 
-#: config/config.php:250
+#: config/config.php:258
 msgid "Thumb Image width"
 msgstr "عرض تصویر بندانگشتی"
 
-#: config/config.php:258
+#: config/config.php:266
 msgid "Add Watermark"
 msgstr "اضافه کردن واترمارک به تصویر"
 
-#: config/config.php:266
+#: config/config.php:274
 msgid "Watermark Image"
 msgstr "تصویر واترمارک"
 
-#: config/config.php:273
+#: config/config.php:281
 msgid "Watermark Positio"
 msgstr "موقعیت واترمارک"
 
-#: config/config.php:279
+#: config/config.php:287
 msgid "Top Left"
 msgstr "بالا چپ"
 
-#: config/config.php:280
+#: config/config.php:288
 msgid "Top Right"
 msgstr "بالا راست"
 
-#: config/config.php:281
+#: config/config.php:289
 msgid "Bottom Left"
 msgstr "پایین چپ"
 
-#: config/config.php:282
+#: config/config.php:290
 msgid "Bottom Right"
 msgstr "پایین راست"
 
-#: config/config.php:292
+#: config/config.php:300
 msgid "Social sharing items"
 msgstr "اشتراک گذاری در شبکه های اجتماعی "
 
-#: config/config.php:306
+#: config/config.php:314
 msgid "Description for index page"
 msgstr "توضیحات صفحه اول"
 

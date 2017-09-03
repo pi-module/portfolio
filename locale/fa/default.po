@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Pi portfolio module\n"
-"POT-Creation-Date: 2017-09-03 12:35+0430\n"
+"POT-Creation-Date: 2017-09-03 15:32+0430\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: Pi\n"
@@ -15,57 +15,43 @@ msgstr ""
 "X-Poedit-Basepath: ../..\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: src/Api/Project.php:116
+#: src/Api/Project.php:84
 msgid "Recommended"
 msgstr "ویژه"
 
-#: src/Api/Project.php:171 src/Form/ProjectForm.php:118
+#: src/Api/Project.php:139 src/Form/ProjectForm.php:118
 #: src/Form/TypeForm.php:84
 msgid "Draft"
 msgstr "پیشنویس"
 
-#: src/Api/Project.php:173
+#: src/Api/Project.php:141
 msgid "Missing image or path value from db for project ID"
 msgstr "عکس یا مسیر مدیا برای پروژه ID زیر پیدا نشد"
 
-#: src/Controller/Admin/ProjectController.php:120
-msgid "Problem in upload image. please try again"
-msgstr "خطا در بارگذاری تصویر، لطفا دوباره امتحان کنید"
-
-#: src/Controller/Admin/ProjectController.php:174
+#: src/Controller/Admin/ProjectController.php:149
 msgid "Project data saved successfully."
 msgstr "اطلاعات پروژه با موفقیت به روز شد"
 
-#: src/Controller/Admin/ProjectController.php:194
+#: src/Controller/Admin/ProjectController.php:169
 msgid "Manage Project"
 msgstr "مدیریت پروژه"
 
-#: src/Controller/Admin/ProjectController.php:218
-#, php-format
-msgid "Image of %s removed"
-msgstr "تصویر %s حذف شد"
-
-#: src/Controller/Admin/ProjectController.php:221
-msgid "Image not remove"
-msgstr "تصویر حذف نشد"
-
-#: src/Controller/Admin/ProjectController.php:225
-#: src/Controller/Admin/ProjectController.php:260
-#: src/Controller/Admin/ProjectController.php:290
-msgid "Please select project"
-msgstr "لطفا یک پروژه انتخاب کنید"
-
-#: src/Controller/Admin/ProjectController.php:249
+#: src/Controller/Admin/ProjectController.php:187
 #, php-format
 msgid "%s set recommended successfully"
 msgstr "%s با موفقیت عنوان ویژه شد"
 
-#: src/Controller/Admin/ProjectController.php:254
+#: src/Controller/Admin/ProjectController.php:192
 #, php-format
 msgid "Error in set recommended for %s project"
 msgstr "خطا در تنظیم %s به عنوان ویژه"
 
-#: src/Controller/Admin/ProjectController.php:288
+#: src/Controller/Admin/ProjectController.php:198
+#: src/Controller/Admin/ProjectController.php:228
+msgid "Please select project"
+msgstr "لطفا یک پروژه انتخاب کنید"
+
+#: src/Controller/Admin/ProjectController.php:226
 msgid "This project deleted"
 msgstr "این پروژه حذف شد"
 
@@ -81,7 +67,13 @@ msgstr "نوع پروژه با موفقیت ذخیره شد"
 msgid "Manage type"
 msgstr "مدیریت نوع پروژه"
 
-#: src/Controller/Front/IndexController.php:99
+#: src/Controller/Front/IndexController.php:83
+#: src/Controller/Front/TypeController.php:76
+#: template/front/project-gallery.phtml:65
+msgid "All"
+msgstr "همه"
+
+#: src/Controller/Front/IndexController.php:109
 msgid "List of our projects"
 msgstr "فهرست پروژه ها"
 
@@ -203,7 +195,7 @@ msgstr "برچسب ها"
 msgid "Use `|` as delimiter to separate tag terms"
 msgstr "با استفاده از `|` کلمات را از هم جدا کنید"
 
-#: src/Form/ProjectForm.php:468 src/Form/TypeForm.php:95
+#: src/Form/ProjectForm.php:428 src/Form/TypeForm.php:95
 msgid "Submit"
 msgstr "ارسال"
 
@@ -234,10 +226,6 @@ msgstr "آیا اطمینان دارید که میخواهید این پروژه
 msgid "Recommended in process"
 msgstr "درج مورد پیشنهادی در حال اجراست"
 
-#: template/admin/project-update.phtml:18
-msgid "Remove image project in process"
-msgstr "حذف تصویر پروژه در حال انجام است"
-
 #: template/admin/type-index.phtml:4
 msgid "List of project types"
 msgstr "فهرست انواع پروژه"
@@ -254,16 +242,12 @@ msgstr "عملکرد"
 msgid "No project type create yet"
 msgstr "هنوز هیچ نوع پروژه ای ساخته نشده است"
 
-#: template/front/project-gallery.phtml:57
-msgid "All"
-msgstr "همه"
-
-#: template/front/project-gallery.phtml:105
-#: template/front/project-list.phtml:99
+#: template/front/project-gallery.phtml:115
+#: template/front/project-list.phtml:118
 msgid "View website"
 msgstr "نمایش وب سایت"
 
-#: template/front/project-gallery.phtml:145
+#: template/front/project-gallery.phtml:159
 msgid "Nothing to show"
 msgstr "هیچ موردی برای نمایش وجود ندارد"
 
@@ -275,9 +259,21 @@ msgstr "ورود به وب سایت"
 msgid "Hits"
 msgstr "بازدید"
 
-#: template/front/project-single.phtml:139
+#: template/front/project-single.phtml:141
 msgid "Related projects"
 msgstr "پروژه های مشابه"
+
+#~ msgid "Problem in upload image. please try again"
+#~ msgstr "خطا در بارگذاری تصویر، لطفا دوباره امتحان کنید"
+
+#~ msgid "Image of %s removed"
+#~ msgstr "تصویر %s حذف شد"
+
+#~ msgid "Image not remove"
+#~ msgstr "تصویر حذف نشد"
+
+#~ msgid "Remove image project in process"
+#~ msgstr "حذف تصویر پروژه در حال انجام است"
 
 #~ msgid "Information"
 #~ msgstr "اطلاعات"

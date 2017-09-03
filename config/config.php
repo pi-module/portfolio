@@ -156,6 +156,14 @@ return array(
             'filter' => 'number_int',
             'value' => 1
         ),
+        'show_related' => array(
+            'category' => 'show',
+            'title' => _a('Show relateds'),
+            'description' => '',
+            'edit' => 'checkbox',
+            'filter' => 'number_int',
+            'value' => 1
+        ),
         // Image
         'image_size' => array(
             'category' => 'image',
