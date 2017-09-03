@@ -39,6 +39,7 @@ class TypeController extends ActionController
         if (!$type || $type['status'] != 1) {
             $this->jump(array('', 'module' => $module, 'controller' => 'index'), __('The type not found.'));
         }
+        $type['text_description'] = Pi::service('markup')->render($type['text_description'], 'html', 'html');
         // Set info
         $where = array('status' => 1, 'type' => $type['id']);
         $order = array('id DESC', 'time_create DESC');
@@ -104,6 +105,7 @@ class TypeController extends ActionController
         $this->view()->assign('paginator', $paginator);
         $this->view()->assign('config', $config);
         $this->view()->assign('title', $type['title']);
+        $this->view()->assign('type', $type);
         $this->view()->assign('typeList', $typeList);
     }
 }

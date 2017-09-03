@@ -55,7 +55,10 @@ class Portfolio extends Standard
         if (isset($matches['controller'])) {
             switch ($matches['controller']) {
                 case 'index':
-
+                    if (isset($parts[0]) && !empty($parts[0])) {
+                        $matches['controller'] = 'project';
+                        $matches['slug'] = $this->decode($parts[0]);
+                    }
                     break;
 
                 case 'tag':
@@ -71,7 +74,12 @@ class Portfolio extends Standard
                     break;
             }    
         }
-        
+
+        /* echo '<div>';
+        print_r($parts);
+        print_r($matches);
+        echo '</div>'; */
+
         return $matches;
     }
 
@@ -96,7 +104,10 @@ class Portfolio extends Standard
         if (!empty($mergedParams['module'])) {
             $url['module'] = $mergedParams['module'];
         }
-        if (!empty($mergedParams['controller']) && $mergedParams['controller'] != 'index') {
+        if (!empty($mergedParams['controller'])
+            && $mergedParams['controller'] != 'index'
+            && $mergedParams['controller'] != 'project'
+        ) {
             $url['controller'] = $mergedParams['controller'];
         }
         if (!empty($mergedParams['action']) && $mergedParams['action'] != 'index') {

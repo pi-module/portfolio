@@ -18,6 +18,40 @@ return array(
         'render' => array('block', 'projectList'),
         'template' => 'project-list',
         'config' => array(
+            'list-type' => array(
+                'title' => _a('Project list type'),
+                'description' => '',
+                'edit' => array(
+                    'type' => 'select',
+                    'options' => array(
+                        'options' => array(
+                            'horizontal' => _a('Horizontal'),
+                            'slide'      => _a('Slide'),
+                            'gallery'    => _a('Gallery'),
+                        ),
+                    ),
+                ),
+                'filter' => 'text',
+                'value' => 'horizontal',
+            ),
+            'column' => array(
+                'title' => _a('Columns'),
+                'description' => '',
+                'edit' => array(
+                    'type' => 'select',
+                    'options' => array(
+                        'options' => array(
+                            1 => _a('One columns'),
+                            2 => _a('Two columns'),
+                            3 => _a('Three columns'),
+                            4 => _a('Four columns'),
+                            6 => _a('Six columns'),
+                        ),
+                    ),
+                ),
+                'filter' => 'text',
+                'value' => 3,
+            ),
             'type' => array(
                 'title' => _a('Project type'),
                 'description' => '',
@@ -38,6 +72,13 @@ return array(
                 'edit' => 'checkbox',
                 'filter' => 'number_int',
                 'value' => 0,
+            ),
+            'show_title' => array(
+                'title' => _a('Show title'),
+                'description' => '',
+                'edit' => 'checkbox',
+                'filter' => 'number_int',
+                'value' => 1,
             ),
             'order' => array(
                 'title' => _a('Project order'),

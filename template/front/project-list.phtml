@@ -3,39 +3,47 @@ $this->css($this->assetModule('css/front.css'));
 // Set box site
 switch ($config['view_column']) {
     case 1:
-        $ProjectBoxSize = 'col-xs-12';
+        $projectBoxSize = 'col-xs-12 col-xs-12';
         $image = 'large';
         break;
 
     case 2:
-        $ProjectBoxSize = 'col-xs-6';
+        $projectBoxSize = 'col-xs-6 col-xs-12';
         $image = 'medium';
         break;
 
     case 3:
-        $ProjectBoxSize = 'col-xs-4';
+        $projectBoxSize = 'col-xs-4 col-xs-12';
         $image = 'medium';
         break;
 
     case 4:
-        $ProjectBoxSize = 'col-xs-3';
+        $projectBoxSize = 'col-xs-3 col-xs-12';
         $image = 'thumb';
         break;
 
     case 6:
-        $ProjectBoxSize = 'col-xs-2';
+        $projectBoxSize = 'col-xs-2 col-xs-12';
         $image = 'thumb';
         break;
 }
 
+// Set d
+if (isset($type) && !empty($type['text_description'])) {
+    $description = _strip($type['text_description']);
+} elseif (!empty($config['text_description_index'])) {
+    $description = _strip($config['text_description_index']);
+} else {
+    $description = _strip($title);
+}
 // Set Open Graph tags for meta
 $this->doctype('HTML5');
 $this->headMeta($this->escape($title), 'og:title', 'property');
-$this->headMeta($this->escape($title), 'og:description', 'property');
+$this->headMeta($this->escape($description), 'og:description', 'property');
 
 // Set twitter for meta
 $this->headMeta($this->escape($title), 'twitter:title');
-$this->headMeta($this->escape($title), 'twitter:description');
+$this->headMeta($this->escape($description), 'twitter:description');
 ?>
 <div class="clearfix portfolio-list">
     <?php if (!empty($config['text_description_index'])) { ?>
@@ -61,7 +69,7 @@ $this->headMeta($this->escape($title), 'twitter:description');
     </div>
     <div class="clearfix row">
         <?php foreach($projects as $project) { ?>
-            <div class="<?php echo $ProjectBoxSize; ?> portfolio-list-single" itemscope itemtype="http://schema.org/CreativeWork">
+            <div class="<?php echo $projectBoxSize; ?> portfolio-list-single" itemscope itemtype="http://schema.org/CreativeWork">
                 <div class="thumbnail">
                     <?php switch ($image) {
                         case 'large':

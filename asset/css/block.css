@@ -5,20 +5,25 @@
 
 .portfolio-block .thumbnail .caption {
 	font-size: 1em;
-	height: 60px;
+	height: 40px;
 	background: rgba(0, 0, 0, 0.5);
 	color: #fff;
 	position: relative;
-	margin-top: -60px;
+	margin-top: -40px;
+}
+
+.portfolio-block .thumbnail .caption h2 {
+	padding: 5px;
+	margin: 0;
+	font-size: 1em;
 }
 
 .portfolio-block .thumbnail .caption a {
 	color: #fff;
 }
 
-.portfolio-block .thumbnail img {
-	height: 200px;
-	width: 100%;
+.portfolio-block .thumbnail .thumbnail-image {
+	height: auto;
 }
 
 /* ribbon */
