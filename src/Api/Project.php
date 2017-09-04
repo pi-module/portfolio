@@ -18,6 +18,7 @@ use Pi\Application\Api\AbstractApi;
 
 /*
  * Pi::api('project', 'portfolio')->getProject($parameter, $type);
+ * Pi::api('project', 'portfolio')->getProjectList($options);
  * Pi::api('project', 'portfolio')->getListFromId($id);
  * Pi::api('project', 'portfolio')->canonizeProject($project);
  * Pi::api('project', 'portfolio')->related($id, $type);
@@ -32,6 +33,31 @@ class Project extends AbstractApi
         $project = Pi::model('project', $this->getModule())->find($parameter, $type);
         $project = $this->canonizeProject($project);
         return $project;
+    }
+
+    public function getProjectList($options)
+    {
+        // Get config
+        $config = Pi::service('registry')->config->read($this->getModule());
+
+        // Set
+        $projectList = array();
+
+        // Set
+        $where = array('status' => 1);
+        $order = array('time_create DESC', 'id DESC');
+        $offset = (int)($options['page'] - 1) * $config['view_perpage'];
+        $limit = intval($config['view_perpage']);
+
+        // Get info
+        $select = Pi::model('project', $this->getModule())->select()->where($where)->order($order)->offset($offset)->limit($limit);
+        $rowset = Pi::model('project', $this->getModule())->selectWith($select);
+        // Make list
+        foreach ($rowset as $row) {
+            $projectList[] = $this->canonizeProject($row);
+        }
+
+        return $projectList;
     }
 
     public function getListFromId($id)
