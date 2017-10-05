@@ -112,13 +112,13 @@ $this->headMeta($this->escape($description), 'twitter:description');
                                 <i class="fa fa-phone" aria-hidden="true"></i> <?php echo $this->escape($project['phone']); ?>
                             </div>
                         <?php } ?>
-                        <?php if ($config['show_website'] && $project['website_view'] && !empty($project['website'])) { ?>
+                        <?php /* if ($config['show_website'] && $project['website_view'] && !empty($project['website'])) { ?>
                             <div class="portfolio-website">
                                 <a target="_blank" title="<?php echo $this->escape($project['title']); ?>" href="<?php echo $this->escape($project['website']); ?>" >
                                     <?php _e('View website'); ?>
                                 </a>
                             </div>
-                        <?php } ?>
+                        <?php } */ ?>
                     </div>
                 </div>
             </div>

@@ -38,17 +38,12 @@ if (!empty($project['largeUrl'])) {
 }
 ?>
 <div class="clearfix portfolio-single" itemscope itemtype="http://schema.org/CreativeWork">
-    <div class="page-header">
-        <h1 itemprop="name">
-            <?php echo $this->escape($project['title']); ?>
-        </h1>
-    </div>
     <meta itemprop="url" content="<?php echo $project['projectUrl']; ?>" />
     <div class="clearfix gallery">
         <div class="text-center clearfix u-photo">
             <div class="col-md-6 col-md-offset-3">
                 <a <?php if ($project['ribbon']) { ?>class="portfolio-ribbon"<?php } ?> href="<?php echo $this->escape($project['largeUrl']); ?>" title="<?php echo $this->escape($project['title']); ?>">
-                    <img itemprop="image" class="img-responsive img-thumbnail" src="<?php echo $this->escape($project['largeUrl']); ?>" alt="<?php echo $this->escape($project['title']); ?>" />
+                    <img itemprop="image" class="img-responsive" src="<?php echo $this->escape($project['largeUrl']); ?>" alt="<?php echo $this->escape($project['title']); ?>" />
                     <?php if ($project['ribbon']) { ?>
                         <p><span><?php echo $this->escape($project['ribbon']); ?></span></p>
                     <?php } ?>
@@ -76,6 +71,11 @@ if (!empty($project['largeUrl'])) {
         <?php } ?>
     </div>
     <div class="col-md-12">
+        <div class="page-header">
+            <h1 itemprop="name">
+                <?php echo $this->escape($project['title']); ?>
+            </h1>
+        </div>
         <?php if($config['show_description'] && !empty($project['text_description'])) { ?>
             <div class="portfolio-text">
                 <?php echo $project['text_description']; ?>
