@@ -1,26 +1,26 @@
 <?php switch ($block['column']) {
     case 1:
-        $projectBoxSize = 'col-md-12 col-xs-12';
+        $projectBoxSize = 'col-md-12 col-12';
         $image = 'large';
         break;
 
     case 2:
-        $projectBoxSize = 'col-md-6 col-xs-12';
+        $projectBoxSize = 'col-md-6 col-12';
         $image = 'medium';
         break;
 
     case 3:
-        $projectBoxSize = 'col-md-4 col-xs-12';
+        $projectBoxSize = 'col-md-4 col-12';
         $image = 'medium';
         break;
 
     case 4:
-        $projectBoxSize = 'col-md-3 col-xs-12';
+        $projectBoxSize = 'col-md-3 col-12';
         $image = 'thumb';
         break;
 
     case 6:
-        $projectBoxSize = 'col-md-2 col-xs-12';
+        $projectBoxSize = 'col-md-2 col-12';
         $image = 'thumb';
         break;
 } ?>
@@ -48,7 +48,7 @@
                     <div class="thumbnail">
                         <div class="thumbnail-image">
                             <a <?php if ($project['ribbon']) { ?>class="portfolio-ribbon"<?php } ?> itemprop="url" title="<?php echo $this->escape($project['title']); ?>" href="<?php echo $project['projectUrl']; ?>" >
-                                <img itemprop="image" class="img-responsive" src="<?php echo $imageUrl; ?>" alt="<?php echo $this->escape($project['title']); ?>">
+                                <img itemprop="image" class="img-fluid" src="<?php echo $imageUrl; ?>" alt="<?php echo $this->escape($project['title']); ?>">
                                 <?php if ($project['ribbon']) { ?>
                                     <p><span><?php echo $this->escape($project['ribbon']); ?></span></p>
                                 <?php } ?>
@@ -114,7 +114,7 @@ EOT;
                     <div class="thumbnail">
                         <div class="thumbnail-image">
                             <a itemprop="url" title="<?php echo $this->escape($project['title']); ?>" href="<?php echo $project['projectUrl']; ?>" >
-                                <img itemprop="image" class="img-responsive" src="<?php echo $imageUrl; ?>" alt="<?php echo $this->escape($project['title']); ?>">
+                                <img itemprop="image" class="img-fluid" src="<?php echo $imageUrl; ?>" alt="<?php echo $this->escape($project['title']); ?>">
                             </a>
                         </div>
                         <?php if ($block['show_title']) { ?>

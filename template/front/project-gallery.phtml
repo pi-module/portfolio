@@ -5,27 +5,27 @@ $this->js($this->assetModule('js/jquery.sdFilterMe.js'));
 // Set box site
 switch ($config['view_column']) {
     case 1:
-        $projectBoxSize = 'col-md-12 col-xs-12';
+        $projectBoxSize = 'col-md-12 col-12';
         $image = 'large';
         break;
 
     case 2:
-        $projectBoxSize = 'col-md-6 col-xs-12';
+        $projectBoxSize = 'col-md-6 col-12';
         $image = 'medium';
         break;
 
     case 3:
-        $projectBoxSize = 'col-md-4 col-xs-12';
+        $projectBoxSize = 'col-md-4 col-12';
         $image = 'medium';
         break;
 
     case 4:
-        $projectBoxSize = 'col-md-3 col-xs-12';
+        $projectBoxSize = 'col-md-3 col-12';
         $image = 'thumb';
         break;
 
     case 6:
-        $projectBoxSize = 'col-md-2 col-xs-12';
+        $projectBoxSize = 'col-md-2 col-12';
         $image = 'thumb';
         break;
 }
@@ -92,7 +92,7 @@ $this->headMeta($this->escape($description), 'twitter:description');
                         } ?>
                         <div class="thumbnail-image">
                             <a <?php if ($project['ribbon']) { ?>class="portfolio-ribbon"<?php } ?> itemprop="url" title="<?php echo $this->escape($project['title']); ?>" href="<?php echo $this->escape($project['projectUrl']); ?>" >
-                                <img itemprop="image" class="img-responsive" src="<?php echo $imageUrl; ?>" alt="<?php echo $this->escape($project['title']); ?>">
+                                <img itemprop="image" class="img-fluid" src="<?php echo $imageUrl; ?>" alt="<?php echo $this->escape($project['title']); ?>">
                                 <?php if ($project['ribbon']) { ?>
                                     <p><span><?php echo $this->escape($project['ribbon']); ?></span></p>
                                 <?php } ?>

@@ -43,7 +43,7 @@ if (!empty($project['largeUrl'])) {
         <div class="text-center clearfix u-photo">
             <div class="col-md-6 col-md-offset-3">
                 <a <?php if ($project['ribbon']) { ?>class="portfolio-ribbon"<?php } ?> href="<?php echo $this->escape($project['largeUrl']); ?>" title="<?php echo $this->escape($project['title']); ?>">
-                    <img itemprop="image" class="img-responsive" src="<?php echo $this->escape($project['largeUrl']); ?>" alt="<?php echo $this->escape($project['title']); ?>" />
+                    <img itemprop="image" class="img-fluid" src="<?php echo $this->escape($project['largeUrl']); ?>" alt="<?php echo $this->escape($project['title']); ?>" />
                     <?php if ($project['ribbon']) { ?>
                         <p><span><?php echo $this->escape($project['ribbon']); ?></span></p>
                     <?php } ?>
@@ -57,10 +57,10 @@ if (!empty($project['largeUrl'])) {
                 <?php $galleryImagesBig = Pi::api('doc','media')->getGalleryLinkData($project['additional_images'], 900, 600); ?>
                 <?php if ($galleryImages) { ?>
                     <?php foreach ($galleryImages as $key => $galleryImage) { ?>
-                        <div class="u-photo col-lg-2 col-md-3 col-xs-6 thumb">
+                        <div class="u-photo col-lg-2 col-md-3 col-6 thumb">
                             <a class="thumbnail" href="<?php echo $galleryImagesBig[$key]['resized_url']; ?>"
                                title="<?php echo $this->escape($galleryImage['title']); ?><?php if($galleryImage['copyright']) echo ' - ' . $galleryImage['copyright'] ?>">
-                                <img itemprop="image" class="img-responsive"
+                                <img itemprop="image" class="img-fluid"
                                      src="<?php echo $galleryImage['resized_url']; ?>"
                                      alt="<?php echo $this->escape($galleryImage['title']); ?>"/>
                             </a>
@@ -106,7 +106,7 @@ if (!empty($project['largeUrl'])) {
             <div class="clearfix portfolio-tag-list">
                 <ul class="list-inline">
                     <?php foreach($tag as $term) { ?>
-                        <li class="portfolio-tag-item">
+                        <li class="list-inline-item portfolio-tag-item">
                             <a title="<?php echo $this->escape($term); ?>" href="<?php echo $this->url('', array('controller' => 'tag', 'action' => 'index', 'slug' => $term)); ?>">
                                 <i class="fa fa-tag"></i> <?php echo $this->escape($term); ?>
                             </a>
@@ -146,7 +146,7 @@ if (!empty($project['largeUrl'])) {
                         <div class="thumbnail p-item h-card">
                             <a itemprop="url" class="u-url" title="<?php echo $this->escape($projectItem['title']); ?>"
                                href="<?php echo $this->escape($projectItem['projectUrl']); ?>">
-                                <img itemprop="image" class="img-responsive u-photo"
+                                <img itemprop="image" class="img-fluid u-photo"
                                      src="<?php echo $this->escape($projectItem['thumbUrl']); ?>"
                                      alt="<?php echo $this->escape($projectItem['title']); ?>"/>
                             </a>
