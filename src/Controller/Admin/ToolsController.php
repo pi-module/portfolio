@@ -19,7 +19,8 @@ use Pi\Mvc\Controller\ActionController;
 class ToolsController extends ActionController
 {
     public function indexAction()
-    {}
+    {
+    }
 
     public function migrateMediaAction()
     {
@@ -28,6 +29,6 @@ class ToolsController extends ActionController
         if (empty($message)) {
             $message = __('Media have migrate successfully');
         }
-        $this->jump(array('action' => 'index'), $message);
+        $this->jump(['action' => 'index'], $message);
     }
 }

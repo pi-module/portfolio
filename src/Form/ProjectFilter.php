@@ -10,6 +10,7 @@
 /**
  * @author Hossein Azizabadi <azizabadi@faragostaresh.com>
  */
+
 namespace Module\Portfolio\Form;
 
 use Pi;
@@ -17,115 +18,153 @@ use Zend\InputFilter\InputFilter;
 
 class ProjectFilter extends InputFilter
 {
-    public function __construct($option = array())
+    public function __construct($option = [])
     {
         // id
-        $this->add(array(
-            'name' => 'id',
-            'required' => false,
-        ));
+        $this->add(
+            [
+                'name'     => 'id',
+                'required' => false,
+            ]
+        );
         // title
-        $this->add(array(
-            'name' => 'title',
-            'required' => true,
-            'filters' => array(
-                array(
-                    'name' => 'StringTrim',
-                ),
-            ),
-        ));
+        $this->add(
+            [
+                'name'     => 'title',
+                'required' => true,
+                'filters'  => [
+                    [
+                        'name' => 'StringTrim',
+                    ],
+                ],
+            ]
+        );
         // slug
-        $this->add(array(
-            'name'          => 'slug',
-            'required'      => false,
-            'filters'       => array(
-                array(
-                    'name'  => 'StringTrim',
-                ),
-            ),
-            'validators'    => array(
-                new \Module\Portfolio\Validator\SlugDuplicate(array(
-                    'module'            => Pi::service('module')->current(),
-                    'table'             => 'project',
-                )),
-            ),
-        ));
+        $this->add(
+            [
+                'name'       => 'slug',
+                'required'   => false,
+                'filters'    => [
+                    [
+                        'name' => 'StringTrim',
+                    ],
+                ],
+                'validators' => [
+                    new \Module\Portfolio\Validator\SlugDuplicate(
+                        [
+                            'module' => Pi::service('module')->current(),
+                            'table'  => 'project',
+                        ]
+                    ),
+                ],
+            ]
+        );
         // type
-        $this->add(array(
-            'name' => 'type',
-            'required' => true,
-        ));
+        $this->add(
+            [
+                'name'     => 'type',
+                'required' => true,
+            ]
+        );
         // Main image
-        $this->add(array(
-            'name' => 'main_image',
-            'required' => true,
-        ));
+        $this->add(
+            [
+                'name'     => 'main_image',
+                'required' => true,
+            ]
+        );
         // Aadditional images
-        $this->add(array(
-            'name' => 'additional_images',
-            'required' => false,
-        ));
+        $this->add(
+            [
+                'name'     => 'additional_images',
+                'required' => false,
+            ]
+        );
         // text_description
-        $this->add(array(
-            'name' => 'text_description',
-            'required' => false,
-        ));
+        $this->add(
+            [
+                'name'     => 'text_description',
+                'required' => false,
+            ]
+        );
         // status
-        $this->add(array(
-            'name' => 'status',
-            'required' => true,
-        ));
+        $this->add(
+            [
+                'name'     => 'status',
+                'required' => true,
+            ]
+        );
         // service
-        $this->add(array(
-            'name' => 'service',
-            'required' => false,
-        ));
+        $this->add(
+            [
+                'name'     => 'service',
+                'required' => false,
+            ]
+        );
         // technology
-        $this->add(array(
-            'name' => 'technology',
-            'required' => false,
-        ));
+        $this->add(
+            [
+                'name'     => 'technology',
+                'required' => false,
+            ]
+        );
         // website
-        $this->add(array(
-            'name' => 'website',
-            'required' => false,
-        ));
+        $this->add(
+            [
+                'name'     => 'website',
+                'required' => false,
+            ]
+        );
         // website_view
-        $this->add(array(
-            'name' => 'website_view',
-            'required' => false,
-        ));
+        $this->add(
+            [
+                'name'     => 'website_view',
+                'required' => false,
+            ]
+        );
         // phone
-        $this->add(array(
-            'name' => 'phone',
-            'required' => false,
-        ));
+        $this->add(
+            [
+                'name'     => 'phone',
+                'required' => false,
+            ]
+        );
         // phone_view
-        $this->add(array(
-            'name' => 'phone_view',
-            'required' => false,
-        ));
+        $this->add(
+            [
+                'name'     => 'phone_view',
+                'required' => false,
+            ]
+        );
         // seo_title
-        $this->add(array(
-            'name' => 'seo_title',
-            'required' => false,
-        ));
+        $this->add(
+            [
+                'name'     => 'seo_title',
+                'required' => false,
+            ]
+        );
         // seo_keywords
-        $this->add(array(
-            'name' => 'seo_keywords',
-            'required' => false,
-        ));
+        $this->add(
+            [
+                'name'     => 'seo_keywords',
+                'required' => false,
+            ]
+        );
         // seo_description
-        $this->add(array(
-            'name' => 'seo_description',
-            'required' => false,
-        ));
+        $this->add(
+            [
+                'name'     => 'seo_description',
+                'required' => false,
+            ]
+        );
         // tag
         if (Pi::service('module')->isActive('tag')) {
-            $this->add(array(
-                'name' => 'tag',
-                'required' => false,
-            ));
+            $this->add(
+                [
+                    'name'     => 'tag',
+                    'required' => false,
+                ]
+            );
         }
         /* // image
         // customer

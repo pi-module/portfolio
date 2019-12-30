@@ -41,13 +41,13 @@ class Project extends AbstractApi
         $config = Pi::service('registry')->config->read($this->getModule());
 
         // Set
-        $projectList = array();
+        $projectList = [];
 
         // Set
-        $where = array('status' => 1);
-        $order = array('time_create DESC', 'id DESC');
+        $where  = ['status' => 1];
+        $order  = ['time_create DESC', 'id DESC'];
         $offset = (int)($options['page'] - 1) * $config['view_perpage'];
-        $limit = intval($config['view_perpage']);
+        $limit  = intval($config['view_perpage']);
 
         // Get info
         $select = Pi::model('project', $this->getModule())->select()->where($where)->order($order)->offset($offset)->limit($limit);
@@ -62,8 +62,8 @@ class Project extends AbstractApi
 
     public function getListFromId($id)
     {
-        $list = array();
-        $where = array('id' => $id, 'status' => 1);
+        $list   = [];
+        $where  = ['id' => $id, 'status' => 1];
         $select = Pi::model('project', $this->getModule())->select()->where($where);
         $rowset = Pi::model('project', $this->getModule())->selectWith($select);
         foreach ($rowset as $row) {
@@ -80,28 +80,41 @@ class Project extends AbstractApi
         }
         // boject to array
         $project = $project->toArray();
+
         // Set times
         $project['time_create_view'] = _date($project['time_create']);
         $project['time_update_view'] = _date($project['time_update']);
+
         // Set project url
-        $project['projectUrl'] = Pi::url(Pi::service('url')->assemble('portfolio', array(
-            'module' => $this->getModule(),
-            'controller' => 'project',
-            'action' => 'index',
-            'slug' => $project['slug'],
-        )));
+        $project['projectUrl'] = Pi::url(
+            Pi::service('url')->assemble(
+                'portfolio', [
+                'module'     => $this->getModule(),
+                'controller' => 'project',
+                'action'     => 'index',
+                'slug'       => $project['slug'],
+            ]
+            )
+        );
+
         // Set text
         $project['text_description'] = Pi::service('markup')->render($project['text_description'], 'html', 'html');
 
         // Set image
         if ($project['main_image']) {
-            $project['largeUrl'] = Pi::url((string)Pi::api('doc', 'media')->getSingleLinkUrl($project['main_image'])->setConfigModule('portfolio')->thumb('large'));
-            $project['mediumUrl'] = Pi::url((string)Pi::api('doc', 'media')->getSingleLinkUrl($project['main_image'])->setConfigModule('portfolio')->thumb('medium'));
-            $project['thumbUrl'] = Pi::url((string)Pi::api('doc', 'media')->getSingleLinkUrl($project['main_image'])->setConfigModule('portfolio')->thumb('thumbnail'));
+            $project['largeUrl']  = Pi::url(
+                (string)Pi::api('doc', 'media')->getSingleLinkUrl($project['main_image'])->setConfigModule('portfolio')->thumb('large')
+            );
+            $project['mediumUrl'] = Pi::url(
+                (string)Pi::api('doc', 'media')->getSingleLinkUrl($project['main_image'])->setConfigModule('portfolio')->thumb('medium')
+            );
+            $project['thumbUrl']  = Pi::url(
+                (string)Pi::api('doc', 'media')->getSingleLinkUrl($project['main_image'])->setConfigModule('portfolio')->thumb('thumbnail')
+            );
         } else {
-            $project['largeUrl'] = '';
+            $project['largeUrl']  = '';
             $project['mediumUrl'] = '';
-            $project['thumbUrl'] = '';
+            $project['thumbUrl']  = '';
         }
 
         // Set ribbon
@@ -109,16 +122,17 @@ class Project extends AbstractApi
         if ($project['recommended']) {
             $project['ribbon'] = __('Recommended');
         }
+
         // return project
         return $project;
     }
 
     public function related($id, $type)
     {
-        $list = array();
-        $order = array('id DESC', 'time_create DESC');
-        $limit = 20;
-        $where = array('type' => $type, 'status' => 1, 'id <> ?' => $id);
+        $list   = [];
+        $order  = ['id DESC', 'time_create DESC'];
+        $limit  = 20;
+        $where  = ['type' => $type, 'status' => 1, 'id <> ?' => $id];
         $select = Pi::model('project', $this->getModule())->select()->where($where)->order($order)->limit($limit);
         $rowset = Pi::model('project', $this->getModule())->selectWith($select);
         foreach ($rowset as $row) {
@@ -138,19 +152,19 @@ class Project extends AbstractApi
 
             $projectModel = Pi::model("project", $this->getModule());
 
-            $select = $projectModel->select();
+            $select            = $projectModel->select();
             $projectCollection = $projectModel->selectWith($select);
 
             foreach ($projectCollection as $project) {
 
                 $toSave = false;
 
-                $mediaData = array(
-                    'active' => 1,
+                $mediaData = [
+                    'active'       => 1,
                     'time_created' => time(),
-                    'uid' => $project->uid,
-                    'count' => 0,
-                );
+                    'uid'          => $project->uid,
+                    'count'        => 0,
+                ];
 
                 /**
                  * Check if media item have already migrate or no image to migrate
@@ -166,18 +180,19 @@ class Project extends AbstractApi
 
                         $msg .= __("Missing image or path value from db for project ID") . " " . $project->id . $draft . "<br>";
                     } else {
-                        $imagePath = sprintf("upload/%s/original/%s/%s",
+                        $imagePath = sprintf(
+                            "upload/%s/original/%s/%s",
                             $config["image_path"],
                             $project["path"],
                             $project["image"]
                         );
 
                         $mediaData['title'] = $project->title;
-                        $mediaId = Pi::api('doc', 'media')->insertMedia($mediaData, $imagePath);
+                        $mediaId            = Pi::api('doc', 'media')->insertMedia($mediaData, $imagePath);
 
                         if ($mediaId) {
                             $project->main_image = $mediaId;
-                            $toSave = true;
+                            $toSave              = true;
                         }
                     }
                 }

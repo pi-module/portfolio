@@ -10,6 +10,7 @@
 /**
  * @author Hossein Azizabadi <azizabadi@faragostaresh.com>
  */
+
 namespace Module\Portfolio\Model;
 
 use Pi\Application\Model\Model;
@@ -19,11 +20,12 @@ class Type extends Model
     /**
      * {@inheritDoc}
      */
-    protected $columns = array(
-        'id',
-        'title',
-        'slug',
-        'status',
-        'text_description',
-    );
+    protected $columns
+        = [
+            'id',
+            'title',
+            'slug',
+            'status',
+            'text_description',
+        ];
 }

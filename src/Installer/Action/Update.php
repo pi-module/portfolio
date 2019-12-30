@@ -10,6 +10,7 @@
 /**
  * @author Hossein Azizabadi <azizabadi@faragostaresh.com>
  */
+
 namespace Module\Portfolio\Installer\Action;
 
 use Pi;
@@ -25,7 +26,7 @@ class Update extends BasicUpdate
     protected function attachDefaultListeners()
     {
         $events = $this->events;
-        $events->attach('update.pre', array($this, 'updateSchema'));
+        $events->attach('update.pre', [$this, 'updateSchema']);
         parent::attachDefaultListeners();
 
         return $this;
@@ -39,13 +40,13 @@ class Update extends BasicUpdate
         $moduleVersion = $e->getParam('version');
 
         // Set project model
-        $projectModel = Pi::model('project', $this->module);
-        $projectTable = $projectModel->getTable();
+        $projectModel   = Pi::model('project', $this->module);
+        $projectTable   = $projectModel->getTable();
         $projectAdapter = $projectModel->getAdapter();
 
         // Set type model
-        $typeModel = Pi::model('type', $this->module);
-        $typeTable = $typeModel->getTable();
+        $typeModel   = Pi::model('type', $this->module);
+        $typeTable   = $typeModel->getTable();
         $typeAdapter = $typeModel->getAdapter();
 
         // Update to version 1.1.0
@@ -56,11 +57,13 @@ class Update extends BasicUpdate
             try {
                 $projectAdapter->query($sql, 'execute');
             } catch (\Exception $exception) {
-                $this->setResult('db', array(
-                    'status' => false,
+                $this->setResult(
+                    'db', [
+                    'status'  => false,
                     'message' => 'Table alter query failed: '
                         . $exception->getMessage(),
-                ));
+                ]
+                );
                 return false;
             }
 
@@ -69,11 +72,13 @@ class Update extends BasicUpdate
             try {
                 $projectAdapter->query($sql, 'execute');
             } catch (\Exception $exception) {
-                $this->setResult('db', array(
-                    'status' => false,
+                $this->setResult(
+                    'db', [
+                    'status'  => false,
                     'message' => 'Table alter query failed: '
                         . $exception->getMessage(),
-                ));
+                ]
+                );
                 return false;
             }
 
@@ -82,11 +87,13 @@ class Update extends BasicUpdate
             try {
                 $projectAdapter->query($sql, 'execute');
             } catch (\Exception $exception) {
-                $this->setResult('db', array(
-                    'status' => false,
+                $this->setResult(
+                    'db', [
+                    'status'  => false,
                     'message' => 'Table alter query failed: '
                         . $exception->getMessage(),
-                ));
+                ]
+                );
                 return false;
             }
 
@@ -107,15 +114,17 @@ EOD;
             try {
                 $sqlHandler->queryContent($sql);
             } catch (\Exception $exception) {
-                $this->setResult('db', array(
-                    'status' => false,
+                $this->setResult(
+                    'db', [
+                    'status'  => false,
                     'message' => 'SQL schema query for author table failed: '
                         . $exception->getMessage(),
-                ));
+                ]
+                );
 
                 return false;
             }
-            
+
         }
 
         // Update to version 1.2.3
@@ -125,11 +134,13 @@ EOD;
             try {
                 $projectAdapter->query($sql, 'execute');
             } catch (\Exception $exception) {
-                $this->setResult('db', array(
-                    'status' => false,
+                $this->setResult(
+                    'db', [
+                    'status'  => false,
                     'message' => 'Table alter query failed: '
                         . $exception->getMessage(),
-                ));
+                ]
+                );
                 return false;
             }
 
@@ -138,11 +149,13 @@ EOD;
             try {
                 $projectAdapter->query($sql, 'execute');
             } catch (\Exception $exception) {
-                $this->setResult('db', array(
-                    'status' => false,
+                $this->setResult(
+                    'db', [
+                    'status'  => false,
                     'message' => 'Table alter query failed: '
                         . $exception->getMessage(),
-                ));
+                ]
+                );
                 return false;
             }
         }
@@ -154,11 +167,13 @@ EOD;
             try {
                 $projectAdapter->query($sql, 'execute');
             } catch (\Exception $exception) {
-                $this->setResult('db', array(
-                    'status' => false,
+                $this->setResult(
+                    'db', [
+                    'status'  => false,
                     'message' => 'Table alter query failed: '
                         . $exception->getMessage(),
-                ));
+                ]
+                );
                 return false;
             }
 
@@ -167,11 +182,13 @@ EOD;
             try {
                 $projectAdapter->query($sql, 'execute');
             } catch (\Exception $exception) {
-                $this->setResult('db', array(
-                    'status' => false,
+                $this->setResult(
+                    'db', [
+                    'status'  => false,
                     'message' => 'Table alter query failed: '
                         . $exception->getMessage(),
-                ));
+                ]
+                );
                 return false;
             }
         }
@@ -183,11 +200,13 @@ EOD;
             try {
                 $typeAdapter->query($sql, 'execute');
             } catch (\Exception $exception) {
-                $this->setResult('db', array(
-                    'status' => false,
+                $this->setResult(
+                    'db', [
+                    'status'  => false,
                     'message' => 'Table alter query failed: '
                         . $exception->getMessage(),
-                ));
+                ]
+                );
                 return false;
             }
         }
@@ -199,11 +218,13 @@ EOD;
             try {
                 $projectAdapter->query($sql, 'execute');
             } catch (\Exception $exception) {
-                $this->setResult('db', array(
-                    'status' => false,
+                $this->setResult(
+                    'db', [
+                    'status'  => false,
                     'message' => 'Table alter query failed: '
                         . $exception->getMessage(),
-                ));
+                ]
+                );
                 return false;
             }
         }

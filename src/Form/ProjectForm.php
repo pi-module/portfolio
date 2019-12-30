@@ -10,6 +10,7 @@
 /**
  * @author Hossein Azizabadi <azizabadi@faragostaresh.com>
  */
+
 namespace Module\Portfolio\Form;
 
 use Pi;
@@ -18,7 +19,7 @@ use Pi\Form\Form as BaseForm;
 class ProjectForm extends BaseForm
 {
 
-    public function __construct($name = null, $option = array())
+    public function __construct($name = null, $option = [])
     {
         $this->option = $option;
         //$this->thumbUrl = (isset($option['thumbUrl'])) ? $option['thumbUrl'] : '';
@@ -37,212 +38,250 @@ class ProjectForm extends BaseForm
     public function init()
     {
         // id
-        $this->add(array(
-            'name' => 'id',
-            'attributes' => array(
-                'type' => 'hidden',
-            ),
-        ));
+        $this->add(
+            [
+                'name'       => 'id',
+                'attributes' => [
+                    'type' => 'hidden',
+                ],
+            ]
+        );
         // title
-        $this->add(array(
-            'name' => 'title',
-            'options' => array(
-                'label' => __('Title'),
-            ),
-            'attributes' => array(
-                'type' => 'text',
-                'required' => true,
-            )
-        ));
+        $this->add(
+            [
+                'name'       => 'title',
+                'options'    => [
+                    'label' => __('Title'),
+                ],
+                'attributes' => [
+                    'type'     => 'text',
+                    'required' => true,
+                ],
+            ]
+        );
         // slug
-        $this->add(array(
-            'name' => 'slug',
-            'options' => array(
-                'label' => __('Slug'),
-            ),
-            'attributes' => array(
-                'type' => 'text',
-            )
-        ));
+        $this->add(
+            [
+                'name'       => 'slug',
+                'options'    => [
+                    'label' => __('Slug'),
+                ],
+                'attributes' => [
+                    'type' => 'text',
+                ],
+            ]
+        );
         // type
-        $this->add(array(
-            'name' => 'type',
-            'type' => 'Module\Portfolio\Form\Element\Type',
-            'options' => array(
-                'label' => __('Project type'),
-                'category' => '',
-            ),
-            'attributes' => array(
-                'required' => true,
-            )
-        ));
+        $this->add(
+            [
+                'name'       => 'type',
+                'type'       => 'Module\Portfolio\Form\Element\Type',
+                'options'    => [
+                    'label'    => __('Project type'),
+                    'category' => '',
+                ],
+                'attributes' => [
+                    'required' => true,
+                ],
+            ]
+        );
         // Main image
-        $this->add(array(
-            'name' => 'main_image',
-            'type' => 'Module\Media\Form\Element\Media',
-            'options' => array(
-                'label' => __('Main image'),
-                'required' => true,
-            ),
-        ));
+        $this->add(
+            [
+                'name'    => 'main_image',
+                'type'    => 'Module\Media\Form\Element\Media',
+                'options' => [
+                    'label'    => __('Main image'),
+                    'required' => true,
+                ],
+            ]
+        );
         // Additional images'
-        $this->add(array(
-            'name' => 'additional_images',
-            'type' => 'Module\Media\Form\Element\Media',
-            'options' => array(
-                'label' => __('Additional images'),
-                'media_gallery' => true,
-            ),
-        ));
+        $this->add(
+            [
+                'name'    => 'additional_images',
+                'type'    => 'Module\Media\Form\Element\Media',
+                'options' => [
+                    'label'         => __('Additional images'),
+                    'media_gallery' => true,
+                ],
+            ]
+        );
         // text_description
-        $this->add(array(
-            'name' => 'text_description',
-            'options' => array(
-                'label' => __('Description'),
-                'editor' => 'html',
-            ),
-            'attributes' => array(
-                'type' => 'editor',
-                'description' => '',
-            )
-        ));
+        $this->add(
+            [
+                'name'       => 'text_description',
+                'options'    => [
+                    'label'  => __('Description'),
+                    'editor' => 'html',
+                ],
+                'attributes' => [
+                    'type'        => 'editor',
+                    'description' => '',
+                ],
+            ]
+        );
         // status
-        $this->add(array(
-            'name' => 'status',
-            'type' => 'select',
-            'options' => array(
-                'label' => __('Status'),
-                'value_options' => array(
-                    1 => __('Published'),
-                    2 => __('Pending review'),
-                    3 => __('Draft'),
-                    4 => __('Private'),
-                    5 => __('Remove'),
-                ),
-            ),
-        ));
+        $this->add(
+            [
+                'name'    => 'status',
+                'type'    => 'select',
+                'options' => [
+                    'label'         => __('Status'),
+                    'value_options' => [
+                        1 => __('Published'),
+                        2 => __('Pending review'),
+                        3 => __('Draft'),
+                        4 => __('Private'),
+                        5 => __('Remove'),
+                    ],
+                ],
+            ]
+        );
         // service
-        $this->add(array(
-            'name' => 'service',
-            'options' => array(
-                'label' => __('Service'),
-            ),
-            'attributes' => array(
-                'type' => 'text',
-            )
-        ));
+        $this->add(
+            [
+                'name'       => 'service',
+                'options'    => [
+                    'label' => __('Service'),
+                ],
+                'attributes' => [
+                    'type' => 'text',
+                ],
+            ]
+        );
         // Technology
-        $this->add(array(
-            'name' => 'technology',
-            'options' => array(
-                'label' => __('Technology'),
-            ),
-            'attributes' => array(
-                'type' => 'text',
-            )
-        ));
+        $this->add(
+            [
+                'name'       => 'technology',
+                'options'    => [
+                    'label' => __('Technology'),
+                ],
+                'attributes' => [
+                    'type' => 'text',
+                ],
+            ]
+        );
         // Website
-        $this->add(array(
-            'name' => 'website',
-            'options' => array(
-                'label' => __('Website'),
-            ),
-            'attributes' => array(
-                'type' => 'text',
-            )
-        ));
+        $this->add(
+            [
+                'name'       => 'website',
+                'options'    => [
+                    'label' => __('Website'),
+                ],
+                'attributes' => [
+                    'type' => 'text',
+                ],
+            ]
+        );
         // website_view
-        $this->add(array(
-            'name'          => 'website_view',
-            'type'          => 'checkbox',
-            'options'       => array(
-                'label' => __('View website link'),
-            ),
-            'attributes'    => array(
-                'value'     => '1',
-            )
-        ));
+        $this->add(
+            [
+                'name'       => 'website_view',
+                'type'       => 'checkbox',
+                'options'    => [
+                    'label' => __('View website link'),
+                ],
+                'attributes' => [
+                    'value' => '1',
+                ],
+            ]
+        );
         // phone
-        $this->add(array(
-            'name' => 'phone',
-            'options' => array(
-                'label' => __('Phone'),
-            ),
-            'attributes' => array(
-                'type' => 'text',
-            )
-        ));
+        $this->add(
+            [
+                'name'       => 'phone',
+                'options'    => [
+                    'label' => __('Phone'),
+                ],
+                'attributes' => [
+                    'type' => 'text',
+                ],
+            ]
+        );
         // phone_view
-        $this->add(array(
-            'name'          => 'phone_view',
-            'type'          => 'checkbox',
-            'options'       => array(
-                'label' => __('View phone'),
-            ),
-            'attributes'    => array(
-                'value'     => '1',
-            )
-        ));
+        $this->add(
+            [
+                'name'       => 'phone_view',
+                'type'       => 'checkbox',
+                'options'    => [
+                    'label' => __('View phone'),
+                ],
+                'attributes' => [
+                    'value' => '1',
+                ],
+            ]
+        );
         // extra_seo
-        $this->add(array(
-            'name' => 'extra_seo',
-            'type' => 'fieldset',
-            'options' => array(
-                'label' => __('SEO options'),
-            ),
-        ));
+        $this->add(
+            [
+                'name'    => 'extra_seo',
+                'type'    => 'fieldset',
+                'options' => [
+                    'label' => __('SEO options'),
+                ],
+            ]
+        );
         // seo_title
-        $this->add(array(
-            'name' => 'seo_title',
-            'options' => array(
-                'label' => __('SEO Title'),
-            ),
-            'attributes' => array(
-                'type' => 'textarea',
-                'rows' => '2',
-                'cols' => '40',
-                'description' => '',
-            )
-        ));
+        $this->add(
+            [
+                'name'       => 'seo_title',
+                'options'    => [
+                    'label' => __('SEO Title'),
+                ],
+                'attributes' => [
+                    'type'        => 'textarea',
+                    'rows'        => '2',
+                    'cols'        => '40',
+                    'description' => '',
+                ],
+            ]
+        );
         // seo_keywords
-        $this->add(array(
-            'name' => 'seo_keywords',
-            'options' => array(
-                'label' => __('SEO Keywords'),
-            ),
-            'attributes' => array(
-                'type' => 'textarea',
-                'rows' => '2',
-                'cols' => '40',
-                'description' => '',
-            )
-        ));
+        $this->add(
+            [
+                'name'       => 'seo_keywords',
+                'options'    => [
+                    'label' => __('SEO Keywords'),
+                ],
+                'attributes' => [
+                    'type'        => 'textarea',
+                    'rows'        => '2',
+                    'cols'        => '40',
+                    'description' => '',
+                ],
+            ]
+        );
         // seo_description
-        $this->add(array(
-            'name' => 'seo_description',
-            'options' => array(
-                'label' => __('SEO Description'),
-            ),
-            'attributes' => array(
-                'type' => 'textarea',
-                'rows' => '3',
-                'cols' => '40',
-                'description' => '',
-            )
-        ));
+        $this->add(
+            [
+                'name'       => 'seo_description',
+                'options'    => [
+                    'label' => __('SEO Description'),
+                ],
+                'attributes' => [
+                    'type'        => 'textarea',
+                    'rows'        => '3',
+                    'cols'        => '40',
+                    'description' => '',
+                ],
+            ]
+        );
         // tag
         if (Pi::service('module')->isActive('tag')) {
-            $this->add(array(
-                'name' => 'tag',
-                'type' => 'tag',
-                'options' => array(
-                    'label' => __('Tags'),
-                ),
-                'attributes' => array(
-                    'id' => 'tag',
-                    'description' => __('Use `|` as delimiter to separate tag terms'),
-                )
-            ));
+            $this->add(
+                [
+                    'name'       => 'tag',
+                    'type'       => 'tag',
+                    'options'    => [
+                        'label' => __('Tags'),
+                    ],
+                    'attributes' => [
+                        'id'          => 'tag',
+                        'description' => __('Use `|` as delimiter to separate tag terms'),
+                    ],
+                ]
+            );
         }
         /* // Version
         $this->add(array(
@@ -421,12 +460,14 @@ class ProjectForm extends BaseForm
             )
         )); */
         // Save
-        $this->add(array(
-            'name' => 'submit',
-            'type' => 'submit',
-            'attributes' => array(
-                'value' => __('Submit'),
-            )
-        ));
+        $this->add(
+            [
+                'name'       => 'submit',
+                'type'       => 'submit',
+                'attributes' => [
+                    'value' => __('Submit'),
+                ],
+            ]
+        );
     }
 }   

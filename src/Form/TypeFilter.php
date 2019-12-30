@@ -10,6 +10,7 @@
 /**
  * @author Hossein Azizabadi <azizabadi@faragostaresh.com>
  */
+
 namespace Module\Portfolio\Form;
 
 use Pi;
@@ -17,48 +18,60 @@ use Zend\InputFilter\InputFilter;
 
 class TypeFilter extends InputFilter
 {
-    public function __construct($option = array())
+    public function __construct($option = [])
     {
         // id
-        $this->add(array(
-            'name' => 'id',
-            'required' => false,
-        ));
+        $this->add(
+            [
+                'name'     => 'id',
+                'required' => false,
+            ]
+        );
         // title
-        $this->add(array(
-            'name' => 'title',
-            'required' => true,
-            'filters' => array(
-                array(
-                    'name' => 'StringTrim',
-                ),
-            ),
-        ));
+        $this->add(
+            [
+                'name'     => 'title',
+                'required' => true,
+                'filters'  => [
+                    [
+                        'name' => 'StringTrim',
+                    ],
+                ],
+            ]
+        );
         // slug
-        $this->add(array(
-            'name'          => 'slug',
-            'required'      => false,
-            'filters'       => array(
-                array(
-                    'name'  => 'StringTrim',
-                ),
-            ),
-            'validators'    => array(
-                new \Module\Portfolio\Validator\SlugDuplicate(array(
-                    'module'            => Pi::service('module')->current(),
-                    'table'             => 'type',
-                )),
-            ),
-        ));
+        $this->add(
+            [
+                'name'       => 'slug',
+                'required'   => false,
+                'filters'    => [
+                    [
+                        'name' => 'StringTrim',
+                    ],
+                ],
+                'validators' => [
+                    new \Module\Portfolio\Validator\SlugDuplicate(
+                        [
+                            'module' => Pi::service('module')->current(),
+                            'table'  => 'type',
+                        ]
+                    ),
+                ],
+            ]
+        );
         // text_description
-        $this->add(array(
-            'name' => 'text_description',
-            'required' => false,
-        ));
+        $this->add(
+            [
+                'name'     => 'text_description',
+                'required' => false,
+            ]
+        );
         // status
-        $this->add(array(
-            'name' => 'status',
-            'required' => false,
-        ));
+        $this->add(
+            [
+                'name'     => 'status',
+                'required' => false,
+            ]
+        );
     }
 }

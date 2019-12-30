@@ -10,6 +10,7 @@
 /**
  * @author Hossein Azizabadi <azizabadi@faragostaresh.com>
  */
+
 namespace Module\Portfolio\Form\Element;
 
 use Pi;
@@ -20,12 +21,12 @@ class Type extends Select
     public function getValueOptions()
     {
         if (empty($this->valueOptions)) {
-            $options = array();
+            $options    = [];
             $options[0] = '';
-            $where = array('status' => 1);
-            $order = array('title ASC', 'id DESC');
-            $select = Pi::model('type', 'portfolio')->select()->where($where)->order($order);
-            $rowset = Pi::model('type', 'portfolio')->selectWith($select);
+            $where      = ['status' => 1];
+            $order      = ['title ASC', 'id DESC'];
+            $select     = Pi::model('type', 'portfolio')->select()->where($where)->order($order);
+            $rowset     = Pi::model('type', 'portfolio')->selectWith($select);
             foreach ($rowset as $row) {
                 $options[$row->id] = $row->title;
             }
@@ -37,12 +38,12 @@ class Type extends Select
 
     public function getAttributes()
     {
-        $this->Attributes = array(
-            'size' => 1,
+        $this->Attributes = [
+            'size'     => 1,
             'multiple' => 0,
-            'class' => 'form-control',
+            'class'    => 'form-control',
             'required' => true,
-        );
+        ];
         // check form size
         if (isset($this->attributes['size'])) {
             $this->Attributes['size'] = $this->attributes['size'];

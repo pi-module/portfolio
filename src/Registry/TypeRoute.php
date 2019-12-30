@@ -11,6 +11,7 @@
 /**
  * @author Hossein Azizabadi <azizabadi@faragostaresh.com>
  */
+
 namespace Module\Portfolio\Registry;
 
 use Pi;
@@ -24,13 +25,13 @@ class TypeRoute extends AbstractRegistry
     /**
      * {@inheritDoc}
      */
-    protected function loadDynamic($options = array())
+    protected function loadDynamic($options = [])
     {
-        $return = array();
-        $where = array('status' => 1);
-        $columns = array('id', 'slug');
-        $select = Pi::model('type', $this->module)->select()->columns($columns)->where($where);
-        $rowset = Pi::model('type', $this->module)->selectWith($select);
+        $return  = [];
+        $where   = ['status' => 1];
+        $columns = ['id', 'slug'];
+        $select  = Pi::model('type', $this->module)->select()->columns($columns)->where($where);
+        $rowset  = Pi::model('type', $this->module)->selectWith($select);
         foreach ($rowset as $row) {
             $return[$row->id] = $row->slug;
         }
@@ -43,8 +44,8 @@ class TypeRoute extends AbstractRegistry
      */
     public function read()
     {
-        $options = array();
-        $result = $this->loadData($options);
+        $options = [];
+        $result  = $this->loadData($options);
         return $result;
     }
 

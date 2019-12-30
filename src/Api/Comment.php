@@ -10,6 +10,7 @@
 /**
  * @author Hossein Azizabadi <azizabadi@faragostaresh.com>
  */
+
 namespace Module\Portfolio\Api;
 
 use Pi;
@@ -29,20 +30,20 @@ class Comment extends AbstractComment
      */
     public function get($item)
     {
-        
-        $result = array();
-        $items = (array) $item;
+
+        $result = [];
+        $items  = (array)$item;
 
         // Set options
         $projects = Pi::api('project', 'portfolio')->getListFromId($items);
 
         foreach ($items as $id) {
-            $result[$id] = array(
+            $result[$id] = [
                 'title' => $projects[$id]['title'],
                 'url'   => $projects[$id]['projectUrl'],
                 'uid'   => $projects[$id]['uid'],
                 'time'  => $projects[$id]['time_create'],
-            );
+            ];
         }
 
         if (is_scalar($item)) {
@@ -71,7 +72,7 @@ class Comment extends AbstractComment
             && !empty($params['slug'])
         ) {
             $project = Pi::api('project', 'portfolio')->getProject($params['slug'], 'slug');
-            $item = $project['id'];
+            $item    = $project['id'];
         } else {
             $item = false;
         }

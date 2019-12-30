@@ -10,6 +10,7 @@
 /**
  * @author Hossein Azizabadi <azizabadi@faragostaresh.com>
  */
+
 namespace Module\Portfolio\Api;
 
 use Pi;
@@ -24,67 +25,77 @@ class Breadcrumbs extends AbstractBreadcrumbs
     {
         // Get params
         $params = Pi::service('url')->getRouteMatch()->getParams();
+
         // Set module link
         $moduleData = Pi::registry('module')->read($this->getModule());
-        $result = array();
+        $result     = [];
+
         // Set module internal links
         switch ($params['controller']) {
             case 'index':
-                $result[] = array(
+                $result[] = [
                     'label' => $moduleData['title'],
-                );
+                ];
                 break;
 
             case 'tag':
-                $result[] = array(
+                $result[] = [
                     'label' => $moduleData['title'],
-                    'href'  => Pi::service('url')->assemble('portfolio', array(
+                    'href'  => Pi::service('url')->assemble(
+                        'portfolio', [
                         'module' => $this->getModule(),
-                    )),
-                );
-                $result[] = array(
+                    ]
+                    ),
+                ];
+                $result[] = [
                     'label' => $params['slug'],
-                );
+                ];
                 break;
 
             case 'type':
-                $type = Pi::model('type', 'portfolio')->find($params['slug'], 'slug')->toArray();
-                $result[] = array(
+                $type     = Pi::model('type', 'portfolio')->find($params['slug'], 'slug')->toArray();
+                $result[] = [
                     'label' => $moduleData['title'],
-                    'href'  => Pi::service('url')->assemble('portfolio', array(
+                    'href'  => Pi::service('url')->assemble(
+                        'portfolio', [
                         'module' => $this->getModule(),
-                    )),
-                );
-                $result[] = array(
+                    ]
+                    ),
+                ];
+                $result[] = [
                     'label' => $type['title'],
-                );
+                ];
                 break;
 
             case 'project':
-                $project = Pi::api('project', 'portfolio')->getProject($params['slug'], 'slug');
-                $result[] = array(
+                $project  = Pi::api('project', 'portfolio')->getProject($params['slug'], 'slug');
+                $result[] = [
                     'label' => $moduleData['title'],
-                    'href'  => Pi::service('url')->assemble('portfolio', array(
+                    'href'  => Pi::service('url')->assemble(
+                        'portfolio', [
                         'module' => $this->getModule(),
-                    )),
-                );
+                    ]
+                    ),
+                ];
                 // Set main tag on Breadcrumbs
                 if (Pi::service('module')->isActive('tag')) {
                     $tag = Pi::service('tag')->get($this->getModule(), $project['id'], '');
 
-                    $result[] = array(
+                    $result[] = [
                         'label' => $tag[0],
-                        'href'  => Pi::service('url')->assemble('portfolio', array(
-                            'module' => $this->getModule(),
+                        'href'  => Pi::service('url')->assemble(
+                            'portfolio', [
+                            'module'     => $this->getModule(),
                             'controller' => 'tag',
-                            'slug' => urlencode($tag[0]),
-                        )),
-                    );
+                            'slug'       => urlencode($tag[0]),
+                        ]
+                        ),
+                    ];
                 }
-                $result[] = array(
+                $result[] = [
                     'label' => $project['title'],
-                );
-                break;    
+                ];
+                break;
         }
         // return
         return $result;

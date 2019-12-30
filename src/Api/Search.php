@@ -10,6 +10,7 @@
 /**
  * @author Hossein Azizabadi <azizabadi@faragostaresh.com>
  */
+
 namespace Module\Portfolio\Api;
 
 use Pi;
@@ -25,40 +26,45 @@ class Search extends AbstractSearch
     /**
      * {@inheritDoc}
      */
-    protected $searchIn = array(
-        'title',
-        'text_description',
-    );
+    protected $searchIn
+        = [
+            'title',
+            'text_description',
+        ];
 
     /**
      * {@inheritDoc}
      */
-    protected $meta = array(
-        'id'               => 'id',
-        'title'            => 'title',
-        'text_description' => 'content',
-        'time_create'      => 'time',
-        'main_image'       => 'main_image',
-        'slug'             => 'slug',
-    );
+    protected $meta
+        = [
+            'id'               => 'id',
+            'title'            => 'title',
+            'text_description' => 'content',
+            'time_create'      => 'time',
+            'main_image'       => 'main_image',
+            'slug'             => 'slug',
+        ];
 
     /**
      * {@inheritDoc}
      */
-    protected $condition = array(
-        'status'    => 1,
-    );
+    protected $condition
+        = [
+            'status' => 1,
+        ];
 
     /**
      * {@inheritDoc}
      */
     protected function buildUrl(array $item, $table = '')
     {
-        $link = Pi::service('url')->assemble('portfolio', array(
-            'module'        => $this->getModule(),
-            'controller'    => 'project',
-            'slug'          => $item['slug'],
-        ));
+        $link = Pi::service('url')->assemble(
+            'portfolio', [
+            'module'     => $this->getModule(),
+            'controller' => 'project',
+            'slug'       => $item['slug'],
+        ]
+        );
 
         return $link;
     }

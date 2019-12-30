@@ -10,6 +10,7 @@
 /**
  * @author Hossein Azizabadi <azizabadi@faragostaresh.com>
  */
+
 namespace Module\Portfolio\Controller\Admin;
 
 use Pi;
@@ -23,14 +24,16 @@ class TypeController extends ActionController
     public function indexAction()
     {
         // Get info
-        $list = array();
-        $order = array('id DESC');
+        $list   = [];
+        $order  = ['id DESC'];
         $select = $this->getModel('type')->select()->order($order);
         $rowset = $this->getModel('type')->selectWith($select);
+
         // Make list
         foreach ($rowset as $row) {
             $list[$row->id] = $row->toArray();
         }
+
         // Set view
         $this->view()->setTemplate('type-index');
         $this->view()->assign('list', $list);
@@ -40,20 +43,24 @@ class TypeController extends ActionController
     {
         // Get id
         $id = $this->params('id');
+
         // Set form
         $form = new TypeForm('type');
         $form->setAttribute('enctype', 'multipart/form-data');
         if ($this->request->isPost()) {
             $data = $this->request->getPost();
+
             // Set slug
-            $slug = ($data['slug']) ? $data['slug'] : $data['title'];
-            $filter = new Filter\Slug;
+            $slug         = ($data['slug']) ? $data['slug'] : $data['title'];
+            $filter       = new Filter\Slug;
             $data['slug'] = $filter($slug);
+
             // Form filter
             $form->setInputFilter(new TypeFilter);
             $form->setData($data);
             if ($form->isValid()) {
                 $values = $form->getData();
+
                 // Save values
                 if (!empty($values['id'])) {
                     $row = $this->getModel('type')->find($values['id']);
@@ -62,11 +69,13 @@ class TypeController extends ActionController
                 }
                 $row->assign($values);
                 $row->save();
+
                 // Clear registry
                 Pi::registry('typeRoute', 'portfolio')->clear();
+
                 // Jump
                 $message = __('Project type data saved successfully.');
-                $this->jump(array('action' => 'index'), $message);
+                $this->jump(['action' => 'index'], $message);
             }
         } else {
             if ($id) {
@@ -74,6 +83,7 @@ class TypeController extends ActionController
                 $form->setData($type);
             }
         }
+
         // Set view
         $this->view()->setTemplate('type-update');
         $this->view()->assign('form', $form);
