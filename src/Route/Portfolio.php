@@ -13,6 +13,7 @@
 
 namespace Module\Portfolio\Route;
 
+use Pi;
 use Pi\Mvc\Router\Http\Standard;
 
 class Portfolio extends Standard
@@ -55,13 +56,21 @@ class Portfolio extends Standard
             $matches['controller'] = $this->decode($parts[0]);
         }
 
+        // Get type route
+        $typeRoute = Pi::registry('typeRoute', 'portfolio')->read();
+
         // Make Match
         if (isset($matches['controller'])) {
             switch ($matches['controller']) {
                 case 'index':
                     if (isset($parts[0]) && !empty($parts[0])) {
-                        $matches['controller'] = 'project';
-                        $matches['slug']       = $this->decode($parts[0]);
+                        if (in_array($parts[0], $typeRoute)) {
+                            $matches['controller'] = 'type';
+                            $matches['slug']       = $this->decode($parts[0]);
+                        } else {
+                            $matches['controller'] = 'project';
+                            $matches['slug']       = $this->decode($parts[0]);
+                        }
                     }
                     break;
 
@@ -69,13 +78,13 @@ class Portfolio extends Standard
                     $matches['slug'] = $parts[1] ? $this->decode($parts[1]) : null;
                     break;
 
-                case 'type':
+                /* case 'type':
                     $matches['slug'] = $parts[1] ? $this->decode($parts[1]) : null;
                     break;
 
                 case 'project':
                     $matches['slug'] = $parts[1] ? $this->decode($parts[1]) : null;
-                    break;
+                    break; */
             }
         }
 
@@ -112,6 +121,7 @@ class Portfolio extends Standard
         if (!empty($mergedParams['controller'])
             && $mergedParams['controller'] != 'index'
             && $mergedParams['controller'] != 'project'
+            && $mergedParams['controller'] != 'type'
         ) {
             $url['controller'] = $mergedParams['controller'];
         }

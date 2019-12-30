@@ -1,29 +1,15 @@
 /* project list */
-.portfolio-block .thumbnail {
+.portfolio .card {
 	text-align: center;
 }
 
-.portfolio-block .thumbnail .caption {
-	font-size: 1em;
-	height: 40px;
-	background: rgba(0, 0, 0, 0.5);
+.portfolio .card .card-title {
+	margin: -20px;
+	padding: 10px;
+	height: 50px;
 	color: #fff;
-	position: relative;
-	margin-top: -40px;
-}
-
-.portfolio-block .thumbnail .caption h2 {
-	padding: 5px;
-	margin: 0;
-	font-size: 1em;
-}
-
-.portfolio-block .thumbnail .caption a {
-	color: #fff;
-}
-
-.portfolio-block .thumbnail .thumbnail-image {
-	height: auto;
+	font-size: 1.4em;
+	background: rgba(0,0,0, .45);
 }
 
 /* ribbon */

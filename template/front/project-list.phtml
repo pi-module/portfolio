@@ -67,9 +67,9 @@ $this->headMeta($this->escape($description), 'twitter:description');
     <?php } ?>
     <?php if ($config['show_type'] && isset($typeList) && !empty($typeList)) { ?>
         <div class="portfolio-type clearfix">
-            <ul>
+            <ul class="list-group list-group-horizontal">
                 <?php foreach ($typeList as $typeSingle) { ?>
-                    <li<?php if ($typeSingle['active']) { echo ' class="active"';} ?>>
+                    <li class="list-group-item <?php if ($typeSingle['active']) { echo ' active';} ?>">
                         <a href="<?php echo $this->escape($typeSingle['typeUrl']); ?>" title="<?php echo $this->escape($typeSingle['title']); ?>">
                             <?php echo $this->escape($typeSingle['title']); ?>
                         </a>
@@ -93,18 +93,20 @@ $this->headMeta($this->escape($description), 'twitter:description');
                     $imageUrl = $project['thumbUrl'];
                     break;
             } ?>
-            <div class="<?php echo $projectBoxSize; ?> portfolio-list-single" itemscope itemtype="http://schema.org/CreativeWork">
-                <div class="card">
+            <div class="<?php echo $projectBoxSize; ?> portfolio-list-single mb-3" itemscope itemtype="http://schema.org/CreativeWork">
+                <div class="card border-light text-white h-entry">
                     <a <?php if ($project['ribbon']) { ?>class="portfolio-ribbon"<?php } ?> itemprop="url" title="<?php echo $this->escape($project['title']); ?>" href="<?php echo $this->escape($project['projectUrl']); ?>" >
-                        <img itemprop="image" class="card-img-top" src="<?php echo $imageUrl; ?>" alt="<?php echo $this->escape($project['title']); ?>">
+                        <img itemprop="image" class="card-img img-fluid u-photo" src="<?php echo $imageUrl; ?>" alt="<?php echo $this->escape($project['title']); ?>">
                         <?php if ($project['ribbon']) { ?>
                             <p><span><?php echo $this->escape($project['ribbon']); ?></span></p>
                         <?php } ?>
                     </a>
-                    <div class="card-body">
-                        <a title="<?php echo $this->escape($project['title']); ?>" href="<?php echo $this->escape($project['projectUrl']); ?>" >
-                            <h2 itemprop="name" class="small card-title"><?php echo $this->escape($project['title']); ?></h2>
-                        </a>
+                    <div class="card-img-overlay h-100 d-flex flex-column justify-content-end">
+                        <h2 itemprop="name" class="card-title">
+                            <a class="text-white" title="<?php echo $this->escape($project['title']); ?>" href="<?php echo $this->escape($project['projectUrl']); ?>" >
+                                <?php echo $this->escape($project['title']); ?>
+                            </a>
+                        </h2>
                         <?php if ($config['show_phone'] && $project['phone_view'] && !empty($project['phone'])) { ?>
                             <div class="portfolio-phone card-text">
                                 <i class="fa fa-phone" aria-hidden="true"></i> <?php echo $this->escape($project['phone']); ?>

@@ -3,25 +3,17 @@
 }
 
 /* project list */
-.portfolio .thumbnail {
+.portfolio .card {
     text-align: center;
 }
 
-.portfolio .thumbnail .caption {
-    font-size: 1em;
+.portfolio .card .card-title {
+    margin: -20px;
+    padding: 15px;
     height: 60px;
-    background: rgba(0, 0, 0, 0.5);
     color: #fff;
-    position: relative;
-    margin-top: -60px;
-}
-
-.portfolio .thumbnail .caption a {
-    color: #fff;
-}
-
-.portfolio .thumbnail .thumbnail-image {
-    height: auto;
+    font-size: 1.4em;
+    background: rgba(0,0,0, .45);
 }
 
 /* ribbon */
@@ -72,31 +64,31 @@ a.portfolio-ribbon:hover {
     display: inline;
 }
 
-.portfolio .portfolio-gallery .thumbnail .caption {
+.portfolio .portfolio-gallery .card .card-body {
     font-size: 1em;
     background: none !important;
     color: #262626 !important;
     margin-top: 1px !important;
 }
 
-.portfolio .portfolio-gallery .thumbnail .caption a {
+.portfolio .portfolio-gallery .card .card-body a {
     color: #262626 !important;
 }
 
-.portfolio .portfolio-gallery .thumbnail .caption h2 {
+.portfolio .portfolio-gallery .card .card-body h2 {
     font-size: 1.3em !important;
 }
 
-.portfolio .portfolio-gallery .thumbnail .caption .portfolio-phone {
+.portfolio .portfolio-gallery .card .card-body .portfolio-phone {
     margin: 15px auto;
     font-weight: bold;
 }
 
-.portfolio .portfolio-gallery .thumbnail .caption .portfolio-phone i {
+.portfolio .portfolio-gallery .card .card-body .portfolio-phone i {
     color: #47C2EB;
 }
 
-.portfolio .portfolio-gallery .thumbnail .caption .portfolio-website {
+.portfolio .portfolio-gallery .card .card-body .portfolio-website {
     border: 1px solid #FAB800;
     padding: 10px 15px;
     color: #FAB800 !important;
@@ -105,7 +97,7 @@ a.portfolio-ribbon:hover {
     margin: 15px auto;
 }
 
-.portfolio .portfolio-gallery .thumbnail .caption .portfolio-website a {
+.portfolio .portfolio-gallery .card .card-body .portfolio-website a {
     color: #FAB800 !important;
 }
 
