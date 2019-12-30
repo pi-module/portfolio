@@ -93,7 +93,7 @@ $this->headMeta($this->escape($description), 'twitter:description');
                     $imageUrl = $project['thumbUrl'];
                     break;
             } ?>
-            <div class="<?php echo $projectBoxSize; ?> portfolio-list-single mb-3" itemscope itemtype="http://schema.org/CreativeWork">
+            <div class="<?php echo $projectBoxSize; ?> portfolio-list-single mb-3" itemscope itemtype="https://schema.org/CreativeWork">
                 <div class="card border-light text-white h-entry">
                     <a <?php if ($project['ribbon']) { ?>class="portfolio-ribbon"<?php } ?> itemprop="url" title="<?php echo $this->escape($project['title']); ?>" href="<?php echo $this->escape($project['projectUrl']); ?>" >
                         <img itemprop="image" class="card-img img-fluid u-photo" src="<?php echo $imageUrl; ?>" alt="<?php echo $this->escape($project['title']); ?>">

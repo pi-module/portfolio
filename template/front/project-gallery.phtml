@@ -75,7 +75,7 @@ $this->headMeta($this->escape($description), 'twitter:description');
     <div class="clearfix row">
         <ul class="portfolio-sort list-unstyled">
             <?php foreach($projects as $project) { ?>
-                <li class="<?php echo $projectBoxSize; ?> portfolio-list-single sort-<?php echo $this->escape($project['type']); ?>" itemscope itemtype="http://schema.org/CreativeWork">
+                <li class="<?php echo $projectBoxSize; ?> portfolio-list-single sort-<?php echo $this->escape($project['type']); ?>" itemscope itemtype="https://schema.org/CreativeWork">
                     <div class="thumbnail">
                         <?php switch ($image) {
                             case 'large':
