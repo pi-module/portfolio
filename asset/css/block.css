@@ -1,14 +1,14 @@
 /* project list */
-.portfolio .card {
+.portfolio-block .card {
 	text-align: center;
 }
 
-.portfolio .card .card-title {
+.portfolio-block .card .card-title {
 	margin: -20px;
 	padding: 10px;
 	height: 50px;
 	color: #fff;
-	font-size: 1.4em;
+	font-size: 1.2em;
 	background: rgba(0,0,0, .45);
 }
 
