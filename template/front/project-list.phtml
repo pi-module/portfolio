@@ -3,27 +3,27 @@ $this->css($this->assetModule('css/front.css'));
 // Set box site
 switch ($config['view_column']) {
     case 1:
-        $projectBoxSize = 'col-md-12 col-12';
+        $projectBoxSize = 'col-lg-12 col-md-12 col-12';
         $image = 'large';
         break;
 
     case 2:
-        $projectBoxSize = 'col-md-6 col-12';
+        $projectBoxSize = 'col-lg-6 col-md-6 col-12';
         $image = 'medium';
         break;
 
     case 3:
-        $projectBoxSize = 'col-md-4 col-12';
+        $projectBoxSize = 'col-lg-4 col-md-4 col-12';
         $image = 'medium';
         break;
 
     case 4:
-        $projectBoxSize = 'col-md-3 col-12';
+        $projectBoxSize = 'col-lg-3 col-md-3 col-12';
         $image = 'thumb';
         break;
 
     case 6:
-        $projectBoxSize = 'col-md-2 col-12';
+        $projectBoxSize = 'col-lg-2 col-md-2 col-12';
         $image = 'thumb';
         break;
 }
@@ -78,47 +78,38 @@ $this->headMeta($this->escape($description), 'twitter:description');
             </ul>
         </div>
     <?php } ?>
-    <div class="clearfix row">
+    <div class="clearfix row mb-3">
         <?php foreach($projects as $project) { ?>
+            <?php switch ($image) {
+                case 'large':
+                    $imageUrl = $project['largeUrl'];
+                    break;
+
+                case 'medium':
+                    $imageUrl = $project['mediumUrl'];
+                    break;
+
+                case 'thumb':
+                    $imageUrl = $project['thumbUrl'];
+                    break;
+            } ?>
             <div class="<?php echo $projectBoxSize; ?> portfolio-list-single" itemscope itemtype="http://schema.org/CreativeWork">
-                <div class="thumbnail">
-                    <?php switch ($image) {
-                        case 'large':
-                            $imageUrl = $project['largeUrl'];
-                            break;
-
-                        case 'medium':
-                            $imageUrl = $project['mediumUrl'];
-                            break;
-
-                        case 'thumb':
-                            $imageUrl = $project['thumbUrl'];
-                            break;
-                    } ?>
-                    <div class="thumbnail-image">
-                        <a <?php if ($project['ribbon']) { ?>class="portfolio-ribbon"<?php } ?> itemprop="url" title="<?php echo $this->escape($project['title']); ?>" href="<?php echo $this->escape($project['projectUrl']); ?>" >
-                            <img itemprop="image" class="img-fluid" src="<?php echo $imageUrl; ?>" alt="<?php echo $this->escape($project['title']); ?>">
-                            <?php if ($project['ribbon']) { ?>
-                                <p><span><?php echo $this->escape($project['ribbon']); ?></span></p>
-                            <?php } ?>
-                        </a>
-                    </div>
-                    <div class="caption">
+                <div class="card">
+                    <a <?php if ($project['ribbon']) { ?>class="portfolio-ribbon"<?php } ?> itemprop="url" title="<?php echo $this->escape($project['title']); ?>" href="<?php echo $this->escape($project['projectUrl']); ?>" >
+                        <img itemprop="image" class="card-img-top" src="<?php echo $imageUrl; ?>" alt="<?php echo $this->escape($project['title']); ?>">
+                        <?php if ($project['ribbon']) { ?>
+                            <p><span><?php echo $this->escape($project['ribbon']); ?></span></p>
+                        <?php } ?>
+                    </a>
+                    <div class="card-body">
                         <a title="<?php echo $this->escape($project['title']); ?>" href="<?php echo $this->escape($project['projectUrl']); ?>" >
-                            <h2 itemprop="name" class="small"><?php echo $this->escape($project['title']); ?></h2>
+                            <h2 itemprop="name" class="small card-title"><?php echo $this->escape($project['title']); ?></h2>
                         </a>
                         <?php if ($config['show_phone'] && $project['phone_view'] && !empty($project['phone'])) { ?>
-                            <div class="portfolio-phone">
+                            <div class="portfolio-phone card-text">
                                 <i class="fa fa-phone" aria-hidden="true"></i> <?php echo $this->escape($project['phone']); ?>
                             </div>
                         <?php } ?>
-                        <?php /* if ($config['show_website'] && $project['website_view'] && !empty($project['website'])) { ?>
-                            <div class="portfolio-website">
-                                <a target="_blank" title="<?php echo $this->escape($project['title']); ?>" href="<?php echo $this->escape($project['website']); ?>" >
-                                    <?php _e('View website'); ?>
-                                </a>
-                            </div>
-                        <?php } */ ?>
                     </div>
                 </div>
             </div>
