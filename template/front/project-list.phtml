@@ -66,8 +66,8 @@ $this->headMeta($this->escape($description), 'twitter:description');
         </div>
     <?php } ?>
     <?php if ($config['show_type'] && isset($typeList) && !empty($typeList)) { ?>
-        <div class="portfolio-type clearfix">
-            <ul class="list-group list-group-horizontal">
+        <div class="clearfix mb-3">
+            <ul class="list-group list-group-horizontal-md">
                 <?php foreach ($typeList as $typeSingle) { ?>
                     <li class="list-group-item <?php if ($typeSingle['active']) { echo ' active';} ?>">
                         <a href="<?php echo $this->escape($typeSingle['typeUrl']); ?>" title="<?php echo $this->escape($typeSingle['title']); ?>">

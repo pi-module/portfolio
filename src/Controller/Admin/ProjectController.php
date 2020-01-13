@@ -174,7 +174,7 @@ class ProjectController extends ActionController
                     );
 
                     // Update sitemap
-                    Pi::api('sitemap', 'sitemap')->singleLink($loc, $row->status, $module, 'category', $row->id);
+                    Pi::api('sitemap', 'sitemap')->singleLink($loc, $row->status, $module, 'project', $row->id);
                 }
 
                 // Jump
