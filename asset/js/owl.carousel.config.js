@@ -9,9 +9,9 @@ $(document).ready(function($) {
         dots:false,
         autoplayTimeout:12000,
         autoplayHoverPause:true,
-        navText: ['<i class="owl-prev fa fa-angle-left"></i>', '<i class="owl-next fa fa-angle-right"></i>'],
+        navText: ['<i class="owl-prev fa fa-angle-right"></i>', '<i class="owl-next fa fa-angle-left"></i>'],
         responsive:{
-            0:{items:2},
+            0:{items:1},
             600:{items:5},
             1000:{items:6}
         }
