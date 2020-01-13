@@ -143,19 +143,21 @@ if (!empty($project['largeUrl'])) {
             <div class="owl-carousel clearfix">
                 <?php foreach ($projectRelated as $projectItem) { ?>
                     <div class="item text-center">
-                        <div class="thumbnail p-item h-card">
+                        <div class="card p-item h-card">
                             <a itemprop="url" class="u-url" title="<?php echo $this->escape($projectItem['title']); ?>"
                                href="<?php echo $this->escape($projectItem['projectUrl']); ?>">
-                                <img itemprop="image" class="img-fluid u-photo"
+                                <img itemprop="image" class="card-img-top u-photo"
                                      src="<?php echo $this->escape($projectItem['thumbUrl']); ?>"
                                      alt="<?php echo $this->escape($projectItem['title']); ?>"/>
                             </a>
-                            <h4 itemprop="name" class="p-name">
-                                <a itemprop="url" class="u-url" title="<?php echo $this->escape($projectItem['title']); ?>"
-                                   href="<?php echo $this->escape($projectItem['projectUrl']); ?>">
-                                    <?php echo $this->escape($projectItem['title']); ?>
-                                </a>
-                            </h4>
+                            <div class="card-body">
+                                <h4 itemprop="name" class="p-name">
+                                    <a itemprop="url" class="u-url" title="<?php echo $this->escape($projectItem['title']); ?>"
+                                       href="<?php echo $this->escape($projectItem['projectUrl']); ?>">
+                                        <?php echo $this->escape($projectItem['title']); ?>
+                                    </a>
+                                </h4>
+                            </div>
                         </div>
                     </div>
                 <?php } ?>
