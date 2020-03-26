@@ -15,6 +15,7 @@ namespace Module\Portfolio\Api;
 
 use Pi;
 use Pi\Application\Api\AbstractApi;
+use Zend\Db\Sql\Predicate\Expression;
 
 /*
  * Pi::api('project', 'portfolio')->getProject($parameter, $type);
@@ -31,11 +32,10 @@ class Project extends AbstractApi
     {
         // Get project
         $project = Pi::model('project', $this->getModule())->find($parameter, $type);
-        $project = $this->canonizeProject($project);
-        return $project;
+        return $this->canonizeProject($project);
     }
 
-    public function getProjectList($options)
+    public function getProjectList($params)
     {
         // Get config
         $config = Pi::service('registry')->config->read($this->getModule());
@@ -43,21 +43,108 @@ class Project extends AbstractApi
         // Set
         $projectList = [];
 
+        // Set allowed fields
+        $fields = [
+            'id',
+            'title',
+            'slug',
+            'type',
+            'recommended',
+            'text_description',
+            'time_create',
+            'time_update',
+            'hits',
+            'main_image',
+            'additional_images',
+            'status',
+            'time_create_view',
+            'time_update_view',
+            'projectUrl',
+            'largeUrl',
+            'mediumUrl',
+            'thumbUrl',
+        ];
+
         // Set
-        $where  = ['status' => 1];
         $order  = ['time_create DESC', 'id DESC'];
-        $offset = (int)($options['page'] - 1) * $config['view_perpage'];
-        $limit  = intval($config['view_perpage']);
+        $limit  = isset($params['limit']) ? $params['limit'] :  intval($config['view_perpage']);
+        $offset = (int)($params['page'] - 1) * $limit;
+
+        // Set where
+        $where = function ($where) use ($params) {
+            $whereMain = clone $where;
+            $whereKey  = clone $where;
+
+            // Check status
+            $whereMain->equalTo('status', 1);
+
+            // Check recommended
+            if (!empty($params['recommended']) && $params['recommended'] == 1) {
+                $whereMain->equalTo('recommended', 1);
+            }
+
+            // Check type
+            if (!empty($params['type']) && intval($params['type']) > 0) {
+                $whereMain->equalTo('type', intval($params['type']));
+            }
+
+            // Set title
+            if (isset($params['title']) && !empty($params['title'])) {
+                if (Pi::service('module')->isActive('search')) {
+                    $titles = Pi::api('api', 'search')->parseQuery($params['title']);
+                    foreach ($titles as $title) {
+                        $whereKey->like('title', '%' . $title . '%')->and;
+                    }
+                } else {
+                    $whereKey->like('title', '%' . _strip($params['title']) . '%')->and;
+                }
+
+                $where->andPredicate($whereMain)->andPredicate($whereKey);
+            } else {
+                $where->andPredicate($whereMain);
+            }
+        };
 
         // Get info
         $select = Pi::model('project', $this->getModule())->select()->where($where)->order($order)->offset($offset)->limit($limit);
         $rowset = Pi::model('project', $this->getModule())->selectWith($select);
+
         // Make list
         foreach ($rowset as $row) {
-            $projectList[] = $this->canonizeProject($row);
+            $projectSingle = $this->canonizeProject($row);
+
+            // Clean
+            foreach ($projectSingle as $key => $value) {
+                if (!in_array($key, $fields)) {
+                    unset($projectSingle[$key]);
+                }
+            }
+
+            $projectList[$row->id] = $projectSingle;
         }
 
-        return $projectList;
+        // get count
+        $columns = ['count' => new Expression('count(*)')];
+        $select  = Pi::model('project', $this->getModule())->select()->where($where)->columns($columns);
+        $count   = Pi::model('project', $this->getModule())->selectWith($select)->current()->count;
+
+        // Set title
+        $pageTitle = __('Project list');
+
+        // Set result
+        $result = [
+            'projects'      => array_values($projectList),
+            'paginator'    => [
+                'count' => $count,
+                'limit' => $limit,
+                'page'  => $params['page'],
+            ],
+            'condition'    => [
+                'title' => $pageTitle,
+            ],
+        ];
+
+        return $result;
     }
 
     public function getListFromId($id)
