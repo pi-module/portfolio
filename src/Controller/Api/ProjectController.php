@@ -59,7 +59,7 @@ class ProjectController extends ActionController
             // Set result
             $result = [
                 'result' => true,
-                'data'   => array_values($list),
+                'data'   => $list,
                 'error'  => [
                     'code'    => 0,
                     'message' => '',
