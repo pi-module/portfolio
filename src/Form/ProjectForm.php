@@ -22,8 +22,6 @@ class ProjectForm extends BaseForm
     public function __construct($name = null, $option = [])
     {
         $this->option = $option;
-        //$this->thumbUrl = (isset($option['thumbUrl'])) ? $option['thumbUrl'] : '';
-        //$this->removeUrl = (isset($option['removeUrl'])) ? $option['removeUrl'] : '';
         parent::__construct($name);
     }
 
@@ -136,7 +134,84 @@ class ProjectForm extends BaseForm
             ]
         );
 
-        // service
+        // extra_seo
+        $this->add(
+            [
+                'name'    => 'extra_seo',
+                'type'    => 'fieldset',
+                'options' => [
+                    'label' => __('SEO options'),
+                ],
+            ]
+        );
+
+        // seo_title
+        $this->add(
+            [
+                'name'       => 'seo_title',
+                'options'    => [
+                    'label' => __('SEO Title'),
+                ],
+                'attributes' => [
+                    'type'        => 'textarea',
+                    'rows'        => '2',
+                    'cols'        => '40',
+                    'description' => '',
+                ],
+            ]
+        );
+
+        // seo_keywords
+        $this->add(
+            [
+                'name'       => 'seo_keywords',
+                'options'    => [
+                    'label' => __('SEO Keywords'),
+                ],
+                'attributes' => [
+                    'type'        => 'textarea',
+                    'rows'        => '2',
+                    'cols'        => '40',
+                    'description' => '',
+                ],
+            ]
+        );
+
+        // seo_description
+        $this->add(
+            [
+                'name'       => 'seo_description',
+                'options'    => [
+                    'label' => __('SEO Description'),
+                ],
+                'attributes' => [
+                    'type'        => 'textarea',
+                    'rows'        => '3',
+                    'cols'        => '40',
+                    'description' => '',
+                ],
+            ]
+        );
+
+        // tag
+        if (Pi::service('module')->isActive('tag')) {
+            $this->add(
+                [
+                    'name'       => 'tag',
+                    'type'       => 'tag',
+                    'options'    => [
+                        'label' => __('Tags'),
+                    ],
+                    'attributes' => [
+                        'id'          => 'tag',
+                        'description' => __('Use `|` as delimiter to separate tag terms'),
+                    ],
+                ]
+            );
+        }
+
+        /*
+                // service
         $this->add(
             [
                 'name'       => 'service',
@@ -216,83 +291,7 @@ class ProjectForm extends BaseForm
             ]
         );
 
-        // extra_seo
-        $this->add(
-            [
-                'name'    => 'extra_seo',
-                'type'    => 'fieldset',
-                'options' => [
-                    'label' => __('SEO options'),
-                ],
-            ]
-        );
-
-        // seo_title
-        $this->add(
-            [
-                'name'       => 'seo_title',
-                'options'    => [
-                    'label' => __('SEO Title'),
-                ],
-                'attributes' => [
-                    'type'        => 'textarea',
-                    'rows'        => '2',
-                    'cols'        => '40',
-                    'description' => '',
-                ],
-            ]
-        );
-
-        // seo_keywords
-        $this->add(
-            [
-                'name'       => 'seo_keywords',
-                'options'    => [
-                    'label' => __('SEO Keywords'),
-                ],
-                'attributes' => [
-                    'type'        => 'textarea',
-                    'rows'        => '2',
-                    'cols'        => '40',
-                    'description' => '',
-                ],
-            ]
-        );
-
-        // seo_description
-        $this->add(
-            [
-                'name'       => 'seo_description',
-                'options'    => [
-                    'label' => __('SEO Description'),
-                ],
-                'attributes' => [
-                    'type'        => 'textarea',
-                    'rows'        => '3',
-                    'cols'        => '40',
-                    'description' => '',
-                ],
-            ]
-        );
-
-        // tag
-        if (Pi::service('module')->isActive('tag')) {
-            $this->add(
-                [
-                    'name'       => 'tag',
-                    'type'       => 'tag',
-                    'options'    => [
-                        'label' => __('Tags'),
-                    ],
-                    'attributes' => [
-                        'id'          => 'tag',
-                        'description' => __('Use `|` as delimiter to separate tag terms'),
-                    ],
-                ]
-            );
-        }
-
-        /* // Version
+        // Version
         $this->add(array(
             'name' => 'version',
             'options' => array(
@@ -302,6 +301,7 @@ class ProjectForm extends BaseForm
                 'type' => 'text',
             )
         ));
+
         // Size
         $this->add(array(
             'name' => 'size',
@@ -312,6 +312,7 @@ class ProjectForm extends BaseForm
                 'type' => 'text',
             )
         ));
+
         // extra_comment
         $this->add(array(
             'name' => 'extra_comment',
@@ -320,6 +321,7 @@ class ProjectForm extends BaseForm
                 'label' => __('Customer comment'),
             ),
         ));
+
         // Customer
         $this->add(array(
             'name' => 'customer',
@@ -330,6 +332,7 @@ class ProjectForm extends BaseForm
                 'type' => 'text',
             )
         ));
+
         // Comment
         $this->add(array(
             'name' => 'comment',
@@ -342,6 +345,7 @@ class ProjectForm extends BaseForm
                 'cols' => '40',
             )
         ));
+
         // comment by
         $this->add(array(
             'name' => 'commentby',
@@ -352,6 +356,7 @@ class ProjectForm extends BaseForm
                 'type' => 'text',
             )
         ));
+
         // extra_link
         $this->add(array(
             'name' => 'extra_link',
@@ -360,6 +365,7 @@ class ProjectForm extends BaseForm
                 'label' => __('Extra links'),
             ),
         ));
+
         // link_1
         $this->add(array(
             'name' => 'link_1',
@@ -370,6 +376,7 @@ class ProjectForm extends BaseForm
                 'type' => 'text',
             )
         ));
+
         // link_2
         $this->add(array(
             'name' => 'link_2',
@@ -380,6 +387,7 @@ class ProjectForm extends BaseForm
                 'type' => 'text',
             )
         ));
+
         // link_3
         $this->add(array(
             'name' => 'link_3',
@@ -390,6 +398,7 @@ class ProjectForm extends BaseForm
                 'type' => 'text',
             )
         ));
+
         // link_4
         $this->add(array(
             'name' => 'link_4',
@@ -400,6 +409,7 @@ class ProjectForm extends BaseForm
                 'type' => 'text',
             )
         ));
+
         // link_5
         $this->add(array(
             'name' => 'link_5',
@@ -410,6 +420,7 @@ class ProjectForm extends BaseForm
                 'type' => 'text',
             )
         ));
+
         // extra_image
         $this->add(array(
             'name' => 'extra_image',
@@ -418,6 +429,7 @@ class ProjectForm extends BaseForm
                 'label' => __('Extra images'),
             ),
         ));
+
         // image_1
         $this->add(array(
             'name' => 'image_1',
@@ -428,6 +440,7 @@ class ProjectForm extends BaseForm
                 'type' => 'text',
             )
         ));
+
         // image_2
         $this->add(array(
             'name' => 'image_2',
@@ -438,6 +451,7 @@ class ProjectForm extends BaseForm
                 'type' => 'text',
             )
         ));
+
         // image_3
         $this->add(array(
             'name' => 'image_3',
@@ -448,6 +462,7 @@ class ProjectForm extends BaseForm
                 'type' => 'text',
             )
         ));
+
         // image_4
         $this->add(array(
             'name' => 'image_4',
@@ -458,6 +473,7 @@ class ProjectForm extends BaseForm
                 'type' => 'text',
             )
         ));
+
         // image_5
         $this->add(array(
             'name' => 'image_5',

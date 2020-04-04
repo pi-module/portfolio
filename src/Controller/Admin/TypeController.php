@@ -44,8 +44,13 @@ class TypeController extends ActionController
         // Get id
         $id = $this->params('id');
 
+        // Set option
+        $option = [
+            'id' => $id
+        ];
+
         // Set form
-        $form = new TypeForm('type');
+        $form = new TypeForm('type', $option);
         $form->setAttribute('enctype', 'multipart/form-data');
         if ($this->request->isPost()) {
             $data = $this->request->getPost();
@@ -56,7 +61,7 @@ class TypeController extends ActionController
             $data['slug'] = $filter($slug);
 
             // Form filter
-            $form->setInputFilter(new TypeFilter);
+            $form->setInputFilter(new TypeFilter($option));
             $form->setData($data);
             if ($form->isValid()) {
                 $values = $form->getData();

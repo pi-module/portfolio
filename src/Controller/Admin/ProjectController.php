@@ -81,7 +81,11 @@ class ProjectController extends ActionController
         // Get id
         $id     = $this->params('id');
         $module = $this->params('module');
-        $option = [];
+
+        // Set option
+        $option = [
+            'id' => $id
+        ];
 
         // Set form
         $form = new ProjectForm('project', $option);

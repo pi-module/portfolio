@@ -48,6 +48,7 @@ class TypeFilter extends InputFilter
                         [
                             'module' => Pi::service('module')->current(),
                             'table'  => 'type',
+                            'id'     => $option['id'],
                         ]
                     ),
                 ],
