@@ -59,6 +59,7 @@ CREATE TABLE `{type}`
     `title`            VARCHAR(255)        NOT NULL DEFAULT '',
     `slug`             VARCHAR(255)        NOT NULL DEFAULT '',
     `status`           TINYINT(1) UNSIGNED NOT NULL DEFAULT 0,
+    `view_order`       TINYINT(1) UNSIGNED NOT NULL DEFAULT 0,
     `text_description` TEXT,
     PRIMARY KEY (`id`),
     UNIQUE KEY `slug` (`slug`),

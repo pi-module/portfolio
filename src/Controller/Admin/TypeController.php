@@ -25,7 +25,7 @@ class TypeController extends ActionController
     {
         // Get info
         $list   = [];
-        $order  = ['id DESC'];
+        $order  = ['view_order DESC', 'id DESC'];
         $select = $this->getModel('type')->select()->order($order);
         $rowset = $this->getModel('type')->selectWith($select);
 
@@ -62,8 +62,8 @@ class TypeController extends ActionController
                 $values = $form->getData();
 
                 // Save values
-                if (!empty($values['id'])) {
-                    $row = $this->getModel('type')->find($values['id']);
+                if (!empty($id)) {
+                    $row = $this->getModel('type')->find($id);
                 } else {
                     $row = $this->getModel('type')->createRow();
                 }

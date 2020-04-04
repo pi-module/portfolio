@@ -15,7 +15,7 @@ return [
     'meta'     => [
         'title'       => _a('Portfolio'),
         'description' => _a('List of your works and simple gallery'),
-        'version'     => '1.3.4',
+        'version'     => '1.3.5',
         'license'     => 'New BSD',
         'logo'        => 'image/logo.png',
         'readme'      => 'docs/readme.txt',

@@ -90,29 +90,7 @@ class TagController extends ActionController
         );
 
         // Get type list
-        $typeList = [];
-        $where    = ['status' => 1];
-        $order    = ['id DESC'];
-
-        // Get info
-        $select = $this->getModel('type')->select()->where($where)->order($order);
-        $rowset = $this->getModel('type')->selectWith($select);
-
-        // Make list
-        foreach ($rowset as $row) {
-            $typeList[$row->id]            = $row->toArray();
-            $typeList[$row->id]['active']  = 0;
-            $typeList[$row->id]['typeUrl'] = Pi::url(
-                $this->url(
-                    '', [
-                        'module'     => $this->getModule(),
-                        'controller' => 'type',
-                        'action'     => 'index',
-                        'slug'       => $row->slug,
-                    ]
-                )
-            );
-        }
+        $typeList = Pi::api('type', 'portfolio')->getList(['set_all' => 1]);
 
         // Set header and title
         $title = sprintf(__('All projects by %s tag'), $slug);

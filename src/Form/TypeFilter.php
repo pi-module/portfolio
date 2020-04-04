@@ -20,13 +20,6 @@ class TypeFilter extends InputFilter
 {
     public function __construct($option = [])
     {
-        // id
-        $this->add(
-            [
-                'name'     => 'id',
-                'required' => false,
-            ]
-        );
         // title
         $this->add(
             [
@@ -39,6 +32,7 @@ class TypeFilter extends InputFilter
                 ],
             ]
         );
+
         // slug
         $this->add(
             [
@@ -59,6 +53,7 @@ class TypeFilter extends InputFilter
                 ],
             ]
         );
+
         // text_description
         $this->add(
             [
@@ -66,10 +61,19 @@ class TypeFilter extends InputFilter
                 'required' => false,
             ]
         );
+
         // status
         $this->add(
             [
                 'name'     => 'status',
+                'required' => false,
+            ]
+        );
+
+        // view_order
+        $this->add(
+            [
+                'name'     => 'view_order',
                 'required' => false,
             ]
         );

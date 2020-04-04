@@ -94,43 +94,7 @@ class IndexController extends ActionController
         }
 
         // Get type list
-        $typeList = [
-            0 => [
-                'title'   => __('All'),
-                'active'  => 1,
-                'typeUrl' => Pi::url(
-                    $this->url(
-                        '', [
-                            'module'     => $this->getModule(),
-                            'controller' => 'index',
-                            'action'     => 'index',
-                        ]
-                    )
-                ),
-            ],
-        ];
-        $where    = ['status' => 1];
-        $order    = ['id DESC'];
-
-        // Get info
-        $select = $this->getModel('type')->select()->where($where)->order($order);
-        $rowset = $this->getModel('type')->selectWith($select);
-
-        // Make list
-        foreach ($rowset as $row) {
-            $typeList[$row->id]            = $row->toArray();
-            $typeList[$row->id]['active']  = 0;
-            $typeList[$row->id]['typeUrl'] = Pi::url(
-                $this->url(
-                    '', [
-                        'module'     => $this->getModule(),
-                        'controller' => 'type',
-                        'action'     => 'index',
-                        'slug'       => $row->slug,
-                    ]
-                )
-            );
-        }
+        $typeList = Pi::api('type', 'portfolio')->getList(['set_all' => 1]);
 
         // Set title
         $title = !empty($config['homepage_title']) ? $config['homepage_title'] : __('List of our projects');

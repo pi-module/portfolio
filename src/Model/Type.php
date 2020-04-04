@@ -26,6 +26,7 @@ class Type extends Model
             'title',
             'slug',
             'status',
+            'view_order',
             'text_description',
         ];
 }

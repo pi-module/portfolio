@@ -34,15 +34,6 @@ class TypeForm extends BaseForm
 
     public function init()
     {
-        // id
-        $this->add(
-            [
-                'name'       => 'id',
-                'attributes' => [
-                    'type' => 'hidden',
-                ],
-            ]
-        );
         // title
         $this->add(
             [
@@ -55,6 +46,7 @@ class TypeForm extends BaseForm
                 ],
             ]
         );
+
         // slug
         $this->add(
             [
@@ -67,6 +59,7 @@ class TypeForm extends BaseForm
                 ],
             ]
         );
+
         // text_description
         $this->add(
             [
@@ -81,6 +74,7 @@ class TypeForm extends BaseForm
                 ],
             ]
         );
+
         // status
         $this->add(
             [
@@ -98,6 +92,20 @@ class TypeForm extends BaseForm
                 ],
             ]
         );
+
+        // view_order
+        $this->add(
+            [
+                'name'       => 'view_order',
+                'options'    => [
+                    'label' => __('View order'),
+                ],
+                'attributes' => [
+                    'type' => 'number',
+                ],
+            ]
+        );
+
         // Save
         $this->add(
             [

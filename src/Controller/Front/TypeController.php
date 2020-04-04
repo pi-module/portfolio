@@ -86,46 +86,8 @@ class TypeController extends ActionController
         );
 
         // Get type list
-        $typeList = [
-            0 => [
-                'title'   => __('All'),
-                'active'  => 0,
-                'typeUrl' => Pi::url(
-                    $this->url(
-                        '', [
-                            'module'     => $this->getModule(),
-                            'controller' => 'index',
-                            'action'     => 'index',
-                        ]
-                    )
-                ),
-            ],
-        ];
-        $where    = ['status' => 1];
-        $order    = ['id DESC'];
+        $typeList = Pi::api('type', 'portfolio')->getList(['set_all' => 1, 'active_id' => $type['id']]);
 
-        // Get info
-        $select = $this->getModel('type')->select()->where($where)->order($order);
-        $rowset = $this->getModel('type')->selectWith($select);
-
-        // Make list
-        foreach ($rowset as $row) {
-            $typeList[$row->id]            = $row->toArray();
-            $typeList[$row->id]['active']  = ($row->slug == $type['slug']) ? 1 : 0;
-            $typeList[$row->id]['typeUrl'] = Pi::url(
-                $this->url(
-                    '', [
-                        'module'     => $this->getModule(),
-                        'controller' => 'type',
-                        'action'     => 'index',
-                        'slug'       => $row->slug,
-                    ]
-                )
-            );
-        }
-
-        // Set header and title
-        // $title = sprintf(__('All projects by %s type'), $type['title']);
         // Set seo_keywords
         $filter = new Filter\HeadKeywords;
         $filter->setOptions(

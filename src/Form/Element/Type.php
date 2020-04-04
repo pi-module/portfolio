@@ -24,7 +24,7 @@ class Type extends Select
             $options    = [];
             $options[0] = '';
             $where      = ['status' => 1];
-            $order      = ['title ASC', 'id DESC'];
+            $order      = ['view_order DESC', 'id DESC'];
             $select     = Pi::model('type', 'portfolio')->select()->where($where)->order($order);
             $rowset     = Pi::model('type', 'portfolio')->selectWith($select);
             foreach ($rowset as $row) {
