@@ -37,15 +37,6 @@ class ProjectForm extends BaseForm
 
     public function init()
     {
-        // id
-        $this->add(
-            [
-                'name'       => 'id',
-                'attributes' => [
-                    'type' => 'hidden',
-                ],
-            ]
-        );
         // title
         $this->add(
             [
@@ -59,6 +50,7 @@ class ProjectForm extends BaseForm
                 ],
             ]
         );
+
         // slug
         $this->add(
             [
@@ -71,6 +63,7 @@ class ProjectForm extends BaseForm
                 ],
             ]
         );
+
         // type
         $this->add(
             [
@@ -85,6 +78,7 @@ class ProjectForm extends BaseForm
                 ],
             ]
         );
+
         // Main image
         $this->add(
             [
@@ -96,6 +90,7 @@ class ProjectForm extends BaseForm
                 ],
             ]
         );
+
         // Additional images'
         $this->add(
             [
@@ -107,6 +102,7 @@ class ProjectForm extends BaseForm
                 ],
             ]
         );
+
         // text_description
         $this->add(
             [
@@ -121,6 +117,7 @@ class ProjectForm extends BaseForm
                 ],
             ]
         );
+
         // status
         $this->add(
             [
@@ -138,6 +135,7 @@ class ProjectForm extends BaseForm
                 ],
             ]
         );
+
         // service
         $this->add(
             [
@@ -150,6 +148,7 @@ class ProjectForm extends BaseForm
                 ],
             ]
         );
+
         // Technology
         $this->add(
             [
@@ -162,6 +161,7 @@ class ProjectForm extends BaseForm
                 ],
             ]
         );
+
         // Website
         $this->add(
             [
@@ -174,6 +174,7 @@ class ProjectForm extends BaseForm
                 ],
             ]
         );
+
         // website_view
         $this->add(
             [
@@ -187,6 +188,7 @@ class ProjectForm extends BaseForm
                 ],
             ]
         );
+
         // phone
         $this->add(
             [
@@ -199,6 +201,7 @@ class ProjectForm extends BaseForm
                 ],
             ]
         );
+
         // phone_view
         $this->add(
             [
@@ -212,6 +215,7 @@ class ProjectForm extends BaseForm
                 ],
             ]
         );
+
         // extra_seo
         $this->add(
             [
@@ -222,6 +226,7 @@ class ProjectForm extends BaseForm
                 ],
             ]
         );
+
         // seo_title
         $this->add(
             [
@@ -237,6 +242,7 @@ class ProjectForm extends BaseForm
                 ],
             ]
         );
+
         // seo_keywords
         $this->add(
             [
@@ -252,6 +258,7 @@ class ProjectForm extends BaseForm
                 ],
             ]
         );
+
         // seo_description
         $this->add(
             [
@@ -267,6 +274,7 @@ class ProjectForm extends BaseForm
                 ],
             ]
         );
+
         // tag
         if (Pi::service('module')->isActive('tag')) {
             $this->add(
@@ -283,6 +291,7 @@ class ProjectForm extends BaseForm
                 ]
             );
         }
+
         /* // Version
         $this->add(array(
             'name' => 'version',
@@ -459,6 +468,7 @@ class ProjectForm extends BaseForm
                 'type' => 'text',
             )
         )); */
+
         // Save
         $this->add(
             [

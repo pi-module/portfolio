@@ -20,13 +20,6 @@ class ProjectFilter extends InputFilter
 {
     public function __construct($option = [])
     {
-        // id
-        $this->add(
-            [
-                'name'     => 'id',
-                'required' => false,
-            ]
-        );
         // title
         $this->add(
             [
@@ -39,6 +32,7 @@ class ProjectFilter extends InputFilter
                 ],
             ]
         );
+
         // slug
         $this->add(
             [
@@ -59,6 +53,7 @@ class ProjectFilter extends InputFilter
                 ],
             ]
         );
+
         // type
         $this->add(
             [
@@ -66,6 +61,7 @@ class ProjectFilter extends InputFilter
                 'required' => true,
             ]
         );
+
         // Main image
         $this->add(
             [
@@ -73,6 +69,7 @@ class ProjectFilter extends InputFilter
                 'required' => true,
             ]
         );
+
         // Aadditional images
         $this->add(
             [
@@ -80,6 +77,7 @@ class ProjectFilter extends InputFilter
                 'required' => false,
             ]
         );
+
         // text_description
         $this->add(
             [
@@ -87,6 +85,7 @@ class ProjectFilter extends InputFilter
                 'required' => false,
             ]
         );
+
         // status
         $this->add(
             [
@@ -94,6 +93,7 @@ class ProjectFilter extends InputFilter
                 'required' => true,
             ]
         );
+
         // service
         $this->add(
             [
@@ -101,6 +101,7 @@ class ProjectFilter extends InputFilter
                 'required' => false,
             ]
         );
+
         // technology
         $this->add(
             [
@@ -108,6 +109,7 @@ class ProjectFilter extends InputFilter
                 'required' => false,
             ]
         );
+
         // website
         $this->add(
             [
@@ -115,6 +117,7 @@ class ProjectFilter extends InputFilter
                 'required' => false,
             ]
         );
+
         // website_view
         $this->add(
             [
@@ -122,6 +125,7 @@ class ProjectFilter extends InputFilter
                 'required' => false,
             ]
         );
+
         // phone
         $this->add(
             [
@@ -129,6 +133,7 @@ class ProjectFilter extends InputFilter
                 'required' => false,
             ]
         );
+
         // phone_view
         $this->add(
             [
@@ -136,6 +141,7 @@ class ProjectFilter extends InputFilter
                 'required' => false,
             ]
         );
+
         // seo_title
         $this->add(
             [
@@ -143,6 +149,7 @@ class ProjectFilter extends InputFilter
                 'required' => false,
             ]
         );
+
         // seo_keywords
         $this->add(
             [
@@ -150,6 +157,7 @@ class ProjectFilter extends InputFilter
                 'required' => false,
             ]
         );
+
         // seo_description
         $this->add(
             [
@@ -157,6 +165,7 @@ class ProjectFilter extends InputFilter
                 'required' => false,
             ]
         );
+
         // tag
         if (Pi::service('module')->isActive('tag')) {
             $this->add(
@@ -166,6 +175,7 @@ class ProjectFilter extends InputFilter
                 ]
             );
         }
+
         /* // image
         // customer
         $this->add(array(

@@ -83,16 +83,6 @@ class ProjectController extends ActionController
         $module = $this->params('module');
         $option = [];
 
-        // Find Product
-        if ($id) {
-            $project = $this->getModel('project')->find($id)->toArray();
-            if ($project['image']) {
-                $thumbUrl            = sprintf('upload/%s/thumb/%s/%s', $this->config('image_path'), $project['path'], $project['image']);
-                $option['thumbUrl']  = Pi::url($thumbUrl);
-                $option['removeUrl'] = $this->url('', ['action' => 'remove', 'id' => $project['id']]);
-            }
-        }
-
         // Set form
         $form = new ProjectForm('project', $option);
         $form->setAttribute('enctype', 'multipart/form-data');
@@ -136,15 +126,15 @@ class ProjectController extends ActionController
                 $values['seo_description'] = $filter($description);
 
                 // Set time
-                if (empty($values['id'])) {
+                if (empty($id)) {
                     $values['time_create'] = time();
                     $values['uid']         = Pi::user()->getId();
                 }
                 $values['time_update'] = time();
 
                 // Save values
-                if (!empty($values['id'])) {
-                    $row = $this->getModel('project')->find($values['id']);
+                if (!empty($id)) {
+                    $row = $this->getModel('project')->find($id);
                 } else {
                     $row = $this->getModel('project')->createRow();
                 }
@@ -153,7 +143,7 @@ class ProjectController extends ActionController
 
                 // Tag
                 if (isset($tag) && is_array($tag) && Pi::service('module')->isActive('tag')) {
-                    if (empty($values['id'])) {
+                    if (empty($id)) {
                         Pi::service('tag')->add($module, $row->id, '', $tag);
                     } else {
                         Pi::service('tag')->update($module, $row->id, '', $tag);
@@ -188,7 +178,7 @@ class ProjectController extends ActionController
 
                 // Get tag list
                 if (Pi::service('module')->isActive('tag')) {
-                    $tag = Pi::service('tag')->get($module, $values['id'], '');
+                    $tag = Pi::service('tag')->get($module, $id, '');
                     if (is_array($tag)) {
                         $values['tag'] = implode('|', $tag);
                     }
