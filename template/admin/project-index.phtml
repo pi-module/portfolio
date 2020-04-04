@@ -31,12 +31,16 @@ $this->js($this->assetModule('script/system-msg.js', 'system'));
                                     <?php if ($project['recommended'] == 1) { ?>
                                         <button id="button-<?php echo $project['id']; ?>" type="button" class="btn btn-link"
                                                 data-toggle="button"
-                                                data-link="<?php echo $this->url('', ['action' => 'recommend', 'id' => $project['id'], 'recommended' => '0']); ?>">
+                                                data-link="<?php echo $this->url(
+                                                    '', ['action' => 'recommend', 'id' => $project['id'], 'recommended' => '0']
+                                                ); ?>">
                                             <i class="fas fa-heart"></i></button>
                                     <?php } else { ?>
                                         <button id="button-<?php echo $project['id']; ?>" type="button" class="btn btn-link"
                                                 data-toggle="button"
-                                                data-link="<?php echo $this->url('', ['action' => 'recommend', 'id' => $project['id'], 'recommended' => '1']); ?>">
+                                                data-link="<?php echo $this->url(
+                                                    '', ['action' => 'recommend', 'id' => $project['id'], 'recommended' => '1']
+                                                ); ?>">
                                             <i class="far fa-heart"></i></button>
                                     <?php } ?>
                                 </li>

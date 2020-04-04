@@ -84,7 +84,7 @@ class ProjectController extends ActionController
 
         // Set option
         $option = [
-            'id' => $id
+            'id' => $id,
         ];
 
         // Set form
