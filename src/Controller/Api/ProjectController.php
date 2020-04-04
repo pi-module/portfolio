@@ -44,8 +44,8 @@ class ProjectController extends ActionController
             // Clean params
             $params = [];
             foreach ($post as $key => $value) {
-                $key               = _strip($key);
-                $value             = _strip($value);
+                $key          = _strip($key);
+                $value        = _strip($value);
                 $params[$key] = $value;
             }
 
@@ -90,7 +90,7 @@ class ProjectController extends ActionController
         ];
 
         // Get info from url
-        $token = $this->params('token');
+        $token     = $this->params('token');
         $projectId = $this->params('project_id');
 
         // Check token
@@ -102,11 +102,14 @@ class ProjectController extends ActionController
                 // Get project
                 $project = Pi::api('project', 'portfolio')->getProject(intval($projectId));
 
+                // Update Hits
+                $this->getModel('project')->increment('hits', ['id' => $project['id']]);
+
                 // Set result
                 $result = [
                     'result' => true,
                     'data'   => [
-                        $project
+                        $project,
                     ],
                     'error'  => [
                         'code'    => 0,
