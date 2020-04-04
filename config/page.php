@@ -10,41 +10,41 @@
 /**
  * @author Hossein Azizabadi <azizabadi@faragostaresh.com>
  */
-return array(
+return [
     // Admin section
-    'admin' => array(
-        array(
-            'title' => _a('Projects'),
+    'admin' => [
+        [
+            'title'      => _a('Projects'),
             'controller' => 'project',
             'permission' => 'project',
-        ),
-        array(
-            'title' => _a('Project type'),
+        ],
+        [
+            'title'      => _a('Project type'),
             'controller' => 'type',
             'permission' => 'type',
-        ),
-        array(
-            'title' => _a('Tools'),
+        ],
+        [
+            'title'      => _a('Tools'),
             'controller' => 'tools',
             'permission' => 'tools',
-        ),
-    ),
+        ],
+    ],
     // Front section
-    'front' => array(
-        array(
-            'title' => _a('Index'),
+    'front' => [
+        [
+            'title'      => _a('Index'),
             'controller' => 'index',
-            'block' => 1,
-        ),
-        array(
-            'title' => _a('Tag'),
+            'block'      => 1,
+        ],
+        [
+            'title'      => _a('Tag'),
             'controller' => 'tag',
-            'block' => 1,
-        ),
-        array(
-            'title' => _a('Project'),
+            'block'      => 1,
+        ],
+        [
+            'title'      => _a('Project'),
             'controller' => 'project',
-            'block' => 1,
-        ),
-    ),
-);
+            'block'      => 1,
+        ],
+    ],
+];

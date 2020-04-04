@@ -1,50 +1,50 @@
 /* project list */
 .portfolio-block .card {
-	text-align: center;
+    text-align: center;
 }
 
 .portfolio-block .card .card-title {
-	margin: -20px;
-	padding: 10px;
-	height: 50px;
-	color: #fff;
-	font-size: 1.2em;
-	background: rgba(0,0,0, .45);
+    margin: -20px;
+    padding: 10px;
+    height: 50px;
+    color: #fff;
+    font-size: 1.2em;
+    background: rgba(0, 0, 0, .45);
 }
 
 /* ribbon */
 .portfolio-block .portfolio-ribbon {
-	position: relative;
-	color: #434443;
-	display: inline-block;
-	padding: 0;
-	overflow: hidden;
-	font-weight: 700;
-	font-size: 13px;
-	display: block;
+    position: relative;
+    color: #434443;
+    display: inline-block;
+    padding: 0;
+    overflow: hidden;
+    font-weight: 700;
+    font-size: 13px;
+    display: block;
 }
 
 .portfolio-block a.portfolio-ribbon:hover {
-	color: #434443;
+    color: #434443;
 }
 
 .portfolio-block .portfolio-ribbon p {
-	display: inline;
+    display: inline;
 }
 
 .portfolio-block .portfolio-ribbon p span {
-	position: absolute;
-	display: inline-block;
-	right: -50px;
-	text-align: center;
-	text-transform: none;
-	top: 35px;
-	background: #FFC107;
-	width: 200px;
-	padding: 5px 10px;
-	-webkit-transform: rotate(45deg);
-	-moz-transform: rotate(45deg);
-	-o-transform: rotate(45deg);
-	-ms-transform: rotate(45deg);
-	z-index:1;
+    position: absolute;
+    display: inline-block;
+    right: -50px;
+    text-align: center;
+    text-transform: none;
+    top: 35px;
+    background: #FFC107;
+    width: 200px;
+    padding: 5px 10px;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    z-index: 1;
 }

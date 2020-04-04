@@ -10,18 +10,18 @@
 /**
  * @author Hossein Azizabadi <azizabadi@faragostaresh.com>
  */
-return array(
+return [
     // route name
-    'portfolio' => array(
-        'name' => 'portfolio',
-        'type' => 'Module\Portfolio\Route\Portfolio',
-        'options' => array(
-            'route' => '/portfolio',
-            'defaults' => array(
-                'module' => 'portfolio',
+    'portfolio' => [
+        'name'    => 'portfolio',
+        'type'    => 'Module\Portfolio\Route\Portfolio',
+        'options' => [
+            'route'    => '/portfolio',
+            'defaults' => [
+                'module'     => 'portfolio',
                 'controller' => 'index',
-                'action' => 'index'
-            )
-        ),
-    )
-);
+                'action'     => 'index',
+            ],
+        ],
+    ],
+];

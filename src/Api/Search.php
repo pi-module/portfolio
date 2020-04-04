@@ -60,10 +60,10 @@ class Search extends AbstractSearch
     {
         $link = Pi::service('url')->assemble(
             'portfolio', [
-            'module'     => $this->getModule(),
-            'controller' => 'project',
-            'slug'       => $item['slug'],
-        ]
+                'module'     => $this->getModule(),
+                'controller' => 'project',
+                'slug'       => $item['slug'],
+            ]
         );
 
         return $link;

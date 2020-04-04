@@ -1,38 +1,42 @@
 <?php $this->css($this->assetModule('css/admin.css')); ?>
 <div class="clearfix">
     <?php if (!empty($list)) { ?>
-    <h3><?php _e('List of project types'); ?></h3>
-    <table class="table table-striped table-bordered table-sm">
-        <tr>
-            <th><?php _e('ID'); ?></th>
-            <th><?php _e('Title'); ?></th>
-            <th><?php _e('Action'); ?></th>
-        </tr>
-        <?php foreach ($list as $type) { ?>
-            <?php if ($type['status'] == 1) {
-                $labelIdClass = 'label-success';
-            } else {
-                $labelIdClass = 'label-warning';
-            } ?>
+        <h3><?php _e('List of project types'); ?></h3>
+        <table class="table table-striped table-bordered table-sm">
             <tr>
-                <td><span
-                        class="label <?php echo $labelIdClass; ?>"><?php echo $this->escape($type['id']); ?></span>
-                </td>
-                <td><?php echo $this->escape($type['title']); ?></td>
-                <td>
-                    <a class="btn btn-primary btn-sm" title="<?php _e('Edit'); ?>"
-                       href="<?php echo $this->url('', array('action' => 'update', 'id' => $type['id'])); ?>"><i
-                                class="fa fa-edit"></i> <?php _e('Edit'); ?></a>
-                    <a class="btn btn-success btn-sm" title="<?php _e('View'); ?>"
-                       href="<?php echo Pi::url($this->url('portfolio', array(
-                           'controller'    => 'type',
-                           'action'        => 'index',
-                           'slug'          => $type['slug'],
-                       ))); ?>"><i class="fa fa-eye"></i> <?php _e('View'); ?></a>
-                </td>
+                <th><?php _e('ID'); ?></th>
+                <th><?php _e('Title'); ?></th>
+                <th><?php _e('Action'); ?></th>
             </tr>
-        <?php } ?>
-    </table>
+            <?php foreach ($list as $type) { ?>
+                <?php if ($type['status'] == 1) {
+                    $labelIdClass = 'label-success';
+                } else {
+                    $labelIdClass = 'label-warning';
+                } ?>
+                <tr>
+                    <td><span
+                                class="label <?php echo $labelIdClass; ?>"><?php echo $this->escape($type['id']); ?></span>
+                    </td>
+                    <td><?php echo $this->escape($type['title']); ?></td>
+                    <td>
+                        <a class="btn btn-primary btn-sm" title="<?php _e('Edit'); ?>"
+                           href="<?php echo $this->url('', ['action' => 'update', 'id' => $type['id']]); ?>"><i
+                                    class="fa fa-edit"></i> <?php _e('Edit'); ?></a>
+                        <a class="btn btn-success btn-sm" title="<?php _e('View'); ?>"
+                           href="<?php echo Pi::url(
+                               $this->url(
+                                   'portfolio', [
+                                   'controller' => 'type',
+                                   'action'     => 'index',
+                                   'slug'       => $type['slug'],
+                               ]
+                               )
+                           ); ?>"><i class="fa fa-eye"></i> <?php _e('View'); ?></a>
+                    </td>
+                </tr>
+            <?php } ?>
+        </table>
     <?php } else { ?>
         <div class="alert alert-danger" role="alert">
             <?php _e('No project type create yet'); ?>

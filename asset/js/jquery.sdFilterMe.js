@@ -5,15 +5,15 @@
  MIT-style license.
  */
 
-;(function($) {
+;(function ($) {
 
     $.fn.extend({
-        sdFilterMe: function(options) {
-            if (options && typeof(options) == 'object') {
+        sdFilterMe: function (options) {
+            if (options && typeof (options) == 'object') {
                 options = $.extend({}, $.sdFilterMe.defaults, options);
             }
 
-            if($(this).length == 1) {
+            if ($(this).length == 1) {
                 new $.sdFilterMe(this, options);
             }
 
@@ -23,15 +23,15 @@
 
     $.layout = [];
 
-    $.sdFilterMe = function(el, options) {
+    $.sdFilterMe = function (el, options) {
         var $el = $(el);
 
-        $(window).on('load', function() {
+        $(window).on('load', function () {
 
             $el = $.sdFilterMe.buildLayout(el, options);
             $.layout = $.sdFilterMe.storeCoordinates($el);
 
-            $(window).on('resize', function() {
+            $(window).on('resize', function () {
                 $.layout = $.sdFilterMe.storeCoordinates($el);
             });
 
@@ -40,23 +40,23 @@
             // Triggering events
 
 
-            $(options.filterSelector).css('cursor', 'pointer').on('click', function(e) {
+            $(options.filterSelector).css('cursor', 'pointer').on('click', function (e) {
                 e.preventDefault();
                 $.sdFilterMe.filterBoxes($el, $(this).attr('data-filter'), options);
             });
 
-            $(options.orderSelector).css('cursor', 'pointer').on('click', function(e) {
+            $(options.orderSelector).css('cursor', 'pointer').on('click', function (e) {
                 e.preventDefault();
                 $.sdFilterMe.sortBoxes($boxes, $(this).attr('data-order'), options);
             });
 
-            if(options.hoverEffect) {
+            if (options.hoverEffect) {
                 $.sdFilterMe.hoverEffect($el, options);
             }
         });
     };
 
-    $.sdFilterMe.buildLayout = function(el, options) {
+    $.sdFilterMe.buildLayout = function (el, options) {
 
         var $el = $(el)
             , $lis = $el.find('> li')
@@ -81,7 +81,7 @@
 
         $lis.css({
             'display': 'inline-block'
-        }).each(function(i) {
+        }).each(function (i) {
             widths[i] = $(this).outerWidth() + options.css.border.width * 2;
             heights[i] = $(this).outerHeight() + options.css.border.width * 2;
             clones[i] = $(this).children().clone();
@@ -110,12 +110,12 @@
                 'margin': options.css.margin
             });
 
-        if(options.css.pointer) {
+        if (options.css.pointer) {
             $wrapper.css('cursor', 'pointer');
         }
 
 
-        for(var i = 0; i < clones.length; ++i) {
+        for (var i = 0; i < clones.length; ++i) {
             var title = $lis.eq(i).data('title')
                 , link = $lis.eq(i).data('link')
                 , order = $lis.eq(i).data('order')
@@ -127,15 +127,15 @@
                     'class': 'sdfm-inner-wrapper ' + $lis.eq(i).attr('class')
                 });
 
-            if(typeof(title) !== 'undefined') {
+            if (typeof (title) !== 'undefined') {
                 $.sdFilterMe.addOverlayTitles($wrapperClone, title, options, maxWidth, maxHeight);
             }
 
-            if(typeof(link) !== 'undefined') {
+            if (typeof (link) !== 'undefined') {
                 $.sdFilterMe.addLink($wrapperClone, link, options);
             }
 
-            if(typeof(order) !== 'undefined') {
+            if (typeof (order) !== 'undefined') {
                 $wrapperClone.attr('data-order', order);
             }
 
@@ -145,7 +145,7 @@
 
         $outerWrapper = $('#' + outerWrapperId);
 
-        $outerWrapper.before($el.clone(true)).find('> .sdfm-inner-wrapper').on('click', function() {
+        $outerWrapper.before($el.clone(true)).find('> .sdfm-inner-wrapper').on('click', function () {
             $('#' + outerWrapperId).prev('ul').trigger('fm.boxClicked', [$(this).index(), $(this).attr('data-order')]);
         });
         $el.remove();
@@ -154,10 +154,10 @@
 
     };
 
-    $.sdFilterMe.storeCoordinates = function($el) {
+    $.sdFilterMe.storeCoordinates = function ($el) {
 
         var layout = {};
-        $el.find('> .sdfm-inner-wrapper').each(function(i) {
+        $el.find('> .sdfm-inner-wrapper').each(function (i) {
 
             layout[i] = {
                 origPosX: this.offsetLeft,
@@ -169,7 +169,7 @@
         return layout;
     };
 
-    $.sdFilterMe.addOverlayTitles = function($box, title, options, maxWidth, maxHeight) {
+    $.sdFilterMe.addOverlayTitles = function ($box, title, options, maxWidth, maxHeight) {
 
         var backgroundColor = options.css.overlay.background;
         $overlay = $('<div />')
@@ -210,10 +210,10 @@
         $box.append($overlay.append($title));
     };
 
-    $.sdFilterMe.translateBox = function($box, target, options, hide) {
+    $.sdFilterMe.translateBox = function ($box, target, options, hide) {
 
-        if(!$.layout[$box.index()]) {
-            console.error('Error: can\'t read value for '+ $box.index() +' in $.layout[].');
+        if (!$.layout[$box.index()]) {
+            console.error('Error: can\'t read value for ' + $box.index() + ' in $.layout[].');
             return;
         }
 
@@ -226,10 +226,10 @@
             , translateY = origPosY - top
             , cssValue = 'translate(' + translateX + 'px, ' + translateY + 'px)';
 
-        if(options.sortedOut == 'disappear' && hide === true) {
+        if (options.sortedOut == 'disappear' && hide === true) {
             cssValue += ' scale(0, 0)';
             $box.addClass('sdfm-box-hidden');
-        } else if(options.sortedOut == 'disappear' && hide === false) {
+        } else if (options.sortedOut == 'disappear' && hide === false) {
             cssValue += ' scale(1, 1)';
             $box.removeClass('sdfm-box-hidden');
         } else {
@@ -243,7 +243,7 @@
         $.layout[i].newPosY = origPosY;
     };
 
-    $.sdFilterMe.nothingToShow = function($wrapper, options) {
+    $.sdFilterMe.nothingToShow = function ($wrapper, options) {
         $nothingToShow = $('<h3 />')
             .addClass('sdfm-nothing')
             .css({
@@ -266,16 +266,16 @@
                 'transition': 'all ' + options.duration + 'ms ' + options.animation
             }).html(options.nothingToShow.text);
 
-        if(!$wrapper.prev('h3').hasClass('sdfm-nothing')) {
+        if (!$wrapper.prev('h3').hasClass('sdfm-nothing')) {
             $wrapper.before($nothingToShow);
         }
 
-        window.setTimeout(function() {
+        window.setTimeout(function () {
             $.sdFilterMe.applyTransform($nothingToShow, 'scale(1, 1)');
         }, options.duration / 2);
     };
 
-    $.sdFilterMe.filterBoxes = function($el, filter, options) {
+    $.sdFilterMe.filterBoxes = function ($el, filter, options) {
 
         var j = 0
             , $boxes = $el.find('> .sdfm-inner-wrapper')
@@ -283,11 +283,11 @@
             , nothing = []
             , l = 0;
 
-        $boxes.each(function() {
+        $boxes.each(function () {
 
-            if($(this).hasClass(filter) || filter === '*') {
+            if ($(this).hasClass(filter) || filter === '*') {
 
-                if(options.sortedOut == 'opacity') {
+                if (options.sortedOut == 'opacity') {
                     $(this).animate({opacity: 1}, {duration: options.duration});
                 }
 
@@ -296,27 +296,26 @@
             } else {
 
                 nothing[l] = true;
-                if(options.sortedOut == 'opacity') {
+                if (options.sortedOut == 'opacity') {
                     $(this).animate({opacity: 0.25}, {duration: options.duration});
                 }
                 $.sdFilterMe.translateBox($(this), k--, options, true);
                 ++l;
             }
         });
-        if(nothing.length == $boxes.length) {
+        if (nothing.length == $boxes.length) {
             $.sdFilterMe.nothingToShow($el, options);
         } else {
-            $.sdFilterMe.applyTransform($el.prev('.sdfm-nothing'), 'scale(0, 0)', options, function() {
+            $.sdFilterMe.applyTransform($el.prev('.sdfm-nothing'), 'scale(0, 0)', options, function () {
                 $el.prev('.sdfm-nothing').remove();
             });
 
         }
 
 
-
     };
 
-    $.sdFilterMe.applyTransform = function($box, value, options, callback) {
+    $.sdFilterMe.applyTransform = function ($box, value, options, callback) {
         $box.css({
             '-webkit-transform': value,
             '-moz-transform': value,
@@ -325,22 +324,22 @@
             'transform': value
         });
 
-        if(callback) {
-            window.setTimeout(function() {
+        if (callback) {
+            window.setTimeout(function () {
                 callback();
             }, options.duration)
         }
     };
 
-    $.sdFilterMe.hoverEffect = function($el, options) {
+    $.sdFilterMe.hoverEffect = function ($el, options) {
 
-        $el.find('> .sdfm-inner-wrapper').hover(function() {
+        $el.find('> .sdfm-inner-wrapper').hover(function () {
 
             $(this).find('> .sdfm-overlay').fadeOut(options.css.overlay.duration).css({
                 'transform': 'scale(0, 0)'
             });
 
-        }, function() {
+        }, function () {
 
             $(this).find('> .sdfm-overlay').fadeIn(options.css.overlay.duration).css({
                 'transform': 'scale(1, 1)'
@@ -349,25 +348,25 @@
         })
     };
 
-    $.sdFilterMe.addLink = function($box, link, options) {
+    $.sdFilterMe.addLink = function ($box, link, options) {
 
-        $box.on('click', function() {
+        $box.on('click', function () {
             document.location = link;
         });
 
     };
 
-    $.sdFilterMe.sortBoxes = function($boxes, sorting, options) {
+    $.sdFilterMe.sortBoxes = function ($boxes, sorting, options) {
         var k = $boxes.length - 1;
-        $boxes.each(function(index, elem) {
+        $boxes.each(function (index, elem) {
 
-            if(sorting == 'asc') {
+            if (sorting == 'asc') {
                 $.sdFilterMe.translateBox($(elem), $(elem).attr('data-order'), options, false);
-            } else if(sorting == 'desc') {
+            } else if (sorting == 'desc') {
                 $.sdFilterMe.translateBox($(elem), k - $(elem).attr('data-order'), options, false);
             }
 
-            $.sdFilterMe.applyTransform($boxes.parent().prev('.sdfm-nothing'), 'scale(0, 0)', options, function() {
+            $.sdFilterMe.applyTransform($boxes.parent().prev('.sdfm-nothing'), 'scale(0, 0)', options, function () {
                 $boxes.parent().prev('.sdfm-nothing').remove();
             });
         });

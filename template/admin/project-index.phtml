@@ -1,8 +1,10 @@
 <?php
-$this->css(array(
-    $this->assetModule('css/admin.css'),
-    $this->assetModule('script/system-ui.css', 'system'),
-));
+$this->css(
+    [
+        $this->assetModule('css/admin.css'),
+        $this->assetModule('script/system-ui.css', 'system'),
+    ]
+);
 $this->jQuery();
 $this->js($this->assetModule('script/system-msg.js', 'system'));
 ?>
@@ -10,7 +12,7 @@ $this->js($this->assetModule('script/system-msg.js', 'system'));
     <h3><?php _e('List of projects'); ?></h3>
     <?php if (!empty($projects)) { ?>
         <div class="row clearfix">
-            <?php foreach($projects as $project) { ?>
+            <?php foreach ($projects as $project) { ?>
                 <?php if ($project['status'] == 5) {
                     $class = 'bg-danger';
                 } elseif ($project['status'] == 1) {
@@ -21,31 +23,37 @@ $this->js($this->assetModule('script/system-msg.js', 'system'));
                 <div class="col-md-3">
                     <div class="thumbnail <?php echo $class; ?>">
                         <div class="thumbnail-image">
-                            <img class="img-fluid" src="<?php echo $project['thumbUrl']; ?>" alt="<?php echo $this->escape($project['title']); ?>" />
+                            <img class="img-fluid" src="<?php echo $project['thumbUrl']; ?>" alt="<?php echo $this->escape($project['title']); ?>"/>
                         </div>
                         <div class="caption">
                             <h4 class="project-ajax">
                                 <?php if ($project['recommended'] == 1) { ?>
                                     <button id="button-<?php echo $project['id']; ?>" type="button" class="btn btn-link"
                                             data-toggle="button"
-                                            data-link="<?php echo $this->url('', array('action' => 'recommend', 'id' => $project['id'], 'recommended' => '0')); ?>">
+                                            data-link="<?php echo $this->url('', ['action' => 'recommend', 'id' => $project['id'], 'recommended' => '0']); ?>">
                                         <i class="fa fa-heart"></i></button>
                                 <?php } else { ?>
                                     <button id="button-<?php echo $project['id']; ?>" type="button" class="btn btn-link"
                                             data-toggle="button"
-                                            data-link="<?php echo $this->url('', array('action' => 'recommend', 'id' => $project['id'], 'recommended' => '1')); ?>">
+                                            data-link="<?php echo $this->url('', ['action' => 'recommend', 'id' => $project['id'], 'recommended' => '1']); ?>">
                                         <i class="fa fa-heart-o"></i></button>
                                 <?php } ?>
                                 <?php echo $this->escape($project['title']); ?>
                             </h4>
                             <p>
-                                <a class="btn btn-primary btn-sm" title="<?php _e('Edit'); ?>" href="<?php echo $this->url('', array('action' => 'update', 'id' => $project['id'])); ?>"><i class="fa fa-edit"></i> <?php _e('Edit'); ?></a>
+                                <a class="btn btn-primary btn-sm" title="<?php _e('Edit'); ?>"
+                                   href="<?php echo $this->url('', ['action' => 'update', 'id' => $project['id']]); ?>"><i class="fa fa-edit"></i> <?php _e(
+                                        'Edit'
+                                    ); ?></a>
                                 <?php if ($project['status'] == 1) { ?>
-                                    <a class="btn btn-success btn-sm" title="<?php _e('View'); ?>" href="<?php echo $project['projectUrl']; ?>" target="_blank"><i class="fa fa-eye"></i> <?php _e('View'); ?></a>
+                                    <a class="btn btn-success btn-sm" title="<?php _e('View'); ?>" href="<?php echo $project['projectUrl']; ?>" target="_blank"><i
+                                                class="fa fa-eye"></i> <?php _e('View'); ?></a>
                                 <?php } ?>
                                 <?php if ($project['status'] != 5) { ?>
-                                    <a class="btn btn-danger btn-sm" title="<?php _e('Delete'); ?>" href="<?php echo $this->url('', array('action' => 'delete', 'id' => $project['id'])); ?>" onclick="return confirm('<?php echo __('Are you sure to delete this project?'); ?>')">
-                                        <i class="fa fa-trash"></i>  <?php _e('Delete'); ?>
+                                    <a class="btn btn-danger btn-sm" title="<?php _e('Delete'); ?>"
+                                       href="<?php echo $this->url('', ['action' => 'delete', 'id' => $project['id']]); ?>"
+                                       onclick="return confirm('<?php echo __('Are you sure to delete this project?'); ?>')">
+                                        <i class="fa fa-trash"></i> <?php _e('Delete'); ?>
                                     </a>
                                 <?php } ?>
                             </p>

@@ -6,27 +6,27 @@ $this->js($this->assetModule('js/jquery.sdFilterMe.js'));
 switch ($config['view_column']) {
     case 1:
         $projectBoxSize = 'col-lg-12 col-md-12 col-12';
-        $image = 'large';
+        $image          = 'large';
         break;
 
     case 2:
         $projectBoxSize = 'col-lg-6 col-md-6 col-12';
-        $image = 'medium';
+        $image          = 'medium';
         break;
 
     case 3:
         $projectBoxSize = 'col-lg-4 col-md-4 col-12';
-        $image = 'medium';
+        $image          = 'medium';
         break;
 
     case 4:
         $projectBoxSize = 'col-lg-3 col-md-3 col-12';
-        $image = 'thumb';
+        $image          = 'thumb';
         break;
 
     case 6:
         $projectBoxSize = 'col-lg-2 col-md-2 col-12';
-        $image = 'thumb';
+        $image          = 'thumb';
         break;
 }
 
@@ -65,8 +65,12 @@ $this->headMeta($this->escape($description), 'twitter:description');
                     <a class="sorter" data-filter="*"><?php _e('All'); ?></a>
                 </li>
                 <?php foreach ($typeList as $typeSingle) { ?>
-                    <li<?php if ($typeSingle['active']) { echo ' class="active"';} ?>>
-                        <a class="sorter" data-filter="sort-<?php echo $this->escape($typeSingle['id']); ?>"><?php echo $this->escape($typeSingle['title']); ?></a>
+                    <li<?php if ($typeSingle['active']) {
+                        echo ' class="active"';
+                    } ?>>
+                        <a class="sorter" data-filter="sort-<?php echo $this->escape($typeSingle['id']); ?>"><?php echo $this->escape(
+                                $typeSingle['title']
+                            ); ?></a>
                     </li>
                 <?php } ?>
             </ul>
@@ -74,8 +78,9 @@ $this->headMeta($this->escape($description), 'twitter:description');
     <?php } ?>
     <div class="clearfix row">
         <ul class="portfolio-sort list-unstyled">
-            <?php foreach($projects as $project) { ?>
-                <li class="<?php echo $projectBoxSize; ?> portfolio-list-single sort-<?php echo $this->escape($project['type']); ?>" itemscope itemtype="https://schema.org/CreativeWork">
+            <?php foreach ($projects as $project) { ?>
+                <li class="<?php echo $projectBoxSize; ?> portfolio-list-single sort-<?php echo $this->escape($project['type']); ?>" itemscope
+                    itemtype="https://schema.org/CreativeWork">
                     <div class="thumbnail">
                         <?php switch ($image) {
                             case 'large':
@@ -91,7 +96,8 @@ $this->headMeta($this->escape($description), 'twitter:description');
                                 break;
                         } ?>
                         <div class="thumbnail-image">
-                            <a <?php if ($project['ribbon']) { ?>class="portfolio-ribbon"<?php } ?> itemprop="url" title="<?php echo $this->escape($project['title']); ?>" href="<?php echo $this->escape($project['projectUrl']); ?>" >
+                            <a <?php if ($project['ribbon']) { ?>class="portfolio-ribbon"<?php } ?> itemprop="url"
+                               title="<?php echo $this->escape($project['title']); ?>" href="<?php echo $this->escape($project['projectUrl']); ?>">
                                 <img itemprop="image" class="img-fluid" src="<?php echo $imageUrl; ?>" alt="<?php echo $this->escape($project['title']); ?>">
                                 <?php if ($project['ribbon']) { ?>
                                     <p><span><?php echo $this->escape($project['ribbon']); ?></span></p>
@@ -100,7 +106,7 @@ $this->headMeta($this->escape($description), 'twitter:description');
                         </div>
                         <div class="caption">
                             <div class="infos">
-                                <a title="<?php echo $this->escape($project['title']); ?>" href="<?php echo $this->escape($project['projectUrl']); ?>" >
+                                <a title="<?php echo $this->escape($project['title']); ?>" href="<?php echo $this->escape($project['projectUrl']); ?>">
                                     <h2 itemprop="name" class="small"><?php echo $this->escape($project['title']); ?></h2>
                                 </a>
                                 <?php if ($config['show_phone'] && $project['phone_view'] && !empty($project['phone'])) { ?>
@@ -111,7 +117,8 @@ $this->headMeta($this->escape($description), 'twitter:description');
                             </div>
                             <?php if ($config['show_website'] && $project['website_view'] && !empty($project['website'])) { ?>
                                 <div class="portfolio-website">
-                                    <a target="_blank" title="<?php echo $this->escape($project['title']); ?>" href="<?php echo $this->escape($project['website']); ?>" >
+                                    <a target="_blank" title="<?php echo $this->escape($project['title']); ?>"
+                                       href="<?php echo $this->escape($project['website']); ?>">
                                         <?php _e('View website'); ?>
                                     </a>
                                 </div>
@@ -124,7 +131,7 @@ $this->headMeta($this->escape($description), 'twitter:description');
     </div>
 </div>
 <script>
-    jQuery(function($) {
+    jQuery(function ($) {
         $('.portfolio-type li').click(function () {
             $('.portfolio-type li').removeClass("active");
             $(this).addClass("active");

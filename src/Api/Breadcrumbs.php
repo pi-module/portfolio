@@ -43,8 +43,8 @@ class Breadcrumbs extends AbstractBreadcrumbs
                     'label' => $moduleData['title'],
                     'href'  => Pi::service('url')->assemble(
                         'portfolio', [
-                        'module' => $this->getModule(),
-                    ]
+                            'module' => $this->getModule(),
+                        ]
                     ),
                 ];
                 $result[] = [
@@ -58,8 +58,8 @@ class Breadcrumbs extends AbstractBreadcrumbs
                     'label' => $moduleData['title'],
                     'href'  => Pi::service('url')->assemble(
                         'portfolio', [
-                        'module' => $this->getModule(),
-                    ]
+                            'module' => $this->getModule(),
+                        ]
                     ),
                 ];
                 $result[] = [
@@ -73,8 +73,8 @@ class Breadcrumbs extends AbstractBreadcrumbs
                     'label' => $moduleData['title'],
                     'href'  => Pi::service('url')->assemble(
                         'portfolio', [
-                        'module' => $this->getModule(),
-                    ]
+                            'module' => $this->getModule(),
+                        ]
                     ),
                 ];
                 // Set main tag on Breadcrumbs
@@ -85,10 +85,10 @@ class Breadcrumbs extends AbstractBreadcrumbs
                         'label' => $tag[0],
                         'href'  => Pi::service('url')->assemble(
                             'portfolio', [
-                            'module'     => $this->getModule(),
-                            'controller' => 'tag',
-                            'slug'       => urlencode($tag[0]),
-                        ]
+                                'module'     => $this->getModule(),
+                                'controller' => 'tag',
+                                'slug'       => urlencode($tag[0]),
+                            ]
                         ),
                     ];
                 }

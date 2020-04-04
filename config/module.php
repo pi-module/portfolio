@@ -10,34 +10,34 @@
 /**
  * @author Hossein Azizabadi <azizabadi@faragostaresh.com>
  */
-return array(
+return [
     // Module meta
-    'meta' => array(
-        'title' => _a('Portfolio'),
+    'meta'     => [
+        'title'       => _a('Portfolio'),
         'description' => _a('List of your works and simple gallery'),
-        'version' => '1.3.4',
-        'license' => 'New BSD',
-        'logo' => 'image/logo.png',
-        'readme' => 'docs/readme.txt',
-        'demo' => 'http://pialog',
-        'icon' => 'fa-camera',
-    ),
+        'version'     => '1.3.4',
+        'license'     => 'New BSD',
+        'logo'        => 'image/logo.png',
+        'readme'      => 'docs/readme.txt',
+        'demo'        => 'http://pialog',
+        'icon'        => 'fa-camera',
+    ],
     // Author information
-    'author' => array(
-        'Name' => 'Hossein Azizabadi',
-        'email' => 'azizabadi@faragostaresh.com',
+    'author'   => [
+        'Name'    => 'Hossein Azizabadi',
+        'email'   => 'azizabadi@faragostaresh.com',
         'website' => 'http://www.xoopsengine.org',
-        'credits' => 'Pi Engine Team'
-    ),
+        'credits' => 'Pi Engine Team',
+    ],
     // Resource
-    'resource' => array(
-        'database' => 'database.php',
-        'config' => 'config.php',
+    'resource' => [
+        'database'   => 'database.php',
+        'config'     => 'config.php',
         'permission' => 'permission.php',
-        'page' => 'page.php',
+        'page'       => 'page.php',
         'navigation' => 'navigation.php',
-        'block' => 'block.php',
-        'route' => 'route.php',
-        'comment' => 'comment.php',
-    ),
-);
+        'block'      => 'block.php',
+        'route'      => 'route.php',
+        'comment'    => 'comment.php',
+    ],
+];

@@ -10,11 +10,11 @@
 /**
  * @author Hossein Azizabadi <azizabadi@faragostaresh.com>
  */
-return array(
-    'portfolio' => array(
-        'title' => _a('Portfolio comments'),
-        'icon' => 'icon-post',
+return [
+    'portfolio' => [
+        'title'    => _a('Portfolio comments'),
+        'icon'     => 'icon-post',
         'callback' => 'Module\Portfolio\Api\Comment',
-        'locator' => 'Module\Portfolio\Api\Comment',
-    ),
-);
+        'locator'  => 'Module\Portfolio\Api\Comment',
+    ],
+];

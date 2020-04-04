@@ -2,7 +2,7 @@
 // Load front.css
 $this->css($this->assetModule('css/front.css'));
 // Image lightbox
-$script =<<<'EOT'
+$script = <<<'EOT'
 $('.gallery').each(function() {
 	$(this).magnificPopup({
    		delegate: 'a',
@@ -13,10 +13,12 @@ $('.gallery').each(function() {
 	});
 });
 EOT;
-$this->jQuery(array(
-    'extension/jquery.magnific-popup.min.js',
-    'extension/magnific-popup.css',
-));
+$this->jQuery(
+    [
+        'extension/jquery.magnific-popup.min.js',
+        'extension/magnific-popup.css',
+    ]
+);
 $this->footScript()->appendScript($script);
 // Set Open Graph tags for meta
 $this->doctype('HTML5');
@@ -38,7 +40,7 @@ if (!empty($project['largeUrl'])) {
 }
 ?>
 <div class="clearfix portfolio-single" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="url" content="<?php echo $project['projectUrl']; ?>" />
+    <meta itemprop="url" content="<?php echo $project['projectUrl']; ?>"/>
     <div class="page-header border-bottom pb-2">
         <h1 itemprop="name">
             <?php echo $this->escape($project['title']); ?>
@@ -47,24 +49,27 @@ if (!empty($project['largeUrl'])) {
     <div class="clearfix gallery">
         <div class="text-center clearfix u-photo row">
             <div class="col-md-6 offset-md-3">
-                <a <?php if ($project['ribbon']) { ?>class="portfolio-ribbon"<?php } ?> href="<?php echo $this->escape($project['largeUrl']); ?>" title="<?php echo $this->escape($project['title']); ?>">
-                    <img itemprop="image" class="img-fluid" src="<?php echo $this->escape($project['largeUrl']); ?>" alt="<?php echo $this->escape($project['title']); ?>" />
+                <a <?php if ($project['ribbon']) { ?>class="portfolio-ribbon"<?php } ?> href="<?php echo $this->escape($project['largeUrl']); ?>"
+                   title="<?php echo $this->escape($project['title']); ?>">
+                    <img itemprop="image" class="img-fluid" src="<?php echo $this->escape($project['largeUrl']); ?>"
+                         alt="<?php echo $this->escape($project['title']); ?>"/>
                     <?php if ($project['ribbon']) { ?>
                         <p><span><?php echo $this->escape($project['ribbon']); ?></span></p>
                     <?php } ?>
                 </a>
             </div>
         </div>
-        <br />
+        <br/>
         <?php if (!empty($project['additional_images'])) { ?>
             <div class="gallery-list text-center clearfix u-photo row">
-                <?php $galleryImages = Pi::api('doc','media')->getGalleryLinkData($project['additional_images'], 320, 200); ?>
-                <?php $galleryImagesBig = Pi::api('doc','media')->getGalleryLinkData($project['additional_images'], 900, 600); ?>
+                <?php $galleryImages = Pi::api('doc', 'media')->getGalleryLinkData($project['additional_images'], 320, 200); ?>
+                <?php $galleryImagesBig = Pi::api('doc', 'media')->getGalleryLinkData($project['additional_images'], 900, 600); ?>
                 <?php if ($galleryImages) { ?>
                     <?php foreach ($galleryImages as $key => $galleryImage) { ?>
                         <div class="u-photo col-lg-2 col-md-3 col-6 thumb">
                             <a class="thumbnail" href="<?php echo $galleryImagesBig[$key]['resized_url']; ?>"
-                               title="<?php echo $this->escape($galleryImage['title']); ?><?php if($galleryImage['copyright']) echo ' - ' . $galleryImage['copyright'] ?>">
+                               title="<?php echo $this->escape($galleryImage['title']); ?><?php if ($galleryImage['copyright']) echo ' - '
+                                   . $galleryImage['copyright'] ?>">
                                 <img itemprop="image" class="img-fluid"
                                      src="<?php echo $galleryImage['resized_url']; ?>"
                                      alt="<?php echo $this->escape($galleryImage['title']); ?>"/>
@@ -76,14 +81,14 @@ if (!empty($project['largeUrl'])) {
         <?php } ?>
     </div>
     <div class="col-md-12">
-        <?php if($config['show_description'] && !empty($project['text_description'])) { ?>
+        <?php if ($config['show_description'] && !empty($project['text_description'])) { ?>
             <div class="portfolio-text">
                 <?php echo $project['text_description']; ?>
             </div>
-            <br />
+            <br/>
         <?php } ?>
         <div class="clearfix text-center">
-            <?php if($config['show_website'] && $project['website'] && $project['website_view']) { ?>
+            <?php if ($config['show_website'] && $project['website'] && $project['website_view']) { ?>
                 <a target="_blank" class="btn btn-primary btn-lg" href="<?php echo $this->escape($project['website']); ?>" role="button">
                     <?php _e('Open website'); ?>
                 </a>
@@ -91,13 +96,13 @@ if (!empty($project['largeUrl'])) {
         </div>
         <div class="clearfix">
             <ul class="list-unstyled">
-                <?php if($config['show_service'] && $project['service']) { ?>
+                <?php if ($config['show_service'] && $project['service']) { ?>
                     <li><strong><?php _e('Service'); ?> : </strong><?php echo $this->escape($project['service']); ?></li>
                 <?php } ?>
-                <?php if($config['show_technology'] && $project['technology']) { ?>
+                <?php if ($config['show_technology'] && $project['technology']) { ?>
                     <li><strong><?php _e('Technology'); ?> : </strong><?php echo $this->escape($project['technology']); ?></li>
                 <?php } ?>
-                <?php if($config['show_hits']) { ?>
+                <?php if ($config['show_hits']) { ?>
                     <li><strong><?php _e('Hits'); ?> : </strong><?php echo $this->escape($project['hits']); ?></li>
                 <?php } ?>
             </ul>
@@ -105,9 +110,10 @@ if (!empty($project['largeUrl'])) {
         <?php if (isset($tag) && !empty($tag)) { ?>
             <div class="clearfix portfolio-tag-list">
                 <ul class="list-inline">
-                    <?php foreach($tag as $term) { ?>
+                    <?php foreach ($tag as $term) { ?>
                         <li class="list-inline-item portfolio-tag-item">
-                            <a title="<?php echo $this->escape($term); ?>" href="<?php echo $this->url('', array('controller' => 'tag', 'action' => 'index', 'slug' => $term)); ?>">
+                            <a title="<?php echo $this->escape($term); ?>"
+                               href="<?php echo $this->url('', ['controller' => 'tag', 'action' => 'index', 'slug' => $term]); ?>">
                                 <i class="fa fa-tag"></i> <?php echo $this->escape($term); ?>
                             </a>
                         </li>
@@ -128,13 +134,15 @@ if (!empty($project['largeUrl'])) {
             </div>
         <?php } ?>
     </div>
-    <?php if ($config['show_related'] &&isset($projectRelated) && !empty($projectRelated)) { ?>
+    <?php if ($config['show_related'] && isset($projectRelated) && !empty($projectRelated)) { ?>
         <div class="portfolio-related col-md-12">
             <?php
-            $this->jQuery(array(
-                'extension/owl.carousel.min.js',
-                'extension/owl.carousel.css',
-            ));
+            $this->jQuery(
+                [
+                    'extension/owl.carousel.min.js',
+                    'extension/owl.carousel.css',
+                ]
+            );
             $this->js($this->assetModule('js/owl.carousel.config.js'));
             ?>
             <div class="page-header">

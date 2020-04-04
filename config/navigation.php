@@ -10,82 +10,82 @@
 /**
  * @author Hossein Azizabadi <azizabadi@faragostaresh.com>
  */
-return array(
-    'admin' => array(
-        'projects' => array(
-            'label' => _a('Projects'),
-            'permission' => array(
+return [
+    'admin' => [
+        'projects' => [
+            'label'      => _a('Projects'),
+            'permission' => [
                 'resource' => 'projects',
-            ),
-            'route' => 'admin',
-            'module' => 'portfolio',
+            ],
+            'route'      => 'admin',
+            'module'     => 'portfolio',
             'controller' => 'project',
-            'action' => 'index',
-            'pages' => array(
-                'projects' => array(
-                    'label' => _a('Projects'),
-                    'permission' => array(
+            'action'     => 'index',
+            'pages'      => [
+                'projects' => [
+                    'label'      => _a('Projects'),
+                    'permission' => [
                         'resource' => 'project',
-                    ),
-                    'route' => 'admin',
-                    'module' => 'portfolio',
+                    ],
+                    'route'      => 'admin',
+                    'module'     => 'portfolio',
                     'controller' => 'project',
-                    'action' => 'index',
-                ),
-                'update' => array(
-                    'label' => _a('Add projects'),
-                    'permission' => array(
+                    'action'     => 'index',
+                ],
+                'update'   => [
+                    'label'      => _a('Add projects'),
+                    'permission' => [
                         'resource' => 'project',
-                    ),
-                    'route' => 'admin',
-                    'module' => 'portfolio',
+                    ],
+                    'route'      => 'admin',
+                    'module'     => 'portfolio',
                     'controller' => 'project',
-                    'action' => 'update',
-                ),
-            ),
-        ),
-        'type' => array(
-            'label' => _a('Project type'),
-            'permission' => array(
+                    'action'     => 'update',
+                ],
+            ],
+        ],
+        'type'     => [
+            'label'      => _a('Project type'),
+            'permission' => [
                 'resource' => 'type',
-            ),
-            'route' => 'admin',
-            'module' => 'portfolio',
+            ],
+            'route'      => 'admin',
+            'module'     => 'portfolio',
             'controller' => 'type',
-            'action' => 'index',
-            'pages' => array(
-                'type' => array(
-                    'label' => _a('Project type'),
-                    'permission' => array(
+            'action'     => 'index',
+            'pages'      => [
+                'type' => [
+                    'label'      => _a('Project type'),
+                    'permission' => [
                         'resource' => 'type',
-                    ),
-                    'route' => 'admin',
-                    'module' => 'portfolio',
+                    ],
+                    'route'      => 'admin',
+                    'module'     => 'portfolio',
                     'controller' => 'type',
-                    'action' => 'index',
-                ),
+                    'action'     => 'index',
+                ],
 
-                'update' => array(
-                    'label' => _a('Add project type'),
-                    'permission' => array(
+                'update' => [
+                    'label'      => _a('Add project type'),
+                    'permission' => [
                         'resource' => 'type',
-                    ),
-                    'route' => 'admin',
-                    'module' => 'portfolio',
+                    ],
+                    'route'      => 'admin',
+                    'module'     => 'portfolio',
                     'controller' => 'type',
-                    'action' => 'update',
-                ),
-            ),
-        ),
-        'tools' => array(
-            'label' => _a('Tools'),
-            'permission' => array(
+                    'action'     => 'update',
+                ],
+            ],
+        ],
+        'tools'    => [
+            'label'      => _a('Tools'),
+            'permission' => [
                 'resource' => 'type',
-            ),
-            'route' => 'admin',
-            'module' => 'portfolio',
+            ],
+            'route'      => 'admin',
+            'module'     => 'portfolio',
             'controller' => 'tools',
-            'action' => 'index',
-        ),
-    ),
-);
+            'action'     => 'index',
+        ],
+    ],
+];

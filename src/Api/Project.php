@@ -67,7 +67,7 @@ class Project extends AbstractApi
 
         // Set
         $order  = ['time_create DESC', 'id DESC'];
-        $limit  = isset($params['limit']) ? $params['limit'] :  intval($config['view_perpage']);
+        $limit  = isset($params['limit']) ? $params['limit'] : intval($config['view_perpage']);
         $offset = (int)($params['page'] - 1) * $limit;
 
         // Set where
@@ -133,13 +133,13 @@ class Project extends AbstractApi
 
         // Set result
         $result = [
-            'projects'      => array_values($projectList),
-            'paginator'    => [
+            'projects'  => array_values($projectList),
+            'paginator' => [
                 'count' => $count,
                 'limit' => $limit,
                 'page'  => $params['page'],
             ],
-            'condition'    => [
+            'condition' => [
                 'title' => $pageTitle,
             ],
         ];
@@ -176,11 +176,11 @@ class Project extends AbstractApi
         $project['projectUrl'] = Pi::url(
             Pi::service('url')->assemble(
                 'portfolio', [
-                'module'     => $this->getModule(),
-                'controller' => 'project',
-                'action'     => 'index',
-                'slug'       => $project['slug'],
-            ]
+                    'module'     => $this->getModule(),
+                    'controller' => 'project',
+                    'action'     => 'index',
+                    'slug'       => $project['slug'],
+                ]
             )
         );
 

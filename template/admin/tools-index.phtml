@@ -1,5 +1,7 @@
 <?php $this->css($this->assetModule('css/admin.css')); ?>
 <div class="clearfix">
-    <p><?php echo _a('That migrates old media data (files, images) for portfolio (main image) to new media module. You can relaunch the script as many times as needed : the script bypasses correct already moved images.'); ?></p>
-    <a href="<?php echo $this->url('', array('action' => 'migrateMedia')); ?>" class="btn btn-primary"><?php echo _a('Launch migration tool'); ?></a> &nbsp;&nbsp;&nbsp;
+    <p><?php echo _a(
+            'That migrates old media data (files, images) for portfolio (main image) to new media module. You can relaunch the script as many times as needed : the script bypasses correct already moved images.'
+        ); ?></p>
+    <a href="<?php echo $this->url('', ['action' => 'migrateMedia']); ?>" class="btn btn-primary"><?php echo _a('Launch migration tool'); ?></a> &nbsp;&nbsp;&nbsp;
 </div>
