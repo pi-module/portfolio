@@ -31,6 +31,7 @@ class IndexController extends ActionController
 
         // Set template
         switch ($config['view_type']) {
+            default:
             case 'normal':
             case 'angular':
                 $where  = ['status' => 1];
