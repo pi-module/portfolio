@@ -89,7 +89,7 @@ return [
                 ],
             ],
             'filter'      => 'text',
-            'value'       => 'ajax',
+            'value'       => 'normal',
             'category'    => 'view',
         ],
         'show_type'                => [
