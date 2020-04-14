@@ -68,7 +68,7 @@ class Breadcrumbs extends AbstractBreadcrumbs
                 break;
 
             case 'project':
-                $project  = Pi::api('project', 'portfolio')->getProject($params['slug'], 'slug');
+                $project  = Pi::api('project', 'portfolio')->getProjectLight($params['slug'], 'slug');
                 $result[] = [
                     'label' => $moduleData['title'],
                     'href'  => Pi::service('url')->assemble(

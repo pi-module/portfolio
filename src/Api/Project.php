@@ -19,9 +19,11 @@ use Zend\Db\Sql\Predicate\Expression;
 
 /*
  * Pi::api('project', 'portfolio')->getProject($parameter, $type);
+ * Pi::api('project', 'portfolio')->getProjectLight($parameter, $type);
  * Pi::api('project', 'portfolio')->getProjectList($options);
  * Pi::api('project', 'portfolio')->getListFromId($id);
  * Pi::api('project', 'portfolio')->canonizeProject($project);
+ * Pi::api('project', 'portfolio')->canonizeProjectLight($project);
  * Pi::api('project', 'portfolio')->related($id, $type);
  * Pi::api('project', 'portfolio')->migrateMedia();
  */
@@ -33,6 +35,13 @@ class Project extends AbstractApi
         // Get project
         $project = Pi::model('project', $this->getModule())->find($parameter, $type);
         return $this->canonizeProject($project);
+    }
+
+    public function getProjectLight($parameter, $type = 'id')
+    {
+        // Get project
+        $project = Pi::model('project', $this->getModule())->find($parameter, $type);
+        return $this->canonizeProjectLight($project);
     }
 
     public function getProjectList($params)
@@ -209,6 +218,38 @@ class Project extends AbstractApi
         if ($project['recommended']) {
             $project['ribbon'] = __('Recommended');
         }
+
+        // return project
+        return $project;
+    }
+
+    public function canonizeProjectLight($project = '')
+    {
+        // Check
+        if (empty($project)) {
+            return '';
+        }
+        // boject to array
+        $project = $project->toArray();
+
+        // Set times
+        $project['time_create_view'] = _date($project['time_create']);
+        $project['time_update_view'] = _date($project['time_update']);
+
+        // Set project url
+        $project['projectUrl'] = Pi::url(
+            Pi::service('url')->assemble(
+                'portfolio', [
+                    'module'     => $this->getModule(),
+                    'controller' => 'project',
+                    'action'     => 'index',
+                    'slug'       => $project['slug'],
+                ]
+            )
+        );
+
+        // Set text
+        $project['text_description'] = Pi::service('markup')->render($project['text_description'], 'html', 'html');
 
         // return project
         return $project;
