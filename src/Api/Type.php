@@ -36,7 +36,7 @@ class Type extends AbstractApi
         if (isset($params['set_all']) && $params['set_all'] == 1) {
             $list[0] = [
                 'title'   => __('All'),
-                'active'  => 1,
+                'active'  => (isset($params['active_id']) && $params['active_id'] > 0) ? 0 : 1,
                 'typeUrl' => Pi::url(
                     Pi::service('url')->assemble(
                         'portfolio', [
