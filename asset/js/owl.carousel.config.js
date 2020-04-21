@@ -12,8 +12,8 @@ $(document).ready(function ($) {
         navText: ['<i class="owl-prev fa fa-angle-right"></i>', '<i class="owl-next fa fa-angle-left"></i>'],
         responsive: {
             0: {items: 1},
-            600: {items: 5},
-            1000: {items: 6}
+            600: {items: 3},
+            1000: {items: 4}
         }
     })
 });

@@ -1,6 +1,6 @@
 <?php $this->css($this->assetModule('css/admin.css')); ?>
 <div class="clearfix">
-    <?php if (!empty($list)) { ?>
+    <?php if (isset($list) && !empty($list)) { ?>
         <h3><?php _e('List of project types'); ?></h3>
         <table class="table table-striped table-bordered table-sm">
             <tr>

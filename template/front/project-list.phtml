@@ -44,83 +44,109 @@ $this->headMeta($this->escape($description), 'og:description', 'property');
 // Set twitter for meta
 $this->headMeta($this->escape($title), 'twitter:title');
 $this->headMeta($this->escape($description), 'twitter:description');
+
+// Check browser
+$typeClass = 'show';
+if (in_array(Pi::service('browser')->getPlatform(), ['android', 'Android', 'ANDROID', 'ios', 'Ios', 'IOS', 'iPhone', 'iPad'])) {
+    $typeClass = '';
+}
 ?>
 <div class="clearfix portfolio-list">
     <?php if (isset($type) && !empty($type['text_description'])) { ?>
-        <div class="portfolio-description">
+        <div class="portfolio-description mb-3">
             <h1><?php echo $this->escape($title); ?></h1>
             <div class="clearfix">
                 <?php echo $type['text_description']; ?>
             </div>
         </div>
     <?php } elseif (!empty($config['text_description_index'])) { ?>
-        <div class="portfolio-description">
+        <div class="portfolio-description mb-3">
             <h1><?php echo $this->escape($title); ?></h1>
             <div class="clearfix">
                 <?php echo $config['text_description_index']; ?>
             </div>
         </div>
     <?php } else { ?>
-        <div class="page-header">
+        <div class="page-header mb-3">
             <h1><?php echo $this->escape($title); ?></h1>
         </div>
     <?php } ?>
-    <?php if ($config['show_type'] && isset($typeList) && !empty($typeList)) { ?>
-        <div class="clearfix mb-3">
-            <ul class="list-group list-group-horizontal-md">
-                <?php foreach ($typeList as $typeSingle) { ?>
-                    <li class="list-group-item <?php if ($typeSingle['active']) {
-                        echo ' active';
-                    } ?>">
-                        <a href="<?php echo $this->escape($typeSingle['typeUrl']); ?>" title="<?php echo $this->escape($typeSingle['title']); ?>">
-                            <?php echo $this->escape($typeSingle['title']); ?>
-                        </a>
-                    </li>
-                <?php } ?>
-            </ul>
-        </div>
-    <?php } ?>
-    <div class="clearfix row mb-3">
-        <?php foreach ($projects as $project) { ?>
-            <?php switch ($image) {
-                case 'large':
-                    $imageUrl = $project['largeUrl'];
-                    break;
-
-                case 'medium':
-                    $imageUrl = $project['mediumUrl'];
-                    break;
-
-                case 'thumb':
-                    $imageUrl = $project['thumbUrl'];
-                    break;
-            } ?>
-            <div class="<?php echo $projectBoxSize; ?> portfolio-list-single mb-3" itemscope itemtype="https://schema.org/CreativeWork">
-                <div class="card border-light text-white h-entry">
-                    <a <?php if ($project['ribbon']) { ?>class="portfolio-ribbon"<?php } ?> itemprop="url"
-                       title="<?php echo $this->escape($project['title']); ?>" href="<?php echo $this->escape($project['projectUrl']); ?>">
-                        <img itemprop="image" class="card-img img-fluid u-photo" src="<?php echo $imageUrl; ?>"
-                             alt="<?php echo $this->escape($project['title']); ?>">
-                        <?php if ($project['ribbon']) { ?>
-                            <p><span><?php echo $this->escape($project['ribbon']); ?></span></p>
-                        <?php } ?>
-                    </a>
-                    <div class="card-img-overlay h-100 d-flex flex-column justify-content-end">
-                        <h2 itemprop="name" class="card-title">
-                            <a class="text-white" title="<?php echo $this->escape($project['title']); ?>"
-                               href="<?php echo $this->escape($project['projectUrl']); ?>">
-                                <?php echo $this->escape($project['title']); ?>
+    <div class="row">
+        <?php if ($config['show_type'] && isset($typeList) && !empty($typeList)) { ?>
+            <div class="mb-3 col-lg-3 col-md-3 col-12">
+                <div class="accordion md-accordion" id="accordionProjectType" role="tablist" aria-multiselectable="true">
+                    <div class="card">
+                        <div class="card-header bg-light" role="tab" id="headingProjectType">
+                            <a data-toggle="collapse" data-parent="#accordionProjectType" href="#collapseProjectType" aria-expanded="true"
+                               aria-controls="collapseProjectType">
+                                <h4 class="mb-0">
+                                    <?php _e('List of project types'); ?> <i class="fas fa-angle-down rotate-icon"></i>
+                                </h4>
                             </a>
-                        </h2>
-                        <?php if ($config['show_phone'] && $project['phone_view'] && !empty($project['phone'])) { ?>
-                            <div class="portfolio-phone card-text">
-                                <i class="fa fa-phone" aria-hidden="true"></i> <?php echo $this->escape($project['phone']); ?>
+                        </div>
+                        <div id="collapseProjectType" class="collapse <?php echo $typeClass; ?>" role="tabpanel" aria-labelledby="headingProjectType" data-parent="#accordionProjectType">
+                            <div class="list-group list-group-flush">
+                                <?php foreach ($typeList as $typeSingle) { ?>
+                                    <a class="list-group-item list-group-item-action <?php if ($typeSingle['active']) { echo ' active'; } ?>" href="<?php echo $this->escape($typeSingle['typeUrl']); ?>" title="<?php echo $this->escape($typeSingle['title']); ?>">
+                                        <?php echo $this->escape($typeSingle['title']); ?>
+                                    </a>
+                                <?php } ?>
                             </div>
-                        <?php } ?>
+                        </div>
                     </div>
                 </div>
             </div>
         <?php } ?>
+        <div class="mb-3 col-lg-9 col-md-9 col-12">
+            <?php if (isset($projects) && !empty($projects)) { ?>
+                <div class="clearfix row mb-3">
+                    <?php foreach ($projects as $project) { ?>
+                        <?php switch ($image) {
+                            case 'large':
+                                $imageUrl = $project['largeUrl'];
+                                break;
+
+                            case 'medium':
+                                $imageUrl = $project['mediumUrl'];
+                                break;
+
+                            case 'thumb':
+                                $imageUrl = $project['thumbUrl'];
+                                break;
+                        } ?>
+                        <div class="<?php echo $projectBoxSize; ?> portfolio-list-single mb-3" itemscope itemtype="https://schema.org/CreativeWork">
+                            <div class="card border-light text-white h-entry">
+                                <a <?php if ($project['ribbon']) { ?>class="portfolio-ribbon"<?php } ?> itemprop="url"
+                                   title="<?php echo $this->escape($project['title']); ?>" href="<?php echo $this->escape($project['projectUrl']); ?>">
+                                    <img itemprop="image" class="card-img img-fluid u-photo" src="<?php echo $imageUrl; ?>"
+                                         alt="<?php echo $this->escape($project['title']); ?>">
+                                    <?php if ($project['ribbon']) { ?>
+                                        <p><span><?php echo $this->escape($project['ribbon']); ?></span></p>
+                                    <?php } ?>
+                                </a>
+                                <div class="card-img-overlay h-100 d-flex flex-column justify-content-end">
+                                    <h2 itemprop="name" class="card-title">
+                                        <a class="text-white" title="<?php echo $this->escape($project['title']); ?>"
+                                           href="<?php echo $this->escape($project['projectUrl']); ?>">
+                                            <?php echo $this->escape($project['title']); ?>
+                                        </a>
+                                    </h2>
+                                    <?php if ($config['show_phone'] && $project['phone_view'] && !empty($project['phone'])) { ?>
+                                        <div class="portfolio-phone card-text">
+                                            <i class="fa fa-phone" aria-hidden="true"></i> <?php echo $this->escape($project['phone']); ?>
+                                        </div>
+                                    <?php } ?>
+                                </div>
+                            </div>
+                        </div>
+                    <?php } ?>
+                </div>
+            <?php } else { ?>
+                <div class="alert alert-danger">
+                    <?php _e('Project list is empty !'); ?>
+                </div>
+            <?php } ?>
+        </div>
     </div>
     <div class="paginator">
         <?php echo $this->paginationControl($paginator, 'Sliding', 'paginator.phtml'); ?>

@@ -39,90 +39,84 @@ if (!empty($project['largeUrl'])) {
     $this->headMeta($this->escape($project['largeUrl']), 'twitter:image');
 }
 ?>
-<div class="clearfix portfolio-single" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="url" content="<?php echo $project['projectUrl']; ?>"/>
-    <div class="page-header border-bottom pb-2">
-        <h1 itemprop="name">
-            <?php echo $this->escape($project['title']); ?>
-        </h1>
-    </div>
-    <div class="clearfix gallery">
-        <div class="text-center clearfix u-photo row">
-            <div class="col-md-6 offset-md-3">
-                <a <?php if ($project['ribbon']) { ?>class="portfolio-ribbon"<?php } ?> href="<?php echo $this->escape($project['largeUrl']); ?>"
-                   title="<?php echo $this->escape($project['title']); ?>">
-                    <img itemprop="image" class="img-fluid" src="<?php echo $this->escape($project['largeUrl']); ?>"
-                         alt="<?php echo $this->escape($project['title']); ?>"/>
-                    <?php if ($project['ribbon']) { ?>
-                        <p><span><?php echo $this->escape($project['ribbon']); ?></span></p>
-                    <?php } ?>
-                </a>
-            </div>
+<div class="clearfix">
+    <div class="clearfix row mb-5 portfolio-single" itemscope itemtype="https://schema.org/CreativeWork">
+        <meta itemprop="url" content="<?php echo $project['projectUrl']; ?>"/>
+        <div class="col-lg-12 col-md-12 col-12 border-bottom pb-3 mb-3">
+            <h1 itemprop="name">
+                <?php echo $this->escape($project['title']); ?>
+            </h1>
         </div>
-        <br/>
-        <?php if (!empty($project['additional_images'])) { ?>
-            <div class="gallery-list text-center clearfix u-photo row">
-                <?php $galleryImages = Pi::api('doc', 'media')->getGalleryLinkData($project['additional_images'], 320, 200); ?>
-                <?php $galleryImagesBig = Pi::api('doc', 'media')->getGalleryLinkData($project['additional_images'], 900, 600); ?>
-                <?php if ($galleryImages) { ?>
-                    <?php foreach ($galleryImages as $key => $galleryImage) { ?>
-                        <div class="u-photo col-lg-2 col-md-3 col-6 thumb">
-                            <a class="thumbnail" href="<?php echo $galleryImagesBig[$key]['resized_url']; ?>"
-                               title="<?php echo $this->escape($galleryImage['title']); ?><?php if ($galleryImage['copyright']) echo ' - '
-                                   . $galleryImage['copyright'] ?>">
-                                <img itemprop="image" class="img-fluid"
-                                     src="<?php echo $galleryImage['resized_url']; ?>"
-                                     alt="<?php echo $this->escape($galleryImage['title']); ?>"/>
-                            </a>
-                        </div>
-                    <?php } ?>
+        <div class="col-lg-6 col-md-6 col-12">
+            <div class="gallery text-center u-photo">
+                <div class="portfolio-single-image">
+                    <a <?php if ($project['ribbon']) { ?>class="portfolio-ribbon"<?php } ?> href="<?php echo $this->escape($project['largeUrl']); ?>"
+                       title="<?php echo $this->escape($project['title']); ?>">
+                        <img itemprop="image" class="img-fluid" src="<?php echo $this->escape($project['largeUrl']); ?>"
+                             alt="<?php echo $this->escape($project['title']); ?>"/>
+                        <?php if ($project['ribbon']) { ?>
+                            <p><span><?php echo $this->escape($project['ribbon']); ?></span></p>
+                        <?php } ?>
+                    </a>
+                </div>
+                <br/>
+                <?php if (!empty($project['additional_images'])) { ?>
+                    <div class="gallery-list text-center clearfix u-photo row">
+                        <?php $galleryImages = Pi::api('doc', 'media')->getGalleryLinkData($project['additional_images'], 320, 200); ?>
+                        <?php $galleryImagesBig = Pi::api('doc', 'media')->getGalleryLinkData($project['additional_images'], 900, 600); ?>
+                        <?php if ($galleryImages) { ?>
+                            <?php foreach ($galleryImages as $key => $galleryImage) { ?>
+                                <div class="u-photo col-lg-3 col-md-4 col-6 thumb">
+                                    <a class="thumbnail" href="<?php echo $galleryImagesBig[$key]['resized_url']; ?>"
+                                       title="<?php echo $this->escape($galleryImage['title']); ?><?php if ($galleryImage['copyright']) echo ' - '
+                                           . $galleryImage['copyright'] ?>">
+                                        <img itemprop="image" class="img-fluid"
+                                             src="<?php echo $galleryImage['resized_url']; ?>"
+                                             alt="<?php echo $this->escape($galleryImage['title']); ?>"/>
+                                    </a>
+                                </div>
+                            <?php } ?>
+                        <?php } ?>
+                    </div>
                 <?php } ?>
             </div>
-        <?php } ?>
-    </div>
-    <div class="col-md-12">
-        <?php if ($config['show_description'] && !empty($project['text_description'])) { ?>
-            <div class="portfolio-text">
-                <?php echo $project['text_description']; ?>
-            </div>
-            <br/>
-        <?php } ?>
-        <div class="clearfix text-center">
-            <?php if ($config['show_website'] && $project['website'] && $project['website_view']) { ?>
-                <a target="_blank" class="btn btn-primary btn-lg" href="<?php echo $this->escape($project['website']); ?>" role="button">
-                    <?php _e('Open website'); ?>
-                </a>
+        </div>
+        <div class="col-lg-6 col-md-6 col-12">
+            <?php if ($config['show_description'] && !empty($project['text_description'])) { ?>
+                <div class="portfolio-text">
+                    <?php echo $project['text_description']; ?>
+                </div>
+                <br/>
             <?php } ?>
-        </div>
-        <div class="clearfix">
-            <ul class="list-unstyled">
-                <?php if ($config['show_service'] && $project['service']) { ?>
-                    <li><strong><?php _e('Service'); ?> : </strong><?php echo $this->escape($project['service']); ?></li>
-                <?php } ?>
-                <?php if ($config['show_technology'] && $project['technology']) { ?>
-                    <li><strong><?php _e('Technology'); ?> : </strong><?php echo $this->escape($project['technology']); ?></li>
-                <?php } ?>
-                <?php if ($config['show_hits']) { ?>
-                    <li><strong><?php _e('Hits'); ?> : </strong><?php echo $this->escape($project['hits']); ?></li>
-                <?php } ?>
-            </ul>
-        </div>
-        <?php if (isset($tag) && !empty($tag)) { ?>
-            <div class="clearfix portfolio-tag-list">
-                <ul class="list-inline">
-                    <?php foreach ($tag as $term) { ?>
-                        <li class="list-inline-item portfolio-tag-item">
-                            <a title="<?php echo $this->escape($term); ?>"
-                               href="<?php echo $this->url('', ['controller' => 'tag', 'action' => 'index', 'slug' => $term]); ?>">
-                                <i class="fa fa-tag"></i> <?php echo $this->escape($term); ?>
-                            </a>
-                        </li>
+
+            <div class="clearfix">
+                <ul class="list-unstyled">
+                    <?php if ($config['show_service'] && $project['service']) { ?>
+                        <li><strong><?php _e('Service'); ?> : </strong><?php echo $this->escape($project['service']); ?></li>
+                    <?php } ?>
+                    <?php if ($config['show_technology'] && $project['technology']) { ?>
+                        <li><strong><?php _e('Technology'); ?> : </strong><?php echo $this->escape($project['technology']); ?></li>
+                    <?php } ?>
+                    <?php if ($config['show_hits']) { ?>
+                        <li><strong><?php _e('Hits'); ?> : </strong><?php echo $this->escape($project['hits']); ?></li>
                     <?php } ?>
                 </ul>
             </div>
-        <?php } ?>
-        <?php if ($config['social_sharing']) { ?>
-            <div class="col-md-4 col-md-offset-4">
+            <?php if (isset($tag) && !empty($tag)) { ?>
+                <div class="clearfix portfolio-tag-list">
+                    <ul class="list-inline">
+                        <?php foreach ($tag as $term) { ?>
+                            <li class="list-inline-item portfolio-tag-item">
+                                <a title="<?php echo $this->escape($term); ?>"
+                                   href="<?php echo $this->url('', ['controller' => 'tag', 'action' => 'index', 'slug' => $term]); ?>">
+                                    <i class="fa fa-tag"></i> <?php echo $this->escape($term); ?>
+                                </a>
+                            </li>
+                        <?php } ?>
+                    </ul>
+                </div>
+            <?php } ?>
+            <?php if ($config['social_sharing']) { ?>
                 <div class="portfolio-social-sharing">
                     <?php echo $this->socialSharing(
                         $config['social_sharing'],
@@ -131,21 +125,19 @@ if (!empty($project['largeUrl'])) {
                         $this->escape($project['largeUrl'])
                     ); ?>
                 </div>
-            </div>
-        <?php } ?>
+            <?php } ?>
+        </div>
     </div>
     <?php if ($config['show_related'] && isset($projectRelated) && !empty($projectRelated)) { ?>
-        <div class="portfolio-related col-md-12">
-            <?php
-            $this->jQuery(
-                [
-                    'extension/owl.carousel.min.js',
-                    'extension/owl.carousel.css',
-                ]
-            );
-            $this->js($this->assetModule('js/owl.carousel.config.js'));
-            ?>
-            <div class="page-header">
+        <?php $this->jQuery(
+            [
+                'extension/owl.carousel.min.js',
+                'extension/owl.carousel.css',
+            ]
+        );
+        $this->js($this->assetModule('js/owl.carousel.config.js')); ?>
+        <div class="clearfix portfolio-related">
+            <div class="border-bottom pb-3 mb-3">
                 <h3><?php _e('Related projects'); ?></h3>
             </div>
             <div class="owl-carousel clearfix">
