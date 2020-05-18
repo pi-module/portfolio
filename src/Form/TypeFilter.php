@@ -14,7 +14,7 @@
 namespace Module\Portfolio\Form;
 
 use Pi;
-use Zend\InputFilter\InputFilter;
+use Laminas\InputFilter\InputFilter;
 
 class TypeFilter extends InputFilter
 {
