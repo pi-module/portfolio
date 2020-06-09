@@ -18,7 +18,7 @@ use Pi\Filter;
 use Pi\Mvc\Controller\ActionController;
 use Pi\Paginator\Paginator;
 use Pi\File\Transfer\Upload;
-use Zend\Db\Sql\Predicate\Expression;
+use Laminas\Db\Sql\Predicate\Expression;
 use Module\Portfolio\Form\ProjectForm;
 use Module\Portfolio\Form\ProjectFilter;
 
