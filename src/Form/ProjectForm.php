@@ -77,7 +77,7 @@ class ProjectForm extends BaseForm
             ]
         );
 
-        // Main image
+        // main_image
         $this->add(
             [
                 'name'    => 'main_image',
@@ -89,7 +89,7 @@ class ProjectForm extends BaseForm
             ]
         );
 
-        // Additional images'
+        // additional_images
         $this->add(
             [
                 'name'    => 'additional_images',

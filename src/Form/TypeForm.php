@@ -75,6 +75,18 @@ class TypeForm extends BaseForm
             ]
         );
 
+        // main_image
+        $this->add(
+            [
+                'name'    => 'main_image',
+                'type'    => 'Module\Media\Form\Element\Media',
+                'options' => [
+                    'label'    => __('Main image'),
+                    'required' => false,
+                ],
+            ]
+        );
+
         // status
         $this->add(
             [

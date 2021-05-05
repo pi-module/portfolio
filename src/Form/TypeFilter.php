@@ -63,6 +63,14 @@ class TypeFilter extends InputFilter
             ]
         );
 
+        // main_image
+        $this->add(
+            [
+                'name'     => 'main_image',
+                'required' => false,
+            ]
+        );
+
         // status
         $this->add(
             [

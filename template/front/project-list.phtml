@@ -4,27 +4,27 @@ $this->css($this->assetModule('css/front.css'));
 switch ($config['view_column']) {
     case 1:
         $projectBoxSize = 'col-lg-12 col-md-12 col-12';
-        $image          = 'large';
+        $image = 'large';
         break;
 
     case 2:
         $projectBoxSize = 'col-lg-6 col-md-6 col-12';
-        $image          = 'medium';
+        $image = 'medium';
         break;
 
     case 3:
         $projectBoxSize = 'col-lg-4 col-md-4 col-12';
-        $image          = 'medium';
+        $image = 'medium';
         break;
 
     case 4:
         $projectBoxSize = 'col-lg-3 col-md-3 col-12';
-        $image          = 'thumb';
+        $image = 'thumb';
         break;
 
     case 6:
         $projectBoxSize = 'col-lg-2 col-md-2 col-12';
-        $image          = 'thumb';
+        $image = 'thumb';
         break;
 }
 
@@ -50,6 +50,26 @@ $typeClass = 'show';
 if (in_array(Pi::service('browser')->getPlatform(), ['android', 'Android', 'ANDROID', 'ios', 'Ios', 'IOS', 'iPhone', 'iPad'])) {
     $typeClass = '';
 }
+
+if ($config['show_type'] && isset($typeList) && !empty($typeList)) {
+    switch ($config['type_menu']) {
+        case 'top':
+            $topClass = 'mb-3 col-lg-9 col-md-9 col-12 portfolio-list-top bg-secondary py-4';
+            $sideClass = '';
+            $mainClass = 'mb-3 col-lg-9 col-md-9 col-12 portfolio-list-main';
+            break;
+
+        case 'side':
+            $topClass = '';
+            $sideClass = 'mb-3 col-lg-3 col-md-3 col-12 portfolio-list-side';
+            $mainClass = 'mb-3 col-lg-9 col-md-9 col-12 portfolio-list-main';
+            break;
+    }
+} else {
+    $topClass = '';
+    $sideClass = '';
+    $mainClass = 'mb-3 col-lg-12 col-md-12 col-12 portfolio-list-main';
+}
 ?>
 <div class="clearfix portfolio-list">
     <?php if (isset($type) && !empty($type['text_description'])) { ?>
@@ -73,31 +93,52 @@ if (in_array(Pi::service('browser')->getPlatform(), ['android', 'Android', 'ANDR
     <?php } ?>
     <div class="row">
         <?php if ($config['show_type'] && isset($typeList) && !empty($typeList)) { ?>
-            <div class="mb-3 col-lg-3 col-md-3 col-12">
-                <div class="accordion md-accordion" id="accordionProjectType" role="tablist" aria-multiselectable="true">
-                    <div class="card">
-                        <div class="card-header bg-light" role="tab" id="headingProjectType">
-                            <a data-toggle="collapse" data-parent="#accordionProjectType" href="#collapseProjectType" aria-expanded="true"
-                               aria-controls="collapseProjectType">
-                                <h4 class="mb-0">
-                                    <?php _e('List of project types'); ?> <i class="fas fa-angle-down rotate-icon"></i>
-                                </h4>
-                            </a>
-                        </div>
-                        <div id="collapseProjectType" class="collapse <?php echo $typeClass; ?>" role="tabpanel" aria-labelledby="headingProjectType" data-parent="#accordionProjectType">
-                            <div class="list-group list-group-flush">
-                                <?php foreach ($typeList as $typeSingle) { ?>
-                                    <a class="list-group-item list-group-item-action <?php if ($typeSingle['active']) { echo ' active'; } ?>" href="<?php echo $this->escape($typeSingle['typeUrl']); ?>" title="<?php echo $this->escape($typeSingle['title']); ?>">
+            <?php if ($config['type_menu'] == 'top') { ?>
+                <div class="<?php echo $topClass ?>">
+                    <div class="container" data-simplebar>
+                        <div class="d-flex justify-content-between">
+                            <?php foreach ($typeList as $typeSingle) { ?>
+                                <a class="d-block py-3 pr-sm-3 pr-lg-5 mr-5" href="<?php echo $this->escape($typeSingle['typeUrl']); ?>">
+                                    <img class="d-block mx-auto mb-3" width="60" src="<?php echo $this->escape($typeSingle['thumbUrl']); ?>" alt="<?php echo $this->escape($typeSingle['title']); ?>"/>
+                                    <h6 class="font-size-base text-center text-nowrap">
                                         <?php echo $this->escape($typeSingle['title']); ?>
-                                    </a>
-                                <?php } ?>
+                                    </h6>
+                                </a>
+                            <?php } ?>
+                        </div>
+                    </div>
+                </div>
+            <?php } elseif ($config['type_menu'] == 'side') { ?>
+                <div class="<?php $sideClass; ?>">
+                    <div class="accordion md-accordion" id="accordionProjectType" role="tablist" aria-multiselectable="true">
+                        <div class="card">
+                            <div class="card-header bg-light" role="tab" id="headingProjectType">
+                                <a data-toggle="collapse" data-parent="#accordionProjectType" href="#collapseProjectType" aria-expanded="true"
+                                   aria-controls="collapseProjectType">
+                                    <h4 class="mb-0">
+                                        <?php _e('List of project types'); ?> <i class="fas fa-angle-down rotate-icon"></i>
+                                    </h4>
+                                </a>
+                            </div>
+                            <div id="collapseProjectType" class="collapse <?php echo $typeClass; ?>" role="tabpanel" aria-labelledby="headingProjectType"
+                                 data-parent="#accordionProjectType">
+                                <div class="list-group list-group-flush">
+                                    <?php foreach ($typeList as $typeSingle) { ?>
+                                        <a class="list-group-item list-group-item-action <?php if ($typeSingle['active']) {
+                                            echo ' active';
+                                        } ?>" href="<?php echo $this->escape($typeSingle['typeUrl']); ?>"
+                                           title="<?php echo $this->escape($typeSingle['title']); ?>">
+                                            <?php echo $this->escape($typeSingle['title']); ?>
+                                        </a>
+                                    <?php } ?>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            <?php } ?>
         <?php } ?>
-        <div class="mb-3 col-lg-9 col-md-9 col-12">
+        <div class="<?php $mainClass; ?>">
             <?php if (isset($projects) && !empty($projects)) { ?>
                 <div class="clearfix row mb-3">
                     <?php foreach ($projects as $project) { ?>

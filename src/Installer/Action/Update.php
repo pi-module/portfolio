@@ -247,6 +247,24 @@ EOD;
             }
         }
 
+        // Update to version 1.3.6
+        if (version_compare($moduleVersion, '1.3.6 ', '<')) {
+            // Alter table : ADD main_image
+            $sql = sprintf("ALTER TABLE %s ADD `main_image` INT(10) UNSIGNED NOT NULL DEFAULT '0'", $typeTable);
+            try {
+                $typeAdapter->query($sql, 'execute');
+            } catch (\Exception $exception) {
+                $this->setResult(
+                    'db', [
+                        'status'  => false,
+                        'message' => 'Table alter query failed: '
+                            . $exception->getMessage(),
+                    ]
+                );
+                return false;
+            }
+        }
+
         return true;
     }
 }

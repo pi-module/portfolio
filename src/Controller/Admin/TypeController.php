@@ -66,6 +66,11 @@ class TypeController extends ActionController
             if ($form->isValid()) {
                 $values = $form->getData();
 
+                // Check image
+                if (!isset($values['main_image']) || empty($values['main_image'])) {
+                    $values['main_image'] = 0;
+                }
+
                 // Save values
                 if (!empty($id)) {
                     $row = $this->getModel('type')->find($id);

@@ -63,7 +63,7 @@ class ProjectFilter extends InputFilter
             ]
         );
 
-        // Main image
+        // main_image
         $this->add(
             [
                 'name'     => 'main_image',
@@ -71,7 +71,7 @@ class ProjectFilter extends InputFilter
             ]
         );
 
-        // Aadditional images
+        // additional_images
         $this->add(
             [
                 'name'     => 'additional_images',

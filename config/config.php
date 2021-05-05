@@ -100,6 +100,22 @@ return [
             'filter'      => 'number_int',
             'value'       => 1,
         ],
+        'type_menu'                => [
+            'title'       => _a('Menu type'),
+            'description' => _a('Position and style'),
+            'edit'        => [
+                'type'    => 'select',
+                'options' => [
+                    'options' => [
+                        'side' => _a('Side'),
+                        'top'  => _a('Top'),
+                    ],
+                ],
+            ],
+            'filter'      => 'text',
+            'value'       => 'side',
+            'category'    => 'view',
+        ],
         'show_service'             => [
             'category'    => 'show',
             'title'       => _a('Show Service'),

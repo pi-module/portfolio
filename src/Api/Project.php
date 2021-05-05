@@ -172,8 +172,9 @@ class Project extends AbstractApi
     {
         // Check
         if (empty($project)) {
-            return '';
+            return [];
         }
+
         // boject to array
         $project = $project->toArray();
 
